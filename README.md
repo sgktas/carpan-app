@@ -53,4 +53,4 @@ Arc Mainnet 5042 / Testnet 5042002. USDC ERC-20 evidence uses 6 decimals; native
 
 Finance's internal operations remain available while the integration API is closed. `CARPAN_FINANCE_API_ENABLED=false` is the default: integration-management and external Finance API methods return `503 api_not_open`, and the webhook worker does not start. Opening the service requires the owner's explicit launch decision. Continuous indexing/backfill, additional-chain data adapters, actual accounting-software pilots, member invitations and pricing/billing remain planned.
 
-[Grant brief](docs/grant-submission.md) · [Blockscout technical submission](docs/blockscout-buildathon.md) · [Demo script](docs/blockscout-demo.md) · **info@carpan.app** · [@carpan_app](https://x.com/carpan_app).
+[Grant brief](docs/grant-submission.md) · [Blockscout technical submission](docs/blockscout-buildathon.md) · [4:42 demo video](https://carpan.app/media/carpan-blockscout-demo-20261013.mp4) · [Demo notes](docs/blockscout-demo.md) · **info@carpan.app** · [@carpan_app](https://x.com/carpan_app).

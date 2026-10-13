@@ -1,5 +1,13 @@
 # Blockscout demonstration — 3 minutes 45 seconds
 
+## Published walkthrough
+
+[Watch the 4:42 narrated walkthrough](https://carpan.app/media/carpan-blockscout-demo-20261013.mp4). It uses captured product screens and English synthetic narration. The local Finance example uses an isolated in-memory database, synthetic receipts and a clearly labelled customer/reference. The separate real owner-funded 0.10 USDC pilot is shown in live Terminal and the official Arc Blockscout Explorer. It is not customer revenue or an accounting-system posting. The local product UI downloaded an approved JSON package with `readyForPosting:false` and `accountingStatus:not_submitted`.
+
+The walkthrough is not a continuous screen recording. The original script below remains a guide for recording an interaction-based version; its planned timings differ from the published walkthrough.
+
+## Original recording plan
+
 English recording script, prepared 13 October 2026. **This document is a script; it is not a recorded video.** Use a clean recording profile and a dedicated demonstration workspace. Local test data must be visibly identified as synthetic. Do not present a cache response as a new live PRO call.
 
 ## Before recording
