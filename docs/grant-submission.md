@@ -3,7 +3,7 @@
 Updated 13 October 2026. [Current audit](grant-readiness-2026-10-13.md) supersedes the older readiness snapshots.
 
 Product: https://carpan.app · English walkthrough: https://carpan.app/about?lang=en · Contact: info@carpan.app.
-Public builder profile: [sgktas](https://github.com/sgktas). Selected public source repository: [sgktas/carpan-app](https://github.com/sgktas/carpan-app), with publication and hosted CI pending. The owner chose to include no open-source licence or `LICENSE` file. The application must use truthful rights-to-submit details.
+Public builder profile: [sgktas](https://github.com/sgktas). Public source repository: [sgktas/carpan-app](https://github.com/sgktas/carpan-app), with [successful initial hosted verification](https://github.com/sgktas/carpan-app/actions/runs/38367478454). The owner chose to include no open-source licence or `LICENSE` file. The application must use truthful rights-to-submit details.
 
 ## Short application description
 
@@ -23,13 +23,13 @@ The web platform is separate from the Turkish desktop product Çarpan Muhasebe A
 - The 11 October catalogue snapshot recorded 14 reviewed profiles plus one approved community entry, 5 documented assets and 3 reviewed announcements. Project approval, private saving/removal and persistence had passed acceptance; these are dated counts, not a new live inventory.
 - Arc pool prices, liquidity, volume and 24-hour/7-day source charts and opt-in private in-app project notifications are implemented. Source snapshots, provider limits and unavailable states remain visible.
 - Previous Arc↔Arbitrum transfers/recovery passed. Further EVM/Solana routes have configuration checks; additional real financial pilots are paused by the owner.
-- Automated tests use isolated databases and mocked providers. CI configuration/source export are not a hosted CI run or repository publication. See the current audit for the final test/deployment result.
+- Automated tests use isolated databases and mocked providers. The public source repository now has [initial hosted CI evidence](https://github.com/sgktas/carpan-app/actions/runs/38367478454): 401 tests / 24,345 assertions / 65 files / zero failures, plus guard/lint/frontend TypeScript/build. See the current audit for scope and dated deployment evidence.
 
 These are owner-funded acceptance pilots and implementation evidence, not paying customers, external traction, an issued tax invoice or Circle endorsement.
 
 ## Arc Microgrants preparation
 
-The official programme, rechecked 13 October, offers **$500 USDC** and asks for a working Mainnet link, public repository, short product/Arc explanation and public builder profile. The live product, explanation and selected [builder profile](https://github.com/sgktas) are prepared; publication of the selected **public repository** remains pending. The owner has chosen no open-source licence. Record the actual hosted CI result after publication as technical review evidence; CI is not listed as a programme application requirement.
+The official programme, rechecked 13 October, offers **$500 USDC** and asks for a working Mainnet link, public repository, short product/Arc explanation and public builder profile. The live product, explanation, [builder profile](https://github.com/sgktas) and [public repository](https://github.com/sgktas/carpan-app) are available. The owner has chosen no open-source licence. The successful initial hosted CI result is technical review evidence; CI is not listed as a programme application requirement.
 
 The deadline is **14 October 2026, 23:59 ET — 15 October, 06:59 Türkiye**. Microgrants does not require a deck, traction, company formation or roadmap. No application has been submitted. [Official programme](https://community.arc.io/public/events/arc-microgrants-f8tijfjhyq), checked 13 October 2026. Recheck the form at submission and use truthful prior-funding and rights-to-submit declarations.
 

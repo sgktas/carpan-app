@@ -1,5 +1,7 @@
 # Carpan — Finance, Terminal and Ecosystem on Arc
 
+[![Carpan verification](https://github.com/sgktas/carpan-app/actions/workflows/verify.yml/badge.svg)](https://github.com/sgktas/carpan-app/actions/workflows/verify.yml)
+
 [Live product](https://carpan.app) · [Product walkthrough](https://carpan.app/about?lang=en) · [Reviewer guide](docs/reviewer-guide.md) · [Architecture](docs/architecture.md) · [Roadmap](ROADMAP.md)
 
 Carpan is an independent onchain payment-data platform built first on Arc. Finance gives businesses a private workspace to load USDC evidence, associate counterparties and references, review movements and generate immutable JSON outputs. Terminal provides onchain research, and Ecosystem provides source-backed project discovery. Google, email and wallet sign-in share one account with explicit identity linking.
@@ -16,7 +18,7 @@ Collections remain a separate working flow: request → share link → payer rev
 
 Scope updated **13 October 2026**. [Current readiness](docs/grant-readiness-2026-10-13.md) distinguishes implemented features, historical acceptance and remaining work.
 
-The source package includes the [Finance operations report](docs/carpan-finance-operations-2026-10-12.md), [historical connector specification](docs/carpan-finance-integrations-2026-10-12.md), [history and credit repair report](docs/carpan-finance-history-api-budget-2026-10-12.md), [current API closure](docs/carpan-api-closed-2026-10-12.md) and [roadmap](ROADMAP.md). The selected public repository is [sgktas/carpan-app](https://github.com/sgktas/carpan-app); publication and its first hosted CI result are pending.
+The source package includes the [Finance operations report](docs/carpan-finance-operations-2026-10-12.md), [historical connector specification](docs/carpan-finance-integrations-2026-10-12.md), [history and credit repair report](docs/carpan-finance-history-api-budget-2026-10-12.md), [current API closure](docs/carpan-api-closed-2026-10-12.md) and [roadmap](ROADMAP.md). The public repository is [sgktas/carpan-app](https://github.com/sgktas/carpan-app). Its [initial hosted verification](https://github.com/sgktas/carpan-app/actions/runs/38367478454) passed on 13 October 2026: 401 tests, 24,345 assertions, zero failures; publication guard, lint, frontend TypeScript and production build passed.
 
 ## Run locally
 
@@ -39,7 +41,7 @@ npm run verify
 npm run repo:prepare
 ```
 
-Verification checks publication boundaries, lint, frontend TypeScript, isolated tests and build. The GitHub workflow is configured to run the same command with read-only repository permissions; an actual hosted result is pending publication. No funded wallet, real signature or transfer is needed by tests. This command does not establish a complete backend TypeScript check or an independent security audit.
+Verification checks publication boundaries, lint, frontend TypeScript, isolated tests and build. The GitHub workflow runs the same command with read-only repository permissions; the initial hosted run passed on 13 October 2026. No funded wallet, real signature or transfer is needed by tests. This command does not establish a complete backend TypeScript check or an independent security audit.
 
 The export creates a fresh `.local/carpan-repository-*` directory and SHA256 manifest from the reviewed source allowlist. Private environment values, databases, archives, runtime files and internal handoffs are excluded. Selected public documentation includes dated implementation and acceptance evidence. The export does not publish to GitHub. Inspect this clean export before initializing or publishing the selected repository. Do not publish the entire historical development directory.
 

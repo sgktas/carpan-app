@@ -1,12 +1,12 @@
 # Carpan — submission readiness, 13 October 2026
 
-This assessment supersedes the submission blockers and product descriptions in the 11 October report. Historical receipts and test runs remain dated evidence. No grant application or GitHub publication has been completed.
+This assessment supersedes the submission blockers and product descriptions in the 11 October report. Historical receipts and test runs remain dated evidence. The public GitHub repository has been published; no grant application has been submitted.
 
 ## Decision
 
-Carpan is ready to be presented as a working Arc Mainnet MVP for Arc Microgrants. The remaining submission work is repository publication and packaging the application, rather than adding another product. This is an engineering assessment of the implemented scope, not a funding decision or exhaustive security certification.
+Carpan is ready to be presented as a working Arc Mainnet MVP for Arc Microgrants. The public repository and initial hosted verification are complete. The remaining submission work is packaging and reviewing the application, rather than adding another product. This is an engineering assessment of the implemented scope, not a funding decision or exhaustive security certification.
 
-Before pressing Submit: provide the public repository and builder profile, run its actual hosted CI, confirm rights to submit and any prior Circle/Arc funding, and review the final application facts with the owner. The owner has selected GitHub account sgktas and no open-source licence. Public repository publication and hosted CI remain pending until actually completed. The historical development directory is not a Git repository; do not publish its private runtime/history files.
+Before pressing Submit: provide the public repository and builder profile, run its actual hosted CI, confirm rights to submit and any prior Circle/Arc funding, and review the final application facts with the owner. The owner has selected GitHub account sgktas and no open-source licence. Public repository [sgktas/carpan-app](https://github.com/sgktas/carpan-app) is available, and its [initial hosted verification](https://github.com/sgktas/carpan-app/actions/runs/38367478454) passed. The historical development directory is not a Git repository; do not publish its private runtime/history files.
 
 ## Current implementation to describe
 
@@ -21,11 +21,11 @@ Before pressing Submit: provide the public repository and builder profile, run i
 
 ## Verification available
 
-The latest full backend gate recorded for the current service version passed 401 tests / 24,340 assertions / 65 files. Subsequent approved frontend revisions passed lint, TypeScript, production build and publication guard; no fresh full backend test or fresh financial pilot is claimed today. Authentication functional code in the latest form-logo revision was compared against the prior archive and changes were confined to the removed logo import/markup.
+The earlier backend gate recorded 401 tests / 24,340 assertions / 65 files. The new [GitHub-hosted verification](https://github.com/sgktas/carpan-app/actions/runs/38367478454) on 13 October passed 401 tests / 24,345 assertions / 65 files, zero failures, plus publication guard, lint, frontend TypeScript and production build. No fresh user-signed financial pilot is claimed today. Authentication functional code in the latest form-logo revision was compared against the prior archive and changes were confined to the removed logo import/markup.
 
 Read-only live check on 13 October: `/api/health` reports `ok:true`, `demoMode:false`; API/indexer and backup/monitor timers are active. Latest deployed frontend patch is 20261012-04-p13. Public read-only routes also report Arc Mainnet chain5042/liveindex, 15 catalogue projects and5documented assets (source catalogue dated9October), and503api_not_open for the external Finance movements endpoint. These checks establish current availability at inspection time, not all-feature acceptance or an uptime guarantee. Real Google/email/wallet acceptance and identity linking remain documented earlier evidence.
 
-Publications will use the allowlisted source export produced by `npm run repo:prepare`, plus its SHA256 manifest and source guard. Environment files, databases, private key material, private .local evidence/archives, production state and installed dependencies are excluded. The source guard is a targeted publication check, not an independent comprehensive security audit. GitHub CI configuration exists; a hosted result only exists after a real push.
+Publications will use the allowlisted source export produced by `npm run repo:prepare`, plus its SHA256 manifest and source guard. Environment files, databases, private key material, private .local evidence/archives, production state and installed dependencies are excluded. The source guard is a targeted publication check, not an independent comprehensive security audit. The first actual public push has a successful hosted CI result linked above.
 
 ## Official programme requirements rechecked
 
@@ -36,7 +36,7 @@ Publications will use the allowlisted source export produced by `npm run repo:pr
 ## Publication/application steps
 
 1. Use owner sgktas, repository carpan-app, public visibility and no open-source licence, as selected by the owner. The Microgrants repo must be public; public visibility and an open-source licence are distinct decisions.
-2. Publish the clean source with current README, architecture, run instructions, limitations and CI workflow. Get the actual hosted verification result.
+2. Completed: clean source published with current README, architecture, Finance reports/roadmap, run instructions, limitations and CI workflow; initial hosted verification passed.
 3. Prepare a short English demo and application text focused on Arc USDC settlement, verified movements and explicit business reconciliation. Additional demo polish is optional for Microgrants, not an official prerequisite.
 4. Attach carpan.app, the public repository, builder profile and historical receipt evidence as appropriate; check truthful eligibility statements and submit with owner review.
 
