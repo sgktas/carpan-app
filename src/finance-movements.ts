@@ -1,3 +1,4 @@
+import type {FinanceMovementDiscovery} from './finance-discovery';
 /** Canonical Arc Mainnet USDC evidence. Native/system quantities retain all 18 decimals. */
 export type FinanceMovementDirection = 'in' | 'out' | 'mint' | 'burn';
 
@@ -34,6 +35,9 @@ export type FinanceMovement = {
   interface: 'native' | 'erc20' | 'ambiguous';
   /** Ambiguous aliases are retained for inspection, never automatic annotation migration. */
   aliases: FinanceMovementAlias[];
+  /** Optional for legacy snapshots. Never inferred from another movement or a current cache read. */
+  discovery?: FinanceMovementDiscovery[];
+  verifiedAt?: string;
 };
 
 /** A receipt's total transaction fee is stored once, separately from its movements. */

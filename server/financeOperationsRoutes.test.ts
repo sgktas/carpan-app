@@ -165,7 +165,7 @@ test('older-range refresh scans before the earliest saved range while preserving
   const response=await request(path+'/refresh',{method:'POST',...owned({older:true})});expect(response.status).toBe(200);
   const state=await response.json() as ReturnType<typeof readFinanceOperationState>;
   expect(state.scan?.coverage).toMatchObject({fromBlock:'2953',toBlock:'3976',complete:true});
-  expect(state.scan?.movements).toEqual(latest.movements);expect(state.scan?.fees).toEqual(latest.fees);
+  expect(state.scan?.movements.map(({discovery: _discovery, verifiedAt: _verifiedAt, ...proof}) => proof)).toEqual(latest.movements);expect(state.scan?.fees).toEqual(latest.fees);
   expect(state.loadedRanges.map(range=>[range.fromBlock,range.toBlock])).toEqual([['3977','5000'],['2953','3976']]);
 }));
 
@@ -182,7 +182,7 @@ test('older-range refresh repairs a saved incomplete window before moving furthe
   const state=await response.json() as ReturnType<typeof readFinanceOperationState>;
   expect(ranges).toEqual([{from:3977n,to:5000n,direction:'in'},{from:3977n,to:5000n,direction:'out'}]);
   expect(state.scan?.coverage).toMatchObject({fromBlock:'3977',toBlock:'5000',complete:true,failedTransactions:0,truncated:false});
-  expect(state.scan?.movements).toEqual(verified.movements);expect(state.scan?.fees).toEqual(verified.fees);
+  expect(state.scan?.movements.map(({discovery: _discovery, verifiedAt: _verifiedAt, ...proof}) => proof)).toEqual(verified.movements);expect(state.scan?.fees).toEqual(verified.fees);
   expect(state.loadedRanges).toHaveLength(1);expect(state.loadedRanges[0].complete).toBe(true);
 }));
 

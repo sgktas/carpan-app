@@ -3,6 +3,7 @@ import {createHash, randomUUID} from 'node:crypto';
 import {FINANCE_CATEGORIES, type FinanceCategory} from '../src/arc-finance';
 import {ARC_USDC} from '../src/arc-wallet';
 import type {FinanceMovement, FinanceMovementScan, FinanceMovementCoverage} from '../src/finance-movements';
+import {mergeFinanceDiscovery, validFinanceDiscovery, type FinanceMovementDiscovery} from '../src/finance-discovery';
 import {FINANCE_SYSTEM_EMITTER, FINANCE_MOVEMENT_BLOCK_WINDOW, FINANCE_MOVEMENT_EVENT_LIMIT, FINANCE_MOVEMENT_TRANSACTION_LIMIT} from './financeMovements';
 import {FinanceOrganizationError, getFinanceBusinessWallet, getFinanceCounterparty, requireFinanceOrganizationAccess} from './financeOrganizations';
 
@@ -83,6 +84,11 @@ function audit(db: Database, userId: string, organizationId: string, walletId: s
     [randomUUID(), organizationId, walletId, movementId, userId, action, before === null ? null : JSON.stringify(before), JSON.stringify(after), new Date().toISOString()]);
 }
 function validateScan(scan: FinanceMovementScan, wallet: string): void {
+  if (Array.isArray(scan?.movements)) for (const movement of scan.movements) {
+    if (!movement) continue;
+    if (movement.discovery !== undefined && (!Array.isArray(movement.discovery) || movement.discovery.length > 8 || movement.discovery.some(row => !validFinanceDiscovery(row)))) return fail('invalid_input', 'Invalid Finance discovery provenance.');
+    if (movement.verifiedAt !== undefined && !finiteTime(movement.verifiedAt)) return fail('invalid_input', 'Invalid Finance verification time.');
+  }
   if (!scan || scan.wallet !== wallet || !Array.isArray(scan.movements) || scan.movements.length > FINANCE_MOVEMENT_EVENT_LIMIT || !Array.isArray(scan.fees) || scan.fees.length > FINANCE_MOVEMENT_TRANSACTION_LIMIT || !Array.isArray(scan.unmappedAliases) || scan.unmappedAliases.length > 5000 || !Array.isArray(scan.warnings) || scan.warnings.some(warning => typeof warning !== 'string' || warning.length > 500)) return fail('invalid_input', 'Invalid canonical Finance scan.');
   const c = scan.coverage;
   if (!c || c.wallet !== wallet || !exactRaw(c.fromBlock) || !exactRaw(c.toBlock) || BigInt(c.fromBlock) > BigInt(c.toBlock) || BigInt(c.toBlock) - BigInt(c.fromBlock) >= BigInt(FINANCE_MOVEMENT_BLOCK_WINDOW) || !hashPattern.test(c.toBlockHash) || !finiteTime(c.fetchedAt)
@@ -136,7 +142,11 @@ export function saveFinanceOperationScan(db: Database, userId: string, organizat
       if ((before && proofDigest(before) !== proofDigest(movement)) || (saved && saved.evidence_hash !== proofDigest(movement))) return fail('conflict', 'Canonical movement evidence changed. Review the chain source before replacing the snapshot.', 409);
     }
     const movements = new Map((previous?.movements || []).map(movement => [movement.id, movement]));
-    for (const movement of scan.movements) movements.set(movement.id, movement);
+    for (const movement of scan.movements) {
+      const before = movements.get(movement.id);
+      const discovery: FinanceMovementDiscovery[] = movement.discovery?.length ? movement.discovery : [{source: 'arc_rpc', endpoint: scan.coverage.scope === 'receipt_import' ? 'transaction_receipt' : 'transfer_logs', fetchedAt: scan.coverage.fetchedAt, cached: false, stale: false}];
+      movements.set(movement.id, {...movement, discovery: mergeFinanceDiscovery(before?.discovery, discovery), verifiedAt: scan.coverage.fetchedAt});
+    }
     const fees = new Map((previous?.fees || []).map(fee => [fee.hash, fee]));
     for (const fee of scan.fees) {const priorFee = fees.get(fee.hash); if (priorFee && digest(priorFee) !== digest(fee)) return fail('conflict', 'Canonical receipt fee evidence changed.', 409); fees.set(fee.hash, fee);}
     const aliases = new Map((previous?.unmappedAliases || []).map(alias => [alias.id, alias]));

@@ -47,6 +47,22 @@ function explorerRow(n: number, asset = ARC_USDC, selected = wallet): unknown {
 const page = (items: unknown[], next: Record<string, unknown> | null = null, stale = false) => ({payload: {items, next_page_params: next}, source: 'Blockscout PRO', fetchedAt: new Date(now - (stale ? 120000 : 0)).toISOString(), cached: true, stale});
 
 describe('Finance historical receipt discovery', () => {
+  it('retains original provider/cache provenance across queued pages and distinguishes public fallback', async () => {
+    const db = fixtureDb(), rpc = reader(); indexed(db, 1); proof(db, 1);
+    const first = await loadFinanceHistory(db, request, rpc, {now, loadPage: async () => ({...page(Array.from({length: 21}, (_, i) => explorerRow(i + 1)), null, true), source: 'Blockscout PRO · kayıtlı veri'})});
+    const tail = await loadFinanceHistory(db, {...request, cursor: first.nextCursor!}, rpc, {now: now + 1000, loadPage: async () => {throw Error('No second page is needed.');}});
+    const movement = tail.scans[0].movements[0];
+    expect(movement.hash).toBe(hash(1));
+    expect(movement.discovery?.map(row => row.source)).toEqual(['local_index', 'collection_receipt', 'blockscout_pro']);
+    expect(movement.discovery?.find(row => row.source === 'blockscout_pro')).toEqual({source: 'blockscout_pro', endpoint: 'address_token_transfers', fetchedAt: new Date(now - 120000).toISOString(), cached: true, stale: true});
+    expect(first.history.explorer?.source).toBe('blockscout_pro');
+    const fallback = await loadFinanceHistory(db, request, rpc, {now, loadPage: async () => ({...page([explorerRow(22)]), source: 'Blockscout Explorer', cached: false})});
+    expect(fallback.scans.find(scan => scan.movements[0].hash === hash(22))?.movements[0].discovery?.[0].source).toBe('blockscout_public');
+    expect(fallback.history.explorer?.source).toBe('blockscout_public');
+    const unknown = await loadFinanceHistory(db, request, rpc, {now, loadPage: async () => ({...page([explorerRow(23)]), source: 'Unidentified provider'})});
+    expect(unknown.history.explorer?.source).toBe('explorer_unknown');
+    db.close();
+  });
   it('discovers older indexed/native, collection and cached hashes; checks canonical amounts and gas once', async () => {
     const db = fixtureDb(), rpc = reader(); indexed(db, 1); indexed(db, 1, ARC_USDC); proof(db, 1); proof(db, 2);
     const paths: string[] = [];

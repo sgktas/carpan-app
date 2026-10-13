@@ -2,6 +2,7 @@ import type {Database} from 'bun:sqlite';
 import {createHmac, randomBytes, timingSafeEqual} from 'node:crypto';
 import {ARC_USDC} from '../src/arc-wallet';
 import type {FinanceMovementScan} from '../src/finance-movements';
+import {financeExplorerSource, mergeFinanceDiscovery, type FinanceMovementDiscovery} from '../src/finance-discovery';
 import {explorerHistoryGet, type ExplorerHistoryResult} from './arcExplorer';
 import {FinanceOrganizationError} from './financeOrganizations';
 import {FINANCE_SYSTEM_EMITTER, FINANCE_MOVEMENT_BLOCK_WINDOW, FINANCE_MOVEMENT_EVENT_LIMIT, FINANCE_MOVEMENT_TRANSACTION_LIMIT,
@@ -9,7 +10,7 @@ import {FINANCE_SYSTEM_EMITTER, FINANCE_MOVEMENT_BLOCK_WINDOW, FINANCE_MOVEMENT_
 
 /** Discovery indexes are hints only. Every imported amount, alias and fee comes
  * from an independently checked Arc receipt and its canonical block. */
-type Candidate = {hash: string; block: string; source: string; deferred?: true};
+type Candidate = {hash: string; block: string; source: string; discovery: FinanceMovementDiscovery[]; deferred?: true};
 type ExplorerPage = {items: unknown[]; next_page_params: Record<string, unknown> | null};
 export type FinanceHistoryRequest = {
   /** Trusted organization + business-wallet identity supplied by the route. */
@@ -18,7 +19,7 @@ export type FinanceHistoryRequest = {
 export type FinanceHistoryMetadata = {
   sources: string[]; candidateTransactions: number; checkedTransactions: number; failedTransactions: number;
   remainingCandidates: number; hasMore: boolean; complete: false; scope: 'discovered_receipts'; fetchedAt: string;
-  warnings: string[]; explorer: {available: boolean; cached: boolean; stale: boolean; fetchedAt: string | null} | null;
+  warnings: string[]; explorer: {available: boolean; cached: boolean; stale: boolean; fetchedAt: string | null; source?: FinanceMovementDiscovery['source']} | null;
 };
 export type FinanceHistoryResult = {scans: FinanceMovementScan[]; history: FinanceHistoryMetadata; nextCursor: string | null};
 export type FinanceHistoryOptions = {
@@ -91,7 +92,7 @@ export function discardFinanceHistoryCursor(request: FinanceHistoryRequest, curs
   return sessions.delete(id);
 }
 function hasTable(db: Database, name: string): boolean {return !!db.query("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?").get(name);}
-function localCandidates(db: Database, session: HistorySession): {items: Candidate[]; more: boolean} {
+function localCandidates(db: Database, session: HistorySession, fetchedAt: string): {items: Candidate[]; more: boolean} {
   // Pending/deferred receipts already have their own place in this session.
   // Excluding them here also lets discovery pass a permanently bad local prefix.
   const items: Candidate[] = [], known = JSON.stringify([...new Set([...session.known, ...session.queue.map(candidate => candidate.hash)])]); let more = false;
@@ -104,7 +105,7 @@ function localCandidates(db: Database, session: HistorySession): {items: Candida
     more ||= rows.length > SOURCE_LIMIT;
     for (const row of rows.slice(0, SOURCE_LIMIT)) {
       const block = blockString(row.block_number);
-      if (hashPattern.test(row.tx_hash) && block !== null) items.push({hash: row.tx_hash.toLowerCase(), block, source: 'Local Arc index'});
+      if (hashPattern.test(row.tx_hash) && block !== null) items.push({hash: row.tx_hash.toLowerCase(), block, source: 'Local Arc index', discovery: [{source: 'local_index', endpoint: 'local_transfer_index', fetchedAt, cached: false, stale: false}]});
     }
   }
   if (hasTable(db, 'arc_collection_proofs') && hasTable(db, 'arc_collection_requests')) {
@@ -116,7 +117,7 @@ function localCandidates(db: Database, session: HistorySession): {items: Candida
       if (!hashPattern.test(row.hash) || row.data.length > 100000) continue;
       try {
         const proof = record(JSON.parse(row.data)), block = blockString(proof.block);
-        if (block !== null && addressHash(proof.to) === session.wallet && proof.hash === row.hash) items.push({hash: row.hash.toLowerCase(), block, source: 'Saved collection receipts'});
+        if (block !== null && addressHash(proof.to) === session.wallet && proof.hash === row.hash) items.push({hash: row.hash.toLowerCase(), block, source: 'Saved collection receipts', discovery: [{source: 'collection_receipt', endpoint: 'saved_collection_receipt', fetchedAt, cached: false, stale: false}]});
       } catch { /* A malformed private hint never becomes financial evidence. */ }
     }
   }
@@ -133,7 +134,7 @@ function pagePath(wallet: string, next: Record<string, unknown>): string {
   }
   return `/addresses/${wallet}/token-transfers?${params}`;
 }
-function explorerCandidates(page: ExplorerPage, wallet: string): Candidate[] {
+function explorerCandidates(page: ExplorerPage, wallet: string, discovery: FinanceMovementDiscovery): Candidate[] {
   if (!page || !Array.isArray(page.items) || page.items.length > 200 || (page.next_page_params !== null && (!page.next_page_params || typeof page.next_page_params !== 'object' || Array.isArray(page.next_page_params)))) throw new Error('Invalid history page.');
   const candidates: Candidate[] = [];
   for (const value of page.items) {
@@ -141,7 +142,7 @@ function explorerCandidates(page: ExplorerPage, wallet: string): Candidate[] {
     const from = addressHash(item.from), to = addressHash(item.to);
     if (typeof hash !== 'string' || !hashPattern.test(hash) || block === null || from === to || (from !== wallet && to !== wallet)
       || addressHash(token.address_hash) !== ARC_USDC || !['ERC-20', undefined, null].includes(item.type as string | undefined | null)) continue;
-    candidates.push({hash: hash.toLowerCase(), block, source: 'Explorer history'});
+    candidates.push({hash: hash.toLowerCase(), block, source: 'Explorer history', discovery: [discovery]});
   }
   return candidates;
 }
@@ -149,7 +150,10 @@ function enqueue(session: HistorySession, candidates: Candidate[]): void {
   const queued = new Map(session.queue.map(candidate => [candidate.hash, candidate]));
   for (const candidate of candidates) {
     session.sources.add(candidate.source);
-    if (!session.known.has(candidate.hash) && !queued.has(candidate.hash)) queued.set(candidate.hash, candidate);
+    if (!session.known.has(candidate.hash)) {
+      const prior = queued.get(candidate.hash);
+      queued.set(candidate.hash, prior ? {...prior, discovery: mergeFinanceDiscovery(prior.discovery, candidate.discovery)} : candidate);
+    }
   }
   session.queue = [...queued.values()].sort((a, b) => a.deferred !== b.deferred ? a.deferred ? 1 : -1
     : BigInt(a.block) > BigInt(b.block) ? -1 : BigInt(a.block) < BigInt(b.block) ? 1 : a.hash.localeCompare(b.hash));
@@ -179,18 +183,19 @@ export async function loadFinanceHistory(db: Database, request: FinanceHistoryRe
   // receipts or the next Explorer page. Retry-only queues permit one source page
   // before retrying; new candidates are placed ahead of deferred failures.
   if (!session.queue.some(candidate => !candidate.deferred)) {
-    const local = localCandidates(db, session); session.localMore = local.more; enqueue(session, local.items);
+    const local = localCandidates(db, session, new Date(now).toISOString()); session.localMore = local.more; enqueue(session, local.items);
     if (session.nextPage !== null) {
       try {
         const path = pagePath(session.wallet, session.nextPage), loaded = await bounded(() => (options.loadPage || explorerHistoryGet<ExplorerPage>)(path));
         const fetchedAt = Date.parse(loaded.fetchedAt), age = (options.now ?? Date.now()) - fetchedAt;
-        if (!Number.isFinite(fetchedAt) || age < 0 || age > 86400000 || typeof loaded.cached !== 'boolean' || typeof loaded.stale !== 'boolean') throw new Error('Invalid history provenance.');
-        const candidates = explorerCandidates(loaded.payload, session.wallet);
+        if (!Number.isFinite(fetchedAt) || age < 0 || age > 86400000 || typeof loaded.source !== 'string' || typeof loaded.cached !== 'boolean' || typeof loaded.stale !== 'boolean') throw new Error('Invalid history provenance.');
+        const discovery: FinanceMovementDiscovery = {source: financeExplorerSource(loaded.source), endpoint: 'address_token_transfers', fetchedAt: new Date(fetchedAt).toISOString(), cached: loaded.cached, stale: loaded.stale};
+        const candidates = explorerCandidates(loaded.payload, session.wallet, discovery);
         const next = loaded.payload.next_page_params;
         if (next !== null) {pagePath(session.wallet, next); if (JSON.stringify(next) === JSON.stringify(session.nextPage)) throw new Error('History pagination did not advance.');}
         enqueue(session, candidates);
         session.nextPage = next;
-        session.explorer = {available: true, cached: loaded.cached, stale: loaded.stale, fetchedAt: loaded.fetchedAt};
+        session.explorer = {available: true, cached: loaded.cached, stale: loaded.stale, fetchedAt: discovery.fetchedAt, source: discovery.source};
         if (loaded.stale) warnings.add('Explorer discovery used a cached page; imported receipts were rechecked on Arc.');
       } catch {
         // Keep the last validated request position. A reserved budget, temporary
@@ -217,7 +222,7 @@ export async function loadFinanceHistory(db: Database, request: FinanceHistoryRe
       if (result.movements.length > FINANCE_MOVEMENT_EVENT_LIMIT || result.unmappedAliases.length > 100 || result.movements.some(movement => movement.aliases.length > 100)) throw new Error('Receipt movement limit reached.');
       if (result.movements.length) {
         const fetchedAt = new Date(now + scans.length).toISOString();
-        scans.push({wallet: session.wallet, movements: result.movements, fees: [result.fee], unmappedAliases: result.unmappedAliases,
+        scans.push({wallet: session.wallet, movements: result.movements.map(movement => ({...movement, discovery: candidate.discovery})), fees: [result.fee], unmappedAliases: result.unmappedAliases,
           warnings: [...new Set([...result.warnings, INCOMPLETE])], coverage: {
             wallet: session.wallet, fromBlock: receipt.blockNumber.toString(), toBlock: receipt.blockNumber.toString(), toBlockHash: receipt.blockHash.toLowerCase(), fetchedAt,
             checkedTransactions: 1, candidateTransactions: 1, failedTransactions: 0, truncated: false,

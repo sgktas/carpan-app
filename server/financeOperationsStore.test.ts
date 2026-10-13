@@ -31,6 +31,34 @@ const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value));
 function conflict(call: () => unknown, status = 409) {try {call(); throw new Error('Expected scoped failure');} catch (error) {expect(error).toBeInstanceOf(FinanceOrganizationError); expect((error as FinanceOrganizationError).status).toBe(status);}}
 
 describe('Private Finance operation evidence and decisions', () => {
+  it('preserves first discovery on RPC refresh without invalidating approval or changing immutable exports', async () => {
+    const {db, orgId, walletId} = fixture(); try {
+      const data = await scan(), id = data.movements[0].id;
+      const discovery = {source: 'blockscout_pro' as const, endpoint: 'address_token_transfers' as const, fetchedAt: '2026-10-12T08:00:00.000Z', cached: true, stale: true};
+      data.movements[0].discovery = [discovery];
+      const initial = saveFinanceOperationScan(db, 'alice', orgId, walletId, data);
+      expect(initial.scan?.movements.find(row => row.id === id)?.discovery).toEqual([discovery]);
+      const approved = updateFinanceMovementDecision(db, 'alice', orgId, walletId, id, {...changed(), status: 'approved'});
+      const batch = createFinanceExportBatch(db, 'alice', orgId, walletId, {ids: [id], expectedVersions: {[id]: approved.version}, idempotencyKey: 'discovery-export'});
+      const refreshed = await scan(undefined, 1791781201000);
+      const state = saveFinanceOperationScan(db, 'alice', orgId, walletId, refreshed), row = state.scan?.movements.find(row => row.id === id);
+      expect(row?.discovery?.map(value => value.source)).toEqual(['blockscout_pro', 'arc_rpc']);
+      expect(row?.discovery?.[0]).toEqual(discovery);
+      expect(row?.verifiedAt).toBe(refreshed.coverage.fetchedAt);
+      expect(state.decisions[id]).toEqual(approved);
+      expect(readFinanceExportBatch(db, 'alice', orgId, walletId, batch.id)).toEqual(batch);
+      expect(batch.payload.records[0].movement.discovery).toEqual([discovery]);
+      expect(batch.payload.readyForPosting).toBe(false);
+    } finally {db.close();}
+  });
+  it('rejects invalid discovery metadata without persisting a financial snapshot', async () => {
+    const {db, orgId, walletId} = fixture(); try {
+      const data = await scan();
+      data.movements[0].discovery = [{source: 'arc_rpc', endpoint: 'address_token_transfers', fetchedAt: '2026-10-12T08:00:00Z', cached: true, stale: true}];
+      conflict(() => saveFinanceOperationScan(db, 'alice', orgId, walletId, data), 400);
+      expect(readFinanceOperationState(db, 'alice', orgId, walletId).scan).toBeNull();
+    } finally {db.close();}
+  });
   it('persists canonical evidence, default decisions, merges older windows and retains prior decisions', async () => {
     const {db, orgId, walletId} = fixture(); try {
       expect(readFinanceOperationState(db, 'alice', orgId, walletId)).toEqual({scan: null, loadedRanges: [], decisions: {}, exportBatches: []});

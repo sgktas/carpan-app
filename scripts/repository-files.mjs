@@ -31,4 +31,5 @@ roots.push('docs/carpan-ai-home-card-2026-10-13.md');
 roots.push('docs/carpan-auth-brand-cleanup-2026-10-13.md');
 roots.push('docs/grant-readiness-2026-10-13.md');
 roots.push('ROADMAP.md');
+roots.push('docs/blockscout-buildathon.md','docs/blockscout-demo.md');
 export function repositoryFiles(root){const files=[];function walk(path){const absolute=join(root,path);if(!existsSync(absolute))return;const stat=lstatSync(absolute);if(stat.isSymbolicLink())throw Error(`Repository symlink must be reviewed: ${path}`);if(stat.isDirectory()){if(['.git','node_modules','out','cache','coverage','__pycache__'].includes(path.split('/').at(-1)))return;for(const name of readdirSync(absolute))walk(`${path}/${name}`);}else if(stat.isFile())files.push(path);}for(const name of roots)walk(name);return [...new Set(files)].sort();}

@@ -407,5 +407,7 @@
   "Çarpan muhasebe otomasyonu ekranı": "Çarpan accounting automation screen",
   "Çarpan Muhasebe Asistanı": "Çarpan Accounting Assistant",
   "Akıllı muhasebe otomasyonu": "Intelligent accounting automation",
-  "Tahsilatların ve takip listen aynı hesapta.": "Your collections and watchlist belong to the same account."
+  "Tahsilatların ve takip listen aynı hesapta.": "Your collections and watchlist belong to the same account.",
+  "İşlem özeti": "Transaction summary",
+  "Zincir verisini yenile": "Refresh chain data"
 }
