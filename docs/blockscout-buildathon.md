@@ -1,6 +1,6 @@
 # Carpan — USDC Payment Reconciliation & Evidence
 
-Prepared 13 October 2026 for the Blockscout PRO API Buildathon. [Live application](https://carpan.app) · [Public source](https://github.com/sgktas/carpan-app) · [4:42 narrated walkthrough](https://carpan.app/media/carpan-blockscout-demo-20261013.mp4) · [Demo notes](blockscout-demo.md). The solo squad is enrolled; this document does not claim a contest submission, acceptance or an award.
+Submitted 13 October 2026 to Sprint 1 of the Blockscout PRO API Buildathon. [Live application](https://carpan.app) · [Public source](https://github.com/sgktas/carpan-app) · [4:42 narrated walkthrough](https://carpan.app/media/carpan-blockscout-demo-20261013.mp4) · [Demo notes](blockscout-demo.md). Craftora confirms Submitted; this does not claim selection or an award.
 
 ## Product
 
@@ -74,7 +74,7 @@ The new UI labels legacy movements whose discovery source was not recorded. It d
 
 The public repository, application, architecture and endpoint explanation are available. The [4:42 video](https://carpan.app/media/carpan-blockscout-demo-20261013.mp4) is a narrated captured-screen walkthrough, not a continuous interaction recording. It explicitly separates an isolated synthetic Finance review/export example from a real owner-funded 0.10 USDC pilot in live Terminal and Arc Blockscout Explorer. English narration uses a synthetic voice.
 
-The [X showcase](https://x.com/carpan_app/status/2110104469967196544) is published with the Terminal visual and both organizer tags. The solo Carpan squad is approved and the [Craftora project page](https://www.craftora.tech/project/carpan/) is published. **Project creation is separate from entering a sprint: final contest submission remains pending.**
+The [X showcase](https://x.com/carpan_app/status/2110104469967196544) is published with the Terminal visual and both organizer tags. The solo Carpan squad is approved and the [Craftora project page](https://www.craftora.tech/project/carpan/) is published. **Sprint 1 · Build the MVP was submitted on 13 October 2026; Craftora displays Submitted · Carpan.**
 
 Confirm Türkiye participation, acceptance of meaningful new work on an existing product, reward type and the precise deadline/timezone with the organizer. The programme page has a calendar/table date discrepancy and describes the reward as credits. Source access remains public without an open-source licence, following the owner's decision.
 
