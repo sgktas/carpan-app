@@ -1,0 +1,18 @@
+[Unit]
+Description=Carpan API, index lag, disk and backup monitor
+After=carpan-api.service carpan-indexer.service
+
+[Service]
+Type=oneshot
+User=carpan
+Group=carpan
+WorkingDirectory=/opt/carpan/current
+EnvironmentFile=/opt/carpan/shared/production.env
+ExecStart=/usr/local/bin/bun run deploy/monitor.ts
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/carpan/shared
+TimeoutStartSec=30

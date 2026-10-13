@@ -1,0 +1,28 @@
+.carpan-notification-control{position:relative;flex:none}
+.carpan-notification-trigger{color:var(--ink-2,#c4c7d1)}
+html .carpan-notification-panel{position:absolute;right:0;top:calc(100% + 12px);width:366px;max-width:calc(100vw - 32px);max-height:calc(100dvh - 110px);overflow:auto;border:1px solid #343640;border-radius:12px;background:#14151c;box-shadow:0 18px 60px #0009;color:#f0f1f5;text-align:left;font:13px/1.5 'DM Sans',sans-serif;z-index:65}
+html .carpan-notification-panel>header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px;border-bottom:1px solid #ffffff0a;position:static;background:none;height:auto}
+.carpan-notification-panel header strong{display:block;font-size:15px;font-weight:600}
+.carpan-notification-panel header small{display:block;color:#a6a8b5;font-size:11px;margin-top:5px}
+html .carpan-notification-panel button{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:#b8bdcd;min-width:32px;min-height:32px;padding:7px;border-radius:6px;font:inherit;cursor:pointer}
+html .carpan-notification-panel button:hover{background:#ffffff08;color:#fff}
+html .carpan-notification-panel button:disabled{opacity:.5;cursor:wait}
+.carpan-notification-summary{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;color:#aeb4c4;font-size:11px}
+html .carpan-notification-list>a{display:flex;align-items:flex-start;gap:10px;padding:15px 20px;border-bottom:1px solid #ffffff08;color:#dce0eb!important;text-decoration:none;background:transparent;min-width:0}
+html .carpan-notification-list>a:hover{background:#ffffff04}
+.carpan-notification-list>a>div{flex:1;min-width:0}
+.carpan-notification-list strong{display:block;font-size:13px;line-height:1.5;font-weight:500;overflow-wrap:anywhere;margin:4px 0}
+.carpan-notification-list small,.carpan-notification-list time{color:#989eae;font-size:10px;line-height:1.6;display:block}
+.carpan-notification-list>a>svg{flex:none;margin-top:4px;color:#8b95a9}
+.carpan-notification-dot{width:5px;height:5px;flex:none;margin-top:6px;background:#484e5d;border-radius:50%}
+.carpan-notification-list .is-unread .carpan-notification-dot{background:#bad3ff;box-shadow:0 0 9px #bad3ff33}
+.carpan-notification-empty{padding:26px 24px 30px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.carpan-notification-empty>svg{color:#949dae}
+.carpan-notification-empty strong{font-size:14px;font-weight:500}
+.carpan-notification-empty p{font-size:12px;line-height:1.8;color:#a6adbc;margin:0;max-width:270px}
+html .carpan-notification-empty button{background:#bad3ff;color:#111928;font-weight:600;padding:9px 20px;margin-top:5px}
+html .carpan-notification-panel>nav{display:grid!important;grid-template-columns:1fr 1fr;gap:8px!important;padding:16px 20px;border-top:1px solid #ffffff0a;position:static;width:auto}
+html .carpan-notification-panel>nav>a{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#c3d8fa!important;font-size:11px;white-space:normal;text-decoration:none;margin:0;padding:0;border:0}
+.carpan-notification-error{color:#e5aeb5;padding:0 20px 12px;font-size:11px;line-height:1.7;margin:0}
+.carpan-notification-loading{padding:26px 20px;color:#a6adbc;font-size:12px;margin:0}
+@media(max-width:700px){html .carpan-notification-panel{right:-38px;width:340px}.carpan-notification-panel>header{padding:18px}.carpan-notification-list>a{padding:14px 18px}}

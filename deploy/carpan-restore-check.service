@@ -1,0 +1,17 @@
+[Unit]
+Description=Carpan isolated backup restore verification
+
+[Service]
+Type=oneshot
+User=carpan
+Group=carpan
+WorkingDirectory=/opt/carpan/current
+EnvironmentFile=/opt/carpan/shared/production.env
+ExecStart=/usr/local/bin/bun run deploy/restore-check.ts
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/carpan/shared
+TimeoutStartSec=300

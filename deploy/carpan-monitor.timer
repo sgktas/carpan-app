@@ -1,0 +1,10 @@
+[Unit]
+Description=Check Carpan operations every five minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Unit=carpan-monitor.service
+
+[Install]
+WantedBy=timers.target

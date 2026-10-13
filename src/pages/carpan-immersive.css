@@ -1,0 +1,76 @@
+/* Full-width homepage trial. Release 20261008-11 retains the framed version. */
+html .rvx-page--immersive .rvx-header{
+  position:fixed;top:0;left:0;right:0;z-index:30;
+  background:linear-gradient(180deg,#07070cb8,#07070c00);
+  border-bottom:1px solid transparent;backdrop-filter:none;
+  transition:background .25s,border-color .25s,box-shadow .25s;
+}
+html .rvx-page--immersive .rvx-header.is-scrolled{
+  background:#09090cf2;backdrop-filter:blur(18px);
+  border-bottom-color:#ffffff16;box-shadow:0 8px 28px #0003;
+}
+.rvx-page--immersive .rvx-nav{max-width:1728px}
+.rvx-page--immersive .rvx-mode{position:absolute;top:var(--landing-header-height);left:0;right:0;z-index:4;font-size:10px}
+.rvx-page--immersive .rvx-hero.rvx-hero--studio{
+  margin:0;border:0;border-radius:0;box-shadow:none;width:100%;
+}
+.rvx-page--immersive .rvx-hero-layout{
+  max-width:1600px;margin:auto;min-height:max(600px,90svh);
+  padding:calc(var(--landing-header-height) + 38px) 48px 100px;
+}
+.rvx-page--immersive.has-demo-banner .rvx-hero-layout{padding-top:calc(var(--landing-header-height) + 70px)}
+.rvx-page--immersive .rvx-hero-copy{width:55%;max-width:760px}
+.rvx-page--immersive .carpan-cinema-edge{box-shadow:none}
+.rvx-page--immersive .carpan-cinema-shade{
+  background:linear-gradient(90deg,#08080ce6 0%,#08080cd4 23%,#08080c75 43%,#08080c00 66%),linear-gradient(0deg,#09090c 0%,#09090c00 28%,#07070c00 78%,#07070c99);
+}
+.rvx-page--immersive .rvx-hero--studio .rvx-hero-controls{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  width:calc(100% - 96px);max-width:1504px;padding:0;
+  display:grid;grid-template-columns:1fr auto 1fr;gap:16px;
+  border:0;background:none;backdrop-filter:none;
+}
+.rvx-page--immersive .rvx-hero--studio .rvx-hero-controls button{
+  width:32px;height:32px;border-color:#ffffff28;background:#0b0b1466;border-radius:7px;
+}
+.rvx-page--immersive .rvx-hero--studio .rvx-hero-controls .rvx-module-control{
+  width:auto;height:34px;padding:0 15px;font-size:11px;border-color:transparent;background:transparent;
+}
+.rvx-page--immersive .rvx-hero--studio .rvx-hero-controls .is-active{
+  background:rgba(var(--hero-light),.14);border-color:rgba(var(--hero-light),.5);box-shadow:none;
+}
+.rvx-page--immersive .rvx-hero--studio .rvx-hero-controls button:hover{background:#ffffff12}
+.rvx-page--immersive .rvx-hero-platform{font-size:8px;letter-spacing:1.2px}
+.rvx-page--immersive .rvx-products{padding-top:38px}
+@media(min-width:1101px) and (max-height:780px){
+  .rvx-page--immersive .rvx-hero-layout{padding-top:calc(var(--landing-header-height) + 24px);padding-bottom:85px}
+  .rvx-page--immersive.has-demo-banner .rvx-hero-layout{padding-top:calc(var(--landing-header-height) + 56px)}
+}
+@media(max-width:1100px) and (min-width:761px){
+  .rvx-page--immersive .rvx-hero-layout{min-height:max(620px,90svh);padding-left:32px;padding-right:32px}
+  .rvx-page--immersive .rvx-hero-copy{width:58%}
+  .rvx-page--immersive .rvx-hero--studio .rvx-hero-controls{width:calc(100% - 64px)}
+}
+@media(max-width:760px){
+  .rvx-page--immersive .rvx-hero-layout{min-height:100svh;padding:calc(var(--landing-header-height) + 30px) 25px 310px;align-items:flex-start}
+  .rvx-page--immersive.has-demo-banner .rvx-hero-layout{padding-top:calc(var(--landing-header-height) + 88px)}
+  .rvx-page--immersive .rvx-hero-copy{width:100%;max-width:570px}
+  .rvx-page--immersive .carpan-cinema-art{bottom:30px;height:390px;width:145%;left:-45%}
+  .rvx-page--immersive .carpan-cinema-shade{
+    background:linear-gradient(180deg,#08080c 0%,#08080c 46%,#08080cd9 56%,#08080c00 72%,#08080c00 84%,#09090c 98%);
+  }
+  .rvx-page--immersive .rvx-hero--studio .rvx-hero-controls{
+    bottom:19px;width:calc(100% - 40px);display:grid;grid-template-columns:1fr auto;gap:12px;
+  }
+  .rvx-page--immersive .rvx-hero-platform{display:none}
+  .rvx-page--immersive .rvx-hero-tabs{display:flex;order:0;width:auto;gap:3px}
+  .rvx-page--immersive .rvx-hero-paging{gap:4px}
+  .rvx-page--immersive .rvx-hero--studio .rvx-hero-controls .rvx-module-control{height:32px;min-height:0;padding:0 9px;font-size:10px}
+  .rvx-page--immersive .rvx-hero--studio .rvx-hero-paging button{height:28px;width:28px}
+  .rvx-page--immersive .rvx-products{padding-top:32px}
+}
+@media(max-width:420px){
+  .rvx-page--immersive .rvx-hero-layout{padding-left:21px;padding-right:21px;padding-bottom:275px}
+  .rvx-page--immersive .carpan-cinema-art{height:340px;width:150%;left:-50%;bottom:25px}
+}
+@media(prefers-reduced-motion:reduce){html .rvx-page--immersive .rvx-header{transition:none}}

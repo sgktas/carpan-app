@@ -1,0 +1,82 @@
+/* Carpan site chrome around a purpose-built, horizontal research terminal. */
+.aw-terminal.aw-terminal-v2{--aw-bg:#0e1019;--aw-panel:#151720;--aw-line:#30313f;--aw-text:#f4f1fb;--aw-muted:#a19db2;background:#f5f2ff;color:var(--aw-text);padding-bottom:24px}
+body:has(.aw-terminal-v2){background:#f5f2ff}
+.aw-terminal-v2 .aw-header{max-width:1800px;margin:auto;min-height:88px;padding:18px 32px;background:#f5f2ff;border:0;gap:24px;color:#2d2546}
+.aw-terminal-v2 .aw-brand{font-size:30px;color:#2d2546!important;letter-spacing:-1.5px}
+.aw-terminal-v2 .aw-brand img{filter:none;width:44px!important;height:44px!important}
+.aw-terminal-v2 .aw-product{border-color:#d8cde8;color:#453859!important;font-size:14px}
+.aw-terminal-v2 .aw-product span{color:#786d88;font-size:10px}
+.aw-terminal-v2 .aw-top-nav a{color:#453859;font-size:13px}
+.aw-terminal-v2 .aw-search{background:#ece5fc;border-color:#ded5eb;border-radius:999px;padding:2px 15px;color:#675e7d;max-width:370px}
+.aw-terminal-v2 .aw-search input{background:none;color:#2d2546;font-size:12px}.aw-terminal-v2 .aw-search input::placeholder{color:#786d88}
+.aw-terminal-v2 .aw-search button{color:#6047c5}.aw-terminal-v2 .aw-network{color:#453859;font-size:11px}.aw-terminal-v2 .aw-network i{background:#7750bb}
+.aw-terminal-v2 .aw-shell{display:flex;flex-direction:column;max-width:1736px;min-height:calc(100dvh - 112px);margin:0 24px;border:1px solid #343344;border-top:3px solid #ac98ef;background:#0e1019}
+.aw-terminal-v2 .aw-sidebar{display:flex;flex-direction:row;align-items:center;flex-wrap:nowrap;gap:7px;padding:0 20px;min-height:52px;overflow:auto;border-right:0;border-bottom:1px solid #34313f;background:#17151f;scrollbar-width:thin}
+.aw-terminal-v2 .aw-sidebar>span,.aw-terminal-v2 .aw-side-note{display:none}
+.aw-terminal-v2 .aw-sidebar>button,.aw-terminal-v2 .aw-sidebar>a{display:flex;flex:none;align-items:center;gap:8px;min-height:52px;padding:0 14px;border:0;border-bottom:2px solid transparent;border-radius:0;font-size:13px;color:#b6afc5!important;background:none;white-space:nowrap}
+.aw-terminal-v2 .aw-sidebar>button[aria-current=page],.aw-terminal-v2 .aw-sidebar>a[aria-current=page]{border-bottom-color:#ac98ef;color:#e6dfff!important;background:#ac98ef0a}
+.aw-terminal-v2 .aw-sidebar>button:hover,.aw-terminal-v2 .aw-sidebar>a:hover{background:#ac98ef0f;color:#e6dfff!important}
+.aw-terminal-v2 .aw-sidebar>a:first-of-type{margin-left:auto;border-left:1px solid #36303f;padding-left:22px}
+.aw-terminal-v2 .aw-main{padding:0 22px 20px;margin:0;max-width:none;background:#0e1019}
+.aw-terminal-v2 .aw-rail{padding:13px 0;color:#938aab;font-size:11px}
+.aw-terminal-v2 .aw-rail a{color:#b6a7d5}.aw-terminal-v2 .aw-rail>span:last-child{font:10px 'JetBrains Mono',monospace}
+.aw-terminal-v2.aw-research .aw-profile{min-height:116px;padding:14px 12px;border:1px solid #2e2d3a;border-left:3px solid #ac98ef;border-radius:0;gap:17px;background:linear-gradient(90deg,#ac98ef05 1px,transparent 1px) 0 0/52px 52px,linear-gradient(0deg,#ac98ef05 1px,transparent 1px) 0 0/52px 52px,#12121c}
+.aw-terminal-v2.aw-research .aw-avatar{width:55px;height:55px;border-radius:50%;background:#e8e0ff;color:#45305f;border:0}
+.aw-terminal-v2.aw-research .aw-identity h1{font-size:29px;letter-spacing:-.9px;font-weight:500}
+.aw-terminal-v2.aw-research .aw-eyebrow{font-size:9px;letter-spacing:1.6px;color:#a994d2}
+.aw-terminal-v2.aw-research .aw-full-address{font-size:11px;color:#b9accb;margin-top:6px}
+.aw-terminal-v2 .aw-chip{border-radius:2px;border-color:#4a3c60;padding:3px 8px;background:#282134;color:#c5aedf}
+.aw-terminal-v2.aw-research .aw-balance{max-width:44%;padding-right:7px}.aw-terminal-v2.aw-research .aw-total{font-size:38px;letter-spacing:-1.2px}
+.aw-terminal-v2.aw-research .aw-total small{font-size:12px}.aw-terminal-v2.aw-research .aw-balance p{margin-top:5px}
+.aw-terminal-v2.aw-research .aw-actions{padding:12px 0 16px}.aw-terminal-v2 .aw-button{border-radius:2px;padding:8px 12px;background:#201b2a;border-color:#494052;color:#ddd1ef;font-size:12px!important}
+.aw-terminal-v2 .aw-button.primary{background:#ac98ef;color:#251941;border-color:#ac98ef}
+.aw-terminal-v2.aw-research .aw-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:16px}
+.aw-terminal-v2.aw-research .aw-portfolio{grid-column:1;grid-row:1}.aw-terminal-v2.aw-research .aw-history-panel{grid-column:2;grid-row:1}
+.aw-terminal-v2 .aw-panel{border:1px solid #30303c;border-radius:0;background:#151720}
+.aw-terminal-v2 .aw-panel h2{min-height:48px;padding:13px 17px;background:#20202a;color:#eee8f9;border-bottom:1px solid #33313e;font-size:13px;font-weight:500}
+.aw-terminal-v2 .aw-panel-title svg{color:#b79de7}.aw-terminal-v2 .aw-panel h2>span:not(.aw-panel-title){font-size:10px;color:#a69db9}
+.aw-terminal-v2.aw-research .aw-portfolio .aw-table th{padding:12px 17px}.aw-terminal-v2.aw-research .aw-portfolio .aw-table td{padding:24px 17px;background:#1b1b25}
+.aw-terminal-v2.aw-research .aw-portfolio .aw-table td:first-child{font-size:16px}.aw-terminal-v2.aw-research .aw-portfolio .aw-number{font:500 18px 'DM Sans',sans-serif;font-variant-numeric:tabular-nums}
+.aw-terminal-v2 .aw-token{background:#ac98ef;color:#251941;border:0;width:29px;height:29px;font-weight:600}
+.aw-terminal-v2 .aw-flow-label{display:flex;justify-content:space-between;gap:8px;padding:22px 17px 12px;color:#938aa6;font-size:10px;letter-spacing:.8px}.aw-terminal-v2 .aw-flow-label>span{font-size:10px;letter-spacing:0;color:#a6a1b6}
+.aw-terminal-v2.aw-research .aw-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 17px 18px;border:0;background:none}
+.aw-terminal-v2.aw-research .aw-stats>div{display:block;padding:0 13px;border:0;border-left:1px solid #38313f;background:none}.aw-terminal-v2.aw-research .aw-stats>div:first-child{padding-left:0;border-left:0}
+.aw-terminal-v2.aw-research .aw-stats span{font-size:10px;gap:4px}.aw-terminal-v2.aw-research .aw-stats svg{width:13px}
+.aw-terminal-v2.aw-research .aw-stats strong{font:500 clamp(16px,1.4vw,22px)/1.4 'DM Sans',sans-serif;margin-top:7px;letter-spacing:-.4px}
+.aw-terminal-v2.aw-research .aw-note{color:#a199ae;font-size:11px;line-height:1.6;padding:12px 17px;border-color:#30303d}
+.aw-terminal-v2.aw-research .aw-history{padding:14px 17px 9px}.aw-terminal-v2.aw-research .aw-history svg{width:100%;height:232px}.aw-terminal-v2.aw-research .aw-history svg text{fill:#aaa1ba;font-size:11px}
+.aw-terminal-v2.aw-research .aw-history p{padding:8px 0 0;font-size:10px}.aw-terminal-v2.aw-research .aw-history-empty{min-height:284px;background:none}
+.aw-terminal-v2.aw-research .aw-ledger-grid{grid-template-columns:minmax(0,2.4fr) minmax(290px,1fr);gap:16px}
+.aw-terminal-v2 .aw-table th{color:#a59bb7;font-size:10px}.aw-terminal-v2 .aw-table td{border-color:#2c2c37;color:#dcd6e8}
+.aw-terminal-v2.aw-research .aw-transfers td{padding:12px 15px}.aw-terminal-v2 .aw-transfers thead th{background:#20202a}
+.aw-terminal-v2 .aw-table tbody tr:hover{background:#ac98ef0c}.aw-terminal-v2 .aw-table-scroll{scrollbar-color:#76658f #151720}
+.aw-terminal-v2 .aw-in{color:#d9ed95!important}.aw-terminal-v2 .aw-out{color:#ffc5a5!important}
+.aw-terminal-v2.aw-research .aw-counterparties .aw-table td{padding:14px 12px}.aw-terminal-v2 .aw-address{color:#cbb8ef!important;font-size:11px}
+.aw-terminal-v2.aw-research .aw-filters{padding:12px 15px;background:#17151f}.aw-terminal-v2 .aw-filters :is(input,select){border-radius:2px;background:#101019;border-color:#443a52}
+.aw-terminal-v2 .aw-filters label{font-size:11px}.aw-terminal-v2 .aw-text{color:#bfa5e7!important}.aw-terminal-v2.aw-research .aw-pagination{padding:12px 15px}
+.aw-terminal-v2.aw-research .aw-table-scroll{max-height:420px}.aw-terminal-v2 .aw-footer{font-size:10px;color:#9a8ba8}
+.aw-terminal-v2 .arc-radar-hero{background:none;border:0;border-radius:0}.aw-terminal-v2:not(.arc-contract-page) .arc-radar-hero h1{font-size:26px}
+.aw-terminal-v2 .arc-radar-board{border-radius:0;background:#151720}.aw-terminal-v2 .arc-radar-toolbar{background:#20202a}
+.aw-terminal-v2 .arc-radar-card{background:#151720}.aw-terminal-v2 .arc-radar-card:hover{background:#ac98ef0c}
+.aw-terminal-v2 .arc-radar-coverage{background:#17151f;border-radius:0}.aw-terminal-v2 .arc-terminal-stats{background:#17151f}
+.aw-terminal-v2 .arc-contract-hero{padding:18px 20px;border:1px solid #33303f;border-left:3px solid #ac98ef;background:#151720}
+.aw-terminal-v2 .arc-contract-hero .aw-signal-art{display:none}.aw-terminal-v2 .arc-contract-hero h1{font-size:30px}
+.aw-terminal-v2 .aw-contract-wallet-link{border-color:#cfc1e2;background:#e6dfff;color:#453859}
+@media(min-width:1785px){.aw-terminal-v2 .aw-shell{margin-inline:auto}}
+@media(max-width:1250px){.aw-terminal-v2 .aw-top-nav{display:none}.aw-terminal-v2 .aw-sidebar>a:first-of-type{margin-left:0}.aw-terminal-v2.aw-research .aw-stats strong{font-size:17px}.aw-terminal-v2.aw-research .aw-ledger-grid{grid-template-columns:minmax(0,2fr) minmax(270px,1fr)}}
+@media(max-width:1000px){.aw-terminal-v2.aw-research .aw-grid{grid-template-columns:minmax(0,1fr)}.aw-terminal-v2.aw-research .aw-portfolio{grid-column:1;grid-row:1}.aw-terminal-v2.aw-research .aw-history-panel{grid-column:1;grid-row:2}.aw-terminal-v2.aw-research .aw-ledger-grid{grid-template-columns:1fr}.aw-terminal-v2.aw-research .aw-counterparties{grid-column:1;grid-row:2}.aw-terminal-v2 .aw-sidebar{padding-inline:8px}.aw-terminal-v2 .aw-sidebar>button,.aw-terminal-v2 .aw-sidebar>a{font-size:12px;padding-inline:12px}.aw-terminal-v2.aw-research .aw-stats strong{font-size:22px}}
+@media(max-width:800px){.aw-terminal-v2 .aw-header{padding:14px 18px;gap:14px}.aw-terminal-v2 .aw-product{font-size:12px}.aw-terminal-v2 .aw-shell{margin-inline:12px}.aw-terminal-v2 .aw-main{padding-inline:14px}.aw-terminal-v2 .aw-sidebar>button,.aw-terminal-v2 .aw-sidebar>a{min-height:44px}.aw-terminal-v2.aw-research .aw-profile{padding:14px;gap:12px}.aw-terminal-v2.aw-research .aw-balance{max-width:100%;border-top-color:#39313f;padding-top:10px}.aw-terminal-v2.aw-research .aw-identity h1{font-size:25px}.aw-terminal-v2.aw-research .aw-total{font-size:32px}.aw-terminal-v2.aw-research .aw-history svg{height:205px}}
+@media(max-width:480px){.aw-terminal-v2 .aw-header{gap:10px;padding:12px 14px}.aw-terminal-v2 .aw-brand{font-size:26px}.aw-terminal-v2 .aw-brand img{width:35px!important;height:35px!important}.aw-terminal-v2 .aw-network{font-size:9px}.aw-terminal-v2 .aw-product{padding-left:10px;font-size:11px}.aw-terminal-v2 .aw-shell{margin-inline:8px}.aw-terminal-v2 .aw-main{padding-inline:10px}.aw-terminal-v2 .aw-sidebar>a{display:none}.aw-terminal-v2.aw-research .aw-stats{margin-inline:12px}.aw-terminal-v2.aw-research .aw-stats>div{padding-inline:8px}.aw-terminal-v2.aw-research .aw-stats strong{font-size:16px}.aw-terminal-v2.aw-research .aw-stats span{font-size:9px}.aw-terminal-v2 .aw-flow-label{padding:17px 12px 10px;font-size:9px}.aw-terminal-v2.aw-research .aw-portfolio .aw-table td{padding-inline:12px}.aw-terminal-v2.aw-research .aw-portfolio .aw-number{font-size:14px}.aw-terminal-v2.aw-research .aw-full-address{font-size:9px}.aw-terminal-v2 .aw-panel h2{padding-inline:13px;font-size:12px}.aw-terminal-v2.aw-research .aw-actions>.aw-flex{width:100%}}
+.aw-terminal-v2 .aw-chart-controls{display:flex;align-items:center;justify-content:flex-end;gap:4px;padding:9px 15px 0;background:#151720;font-size:10px}
+.aw-terminal-v2 .aw-chart-controls>span{margin-right:auto;color:#968aa6;font-size:9px;letter-spacing:.8px}
+.aw-terminal-v2 .aw-chart-controls button{border:1px solid transparent;border-radius:2px;background:none;color:#aaa0bd;padding:3px 7px;font-size:10px}
+.aw-terminal-v2 .aw-chart-controls button[aria-pressed=true]{border-color:#6b558c;color:#dfcefb;background:#ac98ef13}
+.aw-terminal-v2.aw-research .aw-history svg{height:202px}.aw-terminal-v2.aw-research .aw-history-empty{min-height:250px}
+.aw-terminal-v2.aw-research .aw-profile{padding:10px 12px;min-height:98px}.aw-terminal-v2.aw-research .aw-eyebrow{display:none}.aw-terminal-v2.aw-research .aw-identity h1{font-size:27px}.aw-terminal-v2.aw-research .aw-avatar{width:48px;height:48px}
+.aw-terminal-v2.aw-research .aw-actions{padding:8px 0 12px}.aw-terminal-v2.aw-research .aw-portfolio .aw-table td{padding-block:18px}.aw-terminal-v2 .aw-flow-label{padding-top:18px}.aw-terminal-v2.aw-research .aw-stats{margin-bottom:14px}
+@media(max-width:480px){.aw-terminal-v2.aw-research .aw-history svg{height:190px}.aw-terminal-v2.aw-research .aw-identity h1{font-size:23px}.aw-terminal-v2 .aw-chart-controls>span{font-size:8px}}
+.aw-terminal-v2 .aw-transfer-tabs{display:flex;gap:0;border-bottom:1px solid #34303f;background:#17151f}
+.aw-terminal-v2 .aw-transfer-tabs button{padding:12px 18px;border:0;border-bottom:2px solid transparent;background:none;color:#a59bb7;font-size:11px}
+.aw-terminal-v2 .aw-transfer-tabs button[aria-pressed=true]{color:#e4d7ff;border-bottom-color:#ac98ef;background:#ac98ef08}
+.aw-terminal-v2 .aw-transfer-tabs button:hover{color:#eee5ff}
+@media(max-width:480px){.aw-terminal-v2 .aw-transfer-tabs button{padding:10px 12px;font-size:10px}}

@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Shared black canvas and charcoal surfaces. Keep lavender for actions and data. */
+:root {
+  color-scheme: dark;
+  --bg: #09090c;
+  --bg-gradient: #09090c;
+  --surface: #151518;
+  --surface-strong: #202025;
+  --surface-muted: #111114;
+  --ink: #f5f5f7;
+  --ink-2: #dedee5;
+  --muted: #b5b5c1;
+  --subtle: #90909e;
+  --border: #333338;
+  --border-strong: #51515b;
+  --accent: #ac98ef;
+  --accent-hover: #c2afff;
+  --success: #8cdbb2;
+  --danger: #ff9db1;
+  --warning: #edcb88;
+  --violet: #bba3ff;
+  --peach: #efb79e;
+}
+
+.bridge-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(circle at 80% 25%, rgba(168,135,255,.22), transparent 35%),
+    radial-gradient(circle at 21% 85%, rgba(46,196,240,.12), transparent 37%), var(--surface);
+  border: 1px solid rgba(157,210,245,.26);
+  box-shadow: 0 24px 64px rgba(2,9,22,.3), inset 0 1px rgba(255,255,255,.08);
+}
+.bridge-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .25;
+  background-image: radial-gradient(circle, rgba(255,255,255,.6) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(90deg, transparent 30%, #000 100%);
+}
+.bridge-orbit {
+  border-radius: 999px;
+  background: conic-gradient(var(--accent) var(--progress), rgba(255,255,255,.11) 0);
+  box-shadow: 0 0 36px rgba(46,196,240,.2);
+}
+.refbridge-card {
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.refbridge-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong) !important;
+  box-shadow: 0 12px 28px rgba(3,10,25,.2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .refbridge-card { transition: none; }
+  .refbridge-card:hover { transform: none; }
+}
+
+/* ── Base reset & typography ────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--ink);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+/* ── Font helpers ────────────────────────────────────────────────────────── */
+.display {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', Menlo, monospace;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.20); }
+
+/* ── Sonner toast overrides (dark surface) ───────────────────────────────── */
+[data-sonner-toaster] [data-type="error"] {
+  background: #29171e !important;
+  border-color: #794152 !important;
+  color: #ffd5df !important;
+}
+[data-sonner-toaster] [data-type="success"] {
+  background: #14251d !important;
+  border-color: #3d6e54 !important;
+  color: #c9f2d9 !important;
+}

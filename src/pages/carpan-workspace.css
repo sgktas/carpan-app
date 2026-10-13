@@ -1,0 +1,822 @@
+.carpan-workspace {
+  /* Inherit the same global palette as public research and finance. */
+  min-height: 100dvh;
+  background: var(--aw-bg);
+  color: var(--at-ink);
+}
+
+.carpan-workspace-demo {
+  padding: 7px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-strong);
+  color: #d7c9f3;
+  text-align: center;
+  font: 600 10px 'JetBrains Mono', monospace;
+  letter-spacing: .08em;
+}
+
+.aw-terminal-v3 .at-menu {
+  width: 238px;
+  max-height: min(72vh, 620px);
+  overflow-y: auto;
+}
+
+.aw-terminal-v3 .at-menu button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--at-ink);
+  text-align: left;
+  font: 12px 'DM Sans', sans-serif;
+}
+
+.aw-terminal-v3 .at-menu button:hover {
+  background: var(--at-subtle);
+}
+
+.aw-terminal-v3 .at-menu-divider {
+  display: block;
+  height: 1px;
+  margin: 6px 5px;
+  background: var(--at-border);
+}
+
+.carpan-workspace-main {
+  padding-top: 28px;
+}
+
+.carpan-workspace .carpan-overview-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.carpan-workspace .carpan-overview-kicker {
+  color: var(--at-accent);
+  font: 600 10px 'JetBrains Mono', monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.carpan-workspace .carpan-overview-header h1 {
+  margin: 7px 0 0;
+  color: var(--at-ink);
+  font: 600 clamp(24px, 3vw, 34px)/1.12 'Space Grotesk', sans-serif;
+  letter-spacing: -.04em;
+}
+
+.carpan-workspace .carpan-overview-header p {
+  margin: 8px 0 0;
+  color: var(--at-secondary);
+  font-size: 13px;
+}
+
+.carpan-workspace .carpan-overview-card {
+  border: 1px solid var(--at-border);
+  border-radius: 12px;
+  background: var(--at-surface);
+  color: var(--at-ink);
+}
+
+.carpan-workspace .carpan-terminal-summary {
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  background:
+    radial-gradient(ellipse at 90% 0%, #ac98ef12, transparent 44%),
+    linear-gradient(120deg, var(--surface) 0%, var(--surface-muted) 58%, var(--surface) 100%);
+}
+
+.carpan-workspace .carpan-terminal-summary::after {
+  position: absolute;
+  top: -48px;
+  right: -22px;
+  width: 220px;
+  height: 160px;
+  border: 1px solid #b49cec22;
+  border-radius: 50%;
+  content: '';
+  transform: rotate(-18deg) scaleX(.75);
+  pointer-events: none;
+}
+
+.carpan-workspace .carpan-overview-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid #78669d;
+  border-radius: 7px;
+  color: #e9e1fb;
+  background: var(--surface-strong);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.carpan-workspace .carpan-overview-link:hover {
+  background: var(--surface-strong);
+  border-color: #ac98ef;
+}
+
+.carpan-workspace .carpan-identity-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, .7fr) minmax(240px, .9fr);
+  gap: 18px;
+  align-items: center;
+  padding: 18px 20px;
+}
+
+.carpan-workspace .carpan-identity-card h2 {
+  margin: 6px 0 4px;
+  color: var(--at-ink);
+  font: 600 17px 'Space Grotesk', sans-serif;
+}
+
+.carpan-workspace .carpan-identity-card p,
+.carpan-workspace .carpan-identity-meta span,
+.carpan-workspace .carpan-identity-action small {
+  color: var(--at-secondary);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.carpan-workspace .carpan-identity-meta strong,
+.carpan-workspace .carpan-identity-meta span,
+.carpan-workspace .carpan-identity-action small,
+.carpan-workspace .carpan-identity-action [role=status],
+.carpan-workspace .carpan-identity-action [role=alert] {
+  display: block;
+}
+
+.carpan-workspace .carpan-identity-meta strong {
+  color: var(--at-ink);
+  font-size: 13px;
+}
+
+.carpan-workspace .carpan-identity-wallet {
+  margin-top: 5px;
+  font: 10px 'JetBrains Mono', monospace!important;
+}
+
+.carpan-workspace .carpan-identity-action button {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid #78669d;
+  border-radius: 7px;
+  background: var(--surface-strong);
+  color: #e9e1fb;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.carpan-workspace .carpan-identity-action button:hover:not(:disabled) {
+  border-color: #ac98ef;
+  background: var(--surface-strong);
+}
+
+.carpan-workspace .carpan-identity-action button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.carpan-workspace .carpan-identity-action small {
+  margin-top: 7px;
+}
+
+.carpan-workspace .carpan-identity-action [role=status] {
+  margin-top: 6px;
+  color: #50c7a2;
+  font-size: 11px;
+}
+
+.carpan-workspace .carpan-identity-action [role=alert] {
+  margin-top: 6px;
+  color: #e5798f;
+  font-size: 11px;
+}
+
+.carpan-workspace .carpan-profile-editor summary {
+  padding: 9px 0;
+  color: var(--at-accent);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.carpan-workspace .carpan-profile-editor form {
+  display: grid;
+  gap: 10px;
+}
+
+.carpan-workspace .carpan-profile-editor label {
+  display: grid;
+  gap: 5px;
+  color: var(--at-secondary);
+  font-size: 11px;
+}
+
+.carpan-workspace .carpan-profile-editor input {
+  min-width: 0;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--at-border);
+  border-radius: 6px;
+  background: var(--aw-bg);
+  color: var(--at-ink);
+}
+
+.carpan-workspace .carpan-profile-editor input:focus-visible {
+  outline: 2px solid var(--at-accent);
+  outline-offset: 2px;
+}
+
+.carpan-workspace .carpan-overview-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.carpan-workspace .carpan-overview-stat {
+  min-height: 106px;
+  padding: 15px;
+}
+
+.carpan-workspace .carpan-overview-stat span {
+  display: block;
+  color: var(--at-secondary);
+  font-size: 11px;
+}
+
+.carpan-workspace .carpan-overview-stat strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--at-ink);
+  font: 600 23px/1.1 'Space Grotesk', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.carpan-workspace .carpan-overview-stat small {
+  display: block;
+  margin-top: 6px;
+  color: #918aa1;
+  font-size: 10px;
+}
+
+.carpan-workspace .carpan-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+
+.carpan-workspace .carpan-section-heading h2 {
+  margin: 0;
+  color: var(--at-ink);
+  font: 600 16px 'Space Grotesk', sans-serif;
+}
+
+.carpan-workspace .carpan-section-heading a {
+  color: var(--at-accent);
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.carpan-workspace .carpan-deployment-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 18px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid var(--at-border);
+}
+
+.carpan-workspace .carpan-deployment-row:first-child {
+  border-top: 0;
+}
+
+.carpan-workspace .carpan-deployment-row a {
+  color: var(--at-ink);
+  font: 11px 'JetBrains Mono', monospace;
+  text-decoration: none;
+}
+
+.carpan-workspace .carpan-deployment-row a:hover {
+  color: #c7b5ed;
+}
+
+.carpan-workspace .carpan-deployment-row small {
+  color: var(--at-secondary);
+  font-size: 10px;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .carpan-workspace .carpan-overview-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .carpan-workspace .carpan-identity-card {
+    grid-template-columns: minmax(0, 1fr) minmax(180px, .7fr);
+  }
+
+  .carpan-workspace .carpan-identity-action {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .carpan-workspace-main {
+    padding-top: 18px;
+  }
+
+  .carpan-workspace .carpan-overview-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .carpan-workspace .carpan-terminal-summary {
+    padding: 18px;
+  }
+
+  .carpan-workspace .carpan-identity-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 11px;
+    padding: 16px;
+  }
+
+  .carpan-workspace .carpan-identity-action {
+    grid-column: auto;
+  }
+
+  .carpan-workspace .carpan-deployment-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .carpan-workspace .carpan-deployment-row small {
+    text-align: left;
+  }
+}
+
+/* Functional workspaces share the cinematic homepage's materials and light. */
+.carpan-workspace-main {
+  padding-bottom: 64px;
+}
+
+.carpan-account-overview,
+.carpan-social-page {
+  isolation: isolate;
+  position: relative;
+}
+
+.carpan-social-page {
+  --accent: #98edce;
+  --cp-module-rgb: var(--cp-social-rgb, 94, 221, 178);
+}
+
+.carpan-workspace .carpan-overview-header,
+.carpan-social-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--cp-line-strong, #45454f);
+  border-radius: 18px;
+  padding: 32px;
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(181, 151, 255, .11), transparent 54%),
+    linear-gradient(115deg, #1c1c24 0%, #121216 65%, #18171e 100%);
+  box-shadow: var(--cp-shadow, 0 16px 44px #0005), inset 0 1px 0 #ffffff09;
+}
+
+.carpan-workspace .carpan-overview-header::after,
+.carpan-social-intro::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: '';
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #17171df5 0%, #17171dde 48%, #11111566 100%),
+    url('/images/carpan-cinema-finance-v2.webp') right 52% / auto 200% no-repeat;
+  opacity: .58;
+}
+
+.carpan-workspace .carpan-overview-header {
+  min-height: 205px;
+  align-items: center;
+  gap: 32px;
+}
+
+.carpan-workspace .carpan-overview-header > div:first-child {
+  max-width: 690px;
+}
+
+.carpan-workspace .carpan-overview-kicker,
+.carpan-social-kicker {
+  display: inline-block;
+  color: #cbb5ff;
+  font: 600 10px/1.5 'JetBrains Mono', monospace;
+  letter-spacing: .16em;
+}
+
+.carpan-workspace .carpan-overview-header h1 {
+  margin-top: 12px;
+  font-size: clamp(27px, 3vw, 39px);
+  line-height: 1.13;
+  letter-spacing: -.035em;
+}
+
+.carpan-workspace .carpan-overview-header p {
+  max-width: 570px;
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: #c2becd;
+}
+
+.carpan-workspace .carpan-overview-header > div:last-child {
+  max-width: 290px;
+}
+
+.carpan-workspace .carpan-overview-card {
+  position: relative;
+  border-color: var(--cp-line, #36363f);
+  border-radius: 15px;
+  background:
+    linear-gradient(160deg, #ffffff04, transparent 50%),
+    var(--cp-panel, #17171d);
+  box-shadow: inset 0 1px 0 #ffffff07, 0 10px 30px #0002;
+}
+
+.carpan-workspace .carpan-terminal-summary {
+  padding: 26px;
+  background:
+    radial-gradient(ellipse at 92% 0%, rgba(var(--cp-terminal-rgb, 91, 195, 250), .12), transparent 48%),
+    linear-gradient(130deg, #1b1c23 0%, #14151a 70%);
+  border-color: rgba(var(--cp-terminal-rgb, 91, 195, 250), .29);
+}
+
+.carpan-workspace .carpan-terminal-summary::after {
+  width: 290px;
+  height: 170px;
+  border-color: rgba(var(--cp-terminal-rgb, 91, 195, 250), .16);
+  top: -70px;
+  right: -50px;
+}
+
+.carpan-terminal-summary .carpan-overview-kicker {
+  color: #97d8fc;
+}
+
+.carpan-workspace .carpan-identity-card {
+  padding: 25px;
+  border-color: rgba(var(--cp-finance-rgb, 181, 151, 255), .28);
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(var(--cp-finance-rgb, 181, 151, 255), .08), transparent 58%),
+    var(--cp-panel, #17171d);
+}
+
+.carpan-workspace .carpan-identity-card p {
+  max-width: 440px;
+  font-size: 12px;
+  color: #bbb8c6;
+  line-height: 1.75;
+}
+
+.carpan-workspace .carpan-identity-action {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.carpan-workspace .carpan-identity-action small {
+  flex-basis: 100%;
+}
+
+.carpan-workspace .carpan-overview-link,
+.carpan-workspace .carpan-identity-action button {
+  min-height: 39px;
+  border-radius: 8px;
+  background: linear-gradient(140deg, rgba(181, 151, 255, .14), rgba(181, 151, 255, .055));
+  border-color: rgba(181, 151, 255, .38);
+  color: #e3d6ff;
+  box-shadow: inset 0 1px 0 #ffffff08;
+  transition: border-color .2s var(--cp-ease, ease), background .2s, box-shadow .2s;
+}
+
+.carpan-workspace .carpan-overview-link:hover,
+.carpan-workspace .carpan-identity-action button:hover:not(:disabled) {
+  border-color: #c5adff;
+  background: linear-gradient(140deg, rgba(181, 151, 255, .24), rgba(181, 151, 255, .1));
+  box-shadow: 0 0 20px #b597ff12, inset 0 1px 0 #ffffff0c;
+}
+
+.carpan-workspace .carpan-overview-stat {
+  min-height: 122px;
+  padding: 19px;
+  background: #111218b8;
+  border-color: #444754;
+}
+
+.carpan-workspace .carpan-overview-stat strong {
+  margin-top: 12px;
+  font-size: 29px;
+  letter-spacing: -.04em;
+}
+
+.carpan-workspace .carpan-overview-stat small {
+  color: #aba8b8;
+  line-height: 1.6;
+}
+
+.carpan-workspace .carpan-social-summary {
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(var(--cp-social-rgb, 94, 221, 178), .1), transparent 55%),
+    var(--cp-panel, #17171d);
+  border-color: rgba(var(--cp-social-rgb, 94, 221, 178), .24);
+}
+
+.carpan-social-summary .carpan-section-heading > a {
+  color: #a3ebd1;
+}
+
+.carpan-workspace .carpan-mini-stat {
+  padding: 14px;
+  border-radius: 10px;
+  border-color: rgba(var(--cp-social-rgb, 94, 221, 178), .18) !important;
+  background: #101614 !important;
+}
+
+.carpan-workspace .carpan-deployment-row {
+  padding: 15px 0;
+}
+
+.carpan-workspace .carpan-section-heading h2 {
+  font-size: 18px;
+  letter-spacing: -.025em;
+}
+
+.carpan-social-intro {
+  min-height: 184px;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(var(--cp-social-rgb, 94, 221, 178), .1), transparent 64%),
+    #151b1b;
+  border-color: rgba(var(--cp-social-rgb, 94, 221, 178), .29);
+}
+
+.carpan-social-intro::after {
+  background:
+    linear-gradient(90deg, #131a19f8 0%, #131a19e8 43%, #10151388 100%),
+    url('/images/carpan-cinema-social-v2.webp') right 52% / auto 205% no-repeat;
+  opacity: .72;
+}
+
+.carpan-social-kicker {
+  color: #96e7c9;
+  margin-bottom: 14px;
+}
+
+.carpan-social-intro .cp-page-header {
+  position: relative;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.carpan-social-intro .cp-page-header h1 {
+  font: 600 clamp(28px, 3.2vw, 38px)/1.12 'Space Grotesk', sans-serif;
+  letter-spacing: -.035em;
+}
+
+.carpan-social-intro .cp-page-header p {
+  margin-top: 12px;
+  line-height: 1.7;
+  color: #c0cdc8 !important;
+}
+
+.carpan-social-page .carpan-social-card,
+.carpan-social-dialog .carpan-social-dialog-panel {
+  position: relative;
+  border-radius: 15px;
+  border-color: var(--cp-line, #36363f);
+  background:
+    linear-gradient(150deg, #ffffff05, transparent 55%),
+    var(--cp-panel, #18181e);
+  box-shadow: var(--cp-shadow, 0 10px 30px #0003), inset 0 1px 0 #ffffff08;
+}
+
+.carpan-social-page .carpan-social-entitlement {
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(var(--cp-social-rgb, 94, 221, 178), .13), transparent 64%),
+    linear-gradient(125deg, #202622 0%, #171c1b 100%);
+  border-color: rgba(var(--cp-social-rgb, 94, 221, 178), .4);
+  padding: 25px;
+}
+
+.carpan-social-page .carpan-social-stat {
+  padding: 22px 14px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(var(--cp-social-rgb, 94, 221, 178), .075), transparent 70%),
+    var(--cp-panel, #18181e) !important;
+}
+
+.carpan-social-stat > div:last-child {
+  margin-top: 12px;
+  font-size: 30px;
+  letter-spacing: -.04em;
+}
+
+.carpan-social-page .carpan-project-card {
+  border-color: #454b49 !important;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(var(--cp-social-rgb, 94, 221, 178), .09), transparent 57%),
+    linear-gradient(130deg, #202221 0%, #17191a 100%);
+  transition: border-color .25s, box-shadow .25s;
+}
+
+.carpan-social-page .carpan-project-card:hover {
+  border-color: rgba(var(--cp-social-rgb, 94, 221, 178), .56) !important;
+  box-shadow: 0 14px 36px #0005, 0 0 28px rgba(var(--cp-social-rgb, 94, 221, 178), .055);
+  transform: none;
+}
+
+.carpan-project-card > div:first-child {
+  padding: 23px;
+}
+
+.carpan-project-card > div:first-child > p {
+  line-height: 1.75;
+}
+
+.carpan-project-card > button {
+  min-height: 44px;
+  padding-inline: 23px;
+  color: #d0ddd7 !important;
+}
+
+.carpan-social-page .carpan-referral-card {
+  padding: 23px;
+  border-color: rgba(var(--cp-social-rgb, 94, 221, 178), .23);
+}
+
+.carpan-referral-card p {
+  line-height: 1.7;
+}
+
+.carpan-social-page .carpan-leaderboard-card {
+  padding: 25px;
+}
+
+.carpan-social-page :is(input, select, textarea),
+.carpan-social-dialog :is(input, select, textarea) {
+  min-height: 42px;
+  border-color: #4a504e !important;
+  background: #0f1513 !important;
+  color: #edf8f2 !important;
+  box-shadow: inset 0 2px 4px #0002;
+}
+
+.carpan-social-page :is(input, textarea)::placeholder,
+.carpan-social-dialog :is(input, textarea)::placeholder {
+  color: #949d98;
+}
+
+.carpan-social-page .cp-button--primary,
+.carpan-social-dialog .cp-button--primary {
+  border-color: #a0f2d3;
+  color: #10271e;
+  background: linear-gradient(125deg, #baf5df 0%, #7adbb5 100%);
+  box-shadow: 0 3px 14px #5eddb215, inset 0 1px 0 #ffffff60;
+}
+
+.carpan-social-page .cp-button--ghost,
+.carpan-social-dialog .cp-button--ghost {
+  color: #cdf0e0;
+  border-color: #53675e;
+  background: linear-gradient(145deg, #23322b, #18221e);
+}
+
+.carpan-social-page .cp-empty-state {
+  min-height: 230px;
+  border: 1px solid #343e3a;
+  border-radius: 15px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(var(--cp-social-rgb, 94, 221, 178), .07), transparent 66%),
+    var(--cp-panel, #17191a);
+  padding: 40px 24px;
+  box-shadow: inset 0 1px 0 #ffffff06;
+}
+
+.carpan-social-page .cp-empty-icon {
+  opacity: 1;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid #5eddb237;
+  border-radius: 17px;
+  color: #98edce !important;
+  background: linear-gradient(140deg, #5eddb21a, #5eddb205);
+  box-shadow: 0 0 24px #5eddb209;
+}
+
+.carpan-social-dialog {
+  --accent: #98edce;
+}
+
+.carpan-social-dialog .carpan-social-dialog-panel {
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  padding: 28px;
+  background: linear-gradient(145deg, #222926, #151b18) !important;
+  border-color: #597166 !important;
+  box-shadow: 0 32px 100px #000b, inset 0 1px 0 #ffffff0b;
+}
+
+.carpan-social-page :focus-visible,
+.carpan-social-dialog :focus-visible {
+  outline: 2px solid #98edce;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1000px) {
+  .carpan-workspace .carpan-overview-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .carpan-workspace .carpan-overview-header > div:last-child {
+    max-width: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .carpan-workspace-main {
+    padding-bottom: 40px;
+  }
+  .carpan-workspace .carpan-overview-header,
+  .carpan-social-intro {
+    border-radius: 14px;
+    padding: 24px 21px;
+    min-height: 180px;
+  }
+  .carpan-social-intro .cp-page-header {
+    flex-wrap: wrap;
+  }
+  .carpan-social-intro .cp-page-header h1 {
+    font-size: 30px;
+  }
+  .carpan-workspace .carpan-overview-header p {
+    font-size: 12px;
+  }
+  .carpan-workspace .carpan-terminal-summary,
+  .carpan-workspace .carpan-identity-card,
+  .carpan-social-page .carpan-social-entitlement,
+  .carpan-social-page .carpan-leaderboard-card,
+  .carpan-social-page .carpan-referral-card {
+    padding: 20px;
+  }
+  .carpan-workspace .carpan-overview-stat {
+    padding: 14px;
+  }
+  .carpan-workspace .carpan-overview-stat strong {
+    font-size: 25px;
+  }
+  .carpan-social-page .carpan-links-summary {
+    flex-wrap: wrap;
+    gap: 23px;
+  }
+  .carpan-links-summary > div:last-child {
+    padding-left: 0;
+    padding-top: 15px;
+    border-left: 0;
+    border-top: 1px solid var(--cp-line, #36363f);
+    flex-basis: 100%;
+    text-align: left;
+  }
+  .carpan-links-summary > div:first-child {
+    gap: 18px;
+  }
+  .carpan-social-stat > div:last-child {
+    font-size: 25px;
+  }
+  .carpan-social-stat > div:first-child {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carpan-workspace .carpan-overview-link,
+  .carpan-workspace .carpan-identity-action button,
+  .carpan-social-page .carpan-project-card {
+    transition: none;
+  }
+}

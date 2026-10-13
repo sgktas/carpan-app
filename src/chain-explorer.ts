@@ -1,0 +1,9 @@
+export type ExplorerNetwork={id:string;name:string;explorer:string;isTestnet:boolean|null;nativeSymbol:string;nativeDecimals:number};
+export type NetworkDirectory={networks:ExplorerNetwork[];asOf:string;stale:boolean;proConfigured:boolean};
+export const explorerKinds=['transfers','transactions','tokens','blocks','verified','address','counters','balances','internals','nfts','logs','balanceHistory','contract','tx','txLogs','txState','token','holders','stats','search','block','blockTransactions','blockInternals','txInternals','txTransfers','txTrace','tokenCounters','tokenInstances','nft','nftHolders','nftTransfers','nftCounters','nftCollections','balanceByDay','txStats','globalInternals','txChart','hotContracts','contractCounters','audits','indexing'] as const;
+export type ExplorerKind=typeof explorerKinds[number];
+export type ExplorerQuery={kind:ExplorerKind;address?:string;hash?:string;token?:string;block?:string;tokenId?:string;type?:string;q?:string;cursor?:string};
+export type ExplorerRow={id:string;title:string;address:string|null;from:string|null;to:string|null;hash:string|null;token:string|null;symbol:string;raw:string|null;decimals:number|null;nftId:string|null;block:number|null;timestamp:string|null;status:string|null;data:Record<string,unknown>};
+export type ExplorerResult={network:ExplorerNetwork;kind:ExplorerKind;items:ExplorerRow[];detail:Record<string,unknown>|null;nextCursor:string|null;fetchedAt:string;source:string;cached?:boolean;page?:{offset:number;total:number;limit:number};policy?:{mode:string;arcMs:number;otherMs:number;pollMs:number}};
+export type NetworkWatch={chainId:string;address:string;label:string;createdAt:string};
+export function researchUrl(chain:string,address:string,extra=''){return chain==='5042'?`/arc/addresses/${address}${extra}`:`/arc?view=explorer&chain=${encodeURIComponent(chain)}&address=${encodeURIComponent(address)}`;}

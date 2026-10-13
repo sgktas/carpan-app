@@ -1,0 +1,6 @@
+.eco-logo{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;border:1px solid #657b7040;border-radius:11px;background:#152019;font:600 13px 'Space Grotesk',sans-serif;width:40px;height:40px}
+.eco-logo img{width:72%;height:72%;object-fit:contain;display:block;filter:none}
+.eco-logo-large{width:88px;height:88px;border-radius:20px;font-size:24px}
+.eco-logo-cover{width:80px;height:80px;border-radius:18px;box-shadow:0 12px 48px #0005}
+.rvx-project-cover>.eco-logo{position:relative;top:auto;left:auto;z-index:1;letter-spacing:0;font-size:24px}
+@media(max-width:650px){.eco-logo-large{width:64px;height:64px;border-radius:15px}}

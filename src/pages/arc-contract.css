@@ -1,0 +1,79 @@
+.arc-contract-hero{padding:40px 0 23px}.arc-contract-hero>.arc-radar-kicker{display:block;margin-top:29px}.arc-contract-hero h1{font:600 clamp(35px,5vw,58px)/1.08 'Space Grotesk',sans-serif;letter-spacing:-2px;margin:10px 0 13px;overflow-wrap:anywhere}.arc-contract-address-line{display:flex;align-items:center;gap:9px;color:#685b7d}.arc-contract-address-line code{font:600 12px 'JetBrains Mono',monospace;overflow-wrap:anywhere}.arc-contract-address-line>a{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#e9e0fb;color:#7050bd!important;flex:none}.arc-contract-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:20px}.arc-contract-actions button{border:0;border-radius:999px;padding:10px 16px;background:#7050bd;color:#fff;font-size:12px;font-weight:800;display:inline-flex;align-items:center;gap:7px}.arc-contract-actions button.is-following{background:#e2f4ec;color:#28785b}.arc-contract-pill{border:1px solid #e0d7eb;border-radius:999px;padding:8px 12px;color:#6d6380;background:#fbfaff;font-size:11px;font-weight:700}.arc-contract-pill.verified{border-color:#b9e0d2;background:#ebf9f3;color:#20775a}.arc-contract-context{font-size:11px;color:#776e86;margin:0 0 17px}.arc-contract-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.arc-contract-panel{padding:23px}.arc-contract-panel h2,.arc-contract-activity h2{font:600 22px 'Space Grotesk',sans-serif;margin:5px 0 17px}.arc-contract-panel dl{margin:0}.arc-contract-panel dl>div{display:flex;align-items:baseline;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid #f1edf5}.arc-contract-panel dl>div:last-child{border-bottom:0}.arc-contract-panel dt{color:#8a8197;font-size:11px}.arc-contract-panel dd{margin:0;text-align:right;font-size:11px;font-weight:700;color:#443957;overflow-wrap:anywhere}.arc-contract-panel dd a{display:inline-flex;align-items:center;gap:4px;color:#7050bd!important}.arc-contract-project{padding:13px;border:1px solid #ded4ef;border-radius:12px;background:#faf8ff}.arc-contract-project strong{font:600 17px 'Space Grotesk',sans-serif}.arc-contract-project p,.arc-contract-no-project p{font-size:12px;color:#776e86;line-height:1.55}.arc-contract-project span{display:block;font-size:11px;color:#877b98}.arc-contract-project a,.arc-contract-no-project a{display:inline-flex;align-items:center;gap:5px;color:#7050bd!important;font-size:11px;font-weight:800;margin-top:10px}.arc-contract-no-project{padding:13px;border:1px dashed #ddd3ea;border-radius:12px}.arc-contract-no-project p{margin:0}.arc-contract-token{margin-top:12px!important}.arc-contract-activity{padding:23px;margin:16px 0 35px}.arc-contract-activity .arc-radar-feed-heading{margin-bottom:6px}.arc-contract-events{display:grid}.arc-contract-event{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #f0ebf5}.arc-contract-event:last-child{border-bottom:0}.arc-contract-event-icon{display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:9px;background:#f1eafa;color:#7254ae}.arc-contract-event-main{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}.arc-contract-event-main strong{font-size:12px}.arc-contract-event-main small{font:10px 'JetBrains Mono',monospace;color:#857a96;overflow-wrap:anywhere}.arc-contract-event time{font-size:10px;color:#8d849a;white-space:nowrap}.arc-contract-event>svg{color:#8165b6;flex:none}
+@media(max-width:700px){.arc-contract-hero{padding:29px 0 22px}.arc-contract-hero h1{font-size:35px}.arc-contract-address-line code{font-size:10px}.arc-contract-grid{grid-template-columns:1fr}.arc-contract-panel,.arc-contract-activity{padding:16px}.arc-contract-activity .arc-radar-feed-heading{align-items:flex-start;flex-direction:column}.arc-contract-event{gap:8px}.arc-contract-event time{display:none}}
+
+/* Contract evidence remains in the same dark Carpan workspace. */
+.aw-contract-wallet-link{margin-left:auto}
+.aw-sidebar>a[aria-current=page]{background:var(--surface-strong);border-color:var(--border-strong);color:#e7d7ff}
+.arc-contract-page .arc-contract-hero{position:relative;isolation:isolate;overflow:hidden;padding:26px 30px;margin-bottom:20px;border:1px solid var(--border);border-radius:7px;background:radial-gradient(ellipse at 90% 0%,#57427650,transparent 64%),var(--surface-strong)}
+.arc-contract-page .arc-contract-hero>.arc-radar-kicker{margin-top:0;color:#b09acb}
+.arc-contract-page .arc-contract-hero h1{margin:10px 0 15px;color:#f5f2ff;font:500 clamp(28px,2.8vw,40px)/1.17 'DM Sans',sans-serif;letter-spacing:-1.1px}
+.arc-contract-page .arc-contract-address-line{color:#c2afd4;font-size:11px}
+.arc-contract-page .arc-contract-address-line code{font-size:11px;font-weight:400}
+.arc-contract-page .arc-contract-address-line>a{background:var(--surface-strong);color:#d3b6f6!important;border-radius:4px}
+.arc-contract-page .arc-contract-actions button{border:1px solid #ac98ef;border-radius:5px;background:#ac98ef;color:#251941;font-weight:500}
+.arc-contract-page .arc-contract-actions button.is-following{border-color:#65724a;background:#2e3722;color:#d9ed95}
+.arc-contract-page .arc-contract-pill{border-color:var(--border-strong);border-radius:4px;background:var(--surface-strong);color:#d7c0ec;font-size:11px;font-weight:400}
+.arc-contract-page .arc-contract-pill.verified{border-color:#65724a;background:#2e3722;color:#d9ed95}
+.arc-contract-page .arc-contract-context{margin-bottom:20px;color:#9f8caf;line-height:1.6}
+.arc-contract-page .arc-contract-panel,.arc-contract-page .arc-contract-activity{padding:23px}
+.arc-contract-page .arc-contract-panel h2,.arc-contract-page .arc-contract-activity h2{font:500 22px 'DM Sans',sans-serif;color:#e9def4}
+.arc-contract-page .arc-contract-panel dl>div{border-bottom-color:var(--border);padding-block:12px}
+.arc-contract-page .arc-contract-panel dt{color:#a898b8;font-size:12px}
+.arc-contract-page .arc-contract-panel dd{color:#d9c8eb;font-size:12px;font-weight:400}
+.arc-contract-page .arc-contract-panel dd a{color:#c6a5eb!important}
+.arc-contract-page .arc-contract-project{border-color:var(--border-strong);border-radius:5px;background:var(--surface-muted)}
+.arc-contract-page .arc-contract-project strong{color:#e0cbf2;font:500 18px 'DM Sans',sans-serif}
+.arc-contract-page .arc-contract-project p,.arc-contract-page .arc-contract-no-project p{color:#b09cbe;font-size:13px}
+.arc-contract-page .arc-contract-project span{color:#a18caf}
+.arc-contract-page .arc-contract-project a,.arc-contract-page .arc-contract-no-project a{color:#c6a5eb!important;font-weight:500}
+.arc-contract-page .arc-contract-no-project{border-color:var(--border-strong);border-radius:5px;padding:18px}
+.arc-contract-page .arc-contract-event{border-bottom-color:var(--border);color:#d6c1e6}
+.arc-contract-page .arc-contract-event-icon{border-radius:5px;background:var(--surface-strong);color:#d0acee}
+.arc-contract-page .arc-contract-event-main small,.arc-contract-page .arc-contract-event time{color:#a68db6}
+.arc-contract-page .arc-contract-event>svg{color:#b394cf}
+@media(max-width:800px){.arc-contract-page .aw-sidebar>a{display:flex;white-space:nowrap;flex:none}.arc-contract-page .aw-sidebar>a:nth-of-type(n+4){display:none}.aw-contract-wallet-link{order:4;width:100%;justify-content:flex-start;margin:0}.arc-contract-page .arc-contract-hero{padding:23px}}
+
+/* Contract evidence uses the same light-edged, compact research material. */
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-hero{
+  padding:23px;border:1px solid #405c72;border-radius:12px;
+  background:radial-gradient(ellipse at 100% 0%,rgba(var(--cp-terminal-rgb,91,195,250),.15),transparent 66%),linear-gradient(130deg,#1c232e,#11151d 72%);
+  box-shadow:inset 0 1px 0 #c9eaff19,0 18px 38px #00000024;
+}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-hero>.arc-radar-kicker{color:#a2d7f4}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-address-line{color:#b2d1e6}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-address-line>a{
+  border:1px solid #688eaa48;border-radius:6px;background:#263d50;color:#bce8ff!important;
+}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-address-line>a:hover{border-color:#93d3ff;background:#304e64}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-actions button{
+  border:1px solid #97d7ff;border-radius:7px;background:linear-gradient(115deg,#c6eeff,#7ecaff);
+  color:#102a3e;box-shadow:inset 0 1px 0 #ffffff50;font-weight:650;transition:background .18s,border-color .18s;
+}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-actions button:not(:disabled):hover{background:linear-gradient(115deg,#e1f6ff,#a6ddff);border-color:#d5f2ff}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-actions button.is-following,
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-pill.verified{border-color:#548773;background:#1b382e;color:#a4e5c8}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-pill{border-color:#4a596d;border-radius:6px;background:#202b38;color:#cadbef}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-context{color:#aebace}
+.arc-contract-page.aw-terminal.aw-terminal-v3 :is(.arc-contract-panel,.arc-contract-activity){
+  border-color:#384453;border-radius:12px;background:linear-gradient(140deg,#1d222b,#14181f 70%);
+  box-shadow:inset 0 1px 0 #ffffff08,0 14px 32px #00000024;
+}
+.arc-contract-page.aw-terminal.aw-terminal-v3 :is(.arc-contract-panel h2,.arc-contract-activity h2){color:#f0f6fd;font-size:20px;letter-spacing:-.35px}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-panel dl>div{border-bottom-color:#91b2dd19}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-panel dt{color:#afbed0}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-panel dd{color:#e0edf8;font-variant-numeric:tabular-nums}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-panel dd a{color:#a4dfff!important}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-project{
+  border-color:#566987;border-radius:9px;background:radial-gradient(ellipse at 100% 0%,#9b84df0f,transparent 70%),#1b2330;
+}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-project strong{color:#e3effd}
+.arc-contract-page.aw-terminal.aw-terminal-v3 :is(.arc-contract-project p,.arc-contract-project span,.arc-contract-no-project p){color:#b4c2d4}
+.arc-contract-page.aw-terminal.aw-terminal-v3 :is(.arc-contract-project a,.arc-contract-no-project a){color:#a6dfff!important}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-no-project{border-color:#536178;border-radius:9px;background:#101620}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-event{padding-inline:8px;border-bottom-color:#91b2dd19;color:#e2edf9;transition:background .18s}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-event:nth-child(2n+1){background:#87bcff04}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-event:hover{background:#87bcff09}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-event-icon{border:1px solid #5a82a142;border-radius:8px;background:linear-gradient(140deg,#2b4259,#1a2a3b);color:#a5ddff}
+.arc-contract-page.aw-terminal.aw-terminal-v3 :is(.arc-contract-event-main small,.arc-contract-event time){color:#a8bbcf}
+.arc-contract-page.aw-terminal.aw-terminal-v3 .arc-contract-event>svg{color:#98caea}
+@media(prefers-reduced-motion:reduce){.arc-contract-page.aw-terminal.aw-terminal-v3 :is(.arc-contract-actions button,.arc-contract-event){transition:none}}

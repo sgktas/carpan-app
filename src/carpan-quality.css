@@ -1,0 +1,126 @@
+/* Approved cinematic materials; keep the homepage scene and research layouts independent. */
+:root {
+  --cp-panel: #15151b;
+  --cp-panel-raised: #202029;
+  --cp-line: #ffffff17;
+  --cp-line-strong: #ffffff30;
+  --cp-shadow: 0 18px 48px #00000024;
+  --cp-ease: cubic-bezier(.22,.61,.36,1);
+  --cp-finance-rgb: 181,151,255;
+  --cp-terminal-rgb: 91,195,250;
+  --cp-social-rgb: 94,221,178;
+}
+.cp-card {
+  background: radial-gradient(ellipse at 100% 0,#b597ff0c,transparent 55%),linear-gradient(145deg,#1a1a22,var(--cp-panel) 75%);
+  border-color: var(--cp-line-strong);
+  box-shadow: inset 0 1px #ffffff07,var(--cp-shadow);
+  transition: border-color .22s var(--cp-ease),box-shadow .22s var(--cp-ease);
+}
+.cp-card--glass { background: linear-gradient(135deg,#24242de8,#17171fe8); }
+.cp-card--interactive:hover { border-color: #b597ff80; box-shadow: inset 0 1px #ffffff0d,0 20px 46px #0005; }
+.cp-page-header { padding: 8px 0 22px; border-bottom: 1px solid var(--cp-line); }
+.cp-page-header h1 { font-weight: 500; letter-spacing: -.035em; font-size: clamp(26px,3vw,38px); line-height: 1.15; }
+.cp-page-header p { max-width: 650px; line-height: 1.75; }
+.cp-button { border: 1px solid transparent; min-height: 36px; transition: background .2s var(--cp-ease),border-color .2s var(--cp-ease),box-shadow .2s var(--cp-ease),transform .2s var(--cp-ease); }
+.cp-button--primary { color: #1b102d; border-color: #d6c2ff; background: linear-gradient(115deg,#e4d4ff,#b99af8); box-shadow: inset 0 1px #ffffff80,0 6px 20px #b597ff17; }
+.cp-button--primary:hover:not(:disabled) { background: linear-gradient(115deg,#efe4ff,#c9afff); box-shadow: 0 6px 24px #b597ff35; }
+.cp-button--ghost { color: var(--ink); border-color: var(--cp-line-strong); background: linear-gradient(135deg,#24242c,#19191f); box-shadow: inset 0 1px #ffffff05; }
+.cp-button--ghost:hover:not(:disabled) { border-color: #b597ff80; background: #27232f; }
+.cp-button--danger { color: #ffb0c1; border-color: #ff91ab55; background: linear-gradient(135deg,#401e2a,#26171e); }
+.cp-button--danger:hover:not(:disabled) { border-color: #ff91ab99; background: #492332; }
+.cp-button:active:not(:disabled) { transform: translateY(1px); }
+.cp-button:disabled { opacity: .5; box-shadow: none; }
+.cp-status-pill { border: 1px solid color-mix(in srgb,currentColor 25%,transparent); padding: 4px 8px; line-height: 1.35; }
+.cp-skeleton { background: linear-gradient(110deg,#ffffff07,#ffffff10,#ffffff07); }
+.cp-empty-state { padding-inline: 20px; }
+.cp-empty-icon { display: grid; place-items: center; width: 62px; height: 62px; border: 1px solid #b597ff40; border-radius: 18px; background: radial-gradient(ellipse at 50% 0,#b597ff27,transparent),#15131c; color: #d2bbff; box-shadow: inset 0 1px #ffffff09; }
+.cp-empty-icon svg { width: 28px; height: 28px; }
+.cp-empty-title { color: var(--ink); letter-spacing: -.02em; }
+.cp-empty-body { color: var(--muted); line-height: 1.8; }
+.cp-inline-error { line-height: 1.7; }
+body :is(a,button,input,select,textarea,summary):focus-visible { outline: 2px solid #c7adff; outline-offset: 3px; }
+/* Navigation shares the homepage's typography and precise light edges. */
+html .at-header { --cp-module-rgb: var(--cp-terminal-rgb); border-bottom: 1px solid var(--cp-line-strong); background: linear-gradient(180deg,#13131b,#09090cf5); box-shadow: 0 8px 30px #0002; }
+html .at-header[data-module=finance],html .at-header[data-module=account] { --cp-module-rgb: var(--cp-finance-rgb); }
+html .at-header[data-module=social] { --cp-module-rgb: var(--cp-social-rgb); }
+html .at-header .at-brand { gap: 9px; }
+html .at-header .at-navigation>a { font-weight: 500; color: #c9c8d5; transition: color .18s; }
+html .at-header .at-navigation>a:hover,html .at-header .at-navigation>a[aria-current=page] { color: #fff; }
+html .at-header .at-navigation>a[aria-current=page]:after { width: 100%; height: 2px; background: linear-gradient(90deg,rgba(var(--cp-module-rgb),.2),rgb(var(--cp-module-rgb)),rgba(var(--cp-module-rgb),.2)); box-shadow: 0 0 13px rgba(var(--cp-module-rgb),.3); }
+html .at-header .at-header-search { background: #0d0d14; border-color: #ffffff28; box-shadow: inset 0 1px #ffffff04; transition: border-color .2s,box-shadow .2s; }
+html .at-header .at-header-search:focus-within { border-color: rgba(var(--cp-module-rgb),.6); box-shadow: 0 0 0 3px rgba(var(--cp-module-rgb),.08); }
+html .at-header .at-header-search input::placeholder { color: #a2a0b4; }
+html .carpan-header-controls .carpan-register-button { border-color: #d4bdff; background: linear-gradient(115deg,#dfceff,#b99af5); box-shadow: inset 0 1px #ffffff70,0 5px 18px #b597ff16; color: #211333; }
+html .carpan-header-controls .carpan-register-button:hover { background: linear-gradient(115deg,#eadcff,#c7a9ff); box-shadow: 0 5px 22px #b597ff30; }
+html .carpan-header-controls .carpan-signin-button,html .carpan-account-button { border-color: #ffffff35; background: #10101670; box-shadow: inset 0 1px #ffffff06; }
+html .carpan-header-controls .carpan-signin-button:hover,html .carpan-account-button:hover { border-color: #b597ff90; background: #25202f; }
+html .carpan-control-panel { background: radial-gradient(ellipse at 100% 0,#b597ff12,transparent 50%),linear-gradient(145deg,#21212a,#111117 85%); border-color: #797084; box-shadow: inset 0 1px #ffffff0b,0 24px 70px #0009; border-radius: 13px; }
+html .carpan-control-panel a { transition: background .18s; }
+html .carpan-control-panel a:hover,html .carpan-control-action:hover { background: #b597ff13; }
+html .carpan-avatar { background: linear-gradient(135deg,#e1cdff,#aa87eb); border: 1px solid #e7d8ff66; box-shadow: inset 0 1px #ffffff50; color: #20132f; }
+html .carpan-products-panel nav a:first-child .carpan-module-icon { background: #b597ff18; border: 1px solid #b597ff45; color: #d1b9ff; }
+html .carpan-products-panel nav a:nth-child(2) .carpan-module-icon { background: #5bc3fa18; border: 1px solid #5bc3fa45; color: #93d9ff; }
+html .carpan-products-panel nav a:nth-child(3) .carpan-module-icon { background: #5eddb218; border: 1px solid #5eddb245; color: #9ef1d1; }
+/* Bright emblem, three module tones and clearly grouped footer navigation. */
+html footer.carpan-footer { position: relative; isolation: isolate; overflow: hidden; padding: 62px clamp(20px,4vw,64px) 24px; background: radial-gradient(ellipse at 10% 0,#b597ff14,transparent 47%),radial-gradient(ellipse at 90% 0,#5bc3fa09,transparent 43%),#0b0b10; border-top: 1px solid #ffffff24; }
+html footer.carpan-footer:before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg,transparent,#b597ff90 20%,#5bc3fa75 52%,#5eddb265 80%,transparent); pointer-events: none; }
+html .carpan-footer-grid { gap: 36px; grid-template-columns: 1.7fr repeat(4,1fr); }
+html .carpan-footer-intro { max-width: 340px; }
+html .carpan-footer-brand { gap: 14px!important; font-size: 30px!important; letter-spacing: -1px; }
+html .carpan-footer-brand img { width: 46px; height: 46px; filter: brightness(0) invert(1); }
+html .carpan-footer-brand small { color: #cab3f0; font-size: 12px; margin-top: 7px; }
+html .carpan-footer-intro>p { color: #bdbbce; max-width: 300px; font-size: 13px; line-height: 1.8; margin: 23px 0!important; }
+html .carpan-footer-grid h3 { font-size: 14px; font-weight: 500; margin: 8px 0 16px; }
+html .carpan-footer-grid nav { gap: 13px!important; }
+html .carpan-footer-grid nav a { color: #bab8ca; font-size: 12px; line-height: 1.6; transition: color .18s; }
+html .carpan-footer-grid nav a:hover { color: #fff; }
+html .carpan-footer-grid nav[data-workspace=finance] h3 { color: #d5bfff; }
+html .carpan-footer-grid nav[data-workspace=terminal] h3 { color: #9cdcff; }
+html .carpan-footer-grid nav[data-workspace=social] h3 { color: #a5ecd2; }
+html .carpan-footer-grid nav p { font-size: 11px; color: #aaa7bc; line-height: 1.8; }
+html .carpan-footer-connections { flex-direction: row; align-items: center; gap: 12px; }
+html .carpan-footer-connections .carpan-footer-icon { display:grid;place-items:center;width:48px;height:48px;padding:0;border-radius:50%;color:#f6f2ff;background:linear-gradient(135deg,#24212f,#14131c);border:1px solid #b597ff55;box-shadow:inset 0 1px #ffffff10;transition:background .2s,border-color .2s,box-shadow .2s,transform .2s; }
+html .carpan-footer-connections .carpan-footer-icon.is-mail { border-color:#5bc3fa50;background:linear-gradient(135deg,#1e2932,#11181f);color:#e7f5ff; }
+html .carpan-footer-connections .carpan-footer-icon:hover { transform:translateY(-2px);background:#30243f;border-color:#cbb1ff;box-shadow:0 0 24px #b597ff25; }
+html .carpan-footer-connections .carpan-footer-icon.is-mail:hover { background:#203545;border-color:#96d9ff;box-shadow:0 0 24px #5bc3fa25; }
+html .carpan-footer-connections .carpan-footer-icon:focus-visible { outline:2px solid #d8c4ff;outline-offset:4px; }
+html .carpan-footer-contact { font-size: 12px; color: #d6c8eb!important; }
+html .carpan-footer-social { background: linear-gradient(130deg,#25212f,#16141e); border-color: #6c5a874d; border-radius: 8px; box-shadow: inset 0 1px #ffffff07; }
+html .carpan-footer-chain { color: #a7c8bb; margin-top: 20px; letter-spacing: .02em; }
+html .carpan-footer-bottom { border-color: #ffffff16; padding-top: 23px; margin-top: 44px; color: #9f9bae; font-size: 11px; }
+html .carpan-footer-bottom>span { color: #c2b4d8; letter-spacing: 2px; font-size: 9px; }
+html .carpan-language { background: #15131d; border-color: #71608070; }
+html .carpan-language button[aria-pressed=true] { background: linear-gradient(120deg,#ddccff,#b494ee); color: #24143a; }
+/* Continue the approved homepage finish below the hero. */
+html .rvx-home-content .rvx-community-section { border-color: var(--cp-line); }
+html .rvx-home-content :is(.rvx-community-empty,.rvx-project) { background: radial-gradient(ellipse at 100% 0,#5eddb212,transparent 65%),linear-gradient(140deg,#1b1b23,#121218); border-color: #5eddb238; box-shadow: inset 0 1px #ffffff07,var(--cp-shadow); }
+html .rvx-home-content .rvx-community-empty>a { color: #a0ead0; }
+html .rvx-home-content .rvx-project-content button { padding: 7px 11px; border: 1px solid #5eddb24a; background: #5eddb214; border-radius: 6px; color: #c9f5e5; }
+html .rvx-home-content .rvx-steps article { background: radial-gradient(ellipse at 100% 0,#b597ff10,transparent 65%),linear-gradient(145deg,#1c1b24,#131319); border-color: #b597ff36; box-shadow: inset 0 1px #ffffff09,var(--cp-shadow); }
+html .rvx-home-content .rvx-steps b { background: linear-gradient(135deg,#b597ff28,#b597ff0a); border-color: #b597ff60; color: #dbc7ff; }
+html .rvx-home-content .carpan-accounting-branch { background: radial-gradient(ellipse at 0 0,#b597ff17,transparent 60%),linear-gradient(130deg,#1d1c25,#131319); border-color: #b597ff36; box-shadow: inset 0 1px #ffffff09,var(--cp-shadow); }
+html .rvx-home-content .carpan-accounting-visual { border-color: #b597ff30; background: linear-gradient(145deg,#131019,#0b0b10); }
+html .rvx-home-content .rvx-join { background: linear-gradient(90deg,#0b0b10f5,#0b0b10c7),url('/images/carpan-cinema-finance-v2.webp') center 55%/cover; border-color: #b597ff55; box-shadow: inset 0 1px #ffffff10,0 20px 65px #0004; }
+html .rvx-home-content .rvx-join:before,html .rvx-home-content .rvx-join:after { display: none; }
+html .rvx-home-content .rvx-join .rvx-button.primary { background: linear-gradient(115deg,#e4d4ff,#b99af8); border-color: #d6c2ff; box-shadow: 0 6px 24px #b597ff25; }
+@media(max-width:1200px) { html .carpan-footer-grid { grid-template-columns: 1.6fr repeat(2,1fr); gap: 32px; } }
+@media(max-width:700px) {
+  .cp-page-header { flex-wrap: wrap; padding-bottom: 18px; }
+  .cp-page-header>div:last-child { max-width: 100%; }
+  html footer.carpan-footer { padding: 44px 22px 22px; }
+  html .carpan-footer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px 22px; }
+  html .carpan-footer-intro { max-width: none; }
+  html .carpan-footer-brand { font-size: 28px!important; }
+  html .carpan-footer-grid nav a { overflow-wrap: anywhere; }
+  html .carpan-footer-bottom { margin-top: 32px; gap: 16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html .carpan-footer-connections .carpan-footer-icon { transition:none; }
+  html .carpan-footer-connections .carpan-footer-icon:hover { transform:none; }
+  .cp-card,.cp-button,html .at-header .at-navigation>a,html .at-header .at-header-search,html .carpan-control-panel a,html .carpan-footer-grid nav a { transition: none; }
+  .cp-button:active:not(:disabled) { transform: none; }
+  .cp-skeleton { animation: none; }
+}
+html .cp-wallet-connect { display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:10px 14px;border-radius:9px;font:600 12px 'DM Sans',sans-serif;white-space:nowrap;background:linear-gradient(115deg,#e4d4ff,#b99af8);color:#1b102d;border:1px solid #d6c2ff;box-shadow:inset 0 1px #ffffff80,0 6px 20px #b597ff17;cursor:pointer; }
+html .cp-wallet-connect:disabled { opacity:.5;cursor:wait; }
+html .arc-tool-brand { text-transform:uppercase;letter-spacing:-.7px;font-weight:700; }

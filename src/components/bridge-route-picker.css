@@ -1,0 +1,37 @@
+/* The official Arc mark identifies only the currently selected Arc network. */
+html .ab-module .ab-form { container-type:inline-size; container-name:bridge-form; }
+html .ab-module .ab-route .ab-network-choice {
+  display:flex;
+  align-items:center;
+  min-width:0;
+  min-height:56px;
+  border:1px solid var(--ws-border,var(--at-border));
+  border-radius:10px;
+  background:var(--ws-input,var(--at-subtle));
+}
+html .ab-module .ab-route .ab-network-choice select {
+  flex:1;
+  width:0;
+  min-width:0;
+  min-height:56px;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  border-radius:10px;
+}
+html .ab-module .ab-route .ab-network-choice:focus-within {
+  outline:2px solid var(--ws-accent,var(--at-accent));
+  outline-offset:3px;
+}
+html .ab-module .ab-route .ab-network-choice select:focus {
+  outline:0;
+  box-shadow:none;
+}
+html .ab-module .ab-route>.aw-button { align-self:center; margin-top:35px; }
+/* Disabled controls remain muted; the official mark keeps its original colors. */
+html .ab-module .ab-form fieldset:disabled { opacity:1; }
+html .ab-module .ab-form fieldset:disabled :is(input,select) { opacity:.55; }
+@container bridge-form (max-width:480px) {
+  .ab-module .ab-route { grid-template-columns:minmax(0,1fr); }
+  html .ab-module .ab-route>.aw-button { justify-self:center; margin-top:0; }
+}

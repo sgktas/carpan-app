@@ -1,0 +1,16 @@
+[Unit]
+Description=Carpan consistent SQLite backup
+
+[Service]
+Type=oneshot
+User=carpan
+Group=carpan
+WorkingDirectory=/opt/carpan/current
+EnvironmentFile=/opt/carpan/shared/production.env
+ExecStart=/usr/local/bin/bun run deploy/backup-db.ts
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/carpan/shared

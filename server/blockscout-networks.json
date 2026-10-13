@@ -1,0 +1,853 @@
+{
+  "asOf": "2026-10-02",
+  "networks": [
+    {
+      "id": "1",
+      "name": "Ethereum",
+      "explorer": "https://eth.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "10",
+      "name": "OP Mainnet",
+      "explorer": "https://explorer.optimism.io",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "30",
+      "name": "Rootstock",
+      "explorer": "https://rootstock.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "RBTC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "31",
+      "name": "Rootstock Testnet",
+      "explorer": "https://rootstock-testnet.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "tRBTC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "61",
+      "name": "Ethereum Classic",
+      "explorer": "https://etc.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "63",
+      "name": "Ethereum Classic Mordor",
+      "explorer": "https://etc-mordor.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "mETC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "81",
+      "name": "Astar Shibuya",
+      "explorer": "https://shibuya.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "SBY",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "100",
+      "name": "Gnosis",
+      "explorer": "https://gnosisscan.io",
+      "isTestnet": false,
+      "nativeSymbol": "XDAI",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "122",
+      "name": "Fuse",
+      "explorer": "https://explorer.fuse.io",
+      "isTestnet": false,
+      "nativeSymbol": "FUSE",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "123",
+      "name": "Fuse Sparknet",
+      "explorer": "https://explorer.fusespark.io",
+      "isTestnet": true,
+      "nativeSymbol": "Spark",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "130",
+      "name": "Unichain",
+      "explorer": "https://unichain.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "137",
+      "name": "Polygon PoS",
+      "explorer": "https://polygon.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "POL",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "177",
+      "name": "HashKey",
+      "explorer": "https://hsk.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "HSK",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "239",
+      "name": "TAC Mainnet",
+      "explorer": "https://explorer.tac.build",
+      "isTestnet": false,
+      "nativeSymbol": "TAC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "300",
+      "name": "ZKsync Era Sepolia Testnet",
+      "explorer": "https://zksync-sepolia.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "314",
+      "name": "Filecoin Virtual Machine",
+      "explorer": "https://filecoin.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "FIL",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "324",
+      "name": "ZKsync Era",
+      "explorer": "https://zksync.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "360",
+      "name": "Shape",
+      "explorer": "https://shapescan.xyz",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "480",
+      "name": "World Chain",
+      "explorer": "https://worldchain-mainnet.explorer.alchemy.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "484",
+      "name": "Chain 484",
+      "explorer": "https://camp.cloud.blockscout.com",
+      "isTestnet": null,
+      "nativeSymbol": "",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "488",
+      "name": "BXN",
+      "explorer": "https://blackfortscan.com",
+      "isTestnet": false,
+      "nativeSymbol": "BXN",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "545",
+      "name": "Flow Testnet",
+      "explorer": "https://testnet.evm.flow.com",
+      "isTestnet": true,
+      "nativeSymbol": "FLOW",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "592",
+      "name": "Astar",
+      "explorer": "https://astar.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ASTR",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "698",
+      "name": "Matchain",
+      "explorer": "https://matchscan.io",
+      "isTestnet": false,
+      "nativeSymbol": "BNB",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "714",
+      "name": "Eden",
+      "explorer": "https://eden.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "TIA",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "747",
+      "name": "Flow Mainnet",
+      "explorer": "https://evm.flow.com",
+      "isTestnet": false,
+      "nativeSymbol": "FLOW",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "869",
+      "name": "World Mobile",
+      "explorer": "https://explorer.worldmobile.io",
+      "isTestnet": false,
+      "nativeSymbol": "WMTX",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "901",
+      "name": "Derive Testnet",
+      "explorer": "https://testnet-explorer.derive.xyz",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "957",
+      "name": "Derive Mainnet",
+      "explorer": "https://explorer.derive.xyz",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1076",
+      "name": "Chain 1076",
+      "explorer": "https://explorer.evm.testnet.iota.cafe",
+      "isTestnet": null,
+      "nativeSymbol": "",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1135",
+      "name": "Lisk ",
+      "explorer": "https://blockscout.lisk.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1301",
+      "name": "Unichain Sepolia Testnet",
+      "explorer": "https://unichain-sepolia.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1315",
+      "name": "DATA Network Aeneid",
+      "explorer": "https://aeneid.datanetscan.io",
+      "isTestnet": true,
+      "nativeSymbol": "DATA",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1514",
+      "name": "DATA Network",
+      "explorer": "https://www.datanetscan.io",
+      "isTestnet": false,
+      "nativeSymbol": "DATA",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1729",
+      "name": "Reya",
+      "explorer": "https://explorer.reya.network",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1829",
+      "name": "Playnance Playblock",
+      "explorer": "https://explorer.playblock.io",
+      "isTestnet": false,
+      "nativeSymbol": "PBG",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1868",
+      "name": "Soneium",
+      "explorer": "https://soneium.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1890",
+      "name": "LightLink Phoenix Mainnet",
+      "explorer": "https://phoenix.lightlink.io",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1891",
+      "name": "LightLink Pegasus Testnet",
+      "explorer": "https://pegasus.lightlink.io",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "1946",
+      "name": "Soneium Minato Testnet",
+      "explorer": "https://soneium-minato.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "2020",
+      "name": "Ronin Mainnet",
+      "explorer": "https://explorer.roninchain.com",
+      "isTestnet": false,
+      "nativeSymbol": "RON",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "2288",
+      "name": "Moca Chain",
+      "explorer": "https://scan.mocachain.org",
+      "isTestnet": false,
+      "nativeSymbol": "MOCA",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "2366",
+      "name": "KiteAI Mainnet",
+      "explorer": "https://www.kitescan.ai",
+      "isTestnet": false,
+      "nativeSymbol": "KITE",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "2368",
+      "name": "KiteAI Testnet",
+      "explorer": "https://testnet.kitescan.ai",
+      "isTestnet": true,
+      "nativeSymbol": "KITE",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "2391",
+      "name": "TAC SPB",
+      "explorer": "https://spb.explorer.tac.build",
+      "isTestnet": true,
+      "nativeSymbol": "TAC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "3941",
+      "name": "Nexus Staging Testnet",
+      "explorer": "https://nexus-staging-testnet.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "NEX",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "3945",
+      "name": "Nexus Testnet",
+      "explorer": "https://testnet.explorer.nexus.xyz",
+      "isTestnet": true,
+      "nativeSymbol": "NEX",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "3946",
+      "name": "Nexus Mainnet",
+      "explorer": "https://explorer.nexus.xyz",
+      "isTestnet": true,
+      "nativeSymbol": "NEX",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "4326",
+      "name": "MegaETH",
+      "explorer": "https://megaeth.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "4663",
+      "name": "Robinhood Chain",
+      "explorer": "https://robinhoodchain.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "4801",
+      "name": "World Chain Testnet",
+      "explorer": "https://worldchain-sepolia.explorer.alchemy.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "4888",
+      "name": "BXN Testnet",
+      "explorer": "https://testnet.blackfortscan.com",
+      "isTestnet": true,
+      "nativeSymbol": "BXN",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "5042",
+      "name": "Arc Mainnet",
+      "explorer": "https://explorer.arc.io",
+      "isTestnet": false,
+      "nativeSymbol": "USDC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "6497",
+      "name": "Awaji",
+      "explorer": "https://awaji.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "MIZU",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "6498",
+      "name": "Mizuhiki",
+      "explorer": "https://mizuhiki.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "MIZU",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "7000",
+      "name": "ZetaChain",
+      "explorer": "https://zetascan.com",
+      "isTestnet": false,
+      "nativeSymbol": "ZETA",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "7001",
+      "name": "ZetaChain Testnet",
+      "explorer": "https://testnet.zetascan.com",
+      "isTestnet": true,
+      "nativeSymbol": "tZETA",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "8021",
+      "name": "Numine",
+      "explorer": "https://numine.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "NUMINE",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "8453",
+      "name": "Base",
+      "explorer": "https://base.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "8822",
+      "name": "IOTA EVM",
+      "explorer": "https://explorer.evm.iota.org",
+      "isTestnet": false,
+      "nativeSymbol": "IOTA",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "10200",
+      "name": "Gnosis Chiado Testnet",
+      "explorer": "https://gnosis-chiado.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "XDAI",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "10901",
+      "name": "Chain 10901",
+      "explorer": "https://explorer.testnet.zama.org",
+      "isTestnet": null,
+      "nativeSymbol": "",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "11011",
+      "name": "Shape Testnet",
+      "explorer": "https://sepolia.shapescan.xyz",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "13371",
+      "name": "Immutable zkEVM",
+      "explorer": "https://explorer.immutable.com",
+      "isTestnet": false,
+      "nativeSymbol": "IMX",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "13473",
+      "name": "Immutable zkEVM Testnet",
+      "explorer": "https://explorer.testnet.immutable.com",
+      "isTestnet": true,
+      "nativeSymbol": "tIMX",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "32769",
+      "name": "Zilliqa 2 Mainnet",
+      "explorer": "https://zilliqa.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ZIL",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "33101",
+      "name": "Zilliqa 2 Testnet",
+      "explorer": "https://testnet.zilliqa.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ZIL",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "34443",
+      "name": "Mode",
+      "explorer": "https://explorer.mode.network",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "42161",
+      "name": "Arbitrum One Nitro",
+      "explorer": "https://arbitrum.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "42170",
+      "name": "Arbitrum Nova",
+      "explorer": "https://arbitrum-nova.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "42220",
+      "name": "Celo",
+      "explorer": "https://celo.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "CELO",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "42793",
+      "name": "Etherlink",
+      "explorer": "https://explorer.etherlink.com",
+      "isTestnet": false,
+      "nativeSymbol": "XTZ",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "57073",
+      "name": "Ink",
+      "explorer": "https://explorer.inkonchain.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "69420",
+      "name": "Alchemy Sepolia",
+      "explorer": "https://alchemy-sepolia.explorer.alchemy.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "84532",
+      "name": "Base Sepolia",
+      "explorer": "https://base-sepolia.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "97476",
+      "name": "Doma Testnet",
+      "explorer": "https://explorer-testnet.doma.xyz",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "97477",
+      "name": "Doma Mainnet",
+      "explorer": "https://explorer.doma.xyz",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "97741",
+      "name": "Pepe Unchained",
+      "explorer": "https://pepuscan.com",
+      "isTestnet": false,
+      "nativeSymbol": "PEPU",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "98866",
+      "name": "Plume Mainnet",
+      "explorer": "https://explorer.plume.org",
+      "isTestnet": false,
+      "nativeSymbol": "PLUME",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "98867",
+      "name": "Plume Testnet",
+      "explorer": "https://testnet-explorer.plume.org",
+      "isTestnet": true,
+      "nativeSymbol": "PLUME",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "102030",
+      "name": "Creditcoin",
+      "explorer": "https://creditcoin.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "CTC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "102031",
+      "name": "Creditcoin Testnet",
+      "explorer": "https://creditcoin-testnet.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "CTC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "102032",
+      "name": "Creditcoin Devnet",
+      "explorer": "https://creditcoin-devnet.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "DEVCTC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "127823",
+      "name": "Etherlink Shadownet",
+      "explorer": "https://shadownet.explorer.etherlink.com",
+      "isTestnet": true,
+      "nativeSymbol": "XTZ",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "181228",
+      "name": "HPP Sepolia",
+      "explorer": "https://sepolia-explorer.hpp.io",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "190415",
+      "name": "HPP Mainnet",
+      "explorer": "https://explorer.hpp.io",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "222888",
+      "name": "Moca Chain Testnet",
+      "explorer": "https://testnet-scan.mocachain.org",
+      "isTestnet": true,
+      "nativeSymbol": "MOCA",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "261131",
+      "name": "Chain 261131",
+      "explorer": "https://explorer.mainnet.zama.org",
+      "isTestnet": null,
+      "nativeSymbol": "",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "314159",
+      "name": "Filecoin Calibration Testnet",
+      "explorer": "https://filecoin-testnet.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "FIL",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "323432",
+      "name": "World Mobile Testnet",
+      "explorer": "https://testnet-explorer.worldmobile.net",
+      "isTestnet": true,
+      "nativeSymbol": "WOMOX",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "421614",
+      "name": "Arbitrum Sepolia",
+      "explorer": "https://arbitrum-sepolia.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "534352",
+      "name": "Scroll",
+      "explorer": "https://scrollscan.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "560048",
+      "name": "Hoodi",
+      "explorer": "https://eth-hoodi.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "612044",
+      "name": "Cross Testnet",
+      "explorer": "https://testnet.crossscan.io",
+      "isTestnet": true,
+      "nativeSymbol": "CROSS",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "612055",
+      "name": "Cross Mainnet",
+      "explorer": "https://www.crossscan.io",
+      "isTestnet": false,
+      "nativeSymbol": "CROSS",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "685685",
+      "name": "Gensyn Testnet",
+      "explorer": "https://gensyn-testnet.explorer.alchemy.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "685689",
+      "name": "Gensyn",
+      "explorer": "https://gensyn-mainnet.explorer.alchemy.com",
+      "isTestnet": false,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "763373",
+      "name": "Ink Sepolia",
+      "explorer": "https://explorer-sepolia.inkonchain.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "5042002",
+      "name": "Arc Testnet",
+      "explorer": "https://explorer.testnet.arc.io",
+      "isTestnet": true,
+      "nativeSymbol": "USDC",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "11142220",
+      "name": "Celo Sepolia",
+      "explorer": "https://celo-sepolia.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "CELO",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "11155111",
+      "name": "Ethereum Sepolia",
+      "explorer": "https://eth-sepolia.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "11155420",
+      "name": "OP Sepolia",
+      "explorer": "https://testnet-explorer.optimism.io",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "89346162",
+      "name": "Reya Cronos",
+      "explorer": "https://reya-cronos.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "245022926",
+      "name": "Neon Devnet",
+      "explorer": "https://neon-devnet.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "NEON",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "245022934",
+      "name": "Neon",
+      "explorer": "https://neon.blockscout.com",
+      "isTestnet": false,
+      "nativeSymbol": "NEON",
+      "nativeDecimals": 18
+    },
+    {
+      "id": "3735928814",
+      "name": "Eden Testnet",
+      "explorer": "https://eden-testnet.blockscout.com",
+      "isTestnet": true,
+      "nativeSymbol": "TIA",
+      "nativeDecimals": 18
+    }
+  ]
+}

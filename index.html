@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#100e18" />
+    <link rel="icon" href="/favicon.ico?v=20261010-01" sizes="16x16 32x32 48x48 64x64 256x256" />
+    <link rel="icon" type="image/png" href="/carpan-favicon-32.png?v=20261010-01" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/carpan-favicon.svg?v=20261010-01" sizes="any" />
+    <link rel="apple-touch-icon" href="/carpan-apple-touch-icon.png?v=20261010-01" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest?v=20261010-01" />
+    <meta name="description" content="Manage Arc USDC collections, research onchain activity and discover Arc projects. Finance, Terminal and Ecosystem in one Carpan workspace." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Carpan — Finance, Terminal and Ecosystem on Arc" />
+    <meta property="og:description" content="USDC collections and onchain evidence in one workspace. Built on Arc." />
+    <meta property="og:image" content="https://carpan.app/images/carpan-social-card-v1.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="CARPAN — Finance, Terminal and Ecosystem" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://carpan.app/images/carpan-social-card-v1.png" />
+    <meta name="twitter:image:alt" content="CARPAN — Finance, Terminal and Ecosystem" />
+    <title>Carpan — Arc Finance, Terminal & Ecosystem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <style>
+      body{margin:0;background:#08090b}
+      #carpan-boot-loader{min-height:100dvh;display:grid;place-items:center;background:#08090b;position:relative;isolation:isolate}
+      #carpan-boot-loader>div{display:grid;place-items:center;opacity:0;animation:carpan-boot-reveal .18s .28s ease-out forwards;filter:drop-shadow(0 6px 18px rgba(12,18,28,.22))}
+      #carpan-boot-loader img{width:72px;height:72px;object-fit:contain;filter:brightness(0) invert(1);transform-origin:50% 50%;animation:carpan-boot-orbit 2.4s linear infinite}
+      @keyframes carpan-boot-reveal{to{opacity:1}}
+      @keyframes carpan-boot-orbit{to{transform:rotate(360deg)}}
+      @media(prefers-reduced-motion:reduce){#carpan-boot-loader img{animation:none}}
+    </style>
+    <div id="root"><div id="carpan-boot-loader" role="status" aria-label="Loading Carpan"><div><img src="/carpan-emblem.png" alt="" width="72" height="72"></div></div></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

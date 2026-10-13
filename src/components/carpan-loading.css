@@ -1,0 +1,8 @@
+.carpan-loading-overlay{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;background:transparent;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:carpan-loader-reveal .18s ease-out both;cursor:progress;isolation:isolate}
+.carpan-loading-mark{display:grid;place-items:center;outline:none}
+.carpan-loading-emblem{animation:carpan-loader-orbit 2.4s linear infinite;transform-origin:50% 50%;filter:drop-shadow(0 6px 18px rgba(12,18,28,.22))}
+.carpan-loading-emblem img{filter:brightness(0) invert(1)}
+.carpan-loading-placeholder{min-height:100dvh;background:radial-gradient(ellipse at 50% 45%,rgba(130,133,158,.06),transparent 60%),#08090b}
+@keyframes carpan-loader-orbit{to{transform:rotate(360deg)}}
+@keyframes carpan-loader-reveal{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.carpan-loading-overlay,.carpan-loading-emblem{animation:none}}

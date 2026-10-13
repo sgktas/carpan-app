@@ -1,0 +1,300 @@
+.po-main{max-width:1320px;padding:32px;margin:auto}.po-heading h1{font:600 30px 'Space Grotesk',sans-serif;margin:12px 0}.po-heading p{max-width:800px;color:var(--at-secondary);margin-bottom:25px}.po-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}.po-card{display:block;padding:20px!important}.po-card h2{background:none!important;border:0!important;padding:0!important;font-size:20px!important}.po-card span,.po-card p{color:var(--at-secondary)}.po-card strong{font-size:12px}.po-empty{padding:40px!important;text-align:center}.po-empty h2{justify-content:center;background:none!important;border:0!important}.po-empty p{color:var(--at-secondary)}.po-links{display:flex;gap:25px;margin:22px 0;font-size:12px}.po-links a{display:flex;gap:6px;align-items:center}.po-address{display:flex;gap:25px;justify-content:space-between;padding:24px;border-top:1px solid var(--at-border)}.po-address h3{font-size:19px;margin:8px 0}.po-address code{font-size:12px;overflow-wrap:anywhere}.po-address p{color:var(--at-secondary);max-width:700px;font-size:12px}.po-address small{display:block;color:var(--at-secondary);margin-top:8px}.po-actions{display:flex;flex-direction:column;gap:8px;min-width:170px}.po-actions .aw-button{justify-content:center}.po-admin{margin-top:25px}.po-admin form{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:15px}.po-admin label{display:grid;gap:6px;color:var(--at-secondary);font-size:12px}.po-admin input,.po-admin select,.po-admin textarea{background:var(--aw-bg);border:1px solid var(--at-border);padding:10px;color:var(--at-ink);border-radius:5px;min-width:0}.po-admin textarea{min-height:90px}.po-admin .po-checkbox{display:flex;align-items:start;gap:8px;grid-column:1/-1}.po-admin .po-checkbox input{margin-top:3px}@media(max-width:650px){.po-main{padding:22px 16px}.po-address{flex-direction:column;padding:18px}.po-actions{flex-direction:row;flex-wrap:wrap}.po-admin form{grid-template-columns:1fr;padding:18px}.po-heading h1{font-size:25px}}
+.po-empty>svg{display:block;margin:0 auto 18px;color:#ac98ef}.po-empty .po-actions{flex-direction:row;justify-content:center;flex-wrap:wrap;margin-top:24px;gap:10px}.po-empty .po-actions .aw-button{flex:0 1 auto;padding:11px 18px}.po-empty p{max-width:640px;margin:12px auto}.po-empty h2{font-size:20px!important}@media(max-width:500px){.po-empty{padding:28px 18px!important}.po-empty .po-actions{flex-direction:column}.po-empty .po-actions .aw-button{width:100%}}
+
+/* Social discovery: evidence and project activity, on cinematic dark surfaces. */
+.po-catalog-toolbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 22px}.po-catalog-toolbar>div{display:flex;gap:8px;flex-wrap:wrap}.po-card-main{display:flex;flex-direction:column;flex:1}.po-card-save{display:flex;justify-content:flex-start;padding-top:18px}.po-save{white-space:nowrap}.po-links{align-items:center;flex-wrap:wrap}
+.carpan-project-research .po-main {
+  --cp-module-rgb: var(--cp-social-rgb, 94, 221, 178);
+  --at-accent: #95e8c8;
+  padding: 30px 32px 70px;
+}
+
+.carpan-project-research .po-heading {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 32px;
+  min-height: 209px;
+  border: 1px solid rgba(var(--cp-social-rgb, 94, 221, 178), .3);
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 5% 0%, #5eddb219, transparent 65%),
+    linear-gradient(120deg, #1c2521, #121918);
+  box-shadow: var(--cp-shadow, 0 16px 44px #0005), inset 0 1px 0 #ffffff09;
+  margin-bottom: 25px;
+}
+
+.carpan-project-research .po-heading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .72;
+  background:
+    linear-gradient(90deg, #15211cf5, #15211ce5 40%, #10151388),
+    url('/images/carpan-cinema-social-v2.webp') right 52% / auto 205% no-repeat;
+}
+
+.carpan-project-research .po-heading .aw-eyebrow {
+  color: #a0eacd;
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+
+.carpan-project-research .po-heading h1 {
+  font: 600 clamp(29px, 3.5vw, 42px)/1.14 'Space Grotesk', sans-serif;
+  letter-spacing: -.035em;
+  margin: 15px 0 14px;
+  max-width: 820px;
+  overflow-wrap: anywhere;
+}
+
+.carpan-project-research .po-heading p {
+  max-width: 740px;
+  color: #c4d0ca;
+  font-size: 13px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.carpan-project-research .po-main > .aw-panel,
+.carpan-project-research .po-card {
+  border-radius: 15px;
+  border-color: var(--cp-line, #36363f);
+  background:
+    linear-gradient(150deg, #ffffff05, transparent 55%),
+    var(--cp-panel, #18181e);
+  box-shadow: var(--cp-shadow, 0 10px 30px #0003), inset 0 1px 0 #ffffff08;
+}
+
+.carpan-project-research .po-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 20px;
+}
+
+.carpan-project-research .po-card {
+  padding: 27px !important;
+  min-height: 223px;
+  display: flex;
+  flex-direction: column;
+  color: #f0f7f3;
+  text-decoration: none;
+  background:
+    radial-gradient(ellipse at 100% 0%, #5eddb217, transparent 65%),
+    linear-gradient(125deg, #202724, #151b18);
+  border-color: #43584d;
+  transition: border-color .25s var(--cp-ease, ease), box-shadow .25s;
+}
+
+.carpan-project-research .po-card:hover {
+  border-color: #74c9a8;
+  box-shadow: 0 16px 40px #0005, 0 0 30px #5eddb20c;
+}
+
+.carpan-project-research .po-card h2 {
+  font: 600 23px/1.25 'Space Grotesk', sans-serif !important;
+  letter-spacing: -.025em;
+  color: #f1f8f5;
+  margin-bottom: 10px;
+}
+
+.carpan-project-research .po-card > span,
+.carpan-project-research .po-card-main > span {
+  font: 11px 'JetBrains Mono', monospace;
+  color: #a8c2b6;
+  overflow-wrap: anywhere;
+}
+
+.carpan-project-research .po-card p {
+  font-size: 13px;
+  line-height: 1.75;
+  margin: 18px 0 25px;
+  color: #c0cbc5;
+}
+
+.carpan-project-research .po-card strong {
+  margin-top: auto;
+  color: #b1efd5;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.carpan-project-research .po-empty {
+  padding: 48px 32px !important;
+  background:
+    radial-gradient(ellipse at 50% 0%, #5eddb212, transparent 58%),
+    var(--cp-panel, #171a18);
+}
+
+.carpan-project-research .po-empty > svg {
+  width: 64px;
+  height: 64px;
+  padding: 16px;
+  box-sizing: content-box;
+  border: 1px solid #5eddb239;
+  border-radius: 22px;
+  color: #a5edcf;
+  background: linear-gradient(140deg, #5eddb21a, #5eddb205);
+  box-shadow: 0 0 30px #5eddb208;
+  margin-bottom: 24px;
+}
+
+.carpan-project-research .po-empty h2 {
+  color: #f0f7f4;
+  font-size: 22px !important;
+}
+
+.carpan-project-research .po-empty p {
+  color: #b7c7be;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.carpan-project-research .po-links {
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.carpan-project-research .po-links a {
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid #3b5146;
+  border-radius: 7px;
+  color: #b9efd5;
+  background: #1b2921;
+}
+
+.carpan-project-research .po-main > .aw-panel > h2 {
+  border-bottom-color: #3a443f;
+  background: linear-gradient(130deg, #5eddb208, transparent 65%);
+}
+
+.carpan-project-research .po-address {
+  padding: 27px;
+  border-color: #343d38;
+  gap: 28px;
+}
+
+.carpan-project-research .po-address h3 {
+  margin: 13px 0 12px;
+  font: 600 22px/1.25 'Space Grotesk', sans-serif;
+  letter-spacing: -.02em;
+  color: #f0f6f3;
+}
+
+.carpan-project-research .po-address code {
+  display: block;
+  padding: 11px 13px;
+  border: 1px solid #3f4f45;
+  border-radius: 7px;
+  background: #101812;
+  color: #d4e9dc;
+  font-size: 11px;
+}
+
+.carpan-project-research .po-address p {
+  color: #b5c7bc;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 15px 0;
+}
+
+.carpan-project-research .po-address small {
+  color: #9aaea1;
+}
+
+.carpan-project-research .po-actions {
+  min-width: 180px;
+}
+
+.carpan-project-research .po-main .aw-button {
+  min-height: 39px;
+  border-radius: 8px;
+  border-color: #466152;
+  color: #c9edd9;
+  background: linear-gradient(140deg, #263d30, #1a281f);
+  box-shadow: inset 0 1px 0 #ffffff06;
+}
+
+.carpan-project-research .po-main .aw-button.primary {
+  border-color: #a0f2d3;
+  color: #11271c;
+  background: linear-gradient(125deg, #baf5df, #7adbb5);
+  box-shadow: inset 0 1px 0 #ffffff60, 0 4px 18px #5eddb210;
+}
+
+.carpan-project-research .po-main .aw-button:hover:not(:disabled) {
+  border-color: #a0dec0;
+  filter: brightness(1.07);
+}
+
+.carpan-project-research .po-admin form {
+  padding: 27px;
+  gap: 18px;
+}
+
+.carpan-project-research .po-admin input:not([type=checkbox]),
+.carpan-project-research .po-admin select,
+.carpan-project-research .po-admin textarea {
+  min-height: 43px;
+  border-color: #4d6356;
+  border-radius: 7px;
+  background: #101812;
+  color: #edf6ef;
+  box-shadow: inset 0 2px 5px #0003;
+}
+
+.carpan-project-research .po-admin input::placeholder,
+.carpan-project-research .po-admin textarea::placeholder {
+  color: #99ac9e;
+}
+
+.carpan-project-research .po-main :focus-visible {
+  outline: 2px solid #98edce;
+  outline-offset: 3px;
+}
+
+@media (max-width: 650px) {
+  .carpan-project-research .po-main {
+    padding: 22px 16px 46px;
+  }
+  .carpan-project-research .po-heading {
+    padding: 26px 21px;
+    min-height: 200px;
+    border-radius: 14px;
+  }
+  .carpan-project-research .po-heading h1 {
+    font-size: 31px;
+  }
+  .carpan-project-research .po-card {
+    padding: 22px !important;
+  }
+  .carpan-project-research .po-address,
+  .carpan-project-research .po-admin form {
+    padding: 21px;
+    gap: 20px;
+  }
+  .carpan-project-research .po-address code {
+    font-size: 10px;
+  }
+  .carpan-project-research .po-actions {
+    min-width: 0;
+  }
+  .carpan-project-research .po-empty {
+    padding: 34px 21px !important;
+  }
+  .carpan-project-research .po-empty > svg {
+    width: 40px;
+    height: 40px;
+    padding: 15px;
+    border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carpan-project-research .po-card {
+    transition: none;
+  }
+}

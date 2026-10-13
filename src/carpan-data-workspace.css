@@ -1,0 +1,240 @@
+/* Operational modules share one neutral canvas. Marketing/auth keep their own scenes. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 {
+  --ws-bg:#0b0c0f; --ws-card:#151619; --ws-card-raised:#1e2025;
+  --ws-input:#101114; --ws-border:#33363d; --ws-line:#272a30;
+  --ws-text:#f5f5f7; --ws-muted:#bcbec7; --ws-faint:#989ba7;
+  --ws-accent:#8cbbff; --ws-action:#b6d3ff; --ws-active:#1e2531;
+  --ws-success:#91dfb5;
+  --bg:var(--ws-bg); --surface:var(--ws-card); --surface-strong:var(--ws-card-raised);
+  --surface-muted:var(--ws-input); --ink:var(--ws-text); --ink-2:#e2e8f2;
+  --muted:var(--ws-muted); --subtle:var(--ws-faint);
+  --border:var(--ws-line); --border-strong:var(--ws-border);
+  --accent:var(--ws-accent); --accent-hover:#bdd8ff;
+  --at-bg:var(--ws-bg); --aw-bg:var(--ws-bg); --at-surface:var(--ws-card);
+  --at-subtle:var(--ws-card-raised); --at-border:var(--ws-border);
+  --at-ink:var(--ws-text); --at-secondary:var(--ws-muted);
+  --at-accent:var(--ws-accent); --at-hover:var(--ws-card-raised);
+  --aw-panel:var(--ws-card); --aw-line:var(--ws-border); --aw-text:var(--ws-text);
+  --aw-muted:var(--ws-muted); --aw-purple:var(--ws-accent); --aw-accent:var(--ws-accent);
+  --cp-panel:var(--ws-card); --cp-panel-raised:var(--ws-card-raised);
+  --cp-line:var(--ws-line); --cp-line-strong:var(--ws-border); --cp-shadow:none;
+  background:var(--ws-bg); color:var(--ws-text); min-height:100dvh;
+}
+html .carpan-data-workspace :is(button,input,select,textarea,summary,a):focus-visible {
+  outline:2px solid var(--ws-accent); outline-offset:3px;
+}
+html .carpan-data-workspace :is(input,select,textarea) { accent-color:var(--ws-accent); }
+html .carpan-data-workspace :is(input,textarea)::placeholder { color:var(--ws-faint); opacity:1; }
+html .carpan-data-workspace .em-asset-card:disabled { opacity:1; }
+/* The same navigation state in each workspace; no module-colored glow. */
+html .carpan-data-workspace .at-header { --cp-module-rgb:140,187,255; background:#0d0e11; box-shadow:none; border-color:var(--ws-line); }
+html .carpan-data-workspace .at-header .at-navigation>a[aria-current=page]:after { background:var(--ws-accent); box-shadow:none; }
+html .carpan-data-workspace .at-header .at-header-search { background:var(--ws-input); border-color:var(--ws-border); box-shadow:none; }
+html .carpan-data-workspace .at-header .at-header-search input { color:var(--ws-text)!important; }
+html .carpan-data-workspace .carpan-header-controls .carpan-register-button { background:var(--ws-action); color:#101c30; border-color:var(--ws-action); box-shadow:none; }
+html .carpan-data-workspace .carpan-header-controls .carpan-register-button:hover { background:#c2dcff; }
+html .carpan-data-workspace :is(.carpan-signin-button,.carpan-account-button) { background:var(--ws-card); border-color:var(--ws-border); box-shadow:none; }
+html .carpan-data-workspace :is(.carpan-control-panel,.at-menu) { background:var(--ws-card); border-color:var(--ws-border); box-shadow:0 12px 24px #0005; }
+html .carpan-data-workspace .carpan-avatar { background:var(--ws-active); border-color:var(--ws-border); color:var(--ws-text); box-shadow:none; }
+/* Solid panels with a visible boundary, including Terminal detail modules. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-panel,.at-verified-discovery,.at-entity-card,.at-contract-card,.at-transaction-detail,.at-label-module,.at-token-module,.aw-panel,.aw-profile,.arc-contract-hero,.arc-radar-board,.arc-radar-card,.br-research,.po-heading,.po-panel,.po-project-card) {
+  background:var(--ws-card); border-color:var(--ws-border); box-shadow:none;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-entity-card,.at-contract-card):hover { background:var(--ws-card-raised); border-color:var(--ws-accent); box-shadow:none; transform:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-entity-card:before,.at-card-stripe,.at-contract-art,.aw-signal-art,.at-entity-art) { display:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-entity-copy h3,.at-section-title h2,.at-entity-amount,.at-dossier-total strong,.at-contract-card h3,.aw-panel h2,.aw-identity h1) { color:var(--ws-text); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-entity-copy h3 svg { color:var(--ws-accent); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-source-tag,.at-volume-caption,.at-section-note,.at-contract-time,.at-dossier-address,.at-dossier-total>span,.at-dossier-chart-heading,.at-dossier-chart-range,.at-entity-bottom span,.at-contract-bottom span,.aw-muted,.aw-note,.aw-profile .aw-eyebrow,.aw-profile .aw-balance>span,.aw-table small) { color:var(--ws-muted); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-source-tag,.at-section-note,.at-dossier-chart-heading,.at-dossier-chart-range) { font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-dossier-chart,.aw-history,.aw-history-empty,.at-feed-empty,.arc-radar-empty,.arc-radar-login-prompt) { background:var(--ws-input); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-entity-bottom,.at-contract-bottom,.at-dossier-volume,.at-dossier-chart,.at-dossier-facts) { border-color:var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-tools,.at-feed-footer,.aw-panel h2,.aw-filters,.aw-chart-controls,.aw-transfer-tabs,.aw-pagination,.aw-source-details,.br-research h2) { background:var(--ws-card-raised); border-color:var(--ws-border); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-table,.aw-table) { color:var(--ws-text); font-size:12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-table th,.aw-table th) { background:var(--ws-card-raised); color:var(--ws-muted); border-color:var(--ws-border); font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-table td,.aw-table td) { border-color:var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-table,.aw-table) tbody tr:nth-child(odd) { background:var(--ws-card); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-table,.aw-table) tbody tr:nth-child(even) { background:#191b1f; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-table,.aw-table) tbody tr:hover { background:#24262c; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .aw-table tr.selected { background:var(--ws-active); box-shadow:inset 3px 0 var(--ws-accent); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-button,.at-module-search button,.cp-button--ghost) { background:var(--ws-card-raised); color:var(--ws-text); border-color:var(--ws-border); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-button,.at-module-search button,.cp-button--ghost):not(:disabled):hover { background:#292c33; border-color:#686d7a; box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-button.primary,.at-module-search button,.cp-button--primary,.cp-wallet-connect) { background:var(--ws-action); color:#101c30; border-color:var(--ws-action); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-button.primary,.at-module-search button,.cp-button--primary,.cp-wallet-connect):not(:disabled):hover { background:#c2dcff; border-color:#c2dcff; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-ranking button,.aw-chart-controls button,.aw-transfer-tabs button,.ab-environment button)[aria-pressed=true] { background:var(--ws-active); border-color:var(--ws-accent); color:#d8e8ff; box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-filter-chip,.at-filter-chip.blue,.aw-chip,.ab-network) { background:var(--ws-active); border-color:#52769e; color:#d8e8ff; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-avatar,.aw-empty-icon,.cp-empty-icon,.at-label-module>svg) { background:var(--ws-card-raised); border-color:var(--ws-border); color:var(--ws-accent); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-panel input,.aw-panel select,.aw-panel textarea,.at-discovery-filters select,.at-module-search,.af-search,.af-toolbar input,.af-toolbar select,.cx-network-controls,.cx-search,.cx-root input,.cx-root select) { background:var(--ws-input); border-color:var(--ws-border); color:var(--ws-text); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-module-search input,.af-search input,.cx-search input) { background:transparent; border:0; box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-evidence,.at-transaction-detail code,.aw-evidence>code,.ab-preflight,.ab-steps li,.br-records article,.br-journey li,.cx-evidence,.cx-detail>div,.af-detail,.af-canvas,.af-stats,.at-alert-rules article,.at-alert-notifications article) { background:var(--ws-card); border-color:var(--ws-border); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-alert-notifications article.unread { background:var(--ws-active); border-left-color:var(--ws-accent); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-review,.ab-form,.ab-history,.ab-wallet,.ab-amount-summary,.ab-route label,.ab-form>fieldset>label,.ab-quote-clock) { background:var(--ws-card); border-color:var(--ws-border); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-heading { padding:0 0 20px; border:0; border-bottom:1px solid var(--ws-border); border-radius:0; background:transparent; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-heading h1 { font-size:30px; color:var(--ws-text); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-heading p,.ab-form label,.ab-review dt,.br-research p,.br-journey span,.cx-kicker,.aw-stats span) { color:var(--ws-muted); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-wallet strong,.ab-review dd,.ab-preflight strong,.ab-preflight h2) { color:var(--ws-text); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-preflight li span,.ab-preflight small) { color:var(--ws-muted); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-kicker { color:var(--ws-accent); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-primary { background:var(--ws-action)!important; color:#101c30!important; border-color:var(--ws-action); box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .af-graph { background:var(--ws-input); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.af-node.selected,.af-node:focus,.af-node:hover) rect { stroke:var(--ws-accent); }
+/* Collection/reconciliation children use the same Finance surfaces. */
+html .carpan-data-workspace :is(.cc-workflow,.cc-amount,.cc-recipient,.cc-proofs article,.cc-proof-empty,.cc-payment>.cf-panel,.cc-inbox-suggestion) { background:var(--ws-card); border-color:var(--ws-border); box-shadow:none; }
+html .carpan-data-workspace :is(.cc-workflow b,.cc-request[aria-pressed=true]) { background:var(--ws-active); color:var(--ws-text); border-color:var(--ws-border); }
+html .carpan-data-workspace .cc-request[aria-pressed=true] { box-shadow:inset 3px 0 var(--ws-accent); }
+html .carpan-data-workspace .cc-request:not(:disabled):hover { background:var(--ws-card-raised); border-color:var(--ws-border); }
+html .carpan-data-workspace :is(.cc-request strong,.cc-request b,.cc-amount>strong,.cc-proofs strong,.cc-meta b,.cc-meta a,.cc-payment dd,.cc-inbox-evidence strong,.cc-audit strong) { color:var(--ws-text); }
+html .carpan-data-workspace :is(.cc-workflow>div,.cc-request p,.cc-request small,.cc-amount>span,.cc-meta,.cc-main label,.cc-payment label,.cc-cancel,.cc-recipient small,.cc-create footer p,.cc-payment>p,.cc-explain,.cc-inbox-match p) { color:var(--ws-muted); }
+html .carpan-data-workspace :is(.cc-share a,.cc-proof-facts a,.cc-amount small,.cc-payment>a,.cc-inbox-evidence a,.cc-inbox-evidence strong small,.cc-audit a,.cc-cancel summary,.cc-audit summary) { color:var(--ws-accent); }
+html .carpan-data-workspace .cc-status:not(.paid,.accepted,.review,.partial,.overpaid,.cancelled,.rejected) { background:var(--ws-active); color:#d8e8ff; border-color:#52769e; }
+html .carpan-data-workspace .cc-audit li { border-left-color:var(--ws-border); }
+html .carpan-data-workspace .at-discovery-grid { margin-top:28px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-dossier-facts span,.at-dossier-volume,.at-dossier-chart-heading small,.at-dossier-total>span) { font-size:11px; color:var(--ws-muted); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-total small { font-size:12px; color:var(--ws-muted); }
+@media(prefers-reduced-motion:reduce) { html .carpan-data-workspace :is(.at-entity-card,.at-contract-card,.aw-button) { transition:none; } }
+
+/* Premium workspace rhythm: typography and depth without category imagery. */
+html .carpan-data-workspace {
+  --ws-card-shadow:inset 0 1px 0 #ffffff06,0 8px 20px #00000024;
+}
+html .carpan-data-workspace :is(.cf-main,.eco-main,.at-root-main,.aw-main) {
+  max-width:1480px; padding-inline:32px;
+}
+html .carpan-data-workspace :is(.cf-start-heading,.cf-top,.eco-workspace-heading) {
+  padding-top:8px; padding-bottom:8px;
+}
+html .carpan-data-workspace :is(.cf-start-heading h1,.cf-top h1,.eco-workspace-heading h1) {
+  font-size:32px; font-weight:600; line-height:1.2; letter-spacing:-.8px;
+}
+html .carpan-data-workspace :is(.cf-start-heading p,.cf-top p,.eco-workspace-heading p) {
+  font-size:14px; line-height:1.75; max-width:760px;
+}
+html .carpan-data-workspace :is(.cf-start-main,.cf-start-steps,.cf-start-next>a,.cf-panel,.cf-kpi,.ecp-project-card,.eco-panel,.eu-panel,.em-market-workspace,.em-asset-card,.em-feature,.em-evidence) {
+  box-shadow:var(--ws-card-shadow);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-panel,.at-entity-card,.at-contract-card,.aw-panel,.aw-profile),
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module :is(.ab-form,.ab-review,.ab-history) {
+  box-shadow:var(--ws-card-shadow);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-full-address,.aw-full-address a) { color:var(--ws-accent)!important; }
+html .carpan-data-workspace :is(.cf-start-next>a,.ecp-project-card,.em-asset-card,.eco-bookmark,.em-button,.em-navigation button,.ecp-categories button,.eco-submit) {
+  transition:background-color 160ms ease,border-color 160ms ease,box-shadow 160ms ease;
+}
+html .carpan-data-workspace :is(.cf-start-next>a,.ecp-project-card,.em-asset-card):hover {
+  box-shadow:inset 0 1px 0 #ffffff0d,0 8px 22px #00000020;
+}
+html .carpan-data-workspace :is(.eco-heading-note,.eco-kicker,.cf-eyebrow,.ecp-eyebrow,.em-eyebrow,.em-chart-label,.em-source,.em-source time,.em-note,.em-asset-card small,.em-asset-card footer>span:not(.em-change),.em-directory-toolbar>div>span,.em-chart-panel>.em-source time,.em-evidence a,.em-token-proof small,.em-facts dd>span,.cf-start-boundary p,.cf-chart-foot,.cf-coverage,.cf-legend) {
+  font-size:11px; line-height:1.6;
+}
+html .carpan-data-workspace :is(.em-market-heading p,.em-feature-aside .em-note,.ecp-project-description,.cf-start-next p) {
+  font-size:13px; line-height:1.75;
+}
+html .carpan-data-workspace :is(.em-stats span,.em-feature-aside .em-stats span,.em-chart-reading>time,.em-chart-reading dt,.em-chart-reading dd,.em-chart-inspection,.em-chart-inspection kbd,.em-chart-inspection>div>span) {
+  font-size:11px; line-height:1.6;
+}
+html .carpan-data-workspace :is(.em-navigation button,.ecp-categories button,.em-ranges button,.em-token-side button,.em-chart-mode button,.em-button,.eco-submit) {
+  min-height:38px; font-size:12px;
+}
+html .carpan-data-workspace :is(.cf-primary,.em-button,.eco-submit,.cp-button--primary) {
+  font-weight:600;
+}
+html .carpan-data-workspace :is(.cf-kpi strong,.cf-table td,.em-asset-price,.em-feature-price>strong,.em-head-price>strong,.em-market-table td,.em-facts dd,.at-feed-table td,.at-dossier-total strong,.ab-preflight strong) {
+  font-variant-numeric:tabular-nums;
+}
+html .carpan-data-workspace .em-market-table th { font-size:11px; letter-spacing:.03em; }
+html .carpan-data-workspace .em-market-table td { font-size:13px; }
+html .carpan-data-workspace :is(.eco-bookmark,.em-refresh,.em-chart-inspection button) {
+  min-width:36px; min-height:36px;
+}
+html .carpan-data-workspace .em-feature-aside .em-button { float:none; }
+@media(max-width:760px) {
+  html .carpan-data-workspace :is(.cf-main,.eco-main,.at-root-main,.aw-main) { padding-inline:16px; }
+  html .carpan-data-workspace :is(.cf-start-heading h1,.cf-top h1,.eco-workspace-heading h1) { font-size:28px; }
+  html .carpan-data-workspace :is(.cf-start-heading p,.cf-top p,.eco-workspace-heading p) { font-size:13px; }
+  html .carpan-data-workspace .em-chart-reading { min-height:106px; }
+  html .carpan-data-workspace .em-feature-aside .em-note { max-width:100%; }
+  html .carpan-data-workspace .em-feature-aside .em-button { display:inline-flex; width:100%; margin-top:14px; }
+  html .carpan-data-workspace .em-feature-aside .em-stats { grid-template-columns:1fr; gap:0; }
+  html .carpan-data-workspace .em-feature-aside .em-stats>div { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid var(--ws-line); }
+  html .carpan-data-workspace .em-feature-aside .em-stats strong { margin:0; font-size:23px; }
+  html .carpan-data-workspace .em-chart-inspection { flex-wrap:wrap; }
+}
+@media(pointer:coarse) {
+  html .carpan-data-workspace :is(.eco-bookmark,.em-refresh,.em-button,.em-navigation button,.ecp-categories button,.eco-submit,.em-ranges button,.em-token-side button,.em-chart-mode button,.em-chart-inspection button) { min-height:44px; min-width:44px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html .carpan-data-workspace :is(.cf-start-next>a,.ecp-project-card,.em-asset-card,.eco-bookmark,.em-button,.em-navigation button,.ecp-categories button,.eco-submit) { transition:none; }
+}
+
+/* Matte charcoal hierarchy: canvas, cards and recessed evidence surfaces. */
+html .carpan-data-workspace :is(.em-market-workspace,.ecp-directory) {
+  background:transparent; border:0; box-shadow:none; padding:0;
+}
+html .carpan-data-workspace :is(.em-asset-card,.ecp-directory .ecp-project-card) {
+  background:var(--ws-card); border-color:var(--ws-border);
+}
+html .carpan-data-workspace .em-asset-card.is-selected {
+  background:#191d25; border-color:#7087a8; box-shadow:inset 0 2px 0 #b6d3ff;
+}
+html .carpan-data-workspace .em-asset-card:disabled {
+  background:#111215; border-color:var(--ws-line); border-style:dashed; opacity:1;
+}
+html .carpan-data-workspace :is(.em-asset-card,.ecp-project-card,.cf-start-next>a):not(:disabled):hover {
+  background:#1d1f24; border-color:#626772; box-shadow:inset 0 1px 0 #ffffff0b,0 10px 24px #0000002b;
+}
+html .carpan-data-workspace :is(.em-market-feature,.em-chart-panel,.em-evidence,.er-panel,.eu-panel) {
+  border-color:var(--ws-border); box-shadow:var(--ws-card-shadow);
+}
+html .carpan-data-workspace :is(.em-feature-heading,.em-feature-aside) {
+  background:var(--ws-card);
+}
+html .carpan-data-workspace :is(.em-token-badge,.cf-kpi i,.eco-bookmark,.eco-avatar) {
+  background:#22242a; border-color:var(--ws-border);
+}
+html .carpan-data-workspace :is(.em-refresh,.em-button,.eco-submit) {
+  background:#20232a; color:var(--ws-text); border-color:#424751;
+}
+html .carpan-data-workspace :is(.em-refresh,.em-button,.eco-submit):not(:disabled):hover {
+  background:#292d35; color:#fff; border-color:#7a8ba5;
+}
+html .carpan-data-workspace :is(.em-navigation button,.ecp-categories button)[aria-pressed=true] {
+  background:#20242d; color:var(--ws-text); border-color:#7087a8; box-shadow:inset 0 1px 0 #ffffff08;
+}
+html .carpan-data-workspace :is(.em-market-table,.ecp-project-table) tr.is-selected td {
+  background:#1b2029;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-entity-card,.at-contract-card):hover {
+  background:#1d1f24; border-color:#626772; box-shadow:var(--ws-card-shadow);
+}
+/* Research and payment children share the same material; state colors stay meaningful. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.arc-contract-panel,.arc-contract-activity,.arc-contract-project,.arc-contract-no-project,.df-controls,.df-evidence-address,.cx-nft-card,.ab-empty,.ab-recovery-gas,.cc-checkout-review,.cc-payment-evidence) {
+  background:var(--ws-card); border-color:var(--ws-border); box-shadow:var(--ws-card-shadow);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .po-heading::after { display:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.po-links a,.po-address code,.df-controls input,.df-controls select,.cx-tabs button,.sab-wallets code) {
+  background:var(--ws-input); border-color:var(--ws-border); color:var(--ws-text);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cx-tabs button[aria-pressed=true] {
+  background:var(--ws-active); border-color:#7087a8; color:var(--ws-text);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.df-evidence-address button,.arc-contract-event-icon,.po-empty>svg) {
+  background:var(--ws-card-raised); border-color:var(--ws-border); color:var(--ws-muted);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module .ab-form :is(input,select) {
+  background:var(--ws-input); border-color:var(--ws-border); color:var(--ws-text); box-shadow:none;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module .ab-form :is(input,select):hover:not(:disabled) { border-color:#626772; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module .ab-form :is(input,select):focus {
+  border-color:var(--ws-accent); box-shadow:0 0 0 2px #8cbbff18;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-primary,.cc-pay-button) {
+  background:var(--ws-action)!important; border-color:var(--ws-action)!important; color:#111923!important; box-shadow:none;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-primary,.cc-pay-button):hover:not(:disabled) {
+  background:#d0e3ff!important; border-color:#d0e3ff!important; color:#111923!important; box-shadow:none;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.cc-network-summary,.cc-checkout-title span,.cc-payment-evidence a,.sab-wallets p) { color:var(--ws-muted)!important; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.cc-checkout,.cc-manual-payment,.sab-wallets>div) { border-color:var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module :is(.ab-review,.ab-history)>h2,
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module .ab-preflight h2 {
+  background:transparent; border-color:var(--ws-line); box-shadow:none;
+}

@@ -1,0 +1,24 @@
+/* Compact network indicator; the original asset keeps its aspect ratio and colors. */
+html .arc-network-icon {
+  box-sizing: content-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 8px;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+html .arc-network-icon > img {
+  display: block;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  max-width: none;
+  max-height: none;
+}

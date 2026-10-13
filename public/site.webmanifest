@@ -1,0 +1,28 @@
+{
+  "name": "Carpan",
+  "short_name": "Carpan",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/carpan-app-icon-192.png?v=20261010-01",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/carpan-app-icon-512.png?v=20261010-01",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/carpan-app-icon-maskable-512.png?v=20261010-01",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

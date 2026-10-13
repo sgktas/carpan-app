@@ -1,0 +1,23 @@
+[Unit]
+Description=Carpan Onchain API and alert worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=carpan
+Group=carpan
+WorkingDirectory=/opt/carpan/current
+EnvironmentFile=/opt/carpan/shared/production.env
+ExecStart=/usr/local/bin/bun run server/index.ts
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/carpan/shared
+
+[Install]
+WantedBy=multi-user.target

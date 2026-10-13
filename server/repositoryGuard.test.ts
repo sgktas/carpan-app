@@ -1,0 +1,8 @@
+import {test,expect} from 'bun:test';
+import {mkdtempSync,writeFileSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {checkRepositoryFiles} from '../scripts/repository-guard.mjs';
+import {initialLanguage} from '../src/language-preference';
+test('publication guard rejects private data, key material and outside paths without printing credential values',()=>{const root=mkdtempSync(join(tmpdir(),'carpan-source-'));try{writeFileSync(join(root,'source.ts'),'export const amount=1;');expect(checkRepositoryFiles(root,['source.ts']).ok).toBe(true);for(const name of ['.env','user.db-wal','backup.tar.gz','../escape'])expect(()=>checkRepositoryFiles(root,[name])).toThrow('private/runtime');writeFileSync(join(root,'source.ts'),'-----BEGIN '+'OPENSSH PRIVATE KEY-----');expect(()=>checkRepositoryFiles(root,['source.ts'])).toThrow('private key');writeFileSync(join(root,'source.ts'),'const api='+JSON.stringify('ghp_'+'a'.repeat(32)));let result='';try{checkRepositoryFiles(root,['source.ts']);}catch(e){result=String(e);}expect(result).toContain('credential-shaped');expect(result).not.toContain('a'.repeat(32));}finally{rmSync(root,{recursive:true,force:true});}});
+test('English is the first-visit default; explicit links and saved user choices take precedence',()=>{expect(initialLanguage(null,null)).toBe('en');expect(initialLanguage('invalid','invalid')).toBe('en');expect(initialLanguage('tr',null)).toBe('tr');expect(initialLanguage('en',null)).toBe('en');expect(initialLanguage('tr','en')).toBe('en');expect(initialLanguage('en','tr')).toBe('tr');});

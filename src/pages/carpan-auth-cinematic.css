@@ -1,0 +1,439 @@
+/* One continuous cinematic background, with the verified form at right. */
+.carpan-login-dialog.carpan-auth-screen.carpan-auth-cinematic {
+  --auth-frame: min(100vw, 1200px);
+  --auth-scene-center: calc(50vw - var(--auth-frame) / 4);
+  padding: 0;
+  color: #f6f3fb;
+  background: #09090d;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.carpan-auth-cinematic .carpan-auth-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  min-width: 0;
+  height: 100svh;
+  isolation: isolate;
+  pointer-events: none;
+  overflow: hidden;
+  background: #09090d url('/images/carpan-auth-stage-v5.webp') center / cover no-repeat;
+}
+
+.carpan-auth-cinematic .carpan-auth-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  left: calc(var(--auth-scene-center) - 21vw);
+  right: auto;
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000);
+  opacity: 0;
+  transition: opacity 800ms ease;
+  animation: carpan-auth-camera 28s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.carpan-auth-cinematic .is-art-loaded .carpan-auth-art {
+  opacity: 1;
+}
+
+.carpan-auth-cinematic .carpan-auth-scene-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 28% 66% at calc(50% + min(25vw, 300px)) 50%, #09090de6, #09090dbb 36%, #09090d55 65%, transparent),
+    linear-gradient(90deg, transparent 25%, #09090d26 55%, #09090d66),
+    linear-gradient(0deg, #09090dcc, transparent 28%, transparent 80%, #09090d55);
+}
+
+.carpan-auth-cinematic .carpan-auth-scene-signature {
+  position: absolute;
+  inset: auto auto 35px var(--auth-scene-center);
+  width: min(440px, 46vw);
+  translate: -50% 0;
+  text-align: center;
+}
+
+.carpan-auth-cinematic .carpan-auth-scene-signature > span {
+  display: block;
+  color: #eee4fb;
+  font: 500 clamp(17px, 1.7vw, 24px)/1.4 'Space Grotesk', sans-serif;
+  letter-spacing: -.025em;
+}
+
+.carpan-auth-cinematic .carpan-auth-scene-signature small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  margin-top: 9px;
+  color: #b7a5ce;
+  font: 500 10px/1.4 'DM Sans', sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.carpan-auth-cinematic .carpan-auth-scene-signature i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #b597ff;
+}
+
+.carpan-auth-cinematic .carpan-auth-light {
+  position: absolute;
+  left: 5%;
+  top: 63%;
+  width: 28%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d7beff88, transparent);
+  box-shadow: 0 0 18px 4px #b999ff25;
+  transform: rotate(-16deg);
+  opacity: .26;
+  animation: carpan-auth-light 13s ease-in-out infinite alternate;
+}
+
+.carpan-auth-cinematic .carpan-auth-light--two {
+  left: 72%;
+  top: 38%;
+  width: 24%;
+  animation-delay: -7s;
+  opacity: .18;
+  transform: rotate(14deg);
+}
+
+.carpan-auth-cinematic .carpan-auth-scene:not(.is-art-loaded) .carpan-auth-light {
+  visibility: hidden;
+}
+
+.carpan-auth-cinematic .carpan-auth-shell {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100svh;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 1fr);
+  align-items: stretch;
+}
+
+.carpan-auth-cinematic .carpan-auth-pane {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  min-width: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 70px 40px 40px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.carpan-auth-cinematic .carpan-auth-pane::before {
+  content: none;
+}
+
+.carpan-auth-cinematic .carpan-auth-topbar {
+  position: fixed;
+  inset: 18px 28px auto;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  pointer-events: none;
+}
+
+.carpan-auth-cinematic .carpan-auth-back,
+.carpan-auth-cinematic .carpan-auth-motion {
+  position: static;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid #a99abb30;
+  border-radius: 8px;
+  background: #11111865;
+  color: #d6ccdf;
+  backdrop-filter: blur(12px);
+}
+
+.carpan-auth-cinematic .carpan-auth-back {
+  gap: 8px;
+  padding: 9px 12px;
+  font-size: 12px!important;
+}
+
+.carpan-auth-cinematic .carpan-auth-motion {
+  width: 44px;
+  flex-shrink: 0;
+}
+
+.carpan-auth-cinematic .carpan-auth-back:hover:not(:disabled),
+.carpan-auth-cinematic .carpan-auth-motion:hover {
+  border-color: #c3abea;
+  background: #29223390;
+  color: #fff;
+}
+
+.carpan-auth-cinematic .carpan-auth-layout {
+  width: min(384px, 100%);
+  min-width: 0;
+}
+
+.carpan-auth-cinematic .carpan-auth-form {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.carpan-auth-cinematic .carpan-auth-form::before {
+  content: none;
+}
+
+
+
+
+
+.carpan-auth-cinematic .carpan-auth-form-intro {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.carpan-auth-cinematic .carpan-auth-form h1 {
+  margin: 0 0 8px;
+  color: #f9f6ff;
+  font: 600 28px/1.2 'Space Grotesk', sans-serif;
+  letter-spacing: -.035em;
+  text-align: center;
+}
+
+.carpan-auth-cinematic .carpan-auth-form-intro > p {
+  margin: 0 auto;
+  max-width: 350px;
+  color: #ccc4d9;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.carpan-auth-cinematic .carpan-auth-provider {
+  position: relative;
+  min-height: 44px;
+  margin: 0 0 8px;
+  padding: 9px 12px;
+  border-color: #746581;
+  background: linear-gradient(135deg, #302736dc, #211c2ae0);
+  border-radius: 8px;
+  font-size: 14px!important;
+}
+
+.carpan-auth-cinematic .carpan-auth-provider:disabled {
+  background: #17151dd9;
+  color: #b7afc3;
+  border-color: #51475e;
+}
+
+.carpan-auth-cinematic .carpan-auth-provider small {
+  position: absolute;
+  right: 10px;
+  margin: 0;
+  font-size: 10px;
+  color: #b8adc9;
+  padding: 2px 5px;
+  border-color: #51475d;
+}
+
+.carpan-auth-cinematic .carpan-auth-wallet-row {
+  position: relative;
+  display: block;
+}
+
+.carpan-auth-cinematic .carpan-auth-wallet-row .carpan-auth-provider {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.carpan-auth-cinematic .carpan-auth-wallet-row:has(.carpan-login-change) .carpan-auth-provider {
+  padding-inline: 56px;
+}
+
+.carpan-auth-cinematic .carpan-auth-wallet-row .carpan-login-change {
+  position: absolute;
+  inset: 0 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+  border: 0;
+  border-left: 1px solid #746581;
+  border-radius: 0 8px 8px 0;
+  color: #dccbff;
+  background: transparent;
+}
+
+.carpan-auth-cinematic .carpan-auth-wallet-row .carpan-login-change:hover {
+  color: #fff;
+  border-color: #c3abea;
+  background: #392b4b;
+}
+
+.carpan-auth-cinematic .carpan-auth-wallet-row + .carpan-auth-provider {
+  margin-top: 8px;
+}
+
+.carpan-auth-cinematic .carpan-auth-divider {
+  margin: 12px 0;
+  color: #b9adc9;
+  line-height: 16px;
+}
+
+.carpan-auth-cinematic .carpan-auth-divider::before,
+.carpan-auth-cinematic .carpan-auth-divider::after {
+  background: #8c7e9b55;
+}
+
+.carpan-auth-cinematic .carpan-auth-email label {
+  margin-bottom: 6px;
+  color: #d6cce2;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.carpan-auth-cinematic .carpan-auth-email input {
+  height: 44px;
+  background: #101017e8;
+  border-color: #655970;
+  color: #f5f0fc;
+}
+
+.carpan-auth-cinematic .carpan-auth-email input::placeholder {
+  color: #aaa0b8;
+}
+
+.carpan-auth-cinematic .carpan-auth-hint {
+  margin: 6px 0 10px;
+  color: #bdb1cc;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.carpan-auth-cinematic .carpan-auth-submit {
+  min-height: 44px;
+  padding: 9px 12px;
+}
+
+.carpan-auth-cinematic .carpan-auth-submit:disabled {
+  background: #1c1823de;
+  color: #aaa0ba;
+  border-color: #51465e;
+}
+
+.carpan-auth-cinematic .carpan-auth-switch {
+  min-height: 44px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #c1b5cf;
+}
+
+.carpan-auth-cinematic .carpan-auth-switch button {
+  min-height: 44px;
+  color: #d7c2ff;
+  font-size: 13px;
+}
+
+.carpan-auth-cinematic .carpan-auth-note {
+  margin: 1px 0 0;
+  color: #b9adc8;
+  font-size: 12px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.carpan-auth-cinematic .carpan-auth-form .carpan-login-error {
+  margin-bottom: 12px;
+  padding: 12px;
+  font-size: 13px;
+}
+
+.carpan-auth-cinematic.is-motion-paused .carpan-auth-art,
+.carpan-auth-cinematic.is-motion-paused .carpan-auth-light {
+  animation-play-state: paused;
+}
+
+@keyframes carpan-auth-camera {
+  from { transform: scale(1); }
+  to { transform: scale(1.025); }
+}
+
+@keyframes carpan-auth-light {
+  from { opacity: .08; filter: blur(0); }
+  to { opacity: .3; filter: blur(1px); }
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .carpan-auth-cinematic .carpan-auth-shell { grid-template-columns: minmax(0, 1fr) minmax(410px, 1fr); }
+  .carpan-auth-cinematic .carpan-auth-pane { padding-inline: 24px; }
+  .carpan-auth-cinematic .carpan-auth-scene-signature { bottom: calc(50% - 22vw); }
+  .carpan-auth-cinematic .carpan-auth-art {
+    top: 50%;
+    bottom: auto;
+    height: auto;
+    aspect-ratio: 1672 / 941;
+    translate: 0 -50%;
+    object-fit: contain;
+    mask-image: linear-gradient(0deg, transparent, #000 18%, #000 82%, transparent), linear-gradient(90deg, transparent, #000 4%, #000);
+    mask-composite: intersect;
+  }
+}
+
+@media (max-width: 900px) {
+  .carpan-auth-cinematic .carpan-auth-shell { grid-template-columns: minmax(0, 1fr); }
+  .carpan-auth-cinematic .carpan-auth-scene-signature { display: none; }
+  .carpan-auth-cinematic .carpan-auth-art { left: 0; object-position: 22% 50%; mask-image: none; }
+  .carpan-auth-cinematic .carpan-auth-pane { grid-column: 1; padding: 76px 24px 32px; }
+  .carpan-auth-cinematic .carpan-auth-topbar { inset: 16px 18px auto; }
+  .carpan-auth-cinematic .carpan-auth-scene-shade {
+    background: radial-gradient(ellipse at 50% 48%, #09090dbb, #09090d77 65%, #09090d55), linear-gradient(0deg, #09090dbb, transparent 50%, #09090d55);
+  }
+}
+
+@media (max-width: 600px) {
+  .carpan-auth-cinematic .carpan-auth-provider { font-size: 13px!important; gap: 8px; }
+  .carpan-auth-cinematic .carpan-auth-provider small { right: 8px; font-size: 9px; padding-inline: 3px; }
+}
+
+@media (max-height: 700px) and (min-width: 901px) {
+  .carpan-auth-cinematic .carpan-auth-pane { padding-block: 70px 24px; }
+  
+  .carpan-auth-cinematic .carpan-auth-form-intro { margin-bottom: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carpan-auth-cinematic .carpan-auth-art,
+  .carpan-auth-cinematic .carpan-auth-light { animation: none; }
+  .carpan-auth-cinematic .carpan-auth-art { transition: none; }
+}

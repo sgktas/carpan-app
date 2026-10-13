@@ -1,0 +1,172 @@
+/* Shared material, optical hierarchy and ledger finish. No marketing scene in workspaces. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 {
+  --ws-bg:#08090b; --ws-card:#111215; --ws-card-raised:#1a1c20;
+  --ws-input:#0b0c0e; --ws-border:#ffffff1a; --ws-line:#ffffff0e;
+  --ws-text:#f7f8fa; --ws-muted:#b6bac5; --ws-faint:#9197a4;
+  --ws-material:linear-gradient(135deg,#ffffff05,transparent 42%),linear-gradient(180deg,#151619,#101114);
+  --ws-card-shadow:inset 0 1px 0 #ffffff08,inset 0 -1px 0 #00000050,0 12px 32px #00000038;
+  --ws-radius:18px;
+  background:var(--ws-bg);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.cf-panel,.cf-kpi,.cf-start-main,.cf-start-steps,.cf-start-next>a,.at-feed-panel,.at-entity-card,.at-contract-card,.at-verified-discovery,.aw-panel,.aw-profile,.at-label-module,.at-token-module,.arc-contract-hero,.arc-contract-panel,.arc-contract-activity,.arc-contract-project,.br-research,.po-panel,.po-project-card,.cc-workflow,.cc-checkout-review,.cc-payment-evidence,.eco-panel,.ecp-project-card,.er-panel,.eu-panel,.em-asset-card,.em-market-feature,.em-feature,.em-evidence) {
+  background:var(--ws-material); border:1px solid var(--ws-border); border-radius:var(--ws-radius); box-shadow:var(--ws-card-shadow);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-entity-card,.at-contract-card,.cf-start-next>a,.ecp-project-card,.em-asset-card):not(:disabled):hover {
+  background:linear-gradient(135deg,#ffffff08,transparent 50%),#17191d;
+  border-color:#ffffff36; box-shadow:inset 0 1px 0 #ffffff12,0 20px 38px #00000045; transform:none;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.cf-primary,.aw-button.primary,.cp-button--primary,.cp-wallet-connect,.ab-primary,.cc-pay-button) {
+  background:linear-gradient(120deg,#dfebff,#afcfff)!important;
+  color:#111923!important; border-color:#cfdef4!important;
+  box-shadow:inset 0 1px 0 #ffffff60,0 4px 12px #00000040;
+  border-radius:10px; min-height:44px; font-weight:600;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.cf-primary,.aw-button.primary,.cp-button--primary,.cp-wallet-connect,.ab-primary,.cc-pay-button):hover:not(:disabled) {
+  background:linear-gradient(120deg,#f2f7ff,#c6deff)!important; color:#111923!important;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-button,.em-button,.em-refresh,.eco-submit,.cf-secondary) {
+  border-color:#ffffff20; border-radius:9px;
+  box-shadow:inset 0 1px 0 #ffffff06; font-weight:550;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.cf-panel input,.cf-panel textarea,.cf-panel select,.ab-form input,.ab-form select,.aw-panel input,.aw-panel select,.cx-root input,.cx-root select) {
+  background:var(--ws-input); border:1px solid #ffffff21; border-radius:10px; min-height:44px; color:var(--ws-text);
+  box-shadow:inset 0 2px 8px #00000020;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.cc-request,.cf-counterparties article,.cc-proofs article,.cx-nft-card,.af-detail,.af-stats,.at-alert-rules article,.at-alert-notifications article) {
+  border-color:var(--ws-border); border-radius:12px;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-section-title h2,.aw-panel h2,.ab-module h2,.cf-panel h2,.er-panel h2) {
+  font-family:'Space Grotesk',sans-serif; font-weight:550; letter-spacing:-.45px;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-panel>h2,.br-research>h2) {
+  background:transparent; border-color:var(--ws-line); padding-block:20px; color:var(--ws-text);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) {
+  font-variant-numeric:tabular-nums; color:var(--ws-text);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) th {
+  background:#ffffff03; color:#969eac; font-size:10px; font-weight:500; letter-spacing:.07em; border-color:var(--ws-line);
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) td { border-color:var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) tbody tr:nth-child(odd) { background:transparent; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) tbody tr:nth-child(even) { background:#ffffff02; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) tbody tr:hover { background:#ffffff06; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-history,.af-graph,.at-dossier-chart,.cf-chart-wrap,.em-chart-panel) { background:#0b0c0f; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.cc-amount,.cc-recipient,.cc-proof-empty,.cc-inbox-suggestion,.ab-empty,.aw-history-empty,.arc-contract-no-project) {
+  background:#ffffff03; border-color:var(--ws-line); box-shadow:inset 0 1px 0 #ffffff04; border-radius:12px;
+}
+/* Terminal: readable research dossiers around the primary transaction ledger. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-discovery-grid {
+  grid-template-columns:minmax(0,1.22fr) minmax(0,1fr); gap:28px; margin-top:32px;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-title { min-height:40px; margin-bottom:16px; padding-inline:2px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-title h2 { font-size:21px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-title>div { gap:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-title button { min-width:30px; min-height:32px; border-radius:7px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-title button:hover:not(:disabled) { background:#ffffff08; color:#fff; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-ranking { padding-right:8px; gap:3px; border-color:var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-entity-grid { gap:14px; align-items:stretch; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-dossier { padding:22px 20px 18px; min-height:392px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-identity { display:flex; align-items:center; gap:12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-mark {
+  display:grid; place-items:center; width:46px; height:46px; flex:none; position:relative;
+  border:1px solid #ffffff23; border-radius:13px; background:linear-gradient(145deg,#30333a,#15171b); box-shadow:inset 0 1px 0 #ffffff15,0 3px 9px #00000025;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-mark svg { position:absolute; width:37px; height:37px; stroke:#a5bbda; stroke-width:1; opacity:.25; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-mark b { font:550 13px 'JetBrains Mono',monospace; color:#e7edf8; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-identity .at-entity-copy { flex:1; min-width:0; min-height:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-identity h3 { font:550 17px/1.3 'Space Grotesk',sans-serif; letter-spacing:-.3px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-identity h3>svg { width:14px; height:14px; color:#afb9c9; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-identity .at-source-tag { font-size:9px; margin-top:5px; letter-spacing:.015em; color:#8994a5; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-address { font:10px 'JetBrains Mono',monospace; color:#adb5c2; margin-top:4px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-total { margin-top:24px; align-items:center; gap:14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-total>strong { font:500 50px/1 'Space Grotesk',sans-serif; letter-spacing:-2px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-total>span { font:550 10px/1.5 'JetBrains Mono',monospace; color:#b7beca; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-total small { font:10px/1.5 'DM Sans',sans-serif; letter-spacing:0; color:#959ba7; max-width:112px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-directions { gap:0; margin-top:18px; border:1px solid var(--ws-line); border-radius:8px; background:#ffffff02; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-directions>span { flex:1; min-width:0; padding:9px 8px; justify-content:center; gap:5px; font-size:10px; border-right:1px solid var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-directions>span:last-child { border-right:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-directions b { font-size:11px; margin-left:3px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-chart { margin-top:18px; padding:12px 0 0; background:transparent; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-chart-heading { gap:6px; font-size:10px; flex-wrap:wrap; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-chart-heading small { font-size:9px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-bars { height:70px; margin-top:12px; gap:7px; border-color:var(--ws-line); background:repeating-linear-gradient(to top,transparent 0,transparent 22px,#ffffff07 23px,#ffffff07 24px); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-bar { max-width:20px; border-radius:3px 3px 0 0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-chart-range { font-size:9px; margin-top:8px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-facts { padding-top:16px; margin-top:20px; gap:12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-facts>div { min-width:0; flex:1; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-facts span { font:9px/1.5 'JetBrains Mono',monospace; letter-spacing:.06em; color:#8893a4; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-facts strong { font:500 14px/1.5 'JetBrains Mono',monospace; color:#e3e8f0; margin-top:4px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-card { padding:20px; min-height:216px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-heading { display:flex; align-items:center; gap:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-heading>.at-source-tag { margin:0; font:9px/1.5 'JetBrains Mono',monospace; letter-spacing:.05em; flex:1; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-heading>svg { color:#9ba5b5; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-symbol { display:grid; place-items:center; width:36px; height:36px; border:1px solid #ffffff1b; border-radius:10px; color:#cbd8eb; background:linear-gradient(135deg,#292d35,#191b20); box-shadow:inset 0 1px 0 #ffffff0e; flex:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-card h3 { margin-top:22px; font:550 18px/1.25 'Space Grotesk',sans-serif; letter-spacing:-.3px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-time { color:#a2a9b6; font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-bottom { border-top:1px solid var(--ws-line); padding-top:14px; margin-top:18px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-bottom span { font-size:9px; letter-spacing:.05em; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-bottom b { font-size:10px; color:#d7dce6; letter-spacing:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-discovery { padding:22px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-discovery .at-section-title { margin-bottom:6px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-discovery .at-section-title h2 { font-size:18px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-row { padding:16px 0; border-color:var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-row>svg:first-child { box-sizing:content-box; padding:8px; border:1px solid #ffffff14; border-radius:9px; color:#b6cce9; background:#ffffff04; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-row>span:first-of-type { font:500 13px 'DM Sans',sans-serif; color:#e6eaf1; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-row small { color:#9099a7; font:9px/1.5 'JetBrains Mono',monospace; margin-top:4px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-row>span:last-of-type { font-size:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-panel { border-radius:18px; overflow:hidden; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-tools { background:transparent; padding:16px 18px; gap:10px; min-height:64px; border-bottom:1px solid var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-scroll { max-height:660px; scrollbar-color:#424752 #0d0e11; scrollbar-width:thin; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-table { font-size:12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-table td { height:48px; padding:13px 12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-table th { padding:12px; height:40px; background:#15171b; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-table td:first-child { color:#a7b5c9; font-size:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-address { color:#e0e5ee; font-weight:500; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-value { font:11px 'JetBrains Mono',monospace; letter-spacing:-.15px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-state { color:#a7b2c2; font-size:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-footer { background:#ffffff02; padding:13px 18px; border-top:1px solid var(--ws-line); font:10px 'JetBrains Mono',monospace; color:#a3aab7; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-transaction-detail { margin-top:18px; padding:24px; border-radius:16px; background:var(--ws-material); border-color:var(--ws-border); box-shadow:var(--ws-card-shadow); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-note { color:#979eab; font-size:11px; line-height:1.7; margin-top:13px!important; }
+/* Small evidence/form panels retain their real state and feature controls. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module :is(.ab-form,.ab-review,.ab-history) { padding:28px; border-radius:18px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-preflight { background:#ffffff02; border-color:var(--ws-line); border-radius:12px; padding:20px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-route { gap:14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-wallet { padding-bottom:20px; border-bottom:1px solid var(--ws-line); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-review dl { gap:14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-form label { font-size:12px; margin-top:18px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-review>h2 { background:transparent; padding:0 0 18px; }
+@media(max-width:1100px) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-discovery-grid { gap:20px; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-dossier { padding:18px 15px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-identity { gap:8px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-mark { width:36px; height:36px; border-radius:10px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-identity h3 { font-size:15px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-facts strong { font-size:12px; }
+}
+@media(max-width:950px) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-discovery-grid { grid-template-columns:1fr; gap:30px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-discovery-grid>.at-discovery-left { grid-column:1; grid-row:2; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-dossier { padding:24px; }
+}
+@media(max-width:600px) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-title h2 { font-size:19px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-title>div { gap:4px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-context-link { font-size:10px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-tools { padding:12px; flex-wrap:wrap; gap:8px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-state { margin-left:0; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-entity-grid { grid-template-columns:1fr; gap:14px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-dossier { padding:24px; min-height:390px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-dossier-identity h3 { font-size:20px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-address-mark { width:46px; height:46px; border-radius:13px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-contract-card { min-height:205px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-verified-discovery { padding:20px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-feed-footer { flex-wrap:wrap; gap:8px; padding:14px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module :is(.ab-form,.ab-review,.ab-history) { padding:20px; }
+}
+@media(pointer:coarse) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .at-section-title button { min-width:40px; min-height:44px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-address-dossier,.at-contract-card,.aw-button) { transition:none; }
+}

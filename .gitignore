@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+refbridge.db*
+*.sqlite*
+*.jsonl
+*.tar.gz
+contracts/out/
+contracts/cache/
+coverage/
+.local/

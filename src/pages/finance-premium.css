@@ -1,0 +1,234 @@
+/* Finance composition: an address console, an explanatory workflow and a real ledger.
+   These selectors change presentation only; semantic series/status colours remain. */
+html .carpan-data-workspace .cf-premium {
+  padding-top:38px; padding-bottom:54px;
+  --finance-hairline:#ffffff12;
+}
+html .carpan-data-workspace .cf-premium .cf-start-heading {
+  max-width:880px; margin-bottom:28px; padding-top:0;
+}
+html .carpan-data-workspace .cf-premium :is(.cf-start-heading h1,.cf-top h1) {
+  font-size:36px; letter-spacing:-1.15px; font-weight:600; margin-top:12px;
+}
+html .carpan-data-workspace .cf-premium .cf-start-heading p {max-width:710px; font-size:14px; line-height:1.8}
+html .carpan-data-workspace .cf-premium .cf-eyebrow {font-size:10px; letter-spacing:.13em; color:#a4a9b3}
+html .carpan-data-workspace .cf-premium .cf-start-layout {
+  grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:22px; align-items:stretch;
+}
+html .carpan-data-workspace .cf-premium .cf-start-main {
+  position:relative; min-height:340px; padding:28px 30px; border-radius:18px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+html .carpan-data-workspace .cf-premium .cf-start-network {
+  display:flex; gap:8px; align-items:center; margin-bottom:29px;
+}
+html .carpan-data-workspace .cf-premium .cf-start-network span {
+  border:1px solid #ffffff1a; border-radius:5px; padding:5px 8px;
+  font:10px/1.3 'JetBrains Mono',monospace; color:#cbd0d9; background:#ffffff03;
+}
+html .carpan-data-workspace .cf-premium .cf-start-network span:first-child::before {
+  content:'';display:inline-block; width:5px;height:5px; margin-right:7px;
+  vertical-align:middle;border-radius:50%;background:var(--ws-success,#91dfb5);
+}
+html .carpan-data-workspace .cf-premium .cf-wallet-bar--start {margin:0; background:transparent; box-shadow:none}
+html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-wallet-label {margin-bottom:17px; gap:10px}
+html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-wallet-label span {font-size:16px;font-weight:500;letter-spacing:-.2px}
+html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-address input {
+  height:54px; padding-inline:16px; font-size:11px; border-radius:9px;
+  background:#08090c; border-color:#ffffff24; box-shadow:inset 0 2px 7px #0004;
+}
+html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-address input:focus {border-color:#b6d3ff; box-shadow:0 0 0 3px #b6d3ff0b}
+html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-primary {
+  height:54px; padding-inline:18px; border-radius:9px; box-shadow:inset 0 1px 0 #fff5,0 5px 14px #0003;
+}
+html .carpan-data-workspace .cf-premium .cf-start-access {
+  margin-top:23px; padding-top:20px; border-top:1px solid var(--finance-hairline);
+  color:#aeb4bf; font-size:11px; line-height:1.7;
+}
+html .carpan-data-workspace .cf-premium .cf-range {margin-top:17px; font-size:11px}
+html .carpan-data-workspace .cf-premium .cf-start-guide {
+  min-width:0; overflow:hidden; border:1px solid #ffffff1a; border-radius:18px;
+  background:linear-gradient(135deg,#ffffff03,transparent 65%),#111215;
+  box-shadow:inset 0 1px 0 #ffffff08,0 12px 26px #0003;
+  display:flex; flex-direction:column; justify-content:center;
+}
+html .carpan-data-workspace .cf-premium .cf-workflow-visual {
+  width:100%; height:220px; display:block; flex:none; margin:1px 0 0;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px;
+  align-content:start; border:0; border-top:1px solid var(--finance-hairline);
+  border-radius:0; background:transparent; box-shadow:none; padding:21px 27px 24px;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps>div {display:block; min-width:0}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps>div>span {
+  display:block; width:auto; height:auto; margin:0 0 7px; border:0; background:none;
+  color:#8b96a8; font:10px/1.5 'JetBrains Mono',monospace; letter-spacing:.08em;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps strong {font-size:13px;font-weight:500;letter-spacing:-.15px}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps p {font-size:11px;color:#a5abb5;line-height:1.7;margin-top:6px}
+html .carpan-data-workspace .cf-premium .cf-start-next {gap:22px;margin-top:22px}
+html .carpan-data-workspace .cf-premium .cf-start-next>a.cf-journey-card {
+  position:relative; display:flex; align-items:center; min-height:244px; gap:10px;
+  padding:29px 28px; border-radius:18px; overflow:hidden; text-decoration:none;
+}
+html .carpan-data-workspace .cf-premium .cf-start-next>a.cf-journey-card:hover {border-color:#ffffff38;background:#16181c}
+html .carpan-data-workspace .cf-premium .cf-journey-content {position:relative;z-index:1;flex:1;min-width:0}
+html .carpan-data-workspace .cf-premium .cf-journey-label {
+  display:flex;align-items:center;gap:10px;color:#bac5d6;
+  font:10px/1.5 'JetBrains Mono',monospace;letter-spacing:.11em;margin-bottom:17px;
+}
+html .carpan-data-workspace .cf-premium .cf-journey-label svg {color:#b6d3ff;flex:none}
+html .carpan-data-workspace .cf-premium .cf-start-next h2 {font-size:23px;letter-spacing:-.55px;line-height:1.32;margin:0 0 11px;max-width:340px}
+html .carpan-data-workspace .cf-premium .cf-start-next p {font-size:12px;line-height:1.85;max-width:335px;color:#b3b9c3}
+html .carpan-data-workspace .cf-premium .cf-journey-link {
+  display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-size:12px;
+  color:#e4ecf8;font-weight:500;font-family:'DM Sans',sans-serif;letter-spacing:0;
+}
+html .carpan-data-workspace .cf-premium .cf-journey-link svg {transition:transform 160ms ease}
+html .carpan-data-workspace .cf-premium .cf-journey-card:hover .cf-journey-link svg {transform:translate(2px,-2px)}
+html .carpan-data-workspace .cf-premium .cf-start-next>a>svg.cf-journey-visual {
+  flex:0 0 168px;width:168px;height:142px;margin:0;opacity:.95;
+}
+html .carpan-data-workspace .cf-premium .cf-start-boundary {margin-top:25px;padding-inline:2px}
+
+/* The selected address view has a ledger-first information hierarchy. */
+html .carpan-data-workspace .cf-premium .cf-top {gap:20px;margin-bottom:27px;padding-top:0}
+html .carpan-data-workspace .cf-premium .cf-top-actions {gap:8px}
+html .carpan-data-workspace .cf-premium .cf-wallet-bar:not(.cf-wallet-bar--start) {border-radius:14px;padding:18px 22px;gap:20px}
+html .carpan-data-workspace .cf-premium .cf-note-status {margin-top:-5px;margin-bottom:25px;font-size:11px}
+html .carpan-data-workspace .cf-premium .cf-kpis {gap:14px;margin-bottom:25px}
+html .carpan-data-workspace .cf-premium .cf-kpi {border-radius:14px;padding:23px 22px 20px}
+html .carpan-data-workspace .cf-premium .cf-kpi::before {left:0;width:100%;height:1px;background:#ffffff17}
+html .carpan-data-workspace .cf-premium .cf-kpi.balance {border-color:#b6d3ff38}
+html .carpan-data-workspace .cf-premium .cf-kpi>div {font-size:11px;color:#b9c0cb;gap:12px}
+html .carpan-data-workspace .cf-premium .cf-kpi i {width:31px;height:31px;border-color:#ffffff16;background:#ffffff03;border-radius:7px}
+html .carpan-data-workspace .cf-premium .cf-kpi strong {font-size:clamp(22px,2.15vw,31px);font-weight:500;letter-spacing:-.8px;margin:20px 0 13px;min-width:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+html .carpan-data-workspace .cf-premium .cf-kpi strong small {display:block;font-size:10px;margin:7px 0 0;letter-spacing:.05em;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+html .carpan-data-workspace .cf-premium .cf-kpi footer {font-size:10px;color:#a5acb7;line-height:1.8}
+html .carpan-data-workspace .cf-premium :is(.cf-analysis,.cf-bottom) {grid-template-columns:minmax(0,2.45fr) minmax(286px,1fr);gap:22px}
+html .carpan-data-workspace .cf-premium .cf-analysis {margin-bottom:25px}
+html .carpan-data-workspace .cf-premium .cf-panel {border-radius:15px}
+html .carpan-data-workspace .cf-premium .cf-panel>header {padding:23px 25px 21px;border-bottom:1px solid var(--finance-hairline);background:transparent}
+html .carpan-data-workspace .cf-premium .cf-panel h2 {font-size:19px;font-weight:500;letter-spacing:-.4px;margin-top:7px}
+html .carpan-data-workspace .cf-premium .cf-code {font-size:9px;letter-spacing:.13em;color:#959dac}
+html .carpan-data-workspace .cf-premium .cf-chart {margin:22px 25px 7px;min-height:245px}
+html .carpan-data-workspace .cf-premium .cf-chart>svg>g>line {stroke:#ffffff0e}
+html .carpan-data-workspace .cf-premium .cf-chart>svg text {fill:#98a2b1;font-family:'JetBrains Mono',monospace}
+html .carpan-data-workspace .cf-premium .cf-chart-foot {padding:16px 25px;color:#a0a8b6;font-size:10px}
+html .carpan-data-workspace .cf-premium .cf-distribution-total {padding:23px 25px 25px;align-items:flex-end}
+html .carpan-data-workspace .cf-premium .cf-distribution-total strong {font-size:49px;letter-spacing:-1.8px;line-height:1}
+html .carpan-data-workspace .cf-premium .cf-distribution-total span {font-size:12px;line-height:1.7}
+html .carpan-data-workspace .cf-premium .cf-bars {padding:0 25px 23px}
+html .carpan-data-workspace .cf-premium .cf-bars>div {margin-bottom:18px}
+html .carpan-data-workspace .cf-premium .cf-bars>div:last-child {margin-bottom:0}
+html .carpan-data-workspace .cf-premium .cf-bars>div>div {height:4px;background:#ffffff06}
+html .carpan-data-workspace .cf-premium .cf-bars span {font-size:11px;margin-bottom:9px}
+html .carpan-data-workspace .cf-premium .cf-tabs {padding-top:13px;padding-bottom:13px;border-color:var(--finance-hairline)}
+html .carpan-data-workspace .cf-premium .cf-tabs button[aria-pressed=true] {background:#ffffff08}
+html .carpan-data-workspace .cf-premium .cf-table th {padding:14px 22px;background:#0b0d10;color:#9ba4b3;font-size:9px;letter-spacing:.09em}
+html .carpan-data-workspace .cf-premium .cf-table td {padding:16px 22px;vertical-align:middle;border-color:var(--finance-hairline)}
+html .carpan-data-workspace .cf-premium .cf-table tbody tr:nth-child(even) {background:#ffffff02}
+html .carpan-data-workspace .cf-premium .cf-table tbody tr:hover {background:#ffffff05}
+html .carpan-data-workspace .cf-premium .cf-direction {border-color:#ffffff15;background:#ffffff04;border-radius:7px}
+html .carpan-data-workspace .cf-premium .cf-peer {padding:19px 23px;border-color:var(--finance-hairline);gap:12px}
+html .carpan-data-workspace .cf-premium .cf-avatar {background:#ffffff04;border-color:#ffffff16;border-radius:8px}
+html .carpan-data-workspace .cf-premium .cf-peer strong {font-size:11px;color:#e4e9f2}
+html .carpan-data-workspace .cf-premium .cf-evidence {margin:21px 20px 17px;padding:16px 15px;border-color:#ffffff18;background:#ffffff03;border-radius:10px}
+html .carpan-data-workspace .cf-premium .cf-evidence p {font-size:11px;color:#aeb6c3}
+html .carpan-data-workspace .cf-premium .cf-coverage {margin-top:30px;padding-top:22px;border-color:#ffffff16}
+
+/* Collections inherits the same composed console and clearly separated proof lane. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium.cc-main .cc-workflow {border:0;box-shadow:none;background:transparent;padding:0 0 23px;margin:0 0 24px;gap:0;border-bottom:1px solid var(--finance-hairline)}
+html .carpan-data-workspace .cf-premium .cc-workflow>div {position:relative;gap:11px;padding-right:16px;border:0}
+html .carpan-data-workspace .cf-premium .cc-workflow>div:not(:last-child)::after {content:'';position:absolute;width:24px;height:1px;background:#ffffff24;right:12px;top:50%}
+html .carpan-data-workspace .cf-premium .cc-workflow b {background:#ffffff04;border-color:#ffffff20;border-radius:7px;color:#bec9da;font-size:10px}
+html .carpan-data-workspace .cf-premium .cc-workflow span {font-size:11px;color:#bdc5d1}
+html .carpan-data-workspace .cf-premium .cc-workspace {gap:22px;grid-template-columns:minmax(290px,.92fr) minmax(0,1.8fr)}
+html .carpan-data-workspace .cf-premium .cc-search {margin:17px 22px 4px;border-color:#ffffff1e;background:#08090c;border-radius:8px}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cc-request {margin:0;display:block;width:100%;border:0;border-radius:0;border-top:1px solid var(--finance-hairline);padding:20px 23px;background:transparent}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cc-request[aria-pressed=true] {background:#b6d3ff08;box-shadow:inset 2px 0 #b6d3ff;border-color:var(--finance-hairline)}
+html .carpan-data-workspace .cf-premium .cc-request strong {font-size:13px;font-weight:500}
+html .carpan-data-workspace .cf-premium .cc-request>p {color:#a5adbb;font-size:11px;margin:8px 0 14px}
+html .carpan-data-workspace .cf-premium .cc-request b {font-size:17px;letter-spacing:-.35px}
+html .carpan-data-workspace .cf-premium .cc-amount {padding:23px 25px;border-radius:11px;background:#ffffff02;border-color:#ffffff16}
+html .carpan-data-workspace .cf-premium .cc-amount>strong {font-size:38px;letter-spacing:-1.2px;font-weight:500}
+html .carpan-data-workspace .cf-premium .cc-meta {gap:16px;padding:20px 0;font-size:11px;border-color:var(--finance-hairline)}
+html .carpan-data-workspace .cf-premium .cc-proof-form {padding-top:22px;border-top:1px solid var(--finance-hairline)}
+html .carpan-data-workspace .cf-premium .cc-proof-form label {font-size:11px;color:#bec6d3}
+html .carpan-data-workspace .cf-premium .cc-proofs article {border-radius:11px;border-color:#ffffff1c;background:#ffffff02;padding:21px}
+html .carpan-data-workspace .cf-premium .cc-proofs article>div:first-child strong {font-size:19px;letter-spacing:-.45px}
+html .carpan-data-workspace .cf-premium .cc-proof-facts {font-size:10px;line-height:1.8;color:#a8b1bf}
+html .carpan-data-workspace .cf-premium .cc-inbox {margin-bottom:25px}
+html .carpan-data-workspace .cf-premium .cc-inbox-item {border-color:var(--finance-hairline)}
+html .carpan-data-workspace .cf-premium .cc-audit {margin:0 23px 22px;border-color:#ffffff18;font-size:11px}
+html .carpan-data-workspace .cf-premium.cc-payment {max-width:760px}
+
+@media(max-width:1240px) {
+  html .carpan-data-workspace .cf-premium .cf-start-main {padding:25px}
+  html .carpan-data-workspace .cf-premium .cf-start-next>a>svg.cf-journey-visual {flex-basis:125px;width:125px;height:119px}
+  html .carpan-data-workspace .cf-premium .cf-start-next>a.cf-journey-card {padding:26px;gap:0}
+  html .carpan-data-workspace .cf-premium .cf-start-next h2 {font-size:21px}
+  html .carpan-data-workspace .cf-premium .cc-workflow>div:not(:last-child)::after {display:none}
+}
+@media(max-width:980px) {
+  html .carpan-data-workspace .cf-premium .cf-start-layout {grid-template-columns:1fr}
+  html .carpan-data-workspace .cf-premium .cf-start-main {min-height:0;padding:27px}
+  html .carpan-data-workspace .cf-premium .cf-start-network {margin-bottom:23px}
+  html .carpan-data-workspace .cf-premium .cf-start-guide {display:grid;grid-template-columns:1.1fr 1fr;align-items:center}
+  html .carpan-data-workspace .cf-premium .cf-workflow-visual {height:auto;min-height:190px}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps {grid-template-columns:1fr;border-top:0;border-left:1px solid var(--finance-hairline);padding:23px;gap:15px}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps>div {display:flex;gap:13px;align-items:baseline}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps>div>span {flex:none}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps p {margin-top:4px}
+  html .carpan-data-workspace .cf-premium :is(.cf-analysis,.cf-bottom) {grid-template-columns:minmax(0,1.8fr) minmax(245px,1fr);gap:18px}
+  html .carpan-data-workspace .cf-premium .cf-kpi strong {font-size:25px}
+}
+@media(max-width:760px) {
+  html .carpan-data-workspace .cf-premium {padding-top:27px;padding-bottom:40px}
+  html .carpan-data-workspace .cf-premium :is(.cf-start-heading h1,.cf-top h1) {font-size:30px;letter-spacing:-.8px}
+  html .carpan-data-workspace .cf-premium .cf-start-heading {margin-bottom:22px}
+  html .carpan-data-workspace .cf-premium .cf-start-heading p {font-size:13px}
+  html .carpan-data-workspace .cf-premium .cf-start-main {padding:22px;border-radius:14px}
+  html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-wallet-label span {font-size:14px}
+  html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-wallet-input-row {gap:10px}
+  html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-address {flex-basis:100%}
+  html .carpan-data-workspace .cf-premium .cf-wallet-bar--start .cf-primary {width:100%;height:48px}
+  html .carpan-data-workspace .cf-premium .cf-start-guide {display:block;border-radius:14px}
+  html .carpan-data-workspace .cf-premium .cf-workflow-visual {height:auto;min-height:0;margin:8px 0}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps {grid-template-columns:repeat(3,minmax(0,1fr));border:0;border-top:1px solid var(--finance-hairline);padding:19px 20px 21px;gap:14px}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps>div {display:block}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps strong {font-size:12px}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps p {font-size:10px;line-height:1.65}
+  html .carpan-data-workspace .cf-premium .cf-start-next {grid-template-columns:1fr;gap:16px;margin-top:17px}
+  html .carpan-data-workspace .cf-premium .cf-start-next>a.cf-journey-card {min-height:226px;padding:25px 22px;border-radius:14px}
+  html .carpan-data-workspace .cf-premium .cf-start-next>a>svg.cf-journey-visual {flex-basis:99px;width:99px;height:99px}
+  html .carpan-data-workspace .cf-premium .cf-start-next h2 {font-size:21px}
+  html .carpan-data-workspace .cf-premium .cf-start-next p {font-size:11px}
+  html .carpan-data-workspace .cf-premium .cf-journey-label {font-size:9px;letter-spacing:.08em;margin-bottom:14px;gap:8px}
+  html .carpan-data-workspace .cf-premium .cf-journey-link {font-size:11px;margin-top:19px}
+  html .carpan-data-workspace .cf-premium .cf-kpis {gap:12px}
+  html .carpan-data-workspace .cf-premium .cf-kpi {padding:20px 17px;border-radius:12px}
+  html .carpan-data-workspace .cf-premium .cf-kpi strong {font-size:24px;line-height:1.2;margin-top:17px}
+  html .carpan-data-workspace .cf-premium .cf-kpi strong small {display:block;margin:6px 0 0}
+  html .carpan-data-workspace .cf-premium :is(.cf-analysis,.cf-bottom,.cc-workspace) {grid-template-columns:1fr;gap:18px}
+  html .carpan-data-workspace .cf-premium .cf-panel>header {padding:21px 20px;gap:13px}
+  html .carpan-data-workspace .cf-premium .cf-panel h2 {font-size:18px}
+  html .carpan-data-workspace .cf-premium .cf-chart {margin:18px 17px 0;min-height:190px}
+  html .carpan-data-workspace .cf-premium .cf-chart-foot {padding:15px 20px}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium.cc-main .cc-workflow {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px;padding-bottom:22px}
+  html .carpan-data-workspace .cf-premium .cc-workflow>div {padding:0;font-size:11px;gap:9px;align-items:center;min-width:0}
+  html .carpan-data-workspace .cf-premium .cc-workflow b {flex:none}
+  html .carpan-data-workspace .cf-premium .cc-workflow span {font-size:10px;line-height:1.6}
+  html .carpan-data-workspace .cf-premium .cc-amount {padding:22px 20px}
+  html .carpan-data-workspace .cf-premium .cc-amount>strong {font-size:31px}
+}
+@media(max-width:420px) {
+  html .carpan-data-workspace .cf-premium .cf-start-next>a>svg.cf-journey-visual {flex-basis:78px;width:78px;height:84px}
+  html .carpan-data-workspace .cf-premium .cf-start-next h2 {font-size:20px}
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3 .cf-premium .cf-start-steps {gap:11px;padding-inline:17px}
+}
+@media(prefers-reduced-motion:reduce) {
+  html .carpan-data-workspace .cf-premium :is(.cf-journey-card,.cf-journey-link svg,.cf-bars i) {transition:none}
+  html .carpan-data-workspace .cf-premium .cf-journey-card:hover .cf-journey-link svg {transform:none}
+}

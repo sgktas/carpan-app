@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Carpan backup restore rehearsal
+
+[Timer]
+OnCalendar=*-*-* 04:00:00 Europe/Istanbul
+Persistent=true
+RandomizedDelaySec=300
+Unit=carpan-restore-check.service
+
+[Install]
+WantedBy=timers.target

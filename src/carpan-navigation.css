@@ -1,0 +1,109 @@
+/* Account, sign-in and product family surfaces shared by all modules. */
+.carpan-control-panel{max-height:calc(100dvh - 110px);overflow-y:auto}
+.carpan-account-connections{min-width:0;color:var(--ink-2)}
+.carpan-session-method{display:grid;gap:4px;border-bottom:1px solid var(--border);padding:10px 0;font-size:12px}.carpan-session-method>span,.carpan-linked-identities>span{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}.carpan-session-method strong{font-weight:500;color:var(--ink-2)}
+.carpan-linked-identities{padding:11px 0;display:grid;gap:9px}.carpan-linked-identities>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.carpan-linked-identities strong{font-size:12px}.carpan-linked-identities small{font-size:11px;overflow-wrap:anywhere}.carpan-linked-identities em{font-style:normal;font-size:9px;color:#d8b898}
+.carpan-account-wallet-row{flex-wrap:nowrap!important}.carpan-account-wallet-row>a{display:flex;align-items:center;gap:8px;min-width:0;flex:1;padding:6px 0!important}.carpan-account-wallet-row strong,.carpan-account-wallet-row small{display:block}.carpan-account-wallet-row small{font-size:9px;color:var(--muted);margin-top:3px}.carpan-account-wallet-row button{background:transparent;border:0;color:#c0acd9;padding:7px;display:grid;place-items:center}
+.carpan-browser-wallet{width:100%;display:flex;align-items:center;gap:8px;text-align:left;background:var(--surface-strong);border:1px solid var(--border-strong);border-radius:8px;color:var(--ink-2);padding:9px!important}.carpan-browser-wallet>span{flex:1;min-width:0}.carpan-browser-wallet strong{font-size:11px;display:block}.carpan-browser-wallet small{font-size:10px;display:block;color:#c5b6d7;margin-top:3px}.carpan-wallet-mismatch{display:block;color:#dfbb87;font-size:10px;margin:8px 0}
+.carpan-identity-provider-actions>button{background:var(--surface-strong);color:var(--ink-2);border:1px solid var(--border-strong);border-radius:8px;padding:10px 13px;margin-top:14px;font:inherit;cursor:pointer}.carpan-identity-provider-actions>button:disabled{opacity:.55;cursor:not-allowed}.carpan-identity-provider-actions p{font-size:11px;color:var(--muted);line-height:1.6;margin-top:9px}.carpan-account-connections.is-compact{padding:0 10px 13px;border-bottom:1px solid var(--border);margin-bottom:5px}.carpan-identity-meta>.carpan-account-connections{width:100%;max-width:470px}
+.carpan-accounting-copy>strong{font:500 14px 'DM Sans',sans-serif;color:#c8b3e8}
+.rvx-nav nav.carpan-products{flex-wrap:wrap}
+@media(min-width:701px) and (max-width:1000px){.rvx-header .rvx-nav{display:flex;flex-wrap:wrap;height:auto;min-height:116px;gap:0;padding-top:12px;padding-bottom:8px}.rvx-header .rvx-nav nav.carpan-products{order:3;width:100%;margin-top:8px}.rvx-header .rvx-nav-actions{margin-left:auto}}
+@media(max-width:700px){.rvx-nav nav.carpan-products{gap:4px 7px}.carpan-product-trigger{padding:8px 10px!important;font-size:12px!important}}
+.carpan-header-controls{position:relative;display:flex;align-items:center;gap:12px;flex-shrink:0;color:var(--ink);font:13px/1.5 'DM Sans',sans-serif}
+.carpan-header-controls button{font:inherit;cursor:pointer}
+.carpan-account-button,.carpan-signin-button,.carpan-apps-button{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--surface);color:var(--ink);border:1px solid var(--border);border-radius:9px;min-height:36px;padding:5px 10px}
+.carpan-signin-button{background:#ac98ef;color:#21172f;border-color:#ac98ef;font-weight:700!important}
+.carpan-account-button:hover,.carpan-apps-button:hover,.carpan-account-button[aria-expanded=true],.carpan-apps-button[aria-expanded=true]{background:var(--surface-strong);border-color:var(--border-strong)}
+.carpan-apps-button{padding:8px;background:transparent}
+.carpan-avatar{width:23px;height:23px;display:grid;place-items:center;border-radius:7px;background:#ac98ef;color:#21172f;font-weight:700;flex-shrink:0}
+.carpan-control-panel{position:absolute;top:calc(100% + 12px);right:0;width:300px;max-width:calc(100vw - 32px);border:1px solid var(--border-strong);border-radius:14px;background:var(--surface);box-shadow:0 20px 60px #0008;padding:10px;z-index:60;text-align:left}
+.carpan-control-panel a{color:var(--ink)!important;text-decoration:none;display:flex;align-items:center;gap:11px;border-radius:7px;padding:11px;font-size:13px}
+.carpan-control-panel a:hover,.carpan-control-action:hover{background:var(--surface-strong)}
+.carpan-control-panel nav{display:flex!important;flex-direction:column!important;gap:2px!important}
+.carpan-preferences-trigger{display:grid;place-items:center;border:0;background:transparent;color:var(--ink-2);padding:8px;min-width:36px;min-height:36px;border-radius:6px;cursor:pointer}
+.carpan-preferences-trigger:hover,.carpan-preferences-trigger[aria-expanded=true]{background:var(--surface-strong);color:var(--ink)}
+html .carpan-control-panel.carpan-preferences-panel{padding:0;width:295px;border-radius:9px;background:#14141d;border-color:#353340;box-shadow:0 18px 48px #0007}
+.carpan-preferences-identity{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px;border-bottom:1px solid #ffffff0d}
+.carpan-preferences-identity>div{min-width:0;flex:1}
+html .carpan-preferences-panel nav button.carpan-menu-signout{margin-top:8px;border-top:1px solid #353340;border-bottom:0;color:#edb7bd!important}
+html .carpan-preferences-panel nav button.carpan-menu-signout>span{font-size:13px;color:inherit}
+.carpan-settings-wallet-link{margin-top:20px;padding-top:20px;border-top:1px solid var(--border);display:grid;gap:12px}
+.carpan-settings-wallet-link>button{justify-self:start;border:1px solid var(--border-strong);border-radius:7px;background:var(--surface-strong);color:var(--ink);padding:10px 14px;font-size:13px}
+.carpan-settings-wallet-link>p{margin:0;font-size:12px;line-height:1.8;color:var(--muted)}
+html .carpan-preferences-identity>a{display:block;padding:0;border-radius:0;min-width:0;flex:1}
+html .carpan-preferences-identity>a:hover{background:transparent}
+.carpan-preferences-identity strong{display:block;font-size:14px;color:var(--ink);overflow-wrap:anywhere}
+.carpan-preferences-identity small{display:block;font-size:12px;color:#aaa7b7;margin-top:4px;overflow-wrap:anywhere}
+.carpan-preferences-identity span{display:block;font-size:10px;color:#b9aad3;margin-top:5px}
+.carpan-preferences-logout{display:grid;place-items:center;border:0;background:transparent;color:#aaa7b7;padding:2px;min-width:28px;min-height:28px;border-radius:4px}
+.carpan-preferences-logout:hover{color:#efb6c7;background:#ffffff08}.carpan-preferences-logout:disabled{opacity:.5;cursor:wait}
+html .carpan-preferences-panel nav{gap:0!important}
+html .carpan-preferences-panel nav a,.carpan-preferences-panel nav button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:54px;padding:16px 20px;border:0;border-bottom:1px solid #ffffff0b;border-radius:0;background:transparent;color:#c8c5d2!important;font:500 13px/1.5 'DM Sans',sans-serif;text-align:left}
+html .carpan-preferences-panel nav a:hover,.carpan-preferences-panel nav button:hover{background:#ffffff05;color:var(--ink)!important}
+.carpan-preferences-panel nav button[aria-pressed=true]{color:#ccb8ff!important;background:#b597ff0c}
+.carpan-preferences-panel nav button span{font-size:10px;color:#aaa7b7}
+.carpan-preferences-panel nav button.carpan-preferences-back{justify-content:flex-start;gap:10px;color:#b9aad3!important}
+.carpan-account-identity{display:flex;align-items:center;gap:12px;padding:12px 10px 15px;border-bottom:1px solid var(--border);margin-bottom:5px}
+.carpan-account-identity .carpan-avatar{height:36px;width:36px;font-size:17px}
+.carpan-account-identity strong{display:block;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+.carpan-account-identity small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.carpan-account-wallet{display:flex;align-items:center;gap:7px;font:11px monospace;color:var(--ink-2);margin:10px}
+.carpan-control-action{display:flex;align-items:center;gap:10px;border:0;background:transparent;color:#d9c7f4;width:100%;text-align:left;padding:11px;border-radius:7px}
+.carpan-signout{border-top:1px solid var(--border);border-radius:0;margin-top:8px;color:#efb6c7}
+.carpan-control-action:disabled{cursor:wait;opacity:.6}
+.carpan-control-error,.carpan-login-error{font-size:12px;color:#ffbdce;padding:12px;background:#442333;border-radius:9px}
+.carpan-panel-caption{font:700 10px/1.5 'DM Sans',sans-serif;color:#c3aff9;letter-spacing:1.6px;display:block}
+.carpan-products-panel{width:340px;padding:16px 10px 10px}
+.carpan-products-panel .carpan-panel-caption{margin:0 11px 10px}
+.carpan-products-panel nav a{gap:12px;padding:12px 10px}.carpan-products-panel nav a>svg{margin-left:auto;color:var(--muted)}
+.carpan-products-panel strong{font-size:14px;display:block}.carpan-products-panel small{display:block;font-size:11px;color:var(--muted);white-space:normal}
+.carpan-module-icon{height:40px;width:40px;border-radius:9px;background:var(--surface-strong);color:#c8b3ff;display:grid;place-items:center;flex-shrink:0}
+.carpan-products-panel nav a:nth-child(2) .carpan-module-icon{background:var(--surface-strong);color:#eeb59e}.carpan-products-panel nav a:nth-child(3) .carpan-module-icon{background:var(--surface-strong);color:#a5d9bd}
+.carpan-panel-bottom{display:flex;justify-content:space-between;border-top:1px solid var(--border);margin-top:10px;padding-top:6px}.carpan-panel-bottom a{font-size:11px;color:#c5b6d7!important;padding:8px}
+.carpan-footer-chain i{width:5px;height:5px;border-radius:100%;background:#8cdbb2;box-shadow:0 0 10px #8cdbb233}
+.at-header{gap:22px}.at-header-search{flex:1;min-width:130px}
+.carpan-header-controls :focus-visible,.carpan-login-dialog :focus-visible{outline:2px solid #c3aff9;outline-offset:3px}
+.carpan-login-dialog{color-scheme:dark;background:var(--surface);color:var(--ink);border:1px solid var(--border-strong);border-radius:20px;width:min(450px,calc(100vw - 32px));max-height:calc(100dvh - 40px);overflow:auto;padding:30px;box-sizing:border-box;box-shadow:0 30px 100px #0008;font:14px/1.55 'DM Sans',sans-serif}
+.carpan-login-dialog::backdrop{background:#000000b3;backdrop-filter:blur(8px)}
+.carpan-login-dialog h2{font:500 28px/1.15 'Space Grotesk',sans-serif;margin:18px 0 13px;letter-spacing:-.8px}.carpan-login-dialog>p{color:var(--muted);font-size:13px;margin:0 0 20px}
+.carpan-login-dialog button,.carpan-login-dialog input{font:inherit}.carpan-login-dialog button{cursor:pointer}.carpan-login-dialog button:disabled{cursor:not-allowed}
+.carpan-login-close{position:absolute;right:19px;top:19px;border:0;background:transparent;color:var(--muted);display:grid;place-items:center;padding:5px}
+.carpan-login-primary{display:flex;align-items:center;gap:13px;background:#ac98ef;color:#21172f;border:1px solid #c1aaff;border-radius:12px;width:100%;min-height:68px;padding:13px 16px;text-align:left}
+.carpan-login-primary>svg:last-child{margin-left:auto}.carpan-login-primary strong{display:block;font-size:14px}.carpan-login-primary small{display:block;font-size:11px;opacity:.8;margin-top:2px}
+.carpan-login-primary:disabled{background:var(--surface-strong);border-color:var(--border-strong);color:#c7b5dc}
+.carpan-login-dialog>.carpan-login-wallet-note{display:flex;align-items:center;justify-content:center;gap:6px;font-size:10px;margin:11px 0 22px;color:var(--muted)}
+.carpan-login-change{display:block;margin:9px auto 0;color:#c7b4f5;background:transparent;border:0;font-size:11px!important}
+.carpan-login-divider{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--muted);font-size:10px}.carpan-login-divider:before,.carpan-login-divider:after{content:'';height:1px;flex:1;background:var(--border)}
+.carpan-login-providers{display:grid;gap:10px}.carpan-login-provider{display:flex;align-items:center;gap:14px;background:var(--surface);color:var(--ink-2);border:1px solid var(--border);border-radius:10px;padding:12px 15px;min-height:58px;text-align:left}
+.carpan-login-provider strong{font-size:13px;display:block;font-weight:500}.carpan-login-provider small{font-size:10px;color:var(--muted);display:block}.carpan-login-provider>svg:last-child{margin-left:auto}.carpan-google-g{font:bold 21px Arial;color:#d8c8ef}
+.carpan-login-provider:disabled{color:var(--muted);background:var(--surface-muted);border-style:dashed}
+.carpan-login-email{padding:13px 15px;border:1px solid var(--border);border-radius:10px;background:var(--surface-muted)}.carpan-login-email label{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2);flex-wrap:wrap}.carpan-login-email label small{margin-left:auto;font-size:10px;color:var(--muted)}
+.carpan-login-email>div{display:flex;gap:7px;margin-top:10px}.carpan-login-email input{width:100%;min-width:0;background:var(--bg);border:1px solid var(--border-strong);border-radius:7px;padding:9px;color:var(--ink);font-size:11px}
+.carpan-login-email button{border:0;border-radius:7px;background:#ac98ef;color:#21172f;white-space:nowrap;font-size:10px;padding:8px}.carpan-login-email button:disabled{background:var(--surface-strong);color:var(--muted)}.carpan-login-email>small{display:block;font-size:11px;color:#a7dcc0;margin-top:8px}
+.carpan-login-error{margin-bottom:15px}.carpan-login-error button{color:#fff;background:transparent;border:0;text-decoration:underline;margin-top:8px}
+.carpan-accounting-branch{display:grid;grid-template-columns:1fr 1.65fr;gap:50px;align-items:center;background:linear-gradient(110deg,var(--surface-strong),var(--surface));border:1px solid var(--border);border-radius:20px;padding:36px;margin:0 0 60px}
+.carpan-accounting-visual{max-width:410px;width:100%;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 10px 30px #0003;color:#bd9bfa}
+.carpan-ledger-heading{display:flex;align-items:center;gap:10px;font:11px 'Space Grotesk',sans-serif;color:#d8c6f4;letter-spacing:1px}.carpan-ledger-heading i{margin-left:auto;background:#403049;border-radius:5px;padding:4px 5px;font:9px 'DM Sans',sans-serif;color:#eebda5}
+.carpan-ledger-grid{margin:22px 0 15px}.carpan-ledger-grid>div{display:grid;grid-template-columns:1fr .65fr .4fr 15px;gap:16px;align-items:center;border-bottom:1px solid var(--border);padding:12px 0;color:#90c9ad}
+.carpan-ledger-grid span{display:block;height:5px;background:var(--border-strong);border-radius:2px}.carpan-ledger-grid span:nth-child(2){background:#846995}.carpan-ledger-grid span:nth-child(3){background:#a98774}
+.carpan-ledger-total{display:flex;align-items:center;gap:10px;font:8px 'DM Sans',sans-serif;letter-spacing:.8px;color:var(--muted)}
+.carpan-accounting-copy h2{font:500 32px/1.15 'Space Grotesk',sans-serif;letter-spacing:-.8px;margin:12px 0;color:var(--ink)}.carpan-accounting-copy p{font:14px/1.7 'DM Sans',sans-serif;color:var(--muted);max-width:520px}
+.carpan-accounting-copy>a{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px;font:600 13px 'DM Sans',sans-serif;color:#d1b7ff!important;margin-top:8px}.carpan-accounting-copy>a small{font-size:11px;color:var(--muted);font-weight:400;border-left:1px solid var(--border-strong);margin-left:8px;padding-left:16px}
+footer.carpan-footer{padding:48px clamp(20px,3vw,48px) 20px;background:var(--bg);border-top:1px solid var(--border)}
+.carpan-footer-grid{max-width:1536px;margin:auto;display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:35px}.carpan-footer-intro{max-width:300px}
+.carpan-footer-brand{gap:13px!important;font-size:26px!important;color:var(--ink)!important;letter-spacing:-.7px}.carpan-footer-brand img{filter:brightness(0) saturate(100%) invert(74%) sepia(28%) saturate(1512%) hue-rotate(209deg) brightness(102%) contrast(89%)}
+.carpan-footer-brand small{display:block;font:11px 'DM Sans',sans-serif;color:#c3aff9;margin-top:4px;letter-spacing:0}.carpan-footer-intro>p{font-size:12px;line-height:1.8;margin:19px 0!important;color:var(--muted)}
+.carpan-footer-contact{display:inline-flex;align-items:center;gap:8px;color:#d4bee9!important}.carpan-footer-chain{display:flex;align-items:center;gap:7px;font-size:10px;color:#9dbaa8;margin-top:17px}
+.carpan-footer-connections{display:flex;flex-direction:column;align-items:flex-start;gap:12px}.carpan-footer-social{display:inline-flex;align-items:center;gap:9px;padding:8px 11px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--ink-2)!important;font-size:12px!important;transition:background .15s,border-color .15s}.carpan-footer-social:hover{background:var(--surface-strong);border-color:#ac98ef}.carpan-footer-social:focus-visible{outline:2px solid #ac98ef;outline-offset:3px}.carpan-footer-social>svg{flex-shrink:0}
+.carpan-footer-grid nav{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:10px!important}.carpan-footer-grid h3{font:600 13px 'DM Sans',sans-serif;color:var(--ink);margin:5px 0 9px}
+.carpan-footer-grid nav a{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted)}.carpan-footer-grid nav a:hover{color:#dfcbff}.carpan-footer-grid nav p{font-size:10px;color:var(--muted);line-height:1.8}.carpan-footer-grid nav p span{color:var(--muted)}
+.carpan-footer-bottom{max-width:1536px;margin:36px auto 0;padding-top:18px;border-top:1px solid var(--border);display:flex;align-items:center;gap:25px;justify-content:space-between;font-size:10px;color:var(--muted)}.carpan-footer-bottom>span{font-size:8px;letter-spacing:1.4px}
+@media(max-width:1200px){.at-header{gap:16px}.carpan-footer-grid{grid-template-columns:1.5fr repeat(2,1fr);gap:30px}.carpan-footer-intro{grid-row:span 2}}
+@media(max-width:700px){.carpan-account-label{display:none}.carpan-header-controls{gap:7px}.carpan-account-button{gap:5px;padding:5px}.carpan-signin-button{font-size:11px!important;padding:7px}.carpan-signin-button>svg{display:none}.carpan-accounting-branch{grid-template-columns:1fr;gap:24px;padding:24px;margin-bottom:38px}.carpan-accounting-visual{max-width:100%}.carpan-accounting-copy h2{font-size:28px}.carpan-footer-grid{grid-template-columns:repeat(2,1fr);gap:28px 20px}.carpan-footer-intro{grid-column:1/-1;grid-row:auto;max-width:100%}.carpan-footer-bottom{flex-wrap:wrap;gap:16px}.carpan-footer-bottom>span{display:none}.at-header .at-header-search{order:4;flex:1 1 100%;max-width:none;margin:0 0 8px}.at-header .carpan-header-controls{margin-left:auto}.at-header .at-navigation{order:5}}
+@media(max-width:420px){.carpan-login-dialog{padding:25px 21px}.carpan-login-email>div{flex-direction:column}.carpan-login-email button{min-height:34px}.carpan-login-email label small{margin-left:26px}.rvx-header .rvx-nav{gap:10px}.rvx-header .rvx-brand{font-size:24px}.rvx-header .rvx-brand img{width:32px;height:32px}.carpan-accounting-copy>a small{flex-basis:100%;margin:3px 0 0;padding:0;border:0}.cf-top-actions{flex-wrap:wrap}}
+.carpan-google-wallet-link{margin-top:16px;padding:16px;border:1px solid var(--border-strong);border-radius:12px;background:var(--surface-strong);min-width:0}
+.carpan-google-wallet-link p{font-size:12px;line-height:1.65;overflow-wrap:anywhere;margin:12px 0}
+.carpan-google-wallet-link code{font-size:11px;overflow-wrap:anywhere}
+.carpan-google-wallet-link details{margin:12px 0;font-size:12px}
+.carpan-google-wallet-link>button{margin:8px 0;width:100%}

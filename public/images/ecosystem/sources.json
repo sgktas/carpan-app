@@ -1,0 +1,90 @@
+[
+  {
+    "name": "1inch",
+    "file": "images/ecosystem/1inch.png",
+    "sourcePage": "https://www.arc.io/ecosystem",
+    "assetUrl": "https://cdn.prod.website-files.com/68af181813eec5493447a1ae/6ab3516244c2156302ff891a_6ab3516207e3351cc8f9a53a_1inch-logo.png",
+    "sha256": "2e33366883840db97ea613aeaac93c790478949fbf4f0260bdb7ad441baf4bc1",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "aave",
+    "file": "images/ecosystem/aave.svg",
+    "sourcePage": "https://www.arc.io/ecosystem",
+    "assetUrl": "https://cdn.prod.website-files.com/68af181813eec5493447a1ae/6900dc93490611b54729de1b_Logomark-dark.svg",
+    "sha256": "d60d11bb853ed296c5afa23946517b0d8033fdad4cf4bd5d3f1cfdf06f98d024",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "across",
+    "file": "images/ecosystem/across.svg",
+    "sourcePage": "https://www.arc.io/ecosystem",
+    "assetUrl": "https://cdn.prod.website-files.com/68af181813eec5493447a1ae/68fd17220510c245fc5c4bae_Across%20Logomark%20Aqua%20Circle.svg",
+    "sha256": "338ef43bf2a2af6abc5789553b6628a576d5db543b59e0c41505aeb2db8804e6",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "alchemy",
+    "file": "images/ecosystem/alchemy.svg",
+    "sourcePage": "https://www.arc.io/ecosystem",
+    "assetUrl": "https://cdn.prod.website-files.com/68af181813eec5493447a1ae/68fbd65066ce5c45d267be27_alchemy-mark-blue-gradient.svg",
+    "sha256": "693d9d64e4ffd789a6fafe1b38d5c3940248c0c2256c34ed1bbce27b1863010b",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "blockscout",
+    "file": "images/ecosystem/blockscout.svg",
+    "sourcePage": "https://www.arc.io/ecosystem",
+    "assetUrl": "https://cdn.prod.website-files.com/68af181813eec5493447a1ae/68fd1693c81ea40549a75b31_blockscout-icon.svg",
+    "sha256": "f6bec4b2868466d4ce1a33ece41e0f722977e5bd538f7ceffac5be8d2f398c09",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "chainlink",
+    "file": "images/ecosystem/chainlink.png",
+    "sourcePage": "https://www.arc.io/ecosystem",
+    "assetUrl": "https://cdn.prod.website-files.com/68af181813eec5493447a1ae/68fffb074f79406a3b36d2ca_Chainlink_Logo_Blue.svg.png",
+    "sha256": "94602930e4b6af70f92019344f54164724a5d2c5f4e76b838bb53e8ab41bca68",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "goldsky",
+    "file": "images/ecosystem/goldsky.png",
+    "sourcePage": "https://www.arc.io/ecosystem",
+    "assetUrl": "https://cdn.prod.website-files.com/68af181813eec5493447a1ae/6aa35d2f01438cf0b62985b3_goldsky-logo-circular-large.png",
+    "sha256": "1247906ebc0625a5b0505ea592ab91aae3011dbc0e3e10bfe29d6eb169499aa3",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "circle",
+    "file": "images/ecosystem/circle.png",
+    "sourcePage": "https://developers.circle.com/cctp",
+    "assetUrl": "https://developers.circle.com/mintlify-assets/_mintlify/favicons/circle-167b8d39/NmgH-UQQhRa2ts0q/_generated/favicon/android-chrome-192x192.png",
+    "sha256": "a0977a4bd72ba75130f79ef020b82b53d5841a1d3523680c114dfd6c48d114c3",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "thegraph",
+    "file": "images/ecosystem/thegraph.svg",
+    "sourcePage": "https://thegraph.com/brand/",
+    "assetUrl": "https://storage.thegraph.com/brand/The%20Graph%20-%20Logomark.zip",
+    "sha256": "94440b210b10b6e1a43660fb818ecdde906238b093c60560b99a6acdd6ae93af",
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "name": "arc",
+    "file": "images/ecosystem/arc.svg",
+    "sourcePage": "https://www.arc.io/",
+    "assetUrl": "https://cdn.prod.website-files.com/685311a976e7c248b5dfde95/688f6e47eca8d8e359537b5f_logo-ondark.svg",
+    "sha256": "b61269ccb990eb1e67bd2491a55fbbb5670da56f286ff4083383b33ccc43f4be",
+    "reviewedAt": "2026-10-10"
+  },
+  {
+    "name": "extended",
+    "file": "images/ecosystem/extended.svg",
+    "sourcePage": "https://extended.exchange/",
+    "assetUrl": "https://framerusercontent.com/images/VgSPD6KMlQwC4OFot36eciJWM.svg",
+    "sha256": "b7185c0e78ccd6e96557ca31e058d991e4040b142d8471231c9516488f27c2b2",
+    "reviewedAt": "2026-10-10"
+  }
+]

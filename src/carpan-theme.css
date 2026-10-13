@@ -1,0 +1,53 @@
+/* One Carpan canvas across marketing, research and financial workspaces. */
+/* The shared palette is defined once in index.css. Module tokens alias it. */
+html body{background:var(--bg);color:var(--ink)}
+html .rvx-page{--rvx-ink:var(--ink);--rvx-muted:var(--muted);--rvx-blue:var(--accent);background:var(--bg);color:var(--ink)}
+html .rvx-header{background:#09090cf2;border-bottom:1px solid var(--border)}
+html .rvx-mode{background:#232018;color:#edcb88;border-bottom:1px solid #54492e}
+html .rvx-brand{color:var(--ink)}
+html .rvx-brand svg,html .rvx-brand img{filter:brightness(0) invert(1)}
+html .rvx-kicker,html .rvx-products-heading h2 em{color:var(--accent)}
+html .rvx-empty,html .rvx-project,html .rvx-steps article{background:var(--surface);border:1px solid var(--border);color:var(--ink)}
+html .rvx-project-cover{color:#241b32}
+html .rvx-steps article:nth-child(2),html .rvx-steps article:nth-child(3){background:var(--surface)}
+html .rvx-steps b{color:var(--accent)}
+html .rvx-join{background:linear-gradient(115deg,var(--surface-strong),var(--surface));border:1px solid var(--border-strong);color:var(--ink)}
+html .rvx-join:before,html .rvx-join:after{opacity:.12}
+html .rvx-join .primary{background:var(--accent);color:#21172f}
+html .rvx-dialog,html .rvx-detail{background:var(--surface);color:var(--ink);border:1px solid var(--border)}
+html .rvx-dialog p,html .rvx-dialog>small,html .rvx-close,html .rvx-detail p{color:var(--muted)}
+html .rvx-dialog input{background:var(--bg);color:var(--ink);border-color:var(--border-strong)}
+html .rvx-demo-list button{background:var(--surface-strong);color:var(--ink)}
+html .rvx-error{background:#492534;color:#ffc0ce}
+html .arc-tool{background:var(--bg);color:var(--ink)}
+html .arc-tool-header{background:#09090cf2;border-color:var(--border)}
+html .arc-tool-card,html .arc-tool-preview{background:var(--surface);border-color:var(--border)}
+html .arc-tool-card-title h2,html .arc-tool-form label{color:var(--ink)}
+html .arc-tool-intro>p,html .arc-tool-wallet>p,html .arc-tool-balance span,html .arc-tool-form-intro,html .arc-tool-preview dt,html .arc-tool-footnote{color:var(--muted)}
+html .arc-tool-form input{background:var(--bg);color:var(--ink);border-color:var(--border-strong)}
+html .arc-tool-address,html .arc-tool-notice,html .arc-tool-request-result,html .arc-tool-network,html .arc-tool-tabs button.active{background:var(--surface-strong);color:var(--ink-2)}
+html .arc-tool-tabs,html .arc-tool-balance,html .arc-tool-preview dl div{border-color:var(--border)}
+html .arc-tool-back,html .arc-tool-kicker,html .arc-tool-card-title,html .arc-tool-intro h1 em{color:var(--accent)!important}
+html .arc-tool-network-alert{background:#292419;border:1px solid #625235;color:var(--warning)}
+html .arc-tool-preview>p{color:var(--warning)}
+html .arc-tool-request-result span{color:var(--muted)}
+html .arc-tool-request-result button{background:var(--surface);color:var(--ink-2);border:1px solid var(--border-strong)}
+html .arc-tool-wallet-actions button,html .arc-tool-wallet-actions a,html .arc-tool-preview-actions>button:first-child{color:var(--accent)}
+html .arc-tool-tabs button{color:var(--muted)}
+html .arc-tool-tx{color:var(--success)!important}
+.carpan-footer{background:var(--bg);color:var(--muted);border-top:1px solid var(--border);padding:30px clamp(18px,3vw,48px);font:12px/1.6 'DM Sans',sans-serif}
+.carpan-footer-inner{max-width:1536px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.carpan-footer-brand{display:flex;align-items:center;gap:10px;color:#f4f0fc;text-decoration:none;font:700 20px 'Space Grotesk',sans-serif}
+.carpan-footer nav{display:flex;align-items:center;flex-wrap:wrap;gap:22px}
+.carpan-footer a{color:inherit;text-decoration:none}.carpan-footer a:hover{color:#cfbcff}.carpan-footer p{margin:0}
+.carpan-language{display:inline-flex;align-items:center;gap:3px;padding:3px;border:1px solid var(--border-strong);border-radius:8px;background:var(--surface);flex-shrink:0}
+.carpan-language button{border:0;padding:5px 7px;border-radius:5px;color:var(--muted);background:transparent;font:600 11px 'DM Sans',sans-serif;cursor:pointer}
+.carpan-language button[aria-pressed=true]{background:#ac98ef;color:#21172f}
+@media(max-width:640px){.carpan-footer-inner{align-items:flex-start;flex-direction:column;gap:18px}.carpan-footer nav{gap:15px}.carpan-language button{padding:5px}}
+.at-footer,.aw-footer,.arc-radar-footer{background:var(--bg)!important;color:var(--muted)!important;border-top:1px solid var(--border)!important}
+.at-footer a,.aw-footer a,.arc-radar-footer a{color:#cfbcff!important}
+html .rvx-brand>.rvx-brand-name{color:var(--ink)}
+html .carpan-product-trigger{color:#ddd4ed}
+html .carpan-product-trigger:hover{background:var(--surface-strong);color:#fff}
+html .rvx-community-empty>a{color:#c6afff}
+html .rvx-community-empty{background:var(--surface);border-color:var(--border)}

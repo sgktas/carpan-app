@@ -1,0 +1,345 @@
+/* Quiet account surfaces: the same Carpan ink and lavender, no promotional cards. */
+.carpan-sessions-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:23px 27px;border-bottom:1px solid #3a3845;background:linear-gradient(125deg,#b597ff0a,transparent 65%)}
+.carpan-sessions-card .carpan-sessions-heading h2{border:0;padding:0;background:none}
+.carpan-sessions-heading p{margin:6px 0 0;color:#b9b2c8;font-size:13px}
+.carpan-session-refresh{display:grid;place-items:center;flex-shrink:0;border:1px solid #62566f;border-radius:7px;background:#b597ff0b;color:#dacbfa;width:37px;height:37px;cursor:pointer}
+.carpan-sessions-overview{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 27px 10px}
+.carpan-sessions-overview>span{display:flex;align-items:center;gap:9px;color:#e1d5f6;font-size:13px}
+.carpan-session-action{min-height:35px;border:1px solid #786595;border-radius:7px;background:linear-gradient(140deg,#b597ff21,#b597ff0b);color:#e0ceff;padding:8px 13px;font:500 12px/1.4 'DM Sans',sans-serif;cursor:pointer}
+.carpan-session-action:hover:not(:disabled),.carpan-session-refresh:hover:not(:disabled){border-color:#c3a5ff;background:#b597ff28}
+.carpan-session-action.is-danger{border-color:#975062;color:#f1b7c6;background:#682c3a55}
+.carpan-sessions-card button:disabled{opacity:.5;cursor:not-allowed}
+.carpan-sessions-note{margin:0;padding:0 27px 20px;color:#aaa4b8;font-size:12px;line-height:1.7}
+.carpan-sessions-message{margin:20px 27px;color:#bdb7cb;font-size:13px;display:flex;align-items:center;gap:8px}
+.carpan-sessions-message.is-error{color:#f3b4bd}.carpan-sessions-message.is-success{color:#9bd5b5}
+.carpan-sessions-list{list-style:none;padding:0;margin:0}
+.carpan-sessions-list>li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;gap:15px;padding:24px 27px;border-top:1px solid #33313b}
+.carpan-sessions-list>li.is-current{background:linear-gradient(125deg,#b597ff0a,transparent 70%)}
+.carpan-session-icon{display:grid;place-items:center;width:38px;height:38px;border:1px solid #50485f;border-radius:8px;color:#c2acd9;background:#b597ff09}
+.carpan-session-details>strong{font-size:14px;font-weight:500;color:#f0eaf9}
+.carpan-session-details dl{display:flex;flex-wrap:wrap;gap:9px 28px;margin:9px 0 0;font-size:12px}
+.carpan-session-details dl>div{display:flex;flex-wrap:wrap;gap:7px}.carpan-session-details dt{color:#aaa4b8}.carpan-session-details dd{margin:0;color:#cec6db}
+.carpan-session-confirm{margin:0 27px 22px;padding:18px 20px;border:1px solid #756387;border-radius:9px;background:linear-gradient(130deg,#b597ff16,#b597ff06)}
+.carpan-session-confirm>strong{display:block;font-weight:500;color:#f0eaf9}.carpan-session-confirm small{display:block;margin-top:8px;color:#c7bed6}
+.carpan-session-confirm p{font-size:12px;line-height:1.7;color:#b9b0ca;margin:10px 0 15px}.carpan-session-confirm>div{display:flex;flex-wrap:wrap;gap:9px}
+@media(max-width:700px){.carpan-sessions-heading{padding:21px}.carpan-sessions-overview{padding:20px 21px 10px;flex-wrap:wrap}.carpan-sessions-note{padding-inline:21px}.carpan-sessions-message{margin-inline:21px}.carpan-sessions-list>li{grid-template-columns:38px minmax(0,1fr);padding:21px;gap:12px}.carpan-sessions-list>li>.carpan-session-action,.carpan-sessions-list>li>.carpan-settings-status{grid-column:2;justify-self:start}.carpan-session-confirm{margin-inline:21px}.carpan-session-details dl{display:grid;gap:7px}}
+.carpan-header-controls .carpan-signin-button{background:transparent;color:var(--ink);border-color:var(--border-strong);font-weight:500!important;padding:7px 12px}
+.carpan-register-button{background:#ac98ef;color:#20152e;border:1px solid #ac98ef;border-radius:7px;padding:7px 13px;min-height:36px;font-weight:600!important;white-space:nowrap}
+.carpan-settings-button{display:grid;place-items:center;color:#c7bbd6;padding:8px;border-radius:7px;flex-shrink:0}.carpan-settings-button:hover{color:#efe5ff;background:var(--surface-strong)}
+.carpan-header-icon{display:grid;place-items:center;padding:8px;background:transparent;border:0;border-radius:7px;color:#c7bbd6;min-height:34px}.carpan-header-icon:hover,.carpan-header-icon[aria-expanded=true]{background:var(--surface-strong);color:var(--ink)}.carpan-control-panel.carpan-header-language{width:175px;right:40px;padding:6px}.carpan-header-language button{display:flex;width:100%;align-items:center;justify-content:space-between;padding:9px 11px;border:0;border-radius:4px;background:transparent;color:var(--ink-2);text-align:left}.carpan-header-language button[aria-pressed=true]{background:var(--surface-strong);color:#d8c3ff}.carpan-header-language span{font-size:10px;color:var(--muted)}
+.carpan-login-dialog.carpan-auth-screen{position:fixed;inset:0;width:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:72px 24px 36px;border:0;border-radius:0;background:radial-gradient(ellipse at 50% 0,#18181f 0,transparent 58%),var(--bg);box-shadow:none;overflow-y:auto}
+.carpan-auth-screen::backdrop{background:var(--bg);backdrop-filter:none}
+.carpan-auth-form{width:min(394px,100%);margin:0 auto}
+
+
+.carpan-auth-form h1{font:500 26px/1.25 'DM Sans',sans-serif;text-align:center;color:var(--ink);margin:0 0 30px;letter-spacing:-.6px}
+.carpan-auth-back{position:absolute;top:24px;left:24px;display:flex;align-items:center;gap:7px;background:transparent;border:0;color:var(--muted);padding:5px;font-size:12px!important}
+.carpan-auth-provider{width:100%;min-height:49px;display:flex;align-items:center;justify-content:center;gap:12px;background:var(--surface);color:var(--ink);border:1px solid var(--border-strong);border-radius:5px;margin:0 0 13px;padding:12px 15px;font-size:14px!important;font-weight:500}
+.carpan-auth-provider:hover:not(:disabled){border-color:#b4a0ef;background:var(--surface-strong)}.carpan-auth-provider:disabled{color:var(--muted);background:var(--surface-muted)}.carpan-auth-provider small{font-size:9px;font-weight:400;color:var(--muted);margin-left:auto}.carpan-auth-provider>svg{flex-shrink:0}
+.carpan-auth-divider{display:flex;align-items:center;gap:16px;color:var(--muted);font-size:12px;margin:25px 0}.carpan-auth-divider:before,.carpan-auth-divider:after{content:'';height:1px;background:var(--border);flex:1}
+.carpan-auth-email label{display:block;font-size:12px;color:var(--ink-2);margin-bottom:9px}.carpan-auth-email input{box-sizing:border-box;width:100%;height:49px;background:var(--surface);border:1px solid var(--border-strong);border-radius:5px;padding:0 14px;color:var(--ink);font-size:14px}.carpan-auth-email input:disabled{color:var(--muted)}.carpan-auth-email input::placeholder{color:#8f809f}.carpan-auth-hint{font-size:11px;color:var(--muted);line-height:1.65;margin:12px 0 24px}
+.carpan-auth-submit{width:100%;min-height:49px;display:flex;align-items:center;justify-content:center;gap:9px;background:#ac98ef;border:1px solid #ac98ef;border-radius:5px;color:#21172f;font-weight:600;padding:12px}.carpan-auth-submit:disabled{background:var(--surface-muted);color:#9787ae;border-color:var(--border);cursor:not-allowed}
+.carpan-auth-switch{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:21px;font-size:12px;color:var(--muted)}.carpan-auth-switch button{padding:0;border:0;background:transparent;color:#c6adfa}.carpan-auth-note{font-size:11px;color:var(--muted);line-height:1.8;text-align:center;margin:21px 0 0}.carpan-auth-success{font-size:12px;color:#9bd5b5;margin-bottom:20px}.carpan-auth-form .carpan-login-error{font-size:12px;color:#f3b4bd;padding:12px;border:1px solid #6b3847;background:#321b27;border-radius:5px}.carpan-auth-form .carpan-login-error button{display:block}
+.carpan-settings-page{max-width:1240px;margin:0 auto;padding:12px 0 56px;font:14px/1.5 'DM Sans',sans-serif;color:var(--ink)}.carpan-settings-page>h1{font:500 24px 'Space Grotesk',sans-serif;margin:0 0 25px;letter-spacing:-.5px}
+.carpan-settings-tabs{display:flex;gap:5px;overflow-x:auto;border-bottom:1px solid var(--border);margin-bottom:25px}.carpan-settings-tabs button{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;padding:12px 18px 15px;color:var(--muted);font:inherit;font-size:13px;cursor:pointer}.carpan-settings-tabs button[aria-current=page]{color:#c8afff;border-bottom-color:#ac98ef}
+.carpan-settings-card{border:1px solid var(--border);border-radius:7px;background:var(--surface);margin:0 0 23px;overflow:hidden}.carpan-settings-card h2{font-size:16px;font-weight:600;padding:22px 24px;margin:0;border-bottom:1px solid var(--border)}
+.carpan-settings-row{display:grid;grid-template-columns:180px minmax(0,1fr) auto;align-items:start;gap:22px;padding:24px;min-height:78px}.carpan-settings-row+.carpan-settings-row{border-top:1px solid var(--border)}.carpan-settings-row>span:first-child{color:var(--muted);display:flex;align-items:center;gap:9px}.carpan-settings-row strong{display:block;color:var(--ink);font-size:14px;font-weight:500;overflow-wrap:anywhere}.carpan-settings-row small{display:block;color:var(--muted);font-size:12px;margin-top:10px;line-height:1.7}.carpan-settings-row>button,.carpan-settings-edit button{border:1px solid var(--border-strong);border-radius:4px;background:var(--surface-strong);color:#cdb9f8;min-width:110px;min-height:34px;padding:7px 18px;font:inherit;font-size:12px;cursor:pointer}.carpan-settings-row button:disabled{opacity:.5;cursor:not-allowed}.carpan-settings-row .is-danger{background:#391e2c;border-color:#613044;color:#f0a9b9}.carpan-settings-status{color:var(--muted);font-size:11px}.carpan-settings-status.is-verified{color:#8ed0af;display:flex;align-items:center;gap:6px}
+.carpan-settings-edit input{width:100%;max-width:430px;box-sizing:border-box;border:1px solid var(--border-strong);border-radius:4px;background:var(--bg);color:var(--ink);padding:10px 12px;font:inherit}.carpan-settings-edit>div{display:flex;gap:8px;margin-top:12px}.carpan-settings-edit .is-secondary{background:transparent;color:#c0afce}
+.carpan-settings-connections{padding:18px 24px;max-width:580px}.carpan-settings-connections>a{color:#c9b0f8;display:inline-block;margin-top:16px;font-size:12px}.carpan-settings-error,.carpan-settings-success{font-size:12px;display:flex;align-items:center;gap:8px;margin-bottom:20px;color:#f3b4bd}.carpan-settings-success{color:#9bd5b5}
+.carpan-settings-page :focus-visible,.carpan-auth-screen :focus-visible{outline:2px solid #c4a8fa;outline-offset:3px}
+@media(max-width:700px){.carpan-header-controls{gap:5px}.carpan-header-controls .carpan-signin-button,.carpan-register-button{font-size:11px!important;padding:6px 8px;min-height:34px}.carpan-settings-button{padding:6px}.carpan-settings-row{grid-template-columns:110px minmax(0,1fr);gap:16px;padding:20px}.carpan-settings-row>button,.carpan-settings-row>.carpan-language,.carpan-settings-row>.carpan-settings-status{grid-column:2;justify-self:start}.carpan-settings-card h2{padding:20px}.carpan-settings-tabs button{padding:11px 15px}.carpan-login-dialog.carpan-auth-screen{padding:82px 22px 28px}.carpan-auth-back{top:19px;left:18px}}
+
+/* Account screens stay quiet and narrow, with the same polished dark materials. */
+.carpan-login-dialog.carpan-auth-screen {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(var(--cp-finance-rgb, 181, 151, 255), .12), transparent 52%),
+    radial-gradient(ellipse at 10% 85%, #3d316209, transparent 40%),
+    #09090d;
+}
+
+.carpan-auth-form {
+  position: relative;
+  padding-top: 12px;
+}
+
+
+
+.carpan-auth-form h1 {
+  color: #f5f3fa;
+  font-size: 28px;
+  margin-bottom: 29px;
+}
+
+.carpan-auth-provider {
+  border-color: var(--cp-line-strong, #484852);
+  border-radius: 8px;
+  min-height: 51px;
+  background: linear-gradient(155deg, #25252d, #17171c);
+  box-shadow: inset 0 1px 0 #ffffff08, 0 5px 14px #0002;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+
+.carpan-auth-provider:hover:not(:disabled) {
+  background: linear-gradient(155deg, #302c3c, #211d2b);
+  border-color: #b9a3f0;
+  box-shadow: inset 0 1px 0 #ffffff09, 0 0 22px #b597ff0d;
+}
+
+.carpan-auth-provider:disabled {
+  opacity: 1;
+  color: #a6a3b2;
+  background: #14141a;
+  border-color: #33333e;
+}
+
+.carpan-auth-provider small {
+  border: 1px solid #41414d;
+  border-radius: 4px;
+  padding: 3px 5px;
+  color: #b2aebf;
+  white-space: nowrap;
+}
+
+.carpan-auth-email input {
+  height: 51px;
+  border-radius: 8px;
+  background: #14141b;
+  border-color: var(--cp-line-strong, #484852);
+  box-shadow: inset 0 2px 6px #0003;
+}
+
+.carpan-auth-email input::placeholder {
+  color: #9591a3;
+}
+
+.carpan-auth-hint,
+.carpan-auth-note {
+  color: #aaa6b7;
+}
+
+.carpan-auth-submit {
+  min-height: 51px;
+  border-color: #dacbff;
+  border-radius: 8px;
+  background: linear-gradient(125deg, #e0d2ff 0%, #b79bef 100%);
+  color: #221630;
+  box-shadow: inset 0 1px 0 #ffffff65, 0 4px 20px #b597ff15;
+  transition: box-shadow .2s, filter .2s;
+}
+
+.carpan-auth-submit:hover:not(:disabled) {
+  filter: brightness(1.07);
+  box-shadow: inset 0 1px 0 #ffffff65, 0 4px 24px #b597ff28;
+}
+
+.carpan-auth-submit:disabled {
+  background: #17171e;
+  color: #9d97ae;
+  border-color: #35343f;
+  box-shadow: none;
+}
+
+.carpan-auth-switch button,
+.carpan-auth-form .carpan-login-change {
+  color: #d2bfff;
+}
+
+.carpan-auth-back:hover {
+  color: #e4dcf6;
+}
+
+.carpan-auth-form .carpan-login-error {
+  background: linear-gradient(145deg, #40212c, #29171f);
+  border-color: #895063;
+  border-radius: 8px;
+  padding: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.carpan-settings-page {
+  max-width: 1240px;
+  padding-top: 5px;
+}
+
+.carpan-settings-intro {
+  margin: 0 0 28px;
+  padding: 18px 0 10px;
+}
+
+.carpan-settings-intro > span {
+  color: #ccb8fb;
+  font: 600 10px/1.5 'JetBrains Mono', monospace;
+  letter-spacing: .16em;
+}
+
+.carpan-settings-intro h1 {
+  margin: 12px 0 0;
+  color: #f5f2fa;
+  font: 600 clamp(29px, 3vw, 37px)/1.1 'Space Grotesk', sans-serif;
+  letter-spacing: -.035em;
+}
+
+.carpan-settings-tabs {
+  gap: 7px;
+  border-color: #3d3a48;
+  margin-bottom: 27px;
+}
+
+.carpan-settings-tabs button {
+  min-height: 48px;
+  color: #b3aebe;
+  padding-inline: 22px;
+  transition: color .2s, background .2s;
+}
+
+.carpan-settings-tabs button:hover {
+  color: #e2d4ff;
+  background: #b597ff08;
+}
+
+.carpan-settings-tabs button[aria-current=page] {
+  color: #dcc9ff;
+  border-bottom-color: #bfa2fc;
+  background: linear-gradient(0deg, #b597ff0d, transparent);
+}
+
+.carpan-settings-card {
+  border-radius: 13px;
+  border-color: var(--cp-line, #36363f);
+  background:
+    linear-gradient(150deg, #ffffff04, transparent 54%),
+    var(--cp-panel, #18181e);
+  box-shadow: var(--cp-shadow, 0 10px 30px #0003), inset 0 1px 0 #ffffff07;
+}
+
+.carpan-settings-card h2 {
+  padding: 23px 27px;
+  border-color: #3a3845;
+  background: linear-gradient(125deg, #b597ff0a, transparent 65%);
+  font: 600 18px/1.4 'Space Grotesk', sans-serif;
+  letter-spacing: -.02em;
+}
+
+.carpan-settings-row {
+  padding: 26px 27px;
+  gap: 25px;
+}
+
+.carpan-settings-row + .carpan-settings-row {
+  border-color: #33313b;
+}
+
+.carpan-settings-row > span:first-child {
+  color: #bdb7cb;
+}
+
+.carpan-settings-row strong {
+  color: #f0eaf9;
+}
+
+.carpan-settings-row small {
+  margin-top: 9px;
+  color: #aaa4b8;
+}
+
+.carpan-settings-row > button,
+.carpan-settings-edit button {
+  min-height: 37px;
+  border-radius: 7px;
+  border-color: #786595;
+  color: #e0ceff;
+  background: linear-gradient(140deg, #b597ff21, #b597ff0b);
+  box-shadow: inset 0 1px 0 #ffffff06;
+  transition: border-color .2s, background .2s;
+}
+
+.carpan-settings-row > button:hover:not(:disabled),
+.carpan-settings-edit button:hover:not(:disabled) {
+  border-color: #c3a5ff;
+  background: linear-gradient(140deg, #b597ff35, #b597ff17);
+}
+
+.carpan-settings-row .is-danger {
+  background: linear-gradient(145deg, #682c3a55, #431c2755);
+  border-color: #975062;
+  color: #f1b7c6;
+}
+
+.carpan-settings-row .is-danger:hover:not(:disabled) {
+  border-color: #d48097;
+  background: #6c2e4155;
+}
+
+.carpan-settings-edit input {
+  min-height: 43px;
+  border-color: #645a78;
+  border-radius: 7px;
+  background: #101017;
+  box-shadow: inset 0 2px 5px #0003;
+}
+
+.carpan-settings-connections {
+  padding: 23px 27px;
+}
+
+.carpan-settings-page :focus-visible,
+.carpan-auth-screen :focus-visible {
+  outline-color: #d2b6ff;
+}
+
+@media (max-width: 700px) {
+  .carpan-settings-intro {
+    padding-top: 12px;
+    margin-bottom: 20px;
+  }
+  .carpan-settings-intro h1 {
+    font-size: 31px;
+  }
+  .carpan-settings-row {
+    grid-template-columns: 105px minmax(0, 1fr);
+    padding: 21px;
+    gap: 15px;
+  }
+  .carpan-settings-card h2,
+  .carpan-settings-connections {
+    padding: 21px;
+  }
+  .carpan-settings-tabs button {
+    padding-inline: 17px;
+  }
+  .carpan-auth-form {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  .carpan-settings-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .carpan-settings-row > button,
+  .carpan-settings-row > .carpan-language,
+  .carpan-settings-row > .carpan-settings-status {
+    grid-column: 1;
+  }
+  .carpan-auth-provider {
+    padding-inline: 12px;
+    gap: 9px;
+  }
+  .carpan-auth-provider small {
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carpan-auth-provider,
+  .carpan-auth-submit,
+  .carpan-settings-tabs button,
+  .carpan-settings-row > button,
+  .carpan-settings-edit button {
+    transition: none;
+  }
+}
+
+@media(max-width:420px){.carpan-settings-tabs{gap:0}.carpan-settings-tabs button{padding:11px 10px;font-size:12px;white-space:nowrap}}

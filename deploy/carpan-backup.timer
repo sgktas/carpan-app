@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Carpan SQLite backup
+
+[Timer]
+OnCalendar=*-*-* 03:30:00 Europe/Istanbul
+Persistent=true
+RandomizedDelaySec=300
+Unit=carpan-backup.service
+
+[Install]
+WantedBy=timers.target

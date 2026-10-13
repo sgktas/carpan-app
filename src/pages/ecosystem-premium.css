@@ -1,0 +1,348 @@
+/* Research surfaces: use identity, evidence and real charts as the visual focus. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem {
+  --eco-paper:linear-gradient(145deg,#ffffff06 0%,#ffffff01 42%,#ffffff00 70%),var(--ws-card);
+  --eco-edge:#ffffff1a;
+  --eco-edge-strong:#ffffff30;
+  --eco-depth:inset 0 1px 0 #ffffff09,0 20px 48px #00000028;
+}
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-main { padding-top:38px; padding-bottom:80px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-workspace-heading { gap:32px; padding-bottom:24px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-workspace-heading h1 { font-size:40px; letter-spacing:-1.25px; margin:12px 0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-workspace-heading p { max-width:620px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-heading-note { color:var(--ws-muted); font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-heading-note svg { color:var(--ws-action); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-tabs { gap:32px; margin:0 0 32px; border-color:var(--eco-edge); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-tabs a { min-height:54px; font-size:13px; padding:17px 0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-tabs a[aria-current=page] { color:#fff; border-bottom-color:var(--ws-action); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-kicker { color:var(--ws-faint); letter-spacing:1.3px; font-size:10px; }
+
+/* Coverage reads as a quiet, useful research index, separate from project cards. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; margin:0 0 34px; padding:0; border:1px solid var(--eco-edge); border-radius:14px; background:var(--eco-paper); box-shadow:var(--eco-depth); overflow:hidden; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a { min-width:0; gap:20px; padding:25px 28px; min-height:100px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a+a { border-left:1px solid var(--eco-edge); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a>svg:first-child { width:21px; height:21px; color:var(--ws-muted); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a>svg:last-child { margin-left:auto; color:var(--ws-faint); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a:hover { background:#ffffff04; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage-value { display:grid; gap:6px; min-width:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage-value strong { font:500 30px/1 'Space Grotesk',sans-serif; letter-spacing:-.75px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage-value small { font-size:11px; line-height:1.6; color:var(--ws-muted); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-overview-layout { grid-template-columns:minmax(0,2.35fr) minmax(300px,1fr); gap:28px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-section-heading { align-items:flex-end; margin-bottom:22px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-section-heading h2 { font-size:26px; line-height:1.3; font-weight:500; margin:10px 0 0; letter-spacing:-.7px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-section-heading>a { min-height:36px; color:var(--ws-text); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-categories { gap:6px; margin-bottom:24px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-categories button { background:transparent; border-color:transparent; color:var(--ws-muted); border-radius:7px; padding:8px 11px; font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-categories button[aria-pressed=true] { background:#ffffff08; color:#fff; border-color:#ffffff22; box-shadow:inset 0 1px 0 #ffffff06; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-categories button:hover { border-color:var(--eco-edge-strong); color:#fff; }
+
+/* Project cards have three clear layers: identity, briefing, evidence ledger. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-grid { gap:20px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-grid.directory { grid-template-columns:repeat(3,minmax(0,1fr)); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-card { position:relative; padding:26px; border:1px solid var(--eco-edge); border-radius:15px; background:var(--eco-paper); box-shadow:var(--eco-depth); overflow:hidden; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-card:not(:disabled):hover { background:linear-gradient(145deg,#ffffff08,#ffffff01 55%,#ffffff00),var(--ws-card); border-color:var(--eco-edge-strong); box-shadow:inset 0 1px 0 #ffffff12,0 24px 52px #0000003a; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-top { align-items:flex-start; gap:16px; margin-bottom:22px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-identity { align-items:center; gap:15px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-identity strong { font-size:21px; letter-spacing:-.45px; font-weight:500; line-height:1.25; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-identity small { margin-top:6px; font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-logo { background:linear-gradient(135deg,#ffffff0c,#ffffff02),#131518; border:1px solid #ffffff1c; box-shadow:inset 0 1px 0 #ffffff0b,0 6px 16px #0003; border-radius:13px; color:#f5f7fb; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-top .eco-logo { width:52px; height:52px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-bookmark { background:#ffffff04; border:1px solid #ffffff16; color:var(--ws-muted); border-radius:9px; box-shadow:inset 0 1px 0 #ffffff05; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-bookmark[aria-pressed=true] { background:#d0e3ff0b; color:var(--ws-action); border-color:#c7dcff42; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-tags { justify-content:space-between; gap:8px 12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-tags>span:first-child { font-size:11px; color:var(--ws-faint); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-tags .eco-stage { padding:4px 7px; font-size:10px; background:transparent; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-stage.mainnet { border-color:#8edbb32c; background:#8edbb308; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-stage.announced { border-color:#e5c68b2c; background:#e5c68b08; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-description { font-size:13px; color:var(--ws-muted); line-height:1.85; margin:18px 0 23px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts { padding:17px 18px; border:1px solid #ffffff0e; border-radius:9px; gap:19px; min-height:92px; background:#05060842; box-shadow:inset 0 1px 10px #00000012; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts>div+div { border-left:1px solid #ffffff0f; padding-left:18px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts small { font-family:inherit; text-transform:none; font-size:11px; line-height:1.5; letter-spacing:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts strong { font-size:15px; font-weight:500; margin-top:9px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts span { font-size:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-token-links { min-height:0; margin-top:17px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-token-links a { padding:5px 8px; color:var(--ws-muted); background:#ffffff03; border-color:#ffffff14; border-radius:5px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-bottom { min-height:38px; margin-top:20px; gap:16px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-bottom .ecp-project-research { color:#fff; font-size:12px; gap:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-research svg { color:var(--ws-action); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-bottom>a:last-child:not(:first-child) { font-size:11px; color:var(--ws-faint); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-directory { background:transparent; border:0; box-shadow:none; padding:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-directory-heading { margin-bottom:22px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-directory-heading h2 { margin:0; font-size:25px; letter-spacing:-.65px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-view-controls { gap:3px; padding:4px; background:#ffffff03; border:1px solid var(--eco-edge); border-radius:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-view-controls button { background:transparent; border-color:transparent; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-view-controls button[aria-pressed=true] { background:#ffffff0c; color:#fff; border-color:#ffffff16; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-filters { padding:0 0 24px; margin:0 0 24px; border-color:var(--eco-edge); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-search,
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-filters select { border-color:var(--eco-edge); background:#090a0c; box-shadow:inset 0 1px 5px #0004; min-height:44px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-table-scroll { border:1px solid var(--eco-edge); border-radius:12px; background:var(--eco-paper); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-table th { background:#ffffff03; border-top:0; padding:17px 20px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-table td { padding:21px 20px; border-color:#ffffff0c; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-table tbody tr:nth-child(2n) { background:#ffffff02; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-table tbody tr:hover { background:#ffffff05; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-table tr:last-child td { border-bottom:0; }
+
+/* Market composition is led by the real chart, not equally weighted gray boxes. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-heading { margin-bottom:22px; align-items:flex-start; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-heading h2 { font-size:26px; letter-spacing:-.7px; margin:8px 0 9px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-navigation { margin-top:0; padding-bottom:0; border-bottom:0; gap:7px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-navigation button { padding:10px 13px; border-color:transparent; background:transparent; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-navigation button[aria-pressed=true] { border-color:#ffffff23; background:#ffffff06; box-shadow:inset 0 1px 0 #ffffff07; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-navigation button>span { background:#ffffff07; padding:3px 7px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-workspace>.em-source { margin:8px 0 13px; padding:10px 0; font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-cards { margin:0 0 24px; gap:12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card { position:relative; border-radius:12px; padding:19px 20px; background:var(--eco-paper); border-color:var(--eco-edge); box-shadow:var(--eco-depth); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card.is-selected { background:linear-gradient(140deg,#d0e3ff0c,#ffffff01 65%),var(--ws-card); border-color:#c2dcff55; box-shadow:inset 0 1px 0 #d9eaff28,0 12px 28px #0003; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card:not(:disabled):hover { border-color:#ffffff40; background:linear-gradient(145deg,#ffffff0a,#ffffff00),var(--ws-card); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card:disabled { background:#ffffff02; border-color:#ffffff14; border-style:solid; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card small { font-size:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card .em-asset-price { font-size:25px; margin-top:20px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card footer { margin-top:14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-token-badge { background:linear-gradient(135deg,#ffffff0d,#ffffff02),#131518; border-color:#ffffff20; box-shadow:inset 0 1px 0 #ffffff09,0 5px 12px #0002; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-feature { background:var(--eco-paper); border:1px solid var(--eco-edge); border-radius:16px; margin-bottom:36px; box-shadow:var(--eco-depth); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-heading { padding:28px 30px; background:transparent; border-color:#ffffff10; align-items:center; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-identity { display:flex; gap:18px; align-items:center; min-width:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-identity>.em-token-badge { width:54px; height:54px; border-radius:14px; font-size:14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-identity>.em-token-usdc,
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-identity>.em-token-eurc { font-size:31px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-heading h3 { font-size:31px; margin:7px 0 9px; letter-spacing:-.9px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-heading p { color:var(--ws-muted); font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-price>strong { font-size:38px; line-height:1.1; font-weight:500; letter-spacing:-1.2px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-price>a { color:var(--ws-muted); font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-price>a svg { color:var(--ws-action); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-grid { grid-template-columns:minmax(0,1fr) 265px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-preview { background:#08090b42; padding:23px 28px; box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-toolbar { margin-bottom:16px; padding-bottom:17px; border-color:#ffffff12; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-reading { min-height:75px; padding:8px 0 14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-reading dd { font-size:11px; color:#fff; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-grid { stroke:#ffffff0d; stroke-dasharray:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-axis-border { stroke:#ffffff16; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside { padding:29px 25px; background:#ffffff02; border-color:#ffffff12; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats { margin-top:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats>div { padding:21px 0 23px; background:transparent; border-radius:0; border-color:#ffffff10; box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats>div:last-child { border-bottom:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats strong { font-size:30px; letter-spacing:-.8px; margin-top:13px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-note { margin-top:5px; color:var(--ws-faint); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-button { min-height:43px; margin-top:22px; background:#ffffff06; border-color:#ffffff24; color:#fff; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-surface { padding:26px; border:1px solid var(--eco-edge); background:var(--eco-paper); border-radius:15px; box-shadow:var(--eco-depth); min-width:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-toolbar { margin-bottom:24px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-toolbar h3 { font-size:21px; letter-spacing:-.45px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-search,
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-sort { min-height:44px; background:#06070960; border-color:var(--eco-edge); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-table-scroll { border-color:#ffffff13; border-radius:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-table th { background:#ffffff03; border-color:#ffffff10; font-size:10px; padding:16px 20px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-table td { padding:20px; background:transparent; border-color:#ffffff0c; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-table tr:nth-child(even) td { background:#ffffff02; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-table tr.is-selected td { background:#d4e4ff05; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-table tbody tr:hover td { background:#ffffff06; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-table-identity strong { font-size:14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-table .em-price { font-size:18px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-table small { font-size:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-detail-header { padding:11px 0 28px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-head-price>strong { font-size:44px; letter-spacing:-1.25px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-detail-grid { grid-template-columns:minmax(0,1fr) 310px; gap:22px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-stats>div,
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-panel:not(.em-chart-preview),
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-evidence { background:var(--eco-paper); border-color:var(--eco-edge); border-radius:14px; box-shadow:var(--eco-depth); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-panel:not(.em-chart-preview) { padding:25px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-evidence { padding:26px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-proof-block code,
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-token-proof code { padding:12px; background:#04050758; border:1px solid #ffffff0c; border-radius:7px; }
+
+/* Dossiers: larger readable briefing, precise evidence plates, compact source rail. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile { gap:26px; padding:29px 0 31px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile h1 { font-size:40px; font-weight:500; letter-spacing:-1px; margin:10px 0 14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile p { max-width:760px; font-size:14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile .eco-logo-large { width:98px; height:98px; border-radius:22px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile-nav { gap:28px; padding-bottom:23px; margin-bottom:30px; border-color:var(--eco-edge); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-layout { grid-template-columns:minmax(0,2.25fr) minmax(300px,1fr); gap:26px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-primary,
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-sidebar { gap:25px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-layout .eco-panel { background:var(--eco-paper); border-color:var(--eco-edge); border-radius:15px; padding:30px; box-shadow:var(--eco-depth); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-layout h2 { font-size:25px; font-weight:500; letter-spacing:-.65px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-brief h2 { margin:14px 0 20px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-overview-copy { font-size:16px; line-height:1.9; color:#e0e2e8; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-capabilities { gap:8px; margin:25px 0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-capabilities span { background:#ffffff03; border-color:#ffffff14; border-radius:6px; padding:8px 11px; color:var(--ws-muted); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-arc-context { background:#05060840; border-color:#ffffff0e; border-radius:10px; padding:23px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-arc-context>svg { color:var(--ws-action); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-evidence-panel .eco-address { background:#05060840; border-color:#ffffff12; padding:22px; border-radius:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-evidence-panel .eco-address code { color:var(--ws-muted); background:#00000032; border:1px solid #ffffff0c; margin-top:9px; padding:13px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-address .eco-terminal-link { background:#ffffff05; border-color:#ffffff28; color:#fff; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-next-step>div a { background:#ffffff04; border-color:#ffffff19; color:#fff; padding:15px; border-radius:8px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-next-step>div a svg { color:var(--ws-action); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-source-number { background:#ffffff04; border-color:#ffffff15; color:var(--ws-faint); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-sources-panel .eco-source { padding:20px 0; border-color:#ffffff10; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-sources-panel .eco-source a { color:var(--ws-text); font-size:12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-sources-panel .eco-source a svg { color:var(--ws-faint); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-funding-round { background:#05060840; border-color:#ffffff13; padding:24px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-round-title strong { font-size:34px; font-weight:500; letter-spacing:-1px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-milestone-marker { background:#ffffff04; border-color:#ffffff23; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-milestone:not(:last-child)::after { background:#ffffff13; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-milestone h3 { font-size:18px; margin:14px 0 12px; }
+
+/* Announcements are editorial date-led cards; the overview agenda is a smaller rail. */
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming:not(.eu-upcoming-compact) { background:transparent; box-shadow:none; border:0; padding:0; margin-top:0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming:not(.eu-upcoming-compact) h2 { font-size:28px; letter-spacing:-.75px; margin-top:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-agenda-toolbar { border-color:var(--eco-edge); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-kind-filters button[aria-pressed=true] { background:#ffffff07; border-color:#ffffff24; color:#fff; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update { background:var(--eco-paper); border-color:var(--eco-edge); border-radius:15px; box-shadow:var(--eco-depth); grid-template-columns:120px minmax(0,1fr); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-date-rail { background:#ffffff02; border-color:#ffffff10; padding:30px 14px; gap:10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-date-rail strong { font-size:48px; font-weight:400; letter-spacing:-2px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update-body { padding:28px 31px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update h3 { font-size:25px; font-weight:500; letter-spacing:-.6px; margin:19px 0 14px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update p { font-size:13px; max-width:850px; line-height:1.85; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update-footer { border-color:#ffffff10; padding-top:22px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update .eu-project .eco-logo { width:35px; height:35px; border-radius:8px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update .eu-project strong { font-size:12px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update .eu-source a { color:var(--ws-text)!important; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact { background:var(--eco-paper); border-color:var(--eco-edge); padding:25px 24px!important; border-radius:15px; box-shadow:var(--eco-depth); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact h2 { font-size:21px!important; letter-spacing:-.45px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact .eu-update { grid-template-columns:59px minmax(0,1fr); border:0; border-top:1px solid #ffffff12; border-radius:0; background:transparent; box-shadow:none; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact .eu-update-grid { gap:6px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact .eu-date-rail { background:transparent; border-right:0; padding:22px 7px 22px 0; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact .eu-date-rail strong { font-size:32px; letter-spacing:-.8px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact .eu-update-body { padding:22px 0 22px 10px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact .eu-update h3 { font-size:17px; margin:13px 0 11px; line-height:1.45; letter-spacing:-.3px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact .eu-update p { font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-upcoming-compact .eu-update .eu-source a { font-size:11px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-watch-start { padding:65px 30px; background:var(--eco-paper); border-color:var(--eco-edge); box-shadow:var(--eco-depth); border-radius:16px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-watch-start h2 { font-size:31px; letter-spacing:-.8px; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-inbox { background:var(--eco-paper); border-color:var(--eco-edge); border-radius:15px; padding:28px; box-shadow:var(--eco-depth); }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-subscriptions article,
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-notifications article { background:#05060840; border-color:#ffffff15; }
+html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-notifications article.unread { border-left-color:var(--ws-action); }
+
+@media(min-width:1550px) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-grid.directory { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:1150px) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-overview-layout { grid-template-columns:minmax(0,1fr) 300px; gap:20px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-grid.directory { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-grid.overview { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-card { padding:22px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-identity strong { font-size:19px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-tags { justify-content:flex-start; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a { padding:23px; gap:14px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-cards { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-layout { grid-template-columns:minmax(0,1.8fr) 300px; gap:20px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-layout .eco-panel { padding:25px; }
+}
+@media(max-width:960px) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-overview-layout { grid-template-columns:1fr; gap:30px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-overview-agenda .eu-update-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-overview-agenda .eu-upcoming-compact { padding:26px!important; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-grid { grid-template-columns:1fr; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside { border-left:0; border-top:1px solid #ffffff12; padding:23px 28px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats>div { border-bottom:0; padding:8px 0 19px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats strong { font-size:27px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-button { width:auto; margin-top:17px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-layout { grid-template-columns:1fr; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-sidebar { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-detail-grid { grid-template-columns:1fr; }
+}
+@media(max-width:760px) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-main { padding-top:25px; padding-bottom:55px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-workspace-heading h1 { font-size:34px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-tabs { gap:23px; margin-bottom:25px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a { flex-direction:column; align-items:flex-start; padding:20px; gap:12px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a>svg:last-child { display:none; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage-value strong { font-size:29px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-card { padding:23px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-heading { padding:24px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-price>strong { font-size:31px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-identity { gap:13px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-preview { padding:22px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-surface { padding:23px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-toolbar { flex-wrap:wrap; gap:18px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-controls { width:100%; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-search { flex:1; min-width:0; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats { gap:14px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats strong { font-size:24px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-reading { min-height:102px; }
+}
+@media(max-width:650px) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-workspace-heading { padding-bottom:20px; gap:19px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-heading-actions { align-items:flex-start; gap:14px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage { grid-template-columns:repeat(3,minmax(0,1fr)); margin-bottom:28px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a { padding:18px 13px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage a>svg:first-child { width:17px; height:17px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-coverage-value small { font-size:10px; line-height:1.65; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-grid.directory,
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-grid.overview { grid-template-columns:1fr; gap:17px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-section-heading h2 { font-size:24px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-categories { gap:4px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-categories button { padding-inline:9px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-identity strong { font-size:21px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-description { margin-bottom:21px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts { padding:15px; gap:13px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts>div+div { padding-left:13px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-directory-heading h2 { font-size:22px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-overview-agenda .eu-update-grid { grid-template-columns:1fr; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-overview-agenda .eu-upcoming-compact { padding:24px 21px!important; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-heading { gap:15px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-market-heading h2 { font-size:24px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-navigation { gap:3px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-navigation button { padding:9px; font-size:11px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-navigation button>svg { display:none; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-cards { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card { padding:17px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card .em-asset-price { font-size:22px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card>div { gap:7px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card>div>svg { display:none; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card footer { align-items:flex-start; flex-wrap:wrap; gap:8px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card .em-token-badge { width:31px; height:31px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-heading { padding:23px 20px; flex-wrap:wrap; gap:21px; align-items:flex-start; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-identity>.em-token-badge { width:46px; height:46px; border-radius:12px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-heading h3 { font-size:27px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-price { width:100%; text-align:left; justify-items:start; gap:10px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-price>strong { font-size:35px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-preview { padding:20px 14px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside { padding:22px 20px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats { display:flex; flex-direction:column; gap:0; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats>div { display:flex; gap:12px; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid #ffffff0e; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-stats strong { font-size:24px; margin:0; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-note { margin-top:15px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-aside .em-button { width:100%; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-surface { padding:22px 16px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-toolbar h3 { font-size:21px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-directory-controls { gap:8px; flex-wrap:wrap; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-search { min-width:160px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-sort { flex:1; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-sort select { width:100%; max-width:none; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-detail-header { gap:20px; flex-wrap:wrap; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-head-price { width:100%; text-align:left; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-head-price>div { justify-content:flex-start; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-head-price>strong { font-size:38px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-chart-panel:not(.em-chart-preview),
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-evidence { padding:21px 16px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile { gap:20px; padding:25px 0; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile h1 { font-size:31px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile .eco-logo-large { width:67px; height:67px; border-radius:16px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-profile-nav { gap:23px; padding-bottom:20px; margin-bottom:24px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-sidebar { grid-template-columns:1fr; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-research-layout .eco-panel { padding:25px 21px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-overview-copy { font-size:15px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-arc-context { padding:19px 16px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-evidence-panel .eco-address { padding:19px 16px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-evidence-panel .eco-address code { font-size:10px; padding:11px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update { grid-template-columns:62px minmax(0,1fr); }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-date-rail { padding:24px 7px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-date-rail strong { font-size:33px; letter-spacing:-1px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update-body { padding:23px 18px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update h3 { font-size:21px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-update-top { gap:10px; flex-wrap:wrap; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-watch-start { padding:45px 24px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-watch-start h2 { font-size:28px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-inbox { padding:24px 21px; }
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eu-round-title strong { font-size:30px; }
+}
+@media(pointer:coarse) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-categories button,
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-bottom a,
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-feature-price>a { min-height:44px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-card,
+  html .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .em-asset-card { transition:none; }
+}

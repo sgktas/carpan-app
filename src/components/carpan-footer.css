@@ -1,0 +1,121 @@
+/* Footer-only finish: neutral surfaces and equal hierarchy across workspaces. */
+html footer.carpan-footer.carpan-footer--refined {
+  padding: 52px 32px 24px;
+  background: #0b0c0f;
+  color: #a3a6ae;
+  border-top: 1px solid #292b31;
+  box-shadow: none;
+}
+html footer.carpan-footer.carpan-footer--refined::before { display: none; }
+html .carpan-footer--refined .carpan-footer-grid {
+  max-width: 1416px;
+  grid-template-columns: minmax(240px,1.6fr) repeat(4,minmax(0,1fr));
+  gap: 44px;
+  align-items: start;
+}
+html .carpan-footer--refined .carpan-footer-intro { max-width: 300px; }
+html .carpan-footer--refined .carpan-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  gap: 12px!important;
+  font-size: 28px!important;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #f5f5f7!important;
+}
+html .carpan-footer--refined .carpan-footer-brand img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
+}
+html .carpan-footer--refined .carpan-footer-brand>span { display: block; }
+html .carpan-footer--refined .carpan-footer-intro>.carpan-footer-tagline {
+  margin: 10px 0 0!important;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #c5c6cc;
+}
+html .carpan-footer--refined .carpan-footer-intro>.carpan-footer-description {
+  margin: 18px 0 20px!important;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #a3a6ae;
+}
+html .carpan-footer--refined .carpan-footer-grid nav { gap: 12px!important; }
+html .carpan-footer--refined .carpan-footer-grid nav h3,
+html .carpan-footer--refined .carpan-footer-grid nav[data-workspace] h3 {
+  margin: 10px 0 10px;
+  color: #f0f0f3;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+html .carpan-footer--refined .carpan-footer-grid nav a {
+  color: #aeb0b9;
+  font-size: 12px;
+  line-height: 1.6;
+}
+html .carpan-footer--refined .carpan-footer-grid nav p,
+html .carpan-footer--refined .carpan-footer-grid nav p span {
+  color: #92959f;
+  font-size: 11px;
+  line-height: 1.8;
+}
+html .carpan-footer--refined .carpan-footer-connections { gap: 8px; }
+html .carpan-footer--refined .carpan-footer-connections .carpan-footer-icon,
+html .carpan-footer--refined .carpan-footer-connections .carpan-footer-icon.is-mail {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #131419;
+  border: 1px solid #303239;
+  color: #dcdde2;
+  box-shadow: none;
+  transition: background 160ms,border-color 160ms,color 160ms;
+}
+html .carpan-footer--refined .carpan-footer-connections .carpan-footer-icon:hover,
+html .carpan-footer--refined .carpan-footer-connections .carpan-footer-icon.is-mail:hover {
+  background: #202126;
+  border-color: #64666f;
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+}
+html .carpan-footer--refined .carpan-footer-chain { margin-top: 12px; color: #92959f; font-size: 11px; gap:0; }
+html .carpan-footer--refined .carpan-footer-bottom {
+  max-width: 1416px;
+  margin-top: 38px;
+  padding-top: 22px;
+  gap: 20px;
+  border-color: #292b31;
+  color: #92959f;
+  font-size: 11px;
+}
+html .carpan-footer--refined .carpan-footer-bottom .carpan-footer-legal { gap: 20px; }
+html .carpan-footer--refined .carpan-footer-bottom .carpan-footer-legal a { color: #aeb0b9; }
+html .carpan-footer--refined a:hover { color: #fff; }
+html .carpan-footer--refined :is(a,button):focus-visible {
+  outline: 2px solid #c8cad1;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+@media(max-width:1200px) {
+  html .carpan-footer--refined .carpan-footer-grid { grid-template-columns: minmax(240px,1.5fr) repeat(2,minmax(0,1fr)); gap: 32px; }
+}
+@media(max-width:760px) {
+  html footer.carpan-footer.carpan-footer--refined { padding: 36px 20px 20px; }
+  html .carpan-footer--refined .carpan-footer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px 22px; }
+  html .carpan-footer--refined .carpan-footer-intro { grid-column: 1/-1; grid-row: auto; max-width: 320px; }
+  html .carpan-footer--refined .carpan-footer-bottom { flex-wrap: wrap; gap: 18px; margin-top: 30px; }
+  html .carpan-footer--refined .carpan-footer-bottom>p { flex-basis: 100%; }
+  html .carpan-footer--refined .carpan-footer-bottom .carpan-footer-legal { flex: 1 1 200px; gap: 12px 18px; }
+}
+@media(pointer:coarse) {
+  html .carpan-footer--refined .carpan-footer-connections .carpan-footer-icon,
+  html .carpan-footer--refined .carpan-footer-connections .carpan-footer-icon.is-mail { min-width: 44px; min-height: 44px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html .carpan-footer--refined :is(a,button) { transition: none; }
+}

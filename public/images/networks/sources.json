@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Arc network icon",
+    "file": "images/networks/arc-network.svg",
+    "sourcePage": "https://www.circle.com/pressroom#brand-kit",
+    "assetUrl": "https://6778953.fs1.hubspotusercontent-na1.net/hubfs/6778953/Brand/Arc/Arc_Logos.zip",
+    "archiveMember": "Arc_Logos/Arc Network Icon/Arc_network.svg",
+    "sha256": "0c641405f429884228c0db4287e1b89774d21973c2d443b028b7cfa854c6f828",
+    "archiveSha256": "e40ba82f3539280f4b92bbf8079615b13986debe839bb028703373540f05f6ae",
+    "retrievedAt": "2026-10-11",
+    "preservation": "Byte-exact official SVG; no recoloring, crop, redraw or filter.",
+    "displayMinimumHeightPx": 50,
+    "displayPaddingPx": 20,
+    "guidelinesArchiveMember": "Arc_Logos/Arc_Logo_Guidelines_08_2025.pdf",
+    "layoutNotes": "Preserve the SVG's built-in whitespace plus an external 20px surround; 90px total footprint. No separate small-icon exemption is claimed.",
+    "usage": "Identify supported Arc infrastructure; no endorsement or partnership claim."
+  }
+]
