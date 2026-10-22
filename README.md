@@ -49,6 +49,10 @@ The export creates a fresh `.local/carpan-repository-*` directory and SHA256 man
 
 ## Arc integration
 
+### Arc Studio payment request pilot
+
+The [Finance / Collections invoice pilot](https://carpan.app/finance/invoices) uses the Arc Studio-built `CarpanInvoice.sol` contract. Its owner-operated **0.10 USDC mainnet settlement** was independently confirmed on 22 October 2026. [Implementation, contract addresses and transaction evidence](docs/carpan-arc-invoices.md) distinguish this pilot from private accounting reconciliation, customer traction and a security audit. No new payment is needed to inspect the existing paid request. This is not a legal/tax invoice service.
+
 Arc Mainnet 5042 / Testnet 5042002. USDC ERC-20 evidence uses 6 decimals; native system movements use exact 18-decimal quantities. Finance preserves their aliases without counting one payment twice and records gas separately. Circle App Kit/CCTP bridges USDC; wallets retain keys. Blockscout PRO/RPC provide evidence with source and coverage limits. Public payment links omit private customer/invoice fields. Legacy testnet escrow in `contracts/` is research, not the core payment-link contract; optional Foundry tests are separate.
 
 Finance's internal operations remain available while the integration API is closed. `CARPAN_FINANCE_API_ENABLED=false` is the default: integration-management and external Finance API methods return `503 api_not_open`, and the webhook worker does not start. Opening the service requires the owner's explicit launch decision. Continuous indexing/backfill, additional-chain data adapters, actual accounting-software pilots, member invitations and pricing/billing remain planned.

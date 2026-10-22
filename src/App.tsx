@@ -26,6 +26,7 @@ const EscrowTestPage = import.meta.env.DEV ? pageLazy(() => import('./pages/Escr
 const ArcToolsPage = pageLazy(() => import('./pages/ArcToolsPage').then(m => ({ default: m.ArcToolsPage })));
 const FinancePage = pageLazy(() => import('./pages/FinancePage').then(m => ({ default: m.FinancePage })));
 const CollectionsPage = pageLazy(() => import('./pages/CollectionsPage').then(m => ({ default: m.CollectionsPage })));
+const FinanceInvoicesPage = pageLazy(() => import('./pages/FinanceInvoicesPage').then(m => ({ default: m.FinanceInvoicesPage })));
 const CollectionPaymentPage = pageLazy(() => import('./pages/CollectionsPage').then(m => ({ default: m.CollectionPaymentPage })));
 const ArcRadarPage = pageLazy(() => import('./pages/ArcRadarPage').then(m => ({ default: m.ArcRadarPage })));
 const ArcContractPage = pageLazy(() => import('./pages/ArcContractPage').then(m => ({ default: m.ArcContractPage })));
@@ -90,6 +91,7 @@ export default function App() {
           <Route path="/arc/tools" element={<ArcToolsPage />} />
           <Route path="/finance" element={<FinancePage />} />
           <Route path="/finance/collections" element={<CollectionsPage />} />
+          <Route path="/finance/invoices" element={<FinanceInvoicesPage />} />
           <Route path="/pay/:token" element={<CollectionPaymentPage />} />
           <Route path="/dashboard" element={<LegacyAccountRoute/>} />
           <Route path="/projects" element={<ProtectedRoute><ProjectsPage /></ProtectedRoute>} />

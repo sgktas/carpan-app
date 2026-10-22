@@ -6,8 +6,9 @@ import platform from './platform-en.json';
 import sessions from './sessions-en.json';
 import solana from './solana-en.json';
 import grant from './grant-en.json';
+import invoices from './invoices-en.json';
 import {initialLanguage} from '../language-preference';
-const dictionary:Record<string,string>={...en,...extra,...finance,...platform,...sessions,...solana,...grant};
+const dictionary:Record<string,string>={...en,...extra,...finance,...platform,...sessions,...solana,...grant,...invoices};
 export type Language='tr'|'en';
 let language:Language='en';
 if(typeof window!=='undefined'){let stored:unknown;try{stored=localStorage.getItem('carpan-language');}catch{/* Private browsing */}language=initialLanguage(stored,new URLSearchParams(window.location.search).get('lang'));}

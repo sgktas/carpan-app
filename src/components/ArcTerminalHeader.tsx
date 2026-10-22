@@ -17,7 +17,7 @@ export function ArcTerminalHeader({active='overview'}:{active?:string}) {
   const location=useLocation();
   const researchChain='5042';
   const overviewModule=['about','api','account','dashboard'].includes(active);
-  const financeModule=active==='finance'||active==='bridge'||active==='collections';
+  const financeModule=active==='finance'||active==='bridge'||active==='collections'||active==='invoices';
   const ecosystemModule=location.pathname.startsWith('/ecosystem')||location.pathname.startsWith('/onchain/projects');
   const communityModule=ecosystemModule||['/projects','/referral-center','/my-links','/participations','/incoming'].includes(location.pathname);
   const selected=['contracts','verified','token','labels','explorer'].includes(active)?'overview':active;
@@ -37,7 +37,7 @@ export function ArcTerminalHeader({active='overview'}:{active?:string}) {
         <Link to="/projects" aria-current={location.pathname==='/projects'?'page':undefined}>{t('Proje yönetimi')}</Link>
       </>:financeModule?<>
         <Link to="/finance" aria-current={active==='finance'?'page':undefined}>{t('Finans paneli')}</Link>
-        <Link to="/finance/collections" aria-current={active==='collections'?'page':undefined}>{t('Tahsilatlar')}</Link>
+        <Link to="/finance/collections" aria-current={active==='collections'||active==='invoices'?'page':undefined}>{t('Tahsilatlar')}</Link>
         <Link to="/arc?view=bridge&environment=mainnet" aria-current={active==='bridge'?'page':undefined}>{t('USDC köprüsü')}</Link>
       </>:([['overview',t("Keşif")],['flow',t("Akış haritası")],['following',t("Takip listem")],['alerts',t("Alarmlar")]] as const).map(([key,title])=>
         <Link key={key} to={key==='overview'?'/arc':`/arc?view=${key}`} aria-current={selected===key?'page':undefined}>{t(title)}</Link>)}

@@ -6,6 +6,7 @@ import {useEffect,useRef,useState,type FormEvent} from 'react';
 import {Link,useParams} from 'react-router-dom';
 import {ArrowUpRight,Check,Copy,Download,FileCheck2,Plus,RefreshCw,Search,Wallet} from 'lucide-react';
 import {CollectionCheckout} from '../components/CollectionCheckout';
+import './finance-invoices.css';
 import {ArcTerminalHeader} from '../components/ArcTerminalHeader';
 import {useAuth} from '../hooks/useAuth';
 import {api} from '../api';
@@ -62,6 +63,7 @@ function CollectionWorkspace(){
   const visible=items.filter(r=>(filter==='all'||filter==='review'&&['review','partial','overpaid'].includes(r.state)||filter==='paid'&&r.state==='paid')&&`${r.customer} ${r.invoice} ${r.reference}`.toLowerCase().includes(search.toLowerCase()));
   return <div className="aw-terminal aw-terminal-v3 carpan-workspace carpan-data-workspace"><ArcTerminalHeader active="collections"/><main className="cf-main cf-premium cc-main">
     <div className="cf-top"><div><h1>{t("Tahsilatın bir karşılığı olsun.")}</h1><p>{t("Ödeme talebini oluştur. Zincir kanıtını doğrula. Hangi işe ait olduğunu kaydet.")}</p></div><div className="cf-top-actions"><DownloadCsv items={items}/><button className="cf-primary" disabled={!user||busy||!hasLoaded} onClick={()=>setCreating(v=>!v)}><Plus size={16}/> {t("Yeni talep")}</button></div></div>
+    <Link to="/finance/invoices" className="fi-collection-entry"><span><strong>{t('Zincir üstü ödeme talepleri')}</strong><small>{t('Arc üzerinde talep oluştur, USDC ödemesini doğrula.')}</small></span><span>{t('Pilotu aç')} <ArrowUpRight size={16}/></span></Link>
     <div className="cc-workflow" aria-label={t("Tahsilat akışı")}>{[['01',t("Talep oluştur")],['02',t("Ödeme bilgilerini paylaş")],['03',t("İşlem kanıtını doğrula")],['04',t("Faturayla eşleştir")]].map(([n,title])=><div key={n}><b>{n}</b><span>{title}</span></div>)}</div>
     {!user&&<div className="cf-error">{t("Tahsilat çalışma alanın için")} <Link to="/?login=1&next=%2Ffinance%2Fcollections">{t("Carpan hesabına giriş yap")}</Link>{t(". Taleplerin ve müşteri bilgilerin kişisel hesabında tutulur.")}</div>}
     {user&&!user.walletVerifiedAt&&<p className="cf-error">{t("Talep oluşturmak için")} <Link to="/settings?tab=security#account">{t("hesabına cüzdan bağla ve doğrula")}</Link>{t(". Ödemeler bu adrese yönlenir.")}</p>}
