@@ -37,6 +37,10 @@ This was an owner-operated pilot between two owned wallets, **not customer tract
 
 ## Local review
 
+Integrated release `20261022-invoices` is live at https://carpan.app/finance/invoices. The Collections entry and public read-only Paid request were accepted in the browser. Integrated source: 404 server tests / 24,358 assertions / zero failures; frontend TypeScript, lint, build and repository guard passed. [Hosted CI](https://github.com/sgktas/carpan-app/actions/runs/39813864703) passed for commit `005f4bd`.
+
+[1:36 English demo](https://carpan.app/media/carpan-arc-studio-mainnet-demo-20261022.mp4) · [Transcript](carpan-arc-studio-demo.md). This is an edited captured-screen walkthrough with offline synthetic narration, not a continuous live signing session. It combines genuine Studio testnet development captures, owner mainnet payment confirmation, official Explorer receipt and the live integrated Carpan page. No new transaction was made to produce the video.
+
 Use the main repository setup instructions (`npm ci`, configured backend, `npm run dev`). The invoice route reads public chain data directly and does not need a signer to inspect the completed pilot. A wallet is required only for explicit writes. Use the pilot's existing paid key for read-only demos; do not repeat payments to obtain screenshots.
 
 The Studio source reported 44 passing frontend checks and a successful lint/typecheck/build after hardening. The exported local pilot independently passed 30 create/payment regression checks. These are distinct code snapshots; integration checks are recorded separately when executed. Contract tests are in `contracts/test/CarpanInvoice.t.sol` (`npm run contracts:test` with Foundry and the repository dependencies installed).
