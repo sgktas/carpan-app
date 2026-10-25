@@ -1,6 +1,6 @@
 # Blockscout Sprint 2 — implementation status
 
-Updated 25 October 2026. Implementation deployed; no Sprint 2 submission receipt.
+Updated 25 October 2026. Implementation deployed; Sprint 2 submission confirmed in Craftora on 25 October 2026.
 
 | Judge request | Implemented locally | Remaining acceptance |
 | --- | --- | --- |
@@ -59,3 +59,7 @@ Root cause: current Blockscout transfer rows use `type:token_transfer` and carry
 Real public-page acceptance discovered the pilot automatically with Blockscout provenance. In authenticated local UI, history loading added two previously missing verified movements while retaining the already-approved pilot. Missing historical RPC receipts were reported and kept retryable, not imported as financial evidence. This repair does not claim complete archive coverage. Full verification: 409 tests, 24,377 assertions, zero failures.
 
 The history repair was deployed with rollback backup `20261025-history-repair`; health and environment-integrity checks passed. The updated 181.5-second (3:01) six-scene demo includes automatic-history acceptance and is now published at https://carpan.app/media/carpan-blockscout-sprint2-demo-20261025.mp4. Published bytes were SHA256-verified: `faba5dab44dd812f7cfca2274adf2fe2f7734d9e78f81459fed164a129d236cd`. [Published transcript](https://carpan.app/media/carpan-blockscout-sprint2-transcript-20261025.md). Earlier local-only/demo-duration notes above describe the previous preparation stage. Sprint 2 submission is not yet confirmed.
+
+## Sprint 2 submitted — 25 October 2026
+
+Craftora saved the revised project description, current 3:01 demo URL and 958-character Sprint 2 update. The existing required screenshot was opened full-size on the published project page and verified present; an additional screenshot upload did not persist and was not counted as uploaded. The final submission completed: the team dashboard shows `Submitted · Carpan` for Sprint 2 and the project row shows `Carpan Submitted`. This is a submission acknowledgement, not acceptance, funding or a win. Public project: https://craftora.tech/project/carpan/ . Earlier pending-submission notes above are historical preparation records.
