@@ -47,3 +47,7 @@ The downloaded file was parsed and checked: one canonical system event, matched 
 ## Deployment — 25 October 2026
 
 The reviewed source and production build were deployed as patch `20261025-sprint2`, with previous files retained for rollback. API restart and HTTPS health check succeeded; indexer remained active without restart. Production environment hash was unchanged. Runtime databases, credentials, dependencies and local test files were excluded. Full final verification: 408 tests, 24,371 assertions, zero failures, lint/typecheck/build/publication guard passed. Build retains the existing large-chunk warning. No new video, X post or Sprint 2 submission was published.
+
+## Prepared demonstration — 25 October 2026
+
+A 150.7-second 1920×1080 edited screenshot walkthrough with offline synthetic English narration was generated and its five scene previews checked. It includes live production research/Blockscout PRO analysis and clearly labelled isolated local private Finance acceptance with the real mainnet payment. [Narration and provenance](blockscout-sprint2-demo.md). This is not continuous screen recording and does not show customer traction. The MP4 is prepared locally for review; it has not been publicly uploaded or submitted to Craftora.
