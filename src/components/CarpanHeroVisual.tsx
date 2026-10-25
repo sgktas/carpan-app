@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 
 const scenes = ['finance', 'terminal', 'social'] as const;
+const artwork = {finance:'carpan-cinema-finance-usdc-v3.webp',terminal:'carpan-cinema-terminal-v2.webp',social:'carpan-cinema-social-arc-v3.webp'};
 const particles = Array.from({ length: 16 }, (_, index) => ({
   left: `${45 + (index * 19 % 52)}%`,
   top: `${12 + (index * 23 % 73)}%`,
@@ -12,7 +13,7 @@ const particles = Array.from({ length: 16 }, (_, index) => ({
 export function CarpanHeroVisual({ variant }: { variant: number }) {
   return <div className="carpan-cinema" aria-hidden="true">
     {scenes.map((scene, index) => <div key={scene} className={`carpan-cinema-scene cinema-${scene}${index === variant ? ' is-active' : ''}`}>
-      <img className="carpan-cinema-art" src={`/images/carpan-cinema-${scene}-v2.webp`} alt="" decoding="async" fetchPriority={index === 0 ? 'high' : 'low'}/>
+      <img className="carpan-cinema-art" src={`/images/${artwork[scene]}`} alt="" decoding="async" fetchPriority={index === 0 ? 'high' : 'low'}/>
       <div className="carpan-cinema-aura"/>
     </div>)}
     <div className="carpan-cinema-shade"/>
