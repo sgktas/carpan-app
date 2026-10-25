@@ -47,6 +47,26 @@ function explorerRow(n: number, asset = ARC_USDC, selected = wallet): unknown {
 const page = (items: unknown[], next: Record<string, unknown> | null = null, stale = false) => ({payload: {items, next_page_params: next}, source: 'Blockscout PRO', fetchedAt: new Date(now - (stale ? 120000 : 0)).toISOString(), cached: true, stale});
 
 describe('Finance historical receipt discovery', () => {
+  it('accepts current Blockscout event types and rejects contradictory token standards before reading receipts', async () => {
+    const db=fixtureDb(),rpc=reader();
+    const current=(n:number)=>({...explorerRow(n) as Record<string,unknown>,type:'token_transfer',token_type:'ERC-20',token:{address_hash:ARC_USDC,type:'ERC-20'}});
+    const result=await loadFinanceHistory(db,request,rpc,{now,loadPage:async()=>page([
+      current(31),
+      {...current(32),token_type:'ERC-721'},
+      {...current(33),token:{address_hash:ARC_USDC,type:'ERC-1155'}},
+      {...current(34),type:'transaction'},
+      {...current(35),token:{address_hash:other,type:'ERC-20'}},
+      current(31),
+    ])});
+    expect(rpc.reads).toEqual([hash(31)]);
+    expect(result.scans).toHaveLength(1);
+    expect(result.scans[0].movements[0].raw18).toBe('100000000000000000');
+    expect(result.history.sources).toContain('Explorer history');
+    expect(result.history.checkedTransactions).toBe(1);
+    expect(result.history.failedTransactions).toBe(0);
+    db.close();
+  });
+
   it('retains original provider/cache provenance across queued pages and distinguishes public fallback', async () => {
     const db = fixtureDb(), rpc = reader(); indexed(db, 1); proof(db, 1);
     const first = await loadFinanceHistory(db, request, rpc, {now, loadPage: async () => ({...page(Array.from({length: 21}, (_, i) => explorerRow(i + 1)), null, true), source: 'Blockscout PRO · kayıtlı veri'})});

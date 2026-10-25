@@ -14,6 +14,10 @@ Finance reads eligible Circle USDC transfers through Blockscout. A separate acti
 
 The Finance link preserves the network, wallet, and transaction in Terminal. Analyze USDC events groups payment relationships for that wallet. Here, point one USDC went to the same recipient. Gas and transfers to the same address do not inflate incoming or outgoing totals. Token events establish the movement, but they cannot establish business purpose or ownership. The operator must review that business context.
 
+## Automatic discovery with honest gaps
+
+We also repaired a real discovery issue: Blockscout now identifies the event as token transfer, with ERC twenty in a separate field. The corrected adapter found older payments automatically. In this authenticated local run, two new verified movements were added alongside the previously approved pilot. Some older receipts were unavailable from Arc R P C. Carpan reports those gaps and keeps candidates retryable instead of turning unverified provider rows into accounting evidence. All four hundred and nine automated tests pass.
+
 ## Real payment. Explicit business review.
 
 In the authenticated isolated workspace, we registered the verified wallet and imported the real payment by transaction hash. Arc receipt and canonical block checks confirmed the payment. The native system event and six decimal token mirror were linked as one movement, not two payments. We classified it as an internal transfer and saved a reference explicitly identifying an owner operated pilot. Only then did we approve the record. Gas was kept separate, at zero point zero zero one nine two zero five nine five USDC.

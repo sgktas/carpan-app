@@ -51,3 +51,11 @@ The reviewed source and production build were deployed as patch `20261025-sprint
 ## Prepared demonstration — 25 October 2026
 
 A 150.7-second 1920×1080 edited screenshot walkthrough with offline synthetic English narration was generated and its five scene previews checked. It includes live production research/Blockscout PRO analysis and clearly labelled isolated local private Finance acceptance with the real mainnet payment. [Narration and provenance](blockscout-sprint2-demo.md). This is not continuous screen recording and does not show customer traction. The MP4 is prepared locally for review; it has not been publicly uploaded or submitted to Craftora.
+
+## History discovery repair — 25 October 2026
+
+Root cause: current Blockscout transfer rows use `type:token_transfer` and carry ERC-20 in `token_type`/`token.type`; the older Finance filter expected `type:ERC-20`. The adapter now accepts both documented response shapes while rejecting contradictory token standards and retaining exact USDC/wallet and canonical-receipt checks. A regression test covers the live-shaped response, duplicate candidates, foreign tokens and conflicting standards.
+
+Real public-page acceptance discovered the pilot automatically with Blockscout provenance. In authenticated local UI, history loading added two previously missing verified movements while retaining the already-approved pilot. Missing historical RPC receipts were reported and kept retryable, not imported as financial evidence. This repair does not claim complete archive coverage. Full verification: 409 tests, 24,377 assertions, zero failures.
+
+The history repair was deployed with rollback backup `20261025-history-repair`; health and environment-integrity checks passed. The updated 181.5-second (3:01) six-scene demo includes automatic-history acceptance and is now published at https://carpan.app/media/carpan-blockscout-sprint2-demo-20261025.mp4. Published bytes were SHA256-verified: `faba5dab44dd812f7cfca2274adf2fe2f7734d9e78f81459fed164a129d236cd`. [Published transcript](https://carpan.app/media/carpan-blockscout-sprint2-transcript-20261025.md). Earlier local-only/demo-duration notes above describe the previous preparation stage. Sprint 2 submission is not yet confirmed.

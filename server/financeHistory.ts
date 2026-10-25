@@ -141,7 +141,12 @@ function explorerCandidates(page: ExplorerPage, wallet: string, discovery: Finan
     const item = record(value), token = record(item.token), hash = item.transaction_hash ?? item.tx_hash, block = blockString(item.block_number);
     const from = addressHash(item.from), to = addressHash(item.to);
     if (typeof hash !== 'string' || !hashPattern.test(hash) || block === null || from === to || (from !== wallet && to !== wallet)
-      || addressHash(token.address_hash) !== ARC_USDC || !['ERC-20', undefined, null].includes(item.type as string | undefined | null)) continue;
+      || addressHash(token.address_hash) !== ARC_USDC
+      // Blockscout uses `type` for the event kind in current responses, while
+      // token_type/token.type carry the asset standard. Older pages used ERC-20.
+      || !['token_transfer', 'ERC-20', undefined, null].includes(item.type as string | undefined | null)
+      || !['ERC-20', undefined, null].includes(item.token_type as string | undefined | null)
+      || !['ERC-20', undefined, null].includes(token.type as string | undefined | null)) continue;
     candidates.push({hash: hash.toLowerCase(), block, source: 'Explorer history', discovery: [discovery]});
   }
   return candidates;
