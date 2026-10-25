@@ -17,6 +17,7 @@ import './finance.css';
 import './finance-premium.css';
 import {useFinanceNotes} from '../hooks/useFinanceNotes';
 import {FinanceOperationsController} from '../components/FinanceOperationsController';
+import {TreasuryReview} from '../components/TreasuryReview';
 const short=(a:string)=>a.slice(0,6)+'…'+a.slice(-4),zero='0x'+'0'.repeat(40);
 const money=(raw:bigint|string)=>displayRaw(String(raw));
 type Selection={address:string;from:string;to:string};
@@ -57,9 +58,11 @@ function FlowChart({points,emptyMessage}:{points:ReturnType<typeof financeSeries
 }
 export function FinancePage(){
   const {user}=useAuth(),[params,setParams]=useSearchParams();
-  const operations=!!user&&params.get('view')!=='research';
+  const treasury=params.get('view')==='treasury'||(!user&&params.get('view')!=='research');
+  const operations=!!user&&params.get('view')!=='research'&&!treasury;
   if(params.get('view')==='integrations')return <Navigate to="/developers" replace/>;
-  const switcher=<nav className="cfo-mode" aria-label={t('Finans görünümü')}><button aria-pressed={operations} onClick={()=>{if(user)setParams({view:'operations'});else window.location.href='/login?next=%2Ffinance';}}>{t('İşletme hareketleri')}</button><button aria-pressed={!operations} onClick={()=>setParams({view:'research'})}>{t('Cüzdan araştırması')}</button></nav>;
+  const switcher=<nav className="cfo-mode" aria-label={t('Finans görünümü')}><button aria-pressed={operations} onClick={()=>{if(user)setParams({view:'operations'});else window.location.href='/login?next=%2Ffinance';}}>{t('İşletme hareketleri')}</button><button aria-pressed={!operations&&!treasury} onClick={()=>setParams({view:'research'})}>{t('Cüzdan araştırması')}</button><button aria-pressed={treasury} onClick={()=>setParams({view:'treasury'})}>USDC · {getLocale().startsWith('tr')?'Çoklu ağ incelemesi':'Multichain review'}</button></nav>;
+  if(treasury)return <div className="aw-terminal aw-terminal-v3 carpan-workspace carpan-data-workspace"><ArcTerminalHeader active="finance"/>{switcher}<TreasuryReview/></div>;
   return operations?<div className="aw-terminal aw-terminal-v3 carpan-workspace carpan-data-workspace"><ArcTerminalHeader active="finance"/>{switcher}<FinanceOperationsController key={user.id}/></div>:<FinanceContent key={user?.id||'guest'} switcher={switcher}/>;
 }
 function FinanceContent({switcher}:{switcher:React.ReactNode}){

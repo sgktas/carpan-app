@@ -5,6 +5,7 @@ import type {Database} from 'bun:sqlite';
 import type {ExplorerNetwork,NetworkDirectory,ExplorerKind,ExplorerQuery,ExplorerRow,ExplorerResult,NetworkWatch} from '../src/chain-explorer';
 import type {DiscoveryFeed,DiscoveryTransfer} from '../src/discovery-transfers';
 import {explorerKinds} from '../src/chain-explorer';
+import {TREASURY_CHAINS} from '../src/treasury-review';
 
 const CONFIG='https://raw.githubusercontent.com/blockscout/backend-configs/main/pro-api/prod/chains-config.json';
 const META='https://chains.blockscout.com/api/chains';
@@ -147,7 +148,7 @@ async function resolveBlockReference(block:string):Promise<string>{
  blockReferences.set(block,{until:Date.now()+60000,value});if(blockReferences.size>200)blockReferences.delete(blockReferences.keys().next().value!);value.catch(()=>blockReferences.delete(block));return value;
 }
 export function arcResearchQuery(chain:string,q:ExplorerQuery):ExplorerQuery{
- if(chain!=='5042')throw new ExplorerError('Araştırma kapsamı yalnızca Arc Mainnet ağıdır.',400);
+ if(!TREASURY_CHAINS.some(network=>network.id===chain))throw new ExplorerError('Unsupported research network. Choose Arc, Base, Arbitrum or Ethereum Mainnet.',400);
  return q;
 }
 export async function explorerData(chain:string,q:ExplorerQuery,background=false):Promise<ExplorerResult>{
@@ -155,7 +156,7 @@ export async function explorerData(chain:string,q:ExplorerQuery,background=false
  const network=(await networkDirectory()).networks.find(n=>n.id===chain);if(!network)throw new ExplorerError('Bu ağ güncel PRO destek listesinde yok.',400);
  const next=q.cursor?decodeExplorerCursor(chain,q):{};const id=JSON.stringify([chain,q]);const old=cache.get(id);if(old&&old.until>Date.now()){cacheHit();return old.value;}
  const policy=discoveryPolicy(),ttl=background?(chain==='5042'?policy.arcMs:policy.otherMs):60000;
- const value=(async()=>{const block=['block','blockTransactions','blockInternals'].includes(q.kind)&&q.block?await resolveBlockReference(q.block):null,path=explorerPath(block?{...q,block}:q,next);
+ const value=(async()=>{const block=chain==='5042'&&['block','blockTransactions','blockInternals'].includes(q.kind)&&q.block?await resolveBlockReference(q.block):null,path=explorerPath(block?{...q,block}:q,next);
   const {payload:result,source,fetchedAt,cached}=await upstream(network,path,ttl,background),normalized=normalizeExplorerPayload(result,chain,q,next);
   return {network,kind:q.kind,items:normalized.items,detail:normalized.detail,...('page' in normalized?{page:normalized.page}:{}),nextCursor:normalized.next?encodeExplorerCursor(chain,q,normalized.next):null,fetchedAt:new Date(fetchedAt).toISOString(),cached,policy:discoveryPolicy(),source:`${source} · ${network.name}`};})();
  cache.set(id,{until:Date.now()+60000,value});if(cache.size>300)cache.delete(cache.keys().next().value!);value.catch(()=>cache.delete(id));return value;

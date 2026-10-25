@@ -2,6 +2,10 @@
 
 Updated 13 October 2026. This roadmap builds on the existing Finance reports and records the intended next steps; it does not promise delivery dates, funding amounts or completed integrations.
 
+## Active Sprint 2 work — 24 October 2026
+
+The implementation deployed on 25 October 2026 adds Blockscout payment enrichment, explicit multichain USDC research and Terminal payment relationship analysis. Four selected mainnets are research-enabled; private business approval/export remains Arc-only. Real private Finance acceptance and 390px research layout checks passed. A new focused recording and Sprint 2 submission remain. See [Sprint 2 evidence and remaining work](docs/blockscout-sprint2.md). Do not treat this development status as a released integration or customer traction.
+
 ## Product direction
 
 Carpan Finance is independent onchain payment-data infrastructure. It connects a company's wallets to verified chain movements, adds private business context and produces reviewable records. Arc Mainnet is the first chain adapter. As USDC business adoption grows, the intended commercial customer is a company or accounting-software vendor consuming Carpan's reviewed records through an API.

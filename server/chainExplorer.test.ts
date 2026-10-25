@@ -2,13 +2,15 @@ import {describe,expect,test} from 'bun:test';
 import {Database} from 'bun:sqlite';
 import {normalizeDirectory,parseExplorerQuery,explorerPath,encodeExplorerCursor,decodeExplorerCursor,normalizeExplorerRow,initNetworkWatch,saveNetworkWatch,networkWatchlist,arcResearchQuery,explorerData} from './chainExplorer';
 describe('multichain research boundaries',()=>{
- test('Arc supports all token types while rejecting other networks before loading',async()=>{
+ test('selected mainnets support research while unsupported chains fail before network reads',async()=>{
   expect(arcResearchQuery('5042',{kind:'transfers'})).toEqual({kind:'transfers'});
   expect(explorerPath(arcResearchQuery('5042',{kind:'transfers'}))).toBe('/token-transfers');
   expect(arcResearchQuery('5042',{kind:'transfers',type:'ERC-721'}).type).toBe('ERC-721');
   const token='0x'+'1'.repeat(40);
   expect(arcResearchQuery('5042',{kind:'transfers',token}).token).toBe(token);
-  await expect(explorerData('8453',{kind:'transfers'})).rejects.toThrow('Arc Mainnet');
+  expect(arcResearchQuery('8453',{kind:'transfers'})).toEqual({kind:'transfers'});
+  expect(arcResearchQuery('42161',{kind:'address',address:token})).toEqual({kind:'address',address:token});
+  await expect(explorerData('84532',{kind:'transfers'})).rejects.toThrow('Unsupported research network');
  });
  test('only numeric supported IDs and HTTPS explorer metadata enter the directory',()=>{
   expect(normalizeDirectory({'1':'https://eth.blockscout.com','x':'https://evil.test','2':'http://localhost','3':'https://user:pass@host.test'},{'1':{name:'Ethereum',isTestnet:false}})).toEqual([{id:'1',name:'Ethereum',explorer:'https://eth.blockscout.com',isTestnet:false,nativeSymbol:'',nativeDecimals:18}]);

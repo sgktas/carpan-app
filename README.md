@@ -4,6 +4,12 @@
 
 [Live product](https://carpan.app) · [Product walkthrough](https://carpan.app/about?lang=en) · [Reviewer guide](docs/reviewer-guide.md) · [Architecture](docs/architecture.md) · [Roadmap](ROADMAP.md)
 
+## Start with one business payment
+
+Carpan helps a business operator turn USDC payment evidence into reviewed records. Start in **Finance → Multichain review**, enter a wallet and select a network, then inspect a payment and its counterparty. Continue to the private **Business movements** workspace to review an Arc receipt, associate a reference and export an immutable JSON record. Export is not an accounting-system posting.
+
+The Sprint 2 implementation adds Blockscout-backed USDC research for Arc, Base, Arbitrum and Ethereum, explicit address/token enrichment and Terminal payment relationship analysis. Other networks are research-only; private accounting decisions remain Arc-only. Each request loads a bounded provider page, with explicit provenance and partial-history warnings. The real 0.10 USDC owner-operated pilot can be inspected without a new signature. Deployed on 25 October 2026; judge acceptance is pending. [Sprint 2 implementation and remaining acceptance](docs/blockscout-sprint2.md).
+
 Carpan is an independent onchain payment-data platform built first on Arc. Finance gives businesses a private workspace to load USDC evidence, associate counterparties and references, review movements and generate immutable JSON outputs. Terminal provides onchain research, and Ecosystem provides source-backed project discovery. Google, email and wallet sign-in share one account with explicit identity linking.
 
 Collections remain a separate working flow: request → share link → payer reviews/signs a direct USDC transfer → receipt verification → owner matching → CSV. The Turkish desktop accounting product, Çarpan Muhasebe Asistanı, is separate from this web platform.

@@ -638,7 +638,7 @@ app.get('/arc/verified', async (_req, res) => {
 
 initNetworkWatch(db);
 app.get('/admin/onchain/api-usage',requireAdmin as any,(_req,res)=>{res.set('Cache-Control','private, no-store');res.json(explorerBudgetStatus());});
-app.get('/onchain/networks',async(_req,res)=>{const directory=await networkDirectory();res.json({...directory,networks:directory.networks.filter(n=>n.id==='5042')});});
+app.get('/onchain/networks',async(_req,res)=>{const directory=await networkDirectory();res.json({...directory,networks:directory.networks.filter(n=>['5042','8453','42161','1'].includes(n.id)&&n.isTestnet===false)});});
 app.get('/onchain/transfers',async(req,res)=>{
   try{res.json(await discoveryFeed(req.query.testnets==='1',typeof req.query.type==='string'?req.query.type:'',req.query.scope==='all'?'all':'priority'));}
   catch(e){res.status(e instanceof ExplorerError?e.status:503).json({error:e instanceof ExplorerError?e.message:'Çoklu ağ akışı alınamadı.'});}
