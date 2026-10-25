@@ -36,4 +36,5 @@ roots.push('docs/carpan-arc-invoices.md');
 roots.push('docs/carpan-arc-studio-demo.md');
 roots.push('docs/blockscout-sprint2.md','docs/blockscout-sprint2-demo.md');
 roots.push('docs/carpan-hero-symbols-2026-10-25.md');
+roots.push('docs/carpan-payment-receipt-2026-10-25.md');
 export function repositoryFiles(root){const files=[];function walk(path){const absolute=join(root,path);if(!existsSync(absolute))return;const stat=lstatSync(absolute);if(stat.isSymbolicLink())throw Error(`Repository symlink must be reviewed: ${path}`);if(stat.isDirectory()){if(['.git','node_modules','out','cache','coverage','__pycache__'].includes(path.split('/').at(-1)))return;for(const name of readdirSync(absolute))walk(`${path}/${name}`);}else if(stat.isFile())files.push(path);}for(const name of roots)walk(name);return [...new Set(files)].sort();}

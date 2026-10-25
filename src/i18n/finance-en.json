@@ -92,5 +92,8 @@
   "Talep tarihinden önceki ödeme; fatura ilişkisini kontrol et.": "The payment predates the request; review its invoice relationship.",
   "Yeni zincir sorgusu için 5 saniye bekle.": "Wait 5 seconds before another chain query.",
   "Ödeme bağlantısı bulunamadı veya kapatılmış.": "The payment link was not found or has been closed.",
-  "Arc Mainnet üzerinde başarılı ve bu alıcıya gelen uygun USDC kanıtı doğrulanamadı. Ağ, hash ve alıcıyı kontrol et; bekleyen işlem veya RPC kesintisinde yeniden dene. Mint ve kendi cüzdanına aktarım tahsilat sayılmaz.": "No successful, eligible USDC transfer to this recipient could be verified on Arc Mainnet. Check the network, hash and recipient; retry if the transaction is pending or the RPC is unavailable. Mint and self-transfers are not collection evidence."
+  "Arc Mainnet üzerinde başarılı ve bu alıcıya gelen uygun USDC kanıtı doğrulanamadı. Ağ, hash ve alıcıyı kontrol et; bekleyen işlem veya RPC kesintisinde yeniden dene. Mint ve kendi cüzdanına aktarım tahsilat sayılmaz.": "No successful, eligible USDC transfer to this recipient could be verified on Arc Mainnet. Check the network, hash and recipient; retry if the transaction is pending or the RPC is unavailable. Mint and self-transfers are not collection evidence.",
+  "Cüzdan onayı bekleniyor.": "Waiting for your wallet signature.",
+  "İşlem gönderildi; zincir onayı bekleniyor.": "Payment submitted; waiting for onchain confirmation.",
+  "Ödeme durumu belirsiz; tekrar ödeme yapmadan kontrol et.": "Payment status is uncertain; check before paying again."
 }

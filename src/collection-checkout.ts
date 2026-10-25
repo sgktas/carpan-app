@@ -2,7 +2,7 @@ import {decodeEventLog,erc20Abi,isAddress,zeroAddress,type Hex,type TransactionR
 import type {PublicCollection} from './collections';
 export const CHECKOUT_CHAIN=5042, CHECKOUT_USDC='0x3600000000000000000000000000000000000000' as const;
 export type CheckoutPlan={reference:string;recipient:Hex;raw6:bigint;rounded:boolean;fingerprint:string};
-export type CheckoutRecord={version:1;reference:string;recipient:Hex;wallet:Hex;raw6:string;status:'signing'|'pending'|'confirmed'|'failed'|'uncertain';hash?:Hex;createdAt:string;gasRaw18?:string};
+export type CheckoutRecord={version:1;reference:string;recipient:Hex;wallet:Hex;raw6:string;status:'signing'|'pending'|'confirmed'|'failed'|'uncertain';hash?:Hex;createdAt:string;gasRaw18?:string;blockNumber?:string;paidAt?:string;verifiedAt?:string};
 export function checkoutPlan(data:PublicCollection):CheckoutPlan{
  if(data.chainId!==CHECKOUT_CHAIN||data.token.toLowerCase()!==CHECKOUT_USDC||data.decimals!==6||!isAddress(data.recipient)||data.recipient.toLowerCase()===zeroAddress||data.paymentState!=='open')throw Error('Payment request is not open on Arc Mainnet USDC.');
  if(!/^\d{1,36}$/.test(data.remainingRaw18)||!/^\d{1,18}$/.test(data.expectedRaw6))throw Error('Invalid payment amount.');

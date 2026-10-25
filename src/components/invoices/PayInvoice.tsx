@@ -11,12 +11,12 @@ import {
   useReadContract,
 } from 'wagmi'
 import { getAccount } from '@wagmi/core'
+import {useNavigate} from 'react-router-dom'
 import { erc20Abi } from 'viem'
 import { toast } from 'sonner'
 import {
   Loader2,
   CreditCard,
-  ExternalLink,
   ShieldCheck,
   AlertTriangle,
   RefreshCw,
@@ -25,7 +25,7 @@ import { CARPAN_INVOICE_ABI } from './invoiceAbi'
 import { ACTIVE_CHAIN_NAME, CONTRACT_ADDRESS, ACTIVE_CHAIN_ID, USDC_ADDRESS } from './invoiceConfig'
 import { formatAddress, formatExpiry, STATUS_LABELS } from './invoiceUtils'
 import { Amount, usdcDecimalsFor } from '@/onchain-money'
-import { buildTxExplorerUrl } from '@/onchain-facts'
+import { InvoicePaymentReceipt } from './InvoicePaymentReceipt'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -126,6 +126,7 @@ function PreviewRow({
 
 export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
   const { address, chainId, isConnected } = useAccount()
+  const navigate = useNavigate()
   const { switchChain } = useSwitchChain()
   // Wagmi config — used for synchronous post-await account snapshots
   const wagmiConfig = useConfig()
@@ -272,6 +273,8 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
     isLoading: payConfirming,
     isSuccess: payReceiptSuccess,
     data: payReceipt,
+    isError: payReceiptError,
+    refetch: recheckPayReceipt,
   } = useWaitForTransactionReceipt({
     hash: payHash,
     chainId: ACTIVE_CHAIN_ID,
@@ -308,9 +311,10 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
       return
     }
     setStep('done')
-    toast.success('Payment confirmed on-chain')
+    if (invoiceKey && payHash) navigate('/finance/invoices?invoice='+invoiceKey+'&receipt='+payHash, {replace:true})
+    toast.success('Transaction confirmed — checking payment receipt')
     signingRef.current = false
-  }, [payReceiptSuccess, payReceipt, step, resetPay])
+  }, [payReceiptSuccess, payReceipt, step, resetPay, invoiceKey, payHash, navigate])
 
   // ── Propagate write errors to flowError in effects ─────────────────────────
   useEffect(() => {
@@ -509,6 +513,7 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
   }
 
   function handleReset() {
+    navigate('/finance/invoices', {replace:true})
     cancelTokenRef.current++ // invalidate any in-flight handler
     setStep('enter')
     setInvoiceKey(undefined)
@@ -523,10 +528,6 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
   }
 
   // ── Derived display values ─────────────────────────────────────────────────
-  const explorerTxUrl = payHash
-    ? buildTxExplorerUrl(ACTIVE_CHAIN_ID, payHash)
-    : undefined
-
   const isBusy = refreshing || approvePending || approveConfirming || payPending || payConfirming
 
   // ── Render ─────────────────────────────────────────────────────────────────
@@ -792,9 +793,10 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
             <div className="flex items-center justify-center gap-3 py-6">
               <Loader2 className="size-5 animate-spin" style={{ color: 'var(--accent)' }} />
               <span className="text-sm font-medium" style={{ color: 'var(--ink-2)' }}>
-                {payPending ? 'Waiting for payment confirmation…' : 'Payment confirming on-chain…'}
+                {payPending ? 'Waiting for your wallet signature…' : payHash ? 'Payment submitted — waiting for onchain confirmation…' : 'Preparing payment…'}
               </span>
             </div>
+            {payReceiptError && <div role="alert"><p>Confirmation is temporarily unavailable. This does not mean payment failed. Do not pay again.</p><button type="button" onClick={() => void recheckPayReceipt()}>Check payment status again</button></div>}
             {approveHash && (
               <p className="text-center text-xs" style={{ color: 'var(--subtle)' }}>
                 Step 2 — approve complete. Confirm the payment in your wallet.
@@ -806,32 +808,7 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
         {/* ── Done ── */}
         {step === 'done' && (
           <div className="space-y-4">
-            <div
-              className="rounded-2xl p-4 space-y-3"
-              style={{ background: 'rgba(140,219,178,0.09)', border: '1px solid rgba(140,219,178,0.22)' }}
-            >
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="size-5" style={{ color: 'var(--success)' }} />
-                <span className="font-semibold text-sm" style={{ color: 'var(--success)' }}>
-                  Payment confirmed
-                </span>
-              </div>
-              <p className="text-xs" style={{ color: 'var(--muted)' }}>
-                USDC transferred directly to the recipient. The invoice is now settled on-chain.
-              </p>
-              {explorerTxUrl && (
-                <a
-                  href={explorerTxUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium hover:opacity-80 transition-opacity"
-                  style={{ color: 'var(--accent)' }}
-                >
-                  View receipt on Arc Explorer
-                  <ExternalLink className="size-3" />
-                </a>
-              )}
-            </div>
+            {payHash && invoiceKey && <InvoicePaymentReceipt hash={payHash} invoiceKey={invoiceKey}/>}
             <button
               onClick={handleReset}
               className="w-full rounded-2xl py-3 text-sm font-semibold"
