@@ -30,7 +30,7 @@ test('ecosystem sources distinguish documented contracts from participation and 
   const aave=catalog.projects.find(p=>p.id==='eco_aave');expect(aave).toMatchObject({stage:'participant',addresses:[]});
   expect(catalog.projects.find(p=>p.id==='eco_cctp')).toMatchObject({stage:'mainnet'});
   expect(catalog.assets.some(a=>a.symbol==='AAVE')).toBe(false);
-  expect(catalog.projects.find(p=>p.id==='eco_goldsky')?.sources[0].url).toBe('https://docs.arc.io/arc/tools/data-indexers');
+  expect(catalog.projects.find(p=>p.id==='eco_goldsky')?.sources.some(s=>s.url==='https://docs.arc.io/arc/tools/data-indexers')).toBe(true);
   expect(ecosystemCatalog(db,[],true)).toMatchObject({projects:[],assets:[]});
   expect(db.query("SELECT COUNT(*) AS n FROM projects WHERE id LIKE 'eco_%'").get()).toEqual({n:0});
 });
@@ -38,8 +38,8 @@ test('ecosystem sources distinguish documented contracts from participation and 
 test('research metadata keeps logos local and source links public without implying deployed markets',async()=>{
   const catalog=await(await fetch(base+'/ecosystem')).json() as EcosystemCatalog;
   for(const entry of catalog.projects.filter(p=>p.curated)){
-    expect(entry.logo?.src).toMatch(/^\/images\/ecosystem\/[a-z0-9]+\.(png|svg)$/);
-    expect(new URL(entry.logo!.sourceUrl).protocol).toBe('https:');
+    if(entry.logo){expect(entry.logo.src).toMatch(/^\/images\/ecosystem\/[a-z0-9]+\.(png|svg)$/);expect(new URL(entry.logo.sourceUrl).protocol).toBe('https:');}
+    else expect(entry.name.trim()).toBeTruthy(); // The UI uses initials for projects without a reviewed logo asset.
     expect(entry.profile?.overview.en).toBeTruthy();expect(entry.profile?.overview.tr).toBeTruthy();
     for(const resource of entry.profile!.resources)expect(new URL(resource.url).protocol).toBe('https:');
     for(const action of entry.profile!.actions)expect(action.to).toMatch(/^\/(finance|arc)(\?|$)/);

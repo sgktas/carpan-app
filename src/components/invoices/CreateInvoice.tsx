@@ -59,7 +59,8 @@ export function CreateInvoice() {
     parseFloat(amount) > 0 &&
     !isPending &&
     !checking &&
-    !isConfirming
+    !isConfirming &&
+    !(hash && receipt?.status !== 'reverted' && receipt?.status !== 'success')
 
   async function handleCreate() {
     if (busy.current || !canSubmit || !CONTRACT_ADDRESS || !referenceHash || !invoiceKey || !publicClient || !address) return
@@ -111,7 +112,7 @@ export function CreateInvoice() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const errorMsg = preflightError || (receipt?.status === 'reverted' || receiptError ? 'Creation failed on-chain. The invoice was not created by this transaction.' : null) || (isError
+  const errorMsg = preflightError || (receipt?.status === 'reverted' ? 'Creation failed on-chain. The invoice was not created by this transaction.' : receiptError ? 'Creation status could not be verified. Check the transaction hash before submitting again.' : null) || (isError
     ? error?.message?.includes('InvoiceAlreadyExists')
       ? 'An invoice with this reference already exists for your address.'
       : error?.message?.includes('user rejected')

@@ -26,6 +26,8 @@ import { ACTIVE_CHAIN_NAME, CONTRACT_ADDRESS, ACTIVE_CHAIN_ID, USDC_ADDRESS } fr
 import { formatAddress, formatExpiry, STATUS_LABELS } from './invoiceUtils'
 import { Amount, usdcDecimalsFor } from '@/onchain-money'
 import { InvoicePaymentReceipt } from './InvoicePaymentReceipt'
+import {arcPaymentError} from '../../arc-payment-error'
+import {walletRejected} from '../../collection-checkout'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -74,12 +76,11 @@ export function formatUsdc6(raw: bigint): string {
 function parseErrorMsg(err: Error | null | undefined): string | null {
   if (!err) return null
   const m = err.message?.toLowerCase() ?? ''
-  if (m.includes('user rejected') || m.includes('denied')) return 'Transaction cancelled — you can try again.'
+  if (walletRejected(err)) return 'Transaction cancelled in your wallet.'
   if (m.includes('invoicenotpending')) return 'This invoice is no longer pending.'
   if (m.includes('invoiceexpired')) return 'This invoice has expired.'
   if (m.includes('insufficient')) return 'Insufficient USDC balance.'
-  if (m.includes('reverted')) return 'Transaction reverted on-chain. Please refresh and retry.'
-  return 'Transaction failed. Please try again.'
+  return arcPaymentError(err)
 }
 
 const glass = {
@@ -386,6 +387,7 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
   }
 
   async function handleApprove() {
+    if ((approveWriteErr&&!walletRejected(approveWriteErr))||(payWriteErr&&!walletRejected(payWriteErr))) return
     if (!invoice || !CONTRACT_ADDRESS || !isConnected || wrongChain) return
     if (signingRef.current || refreshing) return
     signingRef.current = true
@@ -455,6 +457,7 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
   }
 
   async function handlePay() {
+    if ((approveWriteErr&&!walletRejected(approveWriteErr))||(payWriteErr&&!walletRejected(payWriteErr))) return
     if (!invoiceKey || !CONTRACT_ADDRESS || !isConnected || wrongChain) return
     if (signingRef.current || refreshing) return
     signingRef.current = true
@@ -529,6 +532,7 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
 
   // ── Derived display values ─────────────────────────────────────────────────
   const isBusy = refreshing || approvePending || approveConfirming || payPending || payConfirming
+  const uncertainWrite = !!(approveWriteErr&&!walletRejected(approveWriteErr)||payWriteErr&&!walletRejected(payWriteErr))
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
@@ -718,7 +722,7 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
                   </button>
                 ) : (
                   <button
-                    disabled={isBusy || !isConnected}
+                    disabled={isBusy || !isConnected || uncertainWrite}
                     onClick={() => { void handleApprove() }}
                     className="w-full rounded-2xl py-3.5 text-sm font-semibold transition-all hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40"
                     style={{ background: 'var(--surface-strong)', color: 'var(--ink)', border: '1px solid var(--border-strong)' }}
@@ -753,7 +757,7 @@ export function PayInvoice({initialKey = ''}: {initialKey?: string}) {
                   </button>
                 ) : (
                   <button
-                    disabled={isBusy || !isConnected}
+                    disabled={isBusy || !isConnected || uncertainWrite}
                     onClick={() => { void handlePay() }}
                     className="w-full rounded-2xl py-3.5 text-sm font-semibold transition-all hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40"
                     style={{ background: 'var(--accent)', color: '#09090c' }}

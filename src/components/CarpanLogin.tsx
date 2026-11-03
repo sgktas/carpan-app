@@ -9,7 +9,7 @@ import {useAuth} from '../hooks/useAuth';
 import {useI18n} from '../i18n';
 import {api} from '../api';
 import {clearReferralIntent, readPendingReferralIntent, referralIntentPath} from '../referral-intent';
-import {normalizeLoginReturn} from '../auth-return';
+import {normalizeLoginReturn,walletSetupReturn} from '../auth-return';
 
 const LoginContext=createContext({openLogin:(_next?:string)=>{},openRegister:(_next?:string)=>{}});
 export const useCarpanLogin=()=>useContext(LoginContext);
@@ -24,7 +24,8 @@ const errors:Record<string,string>={
 };
 export function CarpanLoginProvider({children}:{children:ReactNode}){
   const {user,demoMode,googleLoginAvailable,emailLoginAvailable,xLoginAvailable,authError,refresh}=useAuth();
-  const {t}=useI18n(),location=useLocation(),navigate=useNavigate();
+  const {t,language}=useI18n(),location=useLocation(),navigate=useNavigate();
+  const [setupWallet,setSetupWallet]=useState(false);
   const {address}=useAccount(),{signMessageAsync}=useSignMessage(),walletModal=useModal();
   const dialog=useRef<HTMLDialogElement>(null),currentAddress=useRef(address),returnTo=useRef<string|null>(null);
   currentAddress.current=address;
@@ -35,7 +36,7 @@ export function CarpanLoginProvider({children}:{children:ReactNode}){
   const [loadedScene,setLoadedScene]=useState('');
   const authPage=location.pathname==='/login'||location.pathname==='/register',register=location.pathname==='/register';
   const sceneSrc='/images/carpan-auth-balanced-v4.webp';
-  const postLoginPath=()=>{const intent=readPendingReferralIntent();return normalizeLoginReturn(intent?referralIntentPath(intent):returnTo.current||'/');};
+  const postLoginPath=()=>{const intent=readPendingReferralIntent();return walletSetupReturn(intent?referralIntentPath(intent):returnTo.current||'/',setupWallet&&import.meta.env.VITE_CIRCLE_WALLETS_ENABLED==='true');};
   function rememberReturn(path:string){returnTo.current=safeReturn(path);try{sessionStorage.setItem('carpan-login-return',returnTo.current||'/');}catch{/* Private browsing */}}
   function openLogin(next?:string){openAuth('login',next);}
   function openRegister(next?:string){openAuth('register',next);}
@@ -105,6 +106,7 @@ export function CarpanLoginProvider({children}:{children:ReactNode}){
         {address&&!unavailable&&<button type="button" className="carpan-login-change" title={t('Başka cüzdan kullan')} aria-label={t('Başka cüzdan kullan')} onClick={connectWallet}><RefreshCw size={17}/></button>}</div>
         {xLoginAvailable&&<button className="carpan-auth-provider" disabled={unavailable} onClick={()=>void oauth('x')}><span aria-hidden="true">𝕏</span>{t('X ile devam et')}</button>}
         <div className="carpan-auth-divider"><span>{t('veya')}</span></div>
+        {import.meta.env.VITE_CIRCLE_WALLETS_ENABLED==='true'&&<label className="carpan-auth-wallet-choice"><input type="checkbox" checked={setupWallet} disabled={busy} onChange={e=>setSetupWallet(e.target.checked)}/><span>{language==='en'?'Open my CARPAN wallet after sign-in':'Girişten sonra CARPAN cüzdanımı aç'}<small>{language==='en'?'Optional · Arc Testnet. Wallet creation requires your approval.':'İsteğe bağlı · Arc Testnet. Cüzdan oluşturmayı sen onaylarsın.'}</small></span></label>}
         <form className="carpan-auth-email" onSubmit={sendEmail}><label htmlFor="carpan-login-email">{t('E-posta')}</label><input id="carpan-login-email" type="email" autoComplete="email" required disabled={unavailable||!emailLoginAvailable} placeholder="you@example.com" value={email} onChange={e=>{setEmail(e.target.value);setEmailSent(false);}}/>
           <p className="carpan-auth-hint">{emailLoginAvailable?t('Parola gerekmez. Tek kullanımlık bağlantı e-postana gelir.'):t('E-posta girişi henüz etkin değil. Cüzdanını kullanabilirsin.')}</p>
           {emailSent&&<p className="carpan-auth-success" role="status">{t('Giriş bağlantısını e-postana gönderdik. 15 dakika geçerli.')}</p>}

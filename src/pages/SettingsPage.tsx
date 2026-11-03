@@ -1,6 +1,6 @@
 import {usePageLoading} from '../hooks/usePageLoading';
 import {useEffect,useState,type FormEvent} from 'react';
-import {useLocation,useNavigate,useSearchParams} from 'react-router-dom';
+import {Link,useLocation,useNavigate,useSearchParams} from 'react-router-dom';
 import {Check} from 'lucide-react';
 import {useAuth} from '../hooks/useAuth';
 import {useI18n} from '../i18n';
@@ -34,6 +34,7 @@ export function SettingsPage(){
     </section>}
     {tab==='security'&&<section className="carpan-settings-card" id="account"><h2>{t('Giriş yöntemleri')}</h2><div className="carpan-settings-connections"><AccountConnections/><AccountWalletLink key={user.id}/></div><div className="carpan-settings-row"><span>{t('Parola')}</span><div><strong>{t('Parolasız giriş')}</strong><small>{t('Giriş, doğrulanmış cüzdan veya etkin hesap sağlayıcısıyla yapılır.')}</small></div></div></section>}
     {tab==='sessions'&&<AccountSessionsPanel key={user.id} onLogout={()=>void endSession()} logoutBusy={busy}/>}
+    {tab==='security'&&import.meta.env.VITE_CIRCLE_WALLETS_ENABLED==='true'&&<section className="carpan-settings-card"><h2>{language==='en'?'CARPAN wallet':'CARPAN cüzdanı'}</h2><div className="carpan-settings-row"><span>Arc Testnet</span><div><strong>{language==='en'?'Your account wallet':'Hesabına bağlı cüzdan'}</strong><small>{language==='en'?'View your wallet or complete its optional setup.':'Cüzdanını görüntüle veya isteğe bağlı kurulumu tamamla.'}</small></div><Link to="/wallet/setup">{language==='en'?'Open wallet':'Cüzdanı aç'} →</Link></div></section>}
   </>}
   {tab==='preferences'&&<section className="carpan-settings-card"><h2>{t('Tercihler')}</h2><div className="carpan-settings-row"><span>{t('Dil')}</span><div><strong>{language==='tr'?'Türkçe':'English'}</strong><small>{t('Carpan arayüzünün dili.')}</small></div><div className="carpan-language" role="group" aria-label={t('Dil seçimi')}><button type="button" aria-pressed={language==='en'} onClick={()=>setLanguage('en')}>EN</button><button type="button" aria-pressed={language==='tr'} onClick={()=>setLanguage('tr')}>TR</button></div></div></section>}
   </div>;

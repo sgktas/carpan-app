@@ -5,6 +5,11 @@ function hasUnsafeCharacters(value: string): boolean {
   });
 }
 
+export function walletSetupReturn(value:unknown,requested:boolean):string{
+  const next=normalizeLoginReturn(value);
+  return requested&&!next.startsWith('/wallet/setup')?'/wallet/setup?continue='+encodeURIComponent(next):next;
+}
+
 /** Preserve an internal product destination across wallet, OAuth and email sign-in. */
 export function normalizeLoginReturn(value: unknown): string {
   if (typeof value !== 'string' || value.length > 2048 || !value.startsWith('/') ||

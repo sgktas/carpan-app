@@ -437,3 +437,5 @@
   .carpan-auth-cinematic .carpan-auth-light { animation: none; }
   .carpan-auth-cinematic .carpan-auth-art { transition: none; }
 }
+
+.carpan-auth-wallet-choice{display:flex;align-items:flex-start;gap:10px;margin:8px 0 18px;color:#d3cde0;font-size:13px;line-height:1.5}.carpan-auth-wallet-choice input{margin-top:4px;accent-color:#c4aaf4;flex:none}.carpan-auth-wallet-choice small{display:block;color:#a49bb4;font-size:11px;margin-top:3px}

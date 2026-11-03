@@ -16,6 +16,7 @@ const ProductOverviewPage=pageLazy(()=>import('./pages/ProductOverviewPage').the
 const LegalPage=pageLazy(()=>import('./pages/LegalPage').then(m=>({default:m.LegalPage})));
 const ApiPage=pageLazy(()=>import('./pages/ApiPage').then(m=>({default:m.ApiPage})));
 const SettingsPage = pageLazy(() => import('./pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
+const WalletSetupPage = pageLazy(() => import('./pages/WalletSetupPage').then(m => ({ default: m.WalletSetupPage })));
 const ProjectsPage = pageLazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
 const MyLinksPage = pageLazy(() => import('./pages/MyLinksPage').then(m => ({ default: m.MyLinksPage })));
 const ReferralCenterPage = pageLazy(() => import('./pages/ReferralCenterPage').then(m => ({ default: m.ReferralCenterPage })));
@@ -83,6 +84,7 @@ export default function App() {
           <Route path="/developers" element={<ApiPage/>} />
           <Route path="/profile" element={<LegacyAccountRoute/>} />
           <Route path="/settings" element={<Layout><SettingsPage /></Layout>} />
+          <Route path="/wallet/setup" element={<Layout><WalletSetupPage /></Layout>} />
           <Route path="/arc" element={<ArcEntryRoute />} />
           <Route path="/ecosystem/:id?" element={<EcosystemPage />} />
           <Route path="/onchain/projects/:id?" element={<EcosystemPage />} />

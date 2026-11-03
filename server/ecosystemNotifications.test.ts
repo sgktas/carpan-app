@@ -21,12 +21,12 @@ let server:ReturnType<ReturnType<typeof express>['listen']>;
 afterAll(async()=>{if(server?.listening)await new Promise<void>(r=>server.close(()=>r()));db.close();});
 
 test('every reviewed profile has bounded funding context and primary development evidence',()=>{
- expect(curatedEcosystem).toHaveLength(14);
- for(const p of curatedEcosystem){const r=projectInsights(p.id)!;expect(r.checkedAt).toBe('2026-10-10');expect(r.milestones.length).toBeGreaterThan(0);expect(r.funding.summary.en).toBeTruthy();expect(r.funding.summary.tr).toBeTruthy();for(const m of r.milestones)expect(new URL(m.source.url).protocol).toBe('https:');}
+ expect(curatedEcosystem.length).toBeGreaterThanOrEqual(25);
+ for(const p of curatedEcosystem){const r=projectInsights(p.id)!;expect(r.checkedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);expect(r.milestones.length).toBeGreaterThan(0);expect(r.funding.summary.en).toBeTruthy();expect(r.funding.summary.tr).toBeTruthy();for(const m of r.milestones)expect(new URL(m.source.url).protocol).toBe('https:');}
  expect(projectInsights('eco_alchemy')!.funding.rounds[0]).toMatchObject({amountUsd:250_000_000,announcedAt:'2021-10-28'});
  expect(projectInsights('eco_cctp')!.funding).toMatchObject({status:'parent',parentId:'eco_circle',rounds:[]});
  expect(projectInsights('eco_goldsky')!.funding).toMatchObject({status:'not-confirmed',rounds:[]});
- expect(curatedEcosystem.find(p=>p.id==='eco_extended')).toMatchObject({stage:'announced',addresses:[]});
+ expect(curatedEcosystem.find(p=>p.id==='eco_extended')).toMatchObject({stage:'participant',addresses:[]});
  expect(updateFeed(true).updates).toEqual([]);
 });
 
@@ -41,8 +41,8 @@ test('schedule classification expires exact deadlines and preserves week/day pre
 
 test('all project research revisions ingest alongside upcoming events without enabling existing saved-project users',()=>{
  save('existing-reader');reconcileEcosystemUpdates(db,undefined,initial);
- expect(researchUpdates).toHaveLength(14);expect(new Set(researchUpdates.map(u=>u.projectId)).size).toBe(14);
- expect((db.query('SELECT count(*) AS n FROM ecosystem_update_versions').get() as {n:number}).n).toBe(18);
+ expect(researchUpdates.map(u=>u.projectId).sort()).toEqual(curatedEcosystem.map(p=>p.id).sort());expect(new Set(researchUpdates.map(u=>u.projectId)).size).toBe(curatedEcosystem.length);
+ expect((db.query('SELECT count(*) AS n FROM ecosystem_update_versions').get() as {n:number}).n).toBe(1+ecosystemUpdates.length+researchUpdates.length);
  expect(ecosystemInbox(db,'existing-reader')).toMatchObject({subscriptions:[],notifications:[],unread:0});
 });
 

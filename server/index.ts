@@ -1,4 +1,5 @@
 import {createAccountSessionsRoutes} from './accountSessionRoutes';
+import {createCircleWalletRoutes} from './circleWalletRoutes';
 import {AccountLinkError,initGoogleWalletLink,prepareGoogleWalletLink,completeGoogleWalletLink} from './googleWalletLink';
 import {initFinanceWorkspace} from './financeWorkspace';
 import {createFinanceWorkspaceRoutes} from './financeWorkspaceRoutes';
@@ -114,6 +115,7 @@ app.use('/auth', authRequestGuard);
 app.use('/wallet', authRequestGuard);
 app.use('/bridge',authRequestGuard,bridgeHistoryRoutes);
 app.use('/account',authRequestGuard,createAccountSessionsRoutes(db,requireAuth as express.RequestHandler,req=>{const token=readSessionCookie(req);return token?hashSessionToken(token):null;}));
+app.use('/circle-wallet',authRequestGuard,createCircleWalletRoutes(db,requireAuth as express.RequestHandler,req=>{const token=readSessionCookie(req);return token?hashSessionToken(token):null;}));
 // Closure precedes the broad /finance authentication router so every API
 // request, including guest requests, sees the same unavailable-service boundary.
 app.use('/finance/integrations',createFinanceApiAvailabilityGuard());
