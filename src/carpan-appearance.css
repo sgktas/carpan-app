@@ -1,0 +1,69 @@
+/* Explicit light surfaces; brand artwork retains its original material and colors. */
+html[data-theme=light]{color-scheme:light;--bg:#f4f6fa;--bg-gradient:#f4f6fa;--surface:#fff;--surface-strong:#eaf0f7;--surface-muted:#edf1f6;--ink:#172132;--ink-2:#344158;--muted:#526178;--subtle:#627188;--border:#dce3ed;--border-strong:#b9c6d8;--accent:#6550b6;--accent-hover:#513b9f;--success:#14724a;--danger:#b22649;--warning:#825d09;--violet:#6550b6;--peach:#94502e}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3{--ws-bg:#f4f6fa;--ws-card:#fff;--ws-card-raised:#edf2f8;--ws-input:#f7f9fc;--ws-border:#cbd6e4;--ws-line:#e1e7ef;--ws-text:#172132;--ws-muted:#526178;--ws-faint:#63728a;--ws-accent:#235fbd;--ws-action:#235fbd;--ws-active:#e5efff;--ws-success:#14724a;--ws-material:linear-gradient(155deg,#fff,#fafbfd);--ws-card-shadow:0 4px 20px #18385508;--ink-2:#344158;--accent-hover:#194b99}
+html[data-theme=light] :is(.aw-terminal,.carpan-workspace){--at-bg:var(--bg);--aw-bg:var(--bg);--at-surface:var(--surface);--at-subtle:var(--surface-strong);--at-border:var(--border);--at-ink:var(--ink);--at-secondary:var(--muted);--at-accent:var(--accent);--at-hover:var(--surface-strong);--aw-panel:var(--surface);--aw-line:var(--border);--aw-text:var(--ink);--aw-muted:var(--muted);--aw-purple:var(--accent);--aw-accent:var(--accent);--cp-panel:var(--surface);--cp-panel-raised:var(--surface-strong);--cp-line:var(--border);--cp-line-strong:var(--border-strong)}
+html[data-theme=light] :is(.rvx-header,.arc-tool-header,.at-header){background:#f9fbfdf2!important;border-color:var(--border)}
+html[data-theme=light] :is(.rvx-brand svg,.rvx-brand img,.at-brand img,.at-brand svg,.carpan-footer-brand img){filter:brightness(0)!important}
+html[data-theme=light] :is(.carpan-product-trigger,.carpan-signin-button,.carpan-settings-button,.carpan-notifications-trigger){color:var(--ink)}
+html[data-theme=light] :is(.carpan-control-panel,.carpan-preferences-panel,.carpan-notifications-panel,.at-menu,.carpan-login-dialog){background:var(--surface);color:var(--ink);border-color:var(--border);color-scheme:light;box-shadow:0 16px 50px #24395620}
+html[data-theme=light] .carpan-control-panel :is(button,a,strong){color:var(--ink)}
+html[data-theme=light] .carpan-control-panel :is(small,span){color:var(--muted)}
+html[data-theme=light] .carpan-settings-card{background:var(--surface);color:var(--ink);border-color:var(--border);box-shadow:0 6px 28px #24395606}
+html[data-theme=light] .carpan-settings-row{border-color:var(--border)}
+html[data-theme=light] :is(.carpan-settings-page,.carpan-settings-card) :is(h1,h2,strong){color:var(--ink)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(input,select,textarea){background:var(--ws-input)!important;color:var(--ws-text)!important;border-color:var(--ws-border)!important;color-scheme:light!important}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-module .ab-form,.ab-module .ab-preview,.aw-history,.af-graph,.at-dossier-chart,.cf-chart-wrap,.em-chart-panel,.ab-preflight,.ab-amount-summary){background:var(--ws-card);color:var(--ws-text);border-color:var(--ws-border);box-shadow:var(--ws-card-shadow)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-module h1,.ab-module h2,.ab-module strong,.ab-module .ab-heading p,.ab-module .ab-form label,.ab-module .ab-preview dd){color:var(--ws-text)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-button,.at-module-search button,.cp-button--ghost){color:var(--ws-text);background:var(--ws-card-raised)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.ab-primary,.carpan-register-button){background:var(--ws-action)!important;color:#fff!important;border-color:var(--ws-action)!important}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) th{background:var(--ws-card-raised);color:var(--ws-muted)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) tbody tr:nth-child(even){background:#f7f9fc}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.aw-table,.cf-table,.em-market-table,.at-feed-table) tbody tr:hover{background:var(--ws-active)}
+html[data-theme=light] .fi-console{--fi-bg:#f4f6fa;--fi-panel:#fff;--fi-raised:#edf2f8;--fi-input:#f7f9fc;--fi-border:#ccd7e5;--fi-text:#172132;--fi-muted:#526178;--fi-faint:#63728a;--fi-action:#235fbd;color-scheme:light}
+html[data-theme=light] .fi-console :is(input,select){color-scheme:light}
+html[data-theme=light] .fi-console .fi-primary{color:white}
+html[data-theme=light] .carpan-footer{background:var(--bg);color:var(--muted)}
+.carpan-theme-choice{display:flex;gap:4px;padding:4px;border:1px solid var(--border);border-radius:10px;background:var(--surface-muted)}
+html .carpan-theme-choice button{display:flex!important;align-items:center;justify-content:center;gap:7px;min-height:36px!important;padding:7px 12px!important;border:0!important;border-radius:7px!important;background:transparent!important;color:var(--muted)!important;font:500 12px 'DM Sans',sans-serif;cursor:pointer}
+html .carpan-theme-choice button[aria-pressed=true]{background:var(--surface-strong)!important;color:var(--ink)!important;box-shadow:0 1px 4px #0001}
+.carpan-menu-appearance{padding:14px 20px;border-bottom:1px solid var(--border)}
+.carpan-menu-appearance>span{display:block;margin-bottom:10px;font-size:12px;color:var(--muted)}
+html .carpan-theme-choice button{width:auto!important;flex:1}
+html[data-theme=light] .at-header :is(.at-brand,.at-brand-name,.at-navigation>a){color:var(--ink)!important}
+html[data-theme=light] .at-header .at-navigation>a:not([aria-current=page]){color:var(--muted)!important}
+html[data-theme=light] .carpan-preferences-panel nav :is(a,button){color:var(--ink)!important;border-color:var(--border)}
+html[data-theme=light] .carpan-preferences-panel nav :is(a,button):hover{background:var(--surface-strong)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-heading{background:transparent;box-shadow:none}
+html[data-theme=light] .fi-console{--fi-card:#fff;--fi-line:#e1e7ef}
+html[data-theme=light] .tr-review{color:var(--ink)}
+html[data-theme=light] .tr-review p{color:var(--muted)}
+html[data-theme=light] .tr-review :is(button,input,select){color:var(--ink);background:var(--surface);border-color:var(--border-strong)}
+html[data-theme=light] .tr-review :is(.tr-steps,td,th,.fo-discovery){border-color:var(--border)}
+html[data-theme=light] .tr-totals article{background:var(--surface);border-color:var(--border);color:var(--ink)}
+html[data-theme=light] :is(.tr-review a,.fo-workflow-guide a){color:var(--accent)}
+html[data-theme=light] .fo-workflow-guide{background:var(--surface);border-color:var(--border);color:var(--ink)}
+html[data-theme=light] .cfo-mode button{background:var(--surface);border-color:var(--border);color:var(--muted)}
+html[data-theme=light] .cfo-mode button[aria-pressed=true]{background:var(--ws-active);color:var(--ws-accent);border-color:var(--ws-accent)}
+html[data-theme=light] .ab-network{color:var(--ws-accent);background:var(--ws-active);border-color:var(--ws-border)}
+html[data-theme=light] .aw-terminal-v3{color-scheme:light}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem{--eco-edge:#dce3ed;--eco-edge-strong:#bcc9db;--eco-depth:0 6px 24px #20385008}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-tabs a[aria-current=page]{color:var(--ws-accent)}
+html[data-theme=light] .carpan-data-workspace .eco-submit{background:var(--ws-active);color:var(--ws-accent)!important}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-categories button:is([aria-pressed=true],:hover){background:var(--ws-active);color:var(--ws-accent);border-color:var(--ws-border)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts{background:var(--ws-input);border-color:var(--ws-line);box-shadow:none}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .ecp-project-facts>div+div{border-color:var(--ws-line)}
+html[data-theme=light] .carpan-footer :is(h3,.carpan-footer-brand){color:var(--ink)}
+html[data-theme=light] .carpan-footer a:hover{color:var(--accent)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-table,.aw-table,.cf-table,.em-market-table){color:var(--ws-text)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-address,.at-feed-value,.at-dossier-facts strong,.at-dossier-volume strong,.at-entity-bottom strong,.at-contract-bottom strong){color:var(--ws-text)!important}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-feed-network,.at-feed-time,.at-dossier-total>span,.at-contract-address){color:var(--ws-muted)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 :is(.at-entity-split,.at-entity-split span,.at-network-pill,.at-feed-state,.at-discovery-mode button){color:var(--ws-muted);border-color:var(--ws-line);background:var(--ws-card-raised)}
+/* Cinematic entry artwork stays dark so its white type and brand imagery remain legible. */
+html[data-theme=light] .carpan-auth-cinematic{--surface:#18151f;--surface-strong:#25202e;--surface-muted:#15121b;--ink:#f6f3fb;--ink-2:#ded8ec;--muted:#b8adc9;--border:#494152;--border-strong:#6a5c7d;color:#f6f3fb;background:#09090d;color-scheme:dark}
+html[data-theme=light] .rvx-page .rvx-home-content--premium :is(h2,h3,strong){color:var(--ink)}
+html[data-theme=light] .rvx-page .rvx-home-content--premium :is(p,.rvx-kicker,.carpan-panel-caption,.carpan-accounting-copy>strong){color:var(--muted)}
+html[data-theme=light] .rvx-page .rvx-home-content--premium :is(.rvx-project,.rvx-community-empty,.carpan-accounting-branch--editorial,.rvx-join){background:var(--surface);border-color:var(--border);box-shadow:0 8px 28px #2439560a}
+html[data-theme=light] .rvx-page .rvx-home-content--premium :is(.rvx-explore,.rvx-how,.rvx-project-content>div){border-color:var(--border)}
+html[data-theme=light] .rvx-page .rvx-home-content--premium :is(.rvx-project-cover,.rvx-steps b,.rvx-section-head>a,.rvx-project-content button){background:var(--surface-strong);border-color:var(--border-strong);color:var(--ink)}
+html[data-theme=light] .rvx-page .rvx-home-content--premium :is(.rvx-project-content a,.rvx-community-empty>a,.carpan-accounting-copy>a){color:var(--accent)!important}
+html[data-theme=light] .rvx-page .rvx-home-content--premium .rvx-join .primary{background:var(--accent);border-color:var(--accent);color:#fff}

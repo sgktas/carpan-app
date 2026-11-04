@@ -26,9 +26,11 @@ import './carpan-navigation.css'
 import './carpan-quality.css'
 import './carpan-data-workspace.css'
 import './carpan-workspace-finish.css'
+import './carpan-appearance.css'
+import {ThemeProvider,useTheme} from './theme'
 import { I18nProvider, useI18n } from './i18n'
 
-function LocalizedApp(){const {language}=useI18n();return <ConnectKitProvider mode="dark" options={{language:language==='en'?'en-US':'tr-TR'}}><App/><Toaster position="top-center" theme="dark"/></ConnectKitProvider>;}
+function LocalizedApp(){const {language}=useI18n(),{theme}=useTheme();return <ConnectKitProvider mode={theme} options={{language:language==='en'?'en-US':'tr-TR'}}><App/><Toaster position="top-center" theme={theme}/></ConnectKitProvider>;}
 
 const queryClient = new QueryClient()
 
@@ -36,7 +38,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <I18nProvider><LocalizedApp/></I18nProvider>
+        <ThemeProvider><I18nProvider><LocalizedApp/></I18nProvider></ThemeProvider>
       </QueryClientProvider>
     </WagmiProvider>
   </StrictMode>,

@@ -35,3 +35,33 @@ html .ab-module .ab-form fieldset:disabled :is(input,select) { opacity:.55; }
   .ab-module .ab-route { grid-template-columns:minmax(0,1fr); }
   html .ab-module .ab-route>.aw-button { justify-self:center; margin-top:0; }
 }
+.ab-network-field{display:flex;flex-direction:column;gap:9px;min-width:0;font-size:12px;color:var(--muted)}
+html .ab-module .ab-route .ab-network-trigger{display:flex;align-items:center;gap:12px;width:100%;min-height:66px;padding:12px 15px;background:var(--ws-input,var(--surface-muted));border:1px solid var(--ws-border,var(--border));border-radius:12px;color:var(--ws-text,var(--ink));text-align:left;cursor:pointer}
+.ab-network-trigger>span:nth-child(2){flex:1;min-width:0}
+.ab-network-trigger strong{display:block;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.ab-network-trigger small{display:block;font-size:11px;color:var(--ws-muted,var(--muted));margin-top:3px}
+.bridge-network-icon{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:#fff;box-shadow:0 0 0 1px #80808018}
+.bridge-network-icon img{width:28px;height:28px;object-fit:contain;filter:none!important}
+.bridge-network-icon>span{color:#344158;font-size:10px;font-weight:700}
+html .bridge-network-dialog{position:fixed;inset:0;width:min(440px,calc(100vw - 24px));max-height:min(680px,calc(100dvh - 40px));margin:auto;padding:22px;border:1px solid var(--border-strong);border-radius:22px;background:var(--surface);color:var(--ink);box-shadow:0 24px 100px #0005;font:14px/1.5 'DM Sans',sans-serif;color-scheme:dark}
+html .bridge-network-dialog::backdrop{background:#10162444;backdrop-filter:blur(7px)}
+html[data-theme=light] .bridge-network-dialog{color-scheme:light}
+.bridge-network-dialog header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:20px}
+html .bridge-network-dialog h2{margin:0;color:var(--ink);font-size:21px;letter-spacing:-.4px;font-weight:600}
+.bridge-network-dialog header p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.bridge-network-dialog header button{display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:8px;background:var(--surface-strong);color:var(--muted);cursor:pointer}
+.bridge-network-search{display:flex;align-items:center;gap:10px;padding:0 12px;min-height:46px;border:1px solid var(--border);border-radius:10px;background:var(--surface-muted);color:var(--muted)}
+html .bridge-network-search input{flex:1;min-width:0;width:100%;min-height:44px;padding:0;border:0;background:transparent!important;box-shadow:none;color:var(--ink)!important;font:14px 'DM Sans',sans-serif}
+.bridge-network-search:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+html .bridge-network-search input:focus{outline:0}
+.bridge-network-options{display:flex;flex-direction:column;gap:4px;max-height:440px;overflow:auto;overscroll-behavior:contain;margin-top:16px;padding:2px}
+html .bridge-network-options>button{display:flex;align-items:center;gap:12px;text-align:left;width:100%;min-height:62px;padding:10px 12px;border:1px solid transparent;border-radius:12px;color:var(--ink);background:transparent;cursor:pointer}
+.bridge-network-options>button>span:nth-child(2){flex:1}
+.bridge-network-options strong{display:block;font:500 14px 'DM Sans',sans-serif}
+.bridge-network-options small{display:block;color:var(--muted);font:11px 'DM Sans',sans-serif;margin-top:4px}
+html .bridge-network-options>button:hover{background:var(--surface-strong)}
+html .bridge-network-options>button[aria-pressed=true]{border-color:var(--border-strong);background:var(--surface-strong)}
+.bridge-network-options>button>svg{color:var(--accent)}
+.bridge-network-empty{padding:24px;text-align:center;color:var(--muted)}
+.bridge-network-dialog :is(button,input):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:540px){html .bridge-network-dialog{padding:18px;max-height:calc(100dvh - 24px)}.bridge-network-options{max-height:calc(100dvh - 215px)}}

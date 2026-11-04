@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#100e18" />
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem('carpan.theme')==='light'?'light':'dark'}catch{document.documentElement.dataset.theme='dark'}</script>
     <link rel="icon" href="/favicon.ico?v=20261010-01" sizes="16x16 32x32 48x48 64x64 256x256" />
     <link rel="icon" type="image/png" href="/carpan-favicon-32.png?v=20261010-01" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/carpan-favicon.svg?v=20261010-01" sizes="any" />
@@ -34,6 +35,8 @@
       #carpan-boot-loader{min-height:100dvh;display:grid;place-items:center;background:#08090b;position:relative;isolation:isolate}
       #carpan-boot-loader>div{display:grid;place-items:center;opacity:0;animation:carpan-boot-reveal .18s .28s ease-out forwards;filter:drop-shadow(0 6px 18px rgba(12,18,28,.22))}
       #carpan-boot-loader img{width:72px;height:72px;object-fit:contain;filter:brightness(0) invert(1);transform-origin:50% 50%;animation:carpan-boot-orbit 2.4s linear infinite}
+      html[data-theme=light] body,html[data-theme=light] #carpan-boot-loader{background:#f4f6fa}
+      html[data-theme=light] #carpan-boot-loader img{filter:brightness(0)}
       @keyframes carpan-boot-reveal{to{opacity:1}}
       @keyframes carpan-boot-orbit{to{transform:rotate(360deg)}}
       @media(prefers-reduced-motion:reduce){#carpan-boot-loader img{animation:none}}

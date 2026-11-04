@@ -1,0 +1,151 @@
+[
+  {
+    "id": 42161,
+    "name": "Arbitrum",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/arbitrum.svg",
+    "file": "42161.svg"
+  },
+  {
+    "id": 43114,
+    "name": "Avalanche",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/avalanche.svg",
+    "file": "43114.svg"
+  },
+  {
+    "id": 8453,
+    "name": "Base",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/base.svg",
+    "file": "8453.svg"
+  },
+  {
+    "id": 81224,
+    "name": "Codex Mainnet",
+    "url": "https://codex.xyz/apple-touch-icon.png",
+    "file": "81224.png"
+  },
+  {
+    "id": 25,
+    "name": "Cronos",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/cronos.svg",
+    "file": "25.svg"
+  },
+  {
+    "id": 3343,
+    "name": "Edge",
+    "url": "https://www.edgex.exchange/favicon.ico",
+    "file": "3343.ico"
+  },
+  {
+    "id": 1,
+    "name": "Ethereum",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/ethereum.svg",
+    "file": "1.svg"
+  },
+  {
+    "id": 999,
+    "name": "HyperEVM",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/hyperevm.svg",
+    "file": "999.svg"
+  },
+  {
+    "id": 1776,
+    "name": "Injective",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/injective.svg",
+    "file": "1776.svg"
+  },
+  {
+    "id": 57073,
+    "name": "Ink",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/ink.svg",
+    "file": "57073.svg"
+  },
+  {
+    "id": 59144,
+    "name": "Linea",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/linea.svg",
+    "file": "59144.svg"
+  },
+  {
+    "id": 143,
+    "name": "Monad",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/monad.svg",
+    "file": "143.svg"
+  },
+  {
+    "id": 2818,
+    "name": "Morph",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/morph.svg",
+    "file": "2818.svg"
+  },
+  {
+    "id": 10,
+    "name": "Optimism",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/optimism.svg",
+    "file": "10.svg"
+  },
+  {
+    "id": 1672,
+    "name": "Pharos",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/pharos.svg",
+    "file": "1672.svg"
+  },
+  {
+    "id": 9745,
+    "name": "Plasma",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/plasma.svg",
+    "file": "9745.svg"
+  },
+  {
+    "id": 98866,
+    "name": "Plume",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/plume.svg",
+    "file": "98866.svg"
+  },
+  {
+    "id": 137,
+    "name": "Polygon",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/polygon.svg",
+    "file": "137.svg"
+  },
+  {
+    "id": 1329,
+    "name": "Sei",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/sei.svg",
+    "file": "1329.svg"
+  },
+  {
+    "id": 146,
+    "name": "Sonic",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/sonic.svg",
+    "file": "146.svg"
+  },
+  {
+    "id": 130,
+    "name": "Unichain",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/unichain.svg",
+    "file": "130.svg"
+  },
+  {
+    "id": 480,
+    "name": "World Chain",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/world.svg",
+    "file": "480.svg"
+  },
+  {
+    "id": 196,
+    "name": "X Layer",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/xlayer.svg",
+    "file": "196.svg"
+  },
+  {
+    "id": 50,
+    "name": "XDC",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/xdc.svg",
+    "file": "50.svg"
+  },
+  {
+    "id": "solana",
+    "file": "solana.svg",
+    "url": "https://raw.githubusercontent.com/lifinance/types/main/src/assets/icons/chains/solana.svg"
+  }
+]

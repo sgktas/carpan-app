@@ -6,6 +6,7 @@ import {useI18n} from '../i18n';
 import {useCarpanLogin} from './CarpanLogin';
 import {loginMethodLabel} from './AccountConnections';
 import {CarpanNotifications} from './CarpanNotifications';
+import {ThemeChoice} from './ThemeChoice';
 
 /** One preferences menu; module navigation remains reachable without a second launcher. */
 export function CarpanHeaderControls() {
@@ -42,6 +43,7 @@ export function CarpanHeaderControls() {
       </div>
       <nav aria-label={t('Ayarlar menüsü')}>
         <div hidden={section!==null}>
+          <div className="carpan-menu-appearance"><span>{language==='en'?'Appearance':'Görünüm'}</span><ThemeChoice/></div>
           <button type="button" aria-expanded={section==='language'} aria-controls="carpan-preferences-language" onClick={e=>{sectionButton.current=e.currentTarget;setSection('language');}}>{t('Dil')}<ChevronRight size={16}/></button>
           <Link to="/settings" onClick={close}>{t('Ayarlar')}</Link>
           {user?.role==='admin'&&<Link to="/admin" onClick={close}>{t('Yönetim')}</Link>}

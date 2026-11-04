@@ -9,6 +9,7 @@ import {AccountConnections} from '../components/AccountConnections';
 import {AccountWalletLink} from '../components/AccountWalletLink';
 import {AccountSessionsPanel} from '../components/AccountSessionsPanel';
 import {api} from '../api';
+import {ThemeChoice} from '../components/ThemeChoice';
 import './carpan-account.css';
 
 export function SettingsPage(){
@@ -37,5 +38,6 @@ export function SettingsPage(){
     {tab==='security'&&import.meta.env.VITE_CIRCLE_WALLETS_ENABLED==='true'&&<section className="carpan-settings-card"><h2>{language==='en'?'CARPAN wallet':'CARPAN cüzdanı'}</h2><div className="carpan-settings-row"><span>Arc Testnet</span><div><strong>{language==='en'?'Your account wallet':'Hesabına bağlı cüzdan'}</strong><small>{language==='en'?'View your wallet or complete its optional setup.':'Cüzdanını görüntüle veya isteğe bağlı kurulumu tamamla.'}</small></div><Link to="/wallet/setup">{language==='en'?'Open wallet':'Cüzdanı aç'} →</Link></div></section>}
   </>}
   {tab==='preferences'&&<section className="carpan-settings-card"><h2>{t('Tercihler')}</h2><div className="carpan-settings-row"><span>{t('Dil')}</span><div><strong>{language==='tr'?'Türkçe':'English'}</strong><small>{t('Carpan arayüzünün dili.')}</small></div><div className="carpan-language" role="group" aria-label={t('Dil seçimi')}><button type="button" aria-pressed={language==='en'} onClick={()=>setLanguage('en')}>EN</button><button type="button" aria-pressed={language==='tr'} onClick={()=>setLanguage('tr')}>TR</button></div></div></section>}
+  {tab==='preferences'&&<section className="carpan-settings-card"><h2>{language==='en'?'Appearance':'Görünüm'}</h2><div className="carpan-settings-row"><span>{language==='en'?'Theme':'Tema'}</span><div><strong>{language==='en'?'Make CARPAN yours':'CARPAN görünümünü seç'}</strong><small>{language==='en'?'Your choice is saved on this browser.':'Seçimin bu tarayıcıda hatırlanır.'}</small></div><ThemeChoice/></div></section>}
   </div>;
 }
