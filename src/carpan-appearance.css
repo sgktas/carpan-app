@@ -44,7 +44,7 @@ html[data-theme=light] :is(.tr-review a,.fo-workflow-guide a){color:var(--accent
 html[data-theme=light] .fo-workflow-guide{background:var(--surface);border-color:var(--border);color:var(--ink)}
 html[data-theme=light] .cfo-mode button{background:var(--surface);border-color:var(--border);color:var(--muted)}
 html[data-theme=light] .cfo-mode button[aria-pressed=true]{background:var(--ws-active);color:var(--ws-accent);border-color:var(--ws-accent)}
-html[data-theme=light] .ab-network{color:var(--ws-accent);background:var(--ws-active);border-color:var(--ws-border)}
+html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3 .ab-module .ab-network{color:var(--ws-accent);background:var(--ws-active);border-color:var(--ws-border)}
 html[data-theme=light] .aw-terminal-v3{color-scheme:light}
 html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem{--eco-edge:#dce3ed;--eco-edge-strong:#bcc9db;--eco-depth:0 6px 24px #20385008}
 html[data-theme=light] .carpan-data-workspace.aw-terminal.aw-terminal-v3.carpan-ecosystem .eco-tabs a[aria-current=page]{color:var(--ws-accent)}
