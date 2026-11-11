@@ -25,5 +25,16 @@
   "Kontrat oluşturma": "Contract creation",
   "Ücret {0} {1}": "Fee {0} {1}",
   "Ücret {0}": "Fee {0}",
+  "Liste sabit": "List held",
+  "{0} yeni işlem geldi · göster": "{0} new transactions · show",
+  "Günlük işlemler": "Daily transactions",
+  "Günlük işlemler · {0} gün": "Daily transactions · {0} days",
+  "{0} – {1} günlük işlem sayısı": "Daily transaction count, {0} – {1}",
+  "Blok doluluğu %{0}": "Block gas used {0}%",
+  "Token transferi": "Token transfer",
+  "Transfer": "Transfer",
+  "Kontrat çağrısı": "Contract call",
+  "Basım": "Mint",
+  "Yakım": "Burn",
   "Ağdaki en yeni bloklar ve doğrulanmış işlemler. Tüm izleyiciler aynı sunucu görüntüsünü paylaşır; sayfa gizliyken akış durur. İşlem değeri bakiye veya iş kaydı değildir.": "The newest blocks and validated transactions on the network. All viewers share one server snapshot; the feed pauses while the page is hidden. A transaction value is not a balance or a business record."
 }

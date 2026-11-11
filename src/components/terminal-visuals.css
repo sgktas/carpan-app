@@ -1,0 +1,17 @@
+/* Uses the existing Terminal tokens only, so dark and light appearances stay intact. */
+.tv-avatar{display:inline-block;flex:0 0 auto;border-radius:5px;overflow:hidden;vertical-align:middle;box-shadow:0 0 0 1px var(--at-border)}
+.tv-avatar.is-empty{background:var(--at-subtle)}
+.tv-token{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;border-radius:50%;object-fit:cover;vertical-align:middle;box-shadow:0 0 0 1px var(--at-border);font-weight:700;line-height:1}
+.tv-badge{display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:2px 7px;border-radius:999px;border:1px solid var(--at-border);background:var(--at-subtle);color:var(--at-secondary);font:500 10px 'JetBrains Mono',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tv-badge svg{flex:0 0 auto}
+/* Transfer table: avatar/logo beside the existing text */
+.dt-address,.dt-token{display:inline-flex!important;align-items:center;gap:6px;max-width:100%;min-width:0}
+.dt-address span,.dt-token span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Room for the token logo plus a typical symbol. */
+.at-arc-transfers .at-feed-table th:nth-child(5){width:18%}
+.at-arc-transfers .at-feed-table th:nth-child(6){width:15%}
+.tv-badge.is-token svg{color:#5aa9ff}
+.tv-badge.is-coin svg{color:#48c9a0}
+.tv-badge.is-call svg{color:#b08cff}
+.tv-badge.is-create svg{color:#f5c25b}
+.tv-badge.is-burn svg{color:#ef7d7d}
