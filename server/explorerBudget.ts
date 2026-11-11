@@ -52,12 +52,17 @@ export class ExplorerBudget{
 }
 let budget:ExplorerBudget|null=null;
 const positive=(s:string|undefined,fallback:number)=>s&&/^\d+$/.test(s)&&Number.isSafeInteger(Number(s))&&Number(s)>0?Number(s):fallback;
-export function initExplorerBudget(db:Database){budget=new ExplorerBudget(db,positive(process.env.BLOCKSCOUT_DAILY_CREDIT_BUDGET,80000),positive(process.env.BLOCKSCOUT_CREDIT_RESERVE,20000),positive(process.env.BLOCKSCOUT_ESTIMATED_REQUEST_CREDITS,20));return budget;}
+/** Minimum gap between provider requests. 400 ms suits the free tier; Pro (30 req/s) can use ~50 ms. Never below 34 ms (~29 req/s). */
+export function requestIntervalMs(value=process.env.BLOCKSCOUT_MIN_REQUEST_INTERVAL_MS){return Math.max(34,positive(value,400));}
+/** Shared live-feed freshness. Clamped to 2–60 seconds so every viewer reads one server snapshot. */
+export function liveIntervalMs(value=process.env.BLOCKSCOUT_LIVE_TTL_MS){return Math.min(60000,Math.max(2000,positive(value,5000)));}
+let paceMs=400;
+export function initExplorerBudget(db:Database){paceMs=requestIntervalMs();budget=new ExplorerBudget(db,positive(process.env.BLOCKSCOUT_DAILY_CREDIT_BUDGET,80000),positive(process.env.BLOCKSCOUT_CREDIT_RESERVE,20000),positive(process.env.BLOCKSCOUT_ESTIMATED_REQUEST_CREDITS,20));return budget;}
 export function explorerBudgetStatus(){return budget?.status()||null;}
-export function discoveryPolicy(){const s=budget?.status();const mode=s?.mode||'cached';return {mode,arcMs:mode==='normal'?60000:mode==='saving'?180000:600000,otherMs:mode==='normal'?300000:mode==='saving'?900000:1800000,pollMs:mode==='normal'?60000:mode==='saving'?180000:600000};}
+export function discoveryPolicy(){const s=budget?.status();const mode=s?.mode||'cached';const live=liveIntervalMs();return {mode,arcMs:mode==='normal'?60000:mode==='saving'?180000:600000,otherMs:mode==='normal'?300000:mode==='saving'?900000:1800000,pollMs:mode==='normal'?60000:mode==='saving'?180000:600000,liveMs:mode==='normal'?live:mode==='saving'?Math.max(live,30000):300000};}
 export function cacheHit(){budget?.bump('cache_hits');}
 let queue=Promise.resolve(),lastStart=0,cooldown=0;
-async function pace(){let release!:()=>void;const old=queue;queue=new Promise<void>(r=>release=r);await old;const wait=Math.max(0,lastStart+400-Date.now());if(wait)await new Promise(r=>setTimeout(r,wait));lastStart=Date.now();release();}
+async function pace(){let release!:()=>void;const old=queue;queue=new Promise<void>(r=>release=r);await old;const wait=Math.max(0,lastStart+paceMs-Date.now());if(wait)await new Promise(r=>setTimeout(r,wait));lastStart=Date.now();release();}
 const headers={Accept:'application/json','User-Agent':'Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.26200; tr-TR) PowerShell/7.6.5'};
 async function performRequest(primary:string,publicUrl:string,key:string|undefined,ttl=60000,background=false,allowStale=true,purpose:ExplorerPurpose=background?'discovery':'research'){
  const endpoint=explorerEndpoint(primary),cost=explorerRequestCost(primary,budget?.cost||20);

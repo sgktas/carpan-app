@@ -82,6 +82,7 @@ export const api = {
   discoveryTransfers:(testnets=false,type='',scope='priority')=>req<import('./discovery-transfers').DiscoveryFeed>('GET',`/onchain/transfers?testnets=${testnets?'1':'0'}&type=${encodeURIComponent(type)}&scope=${encodeURIComponent(scope)}`),
   networkDirectory:()=>req<import('./chain-explorer').NetworkDirectory>('GET','/onchain/networks'),
   explorerData:(chain:string,query:import('./chain-explorer').ExplorerQuery)=>req<import('./chain-explorer').ExplorerResult>('GET',`/onchain/networks/${encodeURIComponent(chain)}/data?${new URLSearchParams(Object.entries(query).filter(([,v])=>v!==undefined) as [string,string][])}`),
+  liveSnapshot:(chain:string)=>req<import('./chain-explorer').LiveSnapshot>('GET',`/onchain/networks/${encodeURIComponent(chain)}/live`),
   networkWatchlist:()=>req<import('./chain-explorer').NetworkWatch[]>('GET','/onchain/watchlist'),
   saveNetworkWatch:(chain:string,address:string,label='')=>req<import('./chain-explorer').NetworkWatch[]>('PUT',`/onchain/networks/${encodeURIComponent(chain)}/watchlist`,{address,label}),
   removeNetworkWatch:(chain:string,address:string)=>req<import('./chain-explorer').NetworkWatch[]>('DELETE',`/onchain/networks/${encodeURIComponent(chain)}/watchlist`,{address}),

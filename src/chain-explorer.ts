@@ -4,6 +4,7 @@ export const explorerKinds=['transfers','transactions','tokens','blocks','verifi
 export type ExplorerKind=typeof explorerKinds[number];
 export type ExplorerQuery={kind:ExplorerKind;address?:string;hash?:string;token?:string;block?:string;tokenId?:string;type?:string;q?:string;cursor?:string};
 export type ExplorerRow={id:string;title:string;address:string|null;from:string|null;to:string|null;hash:string|null;token:string|null;symbol:string;raw:string|null;decimals:number|null;nftId:string|null;block:number|null;timestamp:string|null;status:string|null;data:Record<string,unknown>};
-export type ExplorerResult={network:ExplorerNetwork;kind:ExplorerKind;items:ExplorerRow[];detail:Record<string,unknown>|null;nextCursor:string|null;fetchedAt:string;source:string;cached?:boolean;page?:{offset:number;total:number;limit:number};policy?:{mode:string;arcMs:number;otherMs:number;pollMs:number}};
+export type ExplorerResult={network:ExplorerNetwork;kind:ExplorerKind;items:ExplorerRow[];detail:Record<string,unknown>|null;nextCursor:string|null;fetchedAt:string;source:string;cached?:boolean;page?:{offset:number;total:number;limit:number};policy?:{mode:string;arcMs:number;otherMs:number;pollMs:number;liveMs?:number}};
+export type LiveSnapshot={network:ExplorerNetwork;blocks:ExplorerRow[];transactions:ExplorerRow[];stats:Record<string,unknown>|null;fetchedAt:string;source:string;liveMs:number;mode:string;failed:{section:string;error:string}[]};
 export type NetworkWatch={chainId:string;address:string;label:string;createdAt:string};
 export function researchUrl(chain:string,address:string,extra=''){return chain==='5042'?`/arc/addresses/${address}${extra}`:`/arc?view=explorer&chain=${encodeURIComponent(chain)}&address=${encodeURIComponent(address)}`;}

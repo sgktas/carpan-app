@@ -1,0 +1,34 @@
+.at-live{margin-bottom:24px;container-type:inline-size;container-name:at-live}
+.at-live .at-section-title h2{display:flex;align-items:center;gap:8px}
+.at-live-pulse{color:#48c9a0;animation:at-live-pulse 1.6s ease-in-out infinite}
+@keyframes at-live-pulse{50%{opacity:.35}}
+.at-live-state{display:flex;align-items:center;gap:6px;color:#979bad;font:500 10px 'JetBrains Mono',monospace;white-space:nowrap}
+.at-live-state i{width:6px;height:6px;border-radius:50%;background:#48c9a0;box-shadow:0 0 0 3px rgba(72,201,160,.18)}
+.at-live-state.is-paused i{background:#979bad;box-shadow:none}
+.at-live-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin-bottom:12px}
+.at-live-stats>div{border:1px solid var(--at-border);border-radius:12px;padding:10px 12px;background:var(--at-surface);min-width:0}
+.at-live-stats span{display:block;color:#979bad;font:500 9px 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.3px}
+.at-live-stats strong{display:block;margin-top:4px;color:var(--at-ink);font:600 14px 'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.at-live-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:12px}
+.at-live-panel{display:flex;flex-direction:column;min-height:260px}
+.at-live-heading{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--at-border);background:var(--surface-muted);color:#a9a1b8;font:500 10px 'JetBrains Mono',monospace;text-transform:uppercase}
+.at-live-list{list-style:none;margin:0;padding:0;max-height:420px;overflow:auto}
+.at-live-list li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.3fr) minmax(0,.9fr) auto;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--at-border);font-size:12px}
+.at-live-panel:first-child .at-live-list li{grid-template-columns:minmax(0,1fr) auto auto}
+.at-live-list li.is-new{animation:at-live-new 2.4s ease-out}
+.at-live-list li.is-failed .at-live-method{color:#ef7d7d}
+@keyframes at-live-new{from{background:rgba(72,201,160,.2)}to{background:transparent}}
+.at-live-main{display:flex;flex-direction:column;min-width:0;color:var(--at-ink);text-decoration:none}
+.at-live-main b,.at-live-main a{font:600 12px 'JetBrains Mono',monospace;color:var(--at-ink);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.at-live-main small{color:#979bad;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.at-live-route{display:flex;align-items:center;gap:4px;min-width:0;font:11px 'JetBrains Mono',monospace;color:#979bad}
+.at-live-route a{color:inherit;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.at-live-route a:hover,.at-live-main a:hover{color:#48c9a0}
+.at-live-meta{color:var(--at-ink);font:11px 'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.at-live-time{display:flex;align-items:center;gap:4px;justify-content:flex-end;color:#979bad;font:10px 'JetBrains Mono',monospace;white-space:nowrap}
+.at-live-time a{color:inherit;display:inline-flex}
+.at-live-panel:first-child .at-live-main b{overflow:visible}
+/* Sized by the panel's own column, not the window: the Terminal stream column can be narrow on wide screens. */
+@container at-live (max-width:720px){.at-live-grid{grid-template-columns:1fr}.at-live-panel{min-height:0}.at-live-list{max-height:300px}}
+@container at-live (max-width:440px){.at-live-list li{grid-template-columns:minmax(0,1fr) auto}.at-live-route,.at-live-meta{display:none}.at-live-panel:first-child .at-live-list li{grid-template-columns:minmax(0,1fr) auto auto}.at-live-panel:first-child .at-live-meta{display:block}}
+@media(prefers-reduced-motion:reduce){.at-live-pulse,.at-live-list li.is-new{animation:none}}

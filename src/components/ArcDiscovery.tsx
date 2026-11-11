@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import {Activity,ArrowUpRight,ChevronLeft,ChevronRight,ExternalLink,FileCode2,ShieldCheck,Zap} from 'lucide-react';
 import {ArcBridgeActivity} from './ArcBridgeActivity';
 import {DiscoveryTransfers} from './DiscoveryTransfers';
+import {ArcLiveFeed} from './ArcLiveFeed';
 import {discoveryAddresses,type DiscoveryTransfer} from '../discovery-transfers';
 import {researchUrl} from '../chain-explorer';
 import {ARC_USDC,displayRaw} from '../arc-wallet';
@@ -52,7 +53,7 @@ export function ArcDiscovery({deployments,verified,deploymentLoading,deploymentE
       </section>
       <section className="at-contract-discovery"><div className="at-section-title"><h2>{translateText("Arc · Yeni kontratlar")}</h2><div><Link className="at-context-link" to="/arc?view=contracts">{t("Tümü")}<ArrowUpRight size={15}/></Link><button aria-label={t("Önceki kontratlar")} disabled={contractOffset===0} onClick={()=>setContractOffset(n=>Math.max(0,n-2))}><ChevronLeft size={20}/></button><button aria-label={t("Sonraki kontratlar")} disabled={contractOffset+2>=deployments.length} onClick={()=>setContractOffset(n=>n+2)}><ChevronRight size={20}/></button></div></div><div className="at-entity-grid">{deployments.slice(contractOffset,contractOffset+2).map(item=><Link className="at-contract-card" key={item.contractAddress} to={`/arc/contracts/${item.contractAddress}`}><div className="at-contract-heading"><span className="at-contract-symbol"><FileCode2 size={20}/></span><span className="at-source-tag">{t("DOĞRUDAN DAĞITIM")}</span><ArrowUpRight size={15}/></div><h3>{short(item.contractAddress)}</h3><span className="at-contract-time">{relative(item.deployedAt)}</span><div className="at-contract-bottom"><span>{t("DAĞITAN")}<b>{short(item.deployerAddress)}</b></span><span>{t("BLOK")}<b>{item.blockNumber.toLocaleString(getLocale())}</b></span></div></Link>)}</div>{(!deployments.length||deploymentError)&&<p className="at-section-note">{deploymentError|| (deploymentLoading?t("Kontrat indeksi yükleniyor…"):t("İndekste henüz dağıtım kaydı yok."))}</p>}{lagBlocks>0&&<p className="at-section-note">{t("Kontrat indeksi geçmişi tamamlıyor ·")}{lagBlocks.toLocaleString(getLocale())} {translateText("blok geride.")}</p>}</section>
       <section className="at-verified-discovery"><div className="at-section-title"><h2>{t("Arc · Doğrulanan kodlar")}</h2><Link to="/arc?view=verified">{t("Tümü")}<ArrowUpRight size={15}/></Link></div>{verified.slice(0,4).map(item=><Link className="at-verified-row" key={item.contractAddress} to={`/arc/contracts/${item.contractAddress}`}><ShieldCheck size={18}/><span>{item.name||short(item.contractAddress)}<small>{short(item.contractAddress)}</small></span><span>{relative(item.verifiedAt)}</span><ArrowUpRight size={14}/></Link>)}{(!verified.length||verifiedError)&&<p className="at-section-note">{verifiedError||(verifiedLoading?t("Doğrulanan kodlar yükleniyor…"):t("Kaynakta doğrulanmış kod kaydı bulunamadı."))}</p>}</section>
-    </div><div className="at-discovery-stream"><DiscoveryTransfers onPage={setTransfers}/><ArcBridgeActivity/></div></div>
+    </div><div className="at-discovery-stream"><ArcLiveFeed/><DiscoveryTransfers onPage={setTransfers}/><ArcBridgeActivity/></div></div>
   </>;
 }
 

@@ -2,7 +2,7 @@ import {explorerRequest,discoveryPolicy,cacheHit} from './explorerBudget';
 import {createHmac,randomBytes,timingSafeEqual} from 'node:crypto';
 import snapshot from './blockscout-networks.json';
 import type {Database} from 'bun:sqlite';
-import type {ExplorerNetwork,NetworkDirectory,ExplorerKind,ExplorerQuery,ExplorerRow,ExplorerResult,NetworkWatch} from '../src/chain-explorer';
+import type {ExplorerNetwork,NetworkDirectory,ExplorerKind,ExplorerQuery,ExplorerRow,ExplorerResult,NetworkWatch,LiveSnapshot} from '../src/chain-explorer';
 import type {DiscoveryFeed,DiscoveryTransfer} from '../src/discovery-transfers';
 import {explorerKinds} from '../src/chain-explorer';
 import {TREASURY_CHAINS} from '../src/treasury-review';
@@ -151,15 +151,30 @@ export function arcResearchQuery(chain:string,q:ExplorerQuery):ExplorerQuery{
  if(!TREASURY_CHAINS.some(network=>network.id===chain))throw new ExplorerError('Unsupported research network. Choose Arc, Base, Arbitrum or Ethereum Mainnet.',400);
  return q;
 }
-export async function explorerData(chain:string,q:ExplorerQuery,background=false):Promise<ExplorerResult>{
+export async function explorerData(chain:string,q:ExplorerQuery,background=false,liveTtl?:number):Promise<ExplorerResult>{
  q=arcResearchQuery(chain,q);
  const network=(await networkDirectory()).networks.find(n=>n.id===chain);if(!network)throw new ExplorerError('Bu ağ güncel PRO destek listesinde yok.',400);
- const next=q.cursor?decodeExplorerCursor(chain,q):{};const id=JSON.stringify([chain,q]);const old=cache.get(id);if(old&&old.until>Date.now()){cacheHit();return old.value;}
- const policy=discoveryPolicy(),ttl=background?(chain==='5042'?policy.arcMs:policy.otherMs):60000;
+ const next=q.cursor?decodeExplorerCursor(chain,q):{};const id=JSON.stringify([chain,q,liveTtl?'live':'']);const old=cache.get(id);if(old&&old.until>Date.now()){cacheHit();return old.value;}
+ const policy=discoveryPolicy(),ttl=liveTtl??(background?(chain==='5042'?policy.arcMs:policy.otherMs):60000);
  const value=(async()=>{const block=chain==='5042'&&['block','blockTransactions','blockInternals'].includes(q.kind)&&q.block?await resolveBlockReference(q.block):null,path=explorerPath(block?{...q,block}:q,next);
   const {payload:result,source,fetchedAt,cached}=await upstream(network,path,ttl,background),normalized=normalizeExplorerPayload(result,chain,q,next);
   return {network,kind:q.kind,items:normalized.items,detail:normalized.detail,...('page' in normalized?{page:normalized.page}:{}),nextCursor:normalized.next?encodeExplorerCursor(chain,q,normalized.next):null,fetchedAt:new Date(fetchedAt).toISOString(),cached,policy:discoveryPolicy(),source:`${source} · ${network.name}`};})();
- cache.set(id,{until:Date.now()+60000,value});if(cache.size>300)cache.delete(cache.keys().next().value!);value.catch(()=>cache.delete(id));return value;
+ cache.set(id,{until:Date.now()+Math.min(ttl>0?ttl:60000,60000),value});if(cache.size>300)cache.delete(cache.keys().next().value!);value.catch(()=>cache.delete(id));return value;
+}
+/** Latest blocks, validated transactions and chain stats for one network. Every viewer
+ * shares the same short-lived server snapshot, so provider calls do not scale with viewers.
+ * A failed section is reported on its own; the others remain usable. */
+export async function liveSnapshot(chain:string,load:typeof explorerData=explorerData):Promise<LiveSnapshot>{
+ const policy=discoveryPolicy(),ttl=policy.liveMs;
+ const sections=['blocks','transactions','stats'] as const;
+ const results=await Promise.allSettled(sections.map(kind=>load(chain,{kind},false,ttl)));
+ const ok=results.flatMap(r=>r.status==='fulfilled'?[r.value]:[]);
+ if(!ok.length){const first=results[0] as PromiseRejectedResult;throw first.reason instanceof ExplorerError?first.reason:new ExplorerError('Canlı zincir verisi alınamadı.');}
+ const pick=(kind:typeof sections[number])=>{const r=results[sections.indexOf(kind)];return r.status==='fulfilled'?r.value:null;};
+ const failed=sections.flatMap((kind,i)=>results[i].status==='rejected'?[{section:kind,error:(results[i] as PromiseRejectedResult).reason instanceof Error?(results[i] as PromiseRejectedResult).reason.message:'Alınamadı'}]:[]);
+ const fetchedAt=ok.map(r=>Date.parse(r.fetchedAt)).filter(Number.isFinite);
+ return {network:ok[0].network,blocks:pick('blocks')?.items.slice(0,20)||[],transactions:pick('transactions')?.items.slice(0,50)||[],stats:pick('stats')?.detail||null,
+  fetchedAt:new Date(fetchedAt.length?Math.min(...fetchedAt):Date.now()).toISOString(),source:ok[0].source,liveMs:ttl,mode:policy.mode,failed};
 }
 // Legacy discovery requests are also restricted to Arc Mainnet; no multichain sweep.
 export async function discoveryFeed(_includeTestnets=false,_type='',_scope=''):Promise<DiscoveryFeed>{
