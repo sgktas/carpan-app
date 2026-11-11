@@ -1,6 +1,4 @@
 /* Terminal home layout. Colours come from the existing Terminal tokens, so the black/white themes are unchanged. */
-/* A terminal uses the screen: lift the page's 1480px column cap for this view only. */
-html .carpan-data-workspace .at-root-main:has(>.th-home){max-width:none;padding-inline:0}
 .th-home{padding:20px 30px 40px;max-width:2000px;margin:0 auto}
 .th-strip{display:flex;align-items:stretch;justify-content:space-between;gap:12px;border:1px solid var(--at-border);border-radius:14px;background:var(--at-surface);overflow:hidden}
 .th-strip dl{display:flex;flex:1;min-width:0;margin:0;overflow-x:auto;scrollbar-width:none}
@@ -119,9 +117,3 @@ html[data-theme=light] .th-tip{box-shadow:0 12px 30px rgba(24,34,52,.16)}
 .th-home .at-live-chart-head span,.th-home .at-live-chart-range{font-size:11px}
 .th-home .at-live-chart strong{font-size:24px}
 .th-home .tv-badge{font-size:11px}
-
-/* Footer follows the same width and gutters as the Terminal home, so the page reads as one column. */
-html:has(.th-home) .carpan-footer{padding-inline:30px}
-html:has(.th-home) .carpan-footer :is(.carpan-footer-grid,.carpan-footer-bottom){max-width:1940px;width:100%}
-@media(max-width:1350px){html:has(.th-home) .carpan-footer{padding-inline:22px}}
-@media(max-width:700px){html:has(.th-home) .carpan-footer{padding-inline:16px}}

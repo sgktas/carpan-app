@@ -1,0 +1,13 @@
+/* One page width for every Terminal page: the same gutters as the home, using the screen.
+ * The workspace rule `html .carpan-data-workspace :is(…, .at-root-main, …)` caps these pages at 1480px,
+ * so the selector below is doubled to outrank it. */
+html body .carpan-data-workspace :is(.at-root-main,.aw-main):is(.at-root-main,.aw-main){max-width:none;padding-inline:30px}
+html body .carpan-data-workspace :is(.at-root-main,.aw-main):is(.at-root-main,.aw-main):has(>.th-home){padding-inline:0}
+@media(max-width:1350px){html body .carpan-data-workspace :is(.at-root-main,.aw-main):is(.at-root-main,.aw-main){padding-inline:22px}}
+@media(max-width:700px){html body .carpan-data-workspace :is(.at-root-main,.aw-main):is(.at-root-main,.aw-main){padding-inline:16px}}
+
+/* The footer follows the same width and gutters on every Terminal page. */
+html:has(.at-root-main,.aw-main) .carpan-footer{padding-inline:30px}
+html:has(.at-root-main,.aw-main) .carpan-footer :is(.carpan-footer-grid,.carpan-footer-bottom){max-width:none;width:100%}
+@media(max-width:1350px){html:has(.at-root-main,.aw-main) .carpan-footer{padding-inline:22px}}
+@media(max-width:700px){html:has(.at-root-main,.aw-main) .carpan-footer{padding-inline:16px}}

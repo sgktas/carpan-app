@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import {useI18n} from '../../i18n';
 import {NAV_GROUPS,activeGroup} from '../../terminal-command';
 import './terminal-nav.css';
+import './terminal-layout.css';
 
 /** Top-level Terminal groups: Canlı · Keşfet · İzleme. The `active` value is the page's existing view key. */
 export function TerminalGroupLinks({active}:{active:string}){
