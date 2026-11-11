@@ -1,0 +1,15 @@
+/* Uses the existing Terminal theme tokens, so dark and light appearances are preserved. */
+.at-subnav{display:flex;align-items:center;gap:6px;padding:8px 30px;border-bottom:1px solid var(--at-border,var(--border));background:var(--aw-bg,var(--bg));overflow-x:auto;scrollbar-width:none}
+.at-subnav::-webkit-scrollbar{display:none}
+.at-subnav a{flex:0 0 auto;padding:7px 13px;border:1px solid transparent;border-radius:999px;color:var(--at-secondary,var(--muted));font-size:12px;font-weight:500;white-space:nowrap;text-decoration:none;transition:color .15s,background .15s,border-color .15s}
+.at-subnav a:hover{color:var(--at-ink,var(--ink))}
+.at-subnav a[aria-current=page]{color:var(--at-ink,var(--ink));background:var(--at-subtle,var(--surface-strong));border-color:var(--at-border,var(--border))}
+.at-subnav a:focus-visible{outline:2px solid var(--at-accent,var(--accent));outline-offset:2px}
+@media(max-width:1350px){.at-subnav{padding-inline:22px}}
+@media(max-width:700px){.at-subnav{padding-inline:16px}}
+
+/* The header search is now a button that opens the command palette, but it keeps the old class so every theme rule still applies. */
+button.at-header-search{font:inherit;text-align:left;cursor:pointer;color:var(--at-secondary,var(--muted))}
+button.at-header-search>span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+button.at-header-search:hover{border-color:var(--at-accent,var(--accent))}
+button.at-header-search:focus-visible{outline:2px solid var(--at-accent,var(--accent));outline-offset:2px}

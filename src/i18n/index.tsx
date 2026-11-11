@@ -9,8 +9,9 @@ import grant from './grant-en.json';
 import invoices from './invoices-en.json';
 import live from './live-en.json';
 import bridgeOps from './bridge-ops-en.json';
+import terminalUi from './terminal-en.json';
 import {initialLanguage} from '../language-preference';
-const dictionary:Record<string,string>={...en,...extra,...finance,...platform,...sessions,...solana,...grant,...invoices,...live,...bridgeOps};
+const dictionary:Record<string,string>={...en,...extra,...finance,...platform,...sessions,...solana,...grant,...invoices,...live,...bridgeOps,...terminalUi};
 export type Language='tr'|'en';
 let language:Language='en';
 if(typeof window!=='undefined'){let stored:unknown;try{stored=localStorage.getItem('carpan-language');}catch{/* Private browsing */}language=initialLanguage(stored,new URLSearchParams(window.location.search).get('lang'));}

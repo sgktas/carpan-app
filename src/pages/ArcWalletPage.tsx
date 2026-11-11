@@ -85,7 +85,7 @@ function WalletTerminal({address}:{address:string}){
   function apply(e:FormEvent){e.preventDefault();setFilters({...draft});}
   function peerFilter(peer:string){const next={...filters,peer};setDraft(next);setFilters(next);}
   return <div className="aw-terminal aw-research aw-terminal-v3 carpan-data-workspace">
-    <ArcTerminalHeader active={module==='watch'?'following':'overview'}/>
+    <ArcTerminalHeader active={module==='watch'?'following':module==='labels'?'labels':'explorer'}/>
     <div className="aw-shell"><nav className="aw-sidebar" aria-label={translateUi("Arc Terminal modülleri")}><span>{translateUi("Araştırma")}</span>
       <button onClick={()=>setModule('profile')} aria-current={module==='profile'?'page':undefined}><Wallet size={16}/>{translateUi("Cüzdan profili")}</button>
       <button onClick={()=>setModule('watch')} aria-current={module==='watch'?'page':undefined}><Bookmark size={16}/>{translateUi("Takip listem")}</button>

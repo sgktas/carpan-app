@@ -67,6 +67,7 @@ Aktif başlık, sayfanın `active`/`view` değerinden tek bir eşleme tablosuyla
 
 - Doğrulanmış varlıklar (projede zaten gözden geçirilmiş liste: `src/arc-asset-transfers.ts`, `USDC_ASSET`) en üstte **Doğrulanmış varlık** rozetiyle.
 - Aynı sembolü taşıyan başka kontrat **Aynı sembol, farklı kontrat** uyarısıyla ve sona itilmiş olarak.
+- **Yazım tuzakları da** (gerçek veride taklitlerin çoğu sembolü birebir kopyalamıyor: `UDSC`, `USDCAT`, `USDC-G`): doğrulanmış sembolün yanına en çok 4 karakterlik ek, tek karakter ekleme/çıkarma veya iki bitişik karakterin yer değiştirmesi **Benzer sembol, … ile karışabilir** uyarısı alır. Tek karakter değişimi (ör. `USDT`, `USD1`) bilinçli olarak dışarıda bırakılır; gerçek ve farklı token'lar yanlışlıkla işaretlenmez. Uyarı yalnızca Arc'ta uygulanır.
 - `ens_domain` sonuçları yalnızca Ethereum ağında gösterilir; Arc aramasında gizlenir.
 
 **Ağ seçici:** paletin içinde `Arc ▾` rozeti; Base, Arbitrum, Ethereum. Seçim `localStorage`'da saklanır. Arc adresi `/arc/addresses/<a>`, diğer ağlar mevcut `researchUrl(chain, address)` ile gezgini açar; işlem/blok için `/arc?view=explorer&chain=<id>&hash=…&data=tx` biçimi kullanılır.
