@@ -1,0 +1,36 @@
+/* One type scale for the app pages (those with the shared header). Colours and theme are untouched.
+ *   headings   Manrope
+ *   body       DM Sans, floor 13px; captions 12px
+ *   tables     cells 13px, secondary line 12px, headers 11px
+ *   labels     JetBrains Mono 11-13px
+ *   footer     links 13px, headings 15px
+ * The page CSS is spread over twenty files whose selectors already compete (several use long
+ * `.carpan-data-workspace.aw-terminal…` chains), so this one file uses !important on purpose:
+ * the scale lives in a single place instead of being re-edited in each page's stylesheet.
+ * The landing hero keeps its own showcase sizes (it has no shared header). */
+
+html:has(.at-header) body :is(h1,h2,h3,h4){font-family:Manrope,'DM Sans',sans-serif!important}
+
+/* Tables (Explorer and the other research tables) */
+html:has(.at-header) body :is(.aw-table,.cx-table,.at-feed-table) th{font-size:11px!important}
+html:has(.at-header) body :is(.aw-table,.cx-table) td{font-size:13px!important}
+html:has(.at-header) body .aw-text{font-size:13px!important}
+html:has(.at-header) body .aw-number{font-size:13px!important}
+html:has(.at-header) body :is(.aw-table,.cx-table) td small,
+html:has(.at-header) body :is(.aw-table,.cx-table) td small :is(a,.aw-text){font-size:12px!important}
+html:has(.at-header) body :is(.aw-table,.cx-table) td.aw-number small{font-size:11px!important}
+
+/* Captions and notes never go below 12px */
+html:has(.at-header) body :is(.cx-coverage,.aw-note,.at-section-note,.th-note,.at-alert-count){font-size:12px!important}
+html:has(.at-header) body .at-footer{font-size:11px!important}
+
+/* Footer: the same on every page, including the landing page */
+html body .carpan-footer-grid h3{font-family:Manrope,'DM Sans',sans-serif!important;font-size:15px!important}
+html body .carpan-footer-grid nav a{font-size:13px!important}
+html body .carpan-footer-grid nav p{font-size:12px!important}
+html body :is(.carpan-footer-tagline,.carpan-footer-description,.carpan-footer-chain){font-size:13px!important}
+html body .carpan-footer-bottom{font-size:12px!important}
+
+/* The Terminal transfers table: values 13px, the chain, time and token columns 12px */
+html:has(.at-header) body .at-feed-table td{font-size:13px!important}
+html:has(.at-header) body .at-feed-table :is(td:nth-child(1),td:nth-child(2),td:nth-child(6)){font-size:12px!important}

@@ -123,11 +123,5 @@ html[data-theme=light] .th-tip{box-shadow:0 12px 30px rgba(24,34,52,.16)}
 /* Footer follows the same width and gutters as the Terminal home, so the page reads as one column. */
 html:has(.th-home) .carpan-footer{padding-inline:30px}
 html:has(.th-home) .carpan-footer :is(.carpan-footer-grid,.carpan-footer-bottom){max-width:1940px;width:100%}
-html:has(.th-home) .carpan-footer-grid h3{font-size:15px}
-html:has(.th-home) .carpan-footer-grid nav a{font-size:13px}
-html:has(.th-home) .carpan-footer-grid nav p{font-size:12px}
-html:has(.th-home) .carpan-footer-intro p{font-size:13px}
-html:has(.th-home) .carpan-footer-bottom{font-size:12px}
-html:has(.th-home) .at-footer{font-size:11px}
 @media(max-width:1350px){html:has(.th-home) .carpan-footer{padding-inline:22px}}
 @media(max-width:700px){html:has(.th-home) .carpan-footer{padding-inline:16px}}

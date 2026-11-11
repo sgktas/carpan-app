@@ -10,6 +10,7 @@ import {useI18n} from '../i18n';
 import {CarpanHeaderControls} from './CarpanHeaderControls';
 import {CommandPalette} from './terminal/CommandPalette';
 import {TerminalGroupLinks,TerminalSubNav} from './terminal/TerminalNav';
+import './terminal/type-scale.css';
 
 export function ArcTerminalHeader({active='overview'}:{active?:string}) {
   const [paletteOpen,setPaletteOpen]=useState(false);
