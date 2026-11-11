@@ -3,7 +3,9 @@ import {db} from './sqliteDb';
 import {requireAuth,type AuthRequest} from './auth';
 import {AuthRequestLimiter} from './authRequestGuard';
 import {initBridgeHistory,historyEnvironment,listBridgeHistory,saveBridgeHistory} from './bridgeHistory';
+import {initSolanaBridgeHistory,solanaHistoryEnvironment,listSolanaBridgeHistory,saveSolanaBridgeHistory} from './solanaBridgeHistory';
 initBridgeHistory(db);
+initSolanaBridgeHistory(db);
 export const bridgeHistoryRoutes=Router();
 bridgeHistoryRoutes.use(requireAuth as any);
 bridgeHistoryRoutes.use((_req,res,next)=>{res.set({'Cache-Control':'private, no-store','Referrer-Policy':'no-referrer'});next();});
@@ -12,4 +14,9 @@ bridgeHistoryRoutes.get('/history',(req:AuthRequest,res)=>{try{res.json(listBrid
 bridgeHistoryRoutes.post('/history',(req:AuthRequest,res)=>{
  const rate=limits.consume(req.userId!,120,60000);if(!rate.allowed){res.set('Retry-After',String(rate.retryAfter));return res.status(429).json({error:'Köprü kayıtlarını eşitlemek için biraz bekle.'});}
  try{res.json(saveBridgeHistory(db,req.userId!,historyEnvironment(req.body?.environment),req.body?.wallet,req.body?.snapshot));}catch(e){res.status(409).json({error:e instanceof Error?e.message:'Köprü geçmişi saklanamadı.'});}
+});
+bridgeHistoryRoutes.get('/solana-history',(req:AuthRequest,res)=>{try{res.json(listSolanaBridgeHistory(db,req.userId!,solanaHistoryEnvironment(req.query.environment),req.query.wallet));}catch(e){res.status(400).json({error:e instanceof Error?e.message:'Solana köprü geçmişi alınamadı.'});}});
+bridgeHistoryRoutes.post('/solana-history',(req:AuthRequest,res)=>{
+ const rate=limits.consume(req.userId!,120,60000);if(!rate.allowed){res.set('Retry-After',String(rate.retryAfter));return res.status(429).json({error:'Köprü kayıtlarını eşitlemek için biraz bekle.'});}
+ try{res.json(saveSolanaBridgeHistory(db,req.userId!,solanaHistoryEnvironment(req.body?.environment),req.body?.wallet,req.body?.snapshot));}catch(e){res.status(409).json({error:e instanceof Error?e.message:'Solana köprü geçmişi saklanamadı.'});}
 });

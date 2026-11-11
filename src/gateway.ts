@@ -5,7 +5,31 @@ export type GatewayEnvironment='testnet'|'mainnet';
 export type GatewayAction='deposit'|'spend';
 export type GatewayPlan={environment:GatewayEnvironment;action:GatewayAction;wallet:Hex;source:string;destination:string;recipient:Hex;amount:string};
 export type GatewayFee={type:string;token:string;amount:string};
-export type GatewayRecord={version:1;sdkRevision?:2;plan:GatewayPlan;state:'signing'|'uncertain'|'pending'|'confirmed'|'failed'|'not-submitted';createdAt:number;minBlock:string;hash?:Hex;received?:string;gas?:string;gasSymbol?:string};
+export type GatewayRetry={attestation:Hex;signature:Hex};
+export type GatewayRecord={version:1;sdkRevision?:2;plan:GatewayPlan;state:'signing'|'uncertain'|'pending'|'confirmed'|'failed'|'not-submitted';createdAt:number;minBlock:string;hash?:Hex;received?:string;gas?:string;gasSymbol?:string;
+ /** Circle's already-issued mint authorization, kept only after an SDK RESUMABLE mint failure. */
+ retry?:GatewayRetry;
+ /** Confirmed Gateway balance of the source network just before a spend; acceptance evidence only. */
+ sourceBefore?:string};
+const boundedHex=(v:unknown,max:number):v is Hex=>typeof v==='string'&&/^0x[0-9a-f]+$/i.test(v)&&v.length%2===0&&v.length>2&&v.length<=max;
+/**
+ * App Kit marks a mint that failed after Circle issued the attestation as RESUMABLE and puts the
+ * attestation + signature in error.cause.trace. Anything else is not a continuation and returns null.
+ */
+export function gatewayRetryData(error:unknown):GatewayRetry|null{
+ const e=error as {recoverability?:unknown;cause?:{trace?:{attestation?:unknown;signature?:unknown}}}|null;
+ if(!e||e.recoverability!=='RESUMABLE')return null;
+ const trace=e.cause?.trace;
+ return trace&&boundedHex(trace.attestation,20000)&&boundedHex(trace.signature,1000)?{attestation:trace.attestation,signature:trace.signature}:null;
+}
+export type GatewayWithdrawal={chain:string;withdrawing:bigint;withdrawalBlock:bigint;current:bigint;delay:bigint};
+/** The contract delay is defined in blocks and documented as 7 days, so it also yields the seconds-per-block estimate. */
+export function gatewayWithdrawalState(w:GatewayWithdrawal){
+ if(w.withdrawing===0n)return {state:'none' as const,blocksLeft:0n,secondsLeft:0};
+ const blocksLeft=w.withdrawalBlock>w.current?w.withdrawalBlock-w.current:0n;
+ const secondsLeft=w.delay>0n?Math.ceil(Number(blocksLeft)*604800/Number(w.delay)):0;
+ return {state:blocksLeft===0n?'ready' as const:'waiting' as const,blocksLeft,secondsLeft};
+}
 const reviewed=['Arc','Base','Arbitrum','Ethereum','Arc_Testnet','Base_Sepolia','Arbitrum_Sepolia','Ethereum_Sepolia'];
 export const GATEWAY_MAINNET_WRITES=false; // Enable only after the testnet wallet acceptance run.
 export const gatewayNetworks=(environment:GatewayEnvironment)=>BRIDGE_NETWORK_FACTS.filter(f=>f.testnet===(environment==='testnet')&&reviewed.includes(f.chain));
@@ -36,7 +60,9 @@ export function restoreGatewayRecord(value:string|null,wallet:string,environment
  // adapters. App Kit rejects both operations at validation, before provider signing.
  // Never extend this migration to newer checkpoints or any operation with a hash.
  const preflightOnly=r.sdkRevision===undefined&&!r.hash;
- return {version:1,sdkRevision:r.sdkRevision,plan,state:preflightOnly?'not-submitted':r.hash?'pending':'uncertain',createdAt:r.createdAt,minBlock:r.minBlock,hash:r.hash};
+ const retry=r.retry&&plan.action==='spend'&&boundedHex(r.retry.attestation,20000)&&boundedHex(r.retry.signature,1000)?{attestation:r.retry.attestation,signature:r.retry.signature}:undefined;
+ const sourceBefore=typeof r.sourceBefore==='string'&&/^\d+(\.\d{1,6})?$/.test(r.sourceBefore)?r.sourceBefore:undefined;
+ return {version:1,sdkRevision:r.sdkRevision,plan,state:preflightOnly&&!retry?'not-submitted':r.hash?'pending':'uncertain',createdAt:r.createdAt,minBlock:r.minBlock,hash:r.hash,...(retry?{retry}:{}),...(sourceBefore?{sourceBefore}:{})};
 }
 /** Local success is always backed by a canonical receipt, never by a balance change alone. */
 export function gatewayReceipt(record:GatewayRecord,receipt:TransactionReceipt,token:Hex,depositRecipient:Hex):GatewayRecord{

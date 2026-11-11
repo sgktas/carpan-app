@@ -25,6 +25,7 @@ import {createMarketRoutes} from './marketRoutes';
 import {initEcosystemNotifications,reconcileEcosystemUpdates,startEcosystemUpdateWorker} from './ecosystemNotifications';
 import {createEcosystemUpdateRoutes} from './ecosystemUpdateRoutes';
 import {networkDirectory,explorerData,parseExplorerQuery,ExplorerError,initNetworkWatch,networkWatchlist,saveNetworkWatch,discoveryFeed,liveSnapshot} from './chainExplorer';
+import {liveBridgeFlow} from './bridgeFlow';
 /**
  * Carpan API Server — port 3001
  *
@@ -644,6 +645,10 @@ app.get('/onchain/networks',async(_req,res)=>{const directory=await networkDirec
 app.get('/onchain/transfers',async(req,res)=>{
   try{res.json(await discoveryFeed(req.query.testnets==='1',typeof req.query.type==='string'?req.query.type:'',req.query.scope==='all'?'all':'priority'));}
   catch(e){res.status(e instanceof ExplorerError?e.status:503).json({error:e instanceof ExplorerError?e.message:'Çoklu ağ akışı alınamadı.'});}
+});
+app.get('/onchain/bridge/live',async(_req,res)=>{
+  try{const snapshot=await liveBridgeFlow();res.set('Cache-Control',`public, max-age=${Math.max(1,Math.floor(snapshot.liveMs/2000))}`);res.json(snapshot);}
+  catch(e){res.status(e instanceof ExplorerError?e.status:503).json({error:e instanceof ExplorerError?e.message:'Köprü akışı alınamadı.'});}
 });
 app.get('/onchain/networks/:chainId/live',async(req,res)=>{
   try{const snapshot=await liveSnapshot(req.params.chainId);res.set('Cache-Control',`public, max-age=${Math.max(1,Math.floor(snapshot.liveMs/2000))}`);res.json(snapshot);}
