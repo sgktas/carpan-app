@@ -1,5 +1,5 @@
 import {test,expect} from 'bun:test';
-import {classifyQuery,destinationUrl,buildPaletteItems,activeGroup,NAV_GROUPS,PALETTE_CHAINS,searchResultItems,VERIFIED_ASSETS} from '../src/terminal-command';
+import {classifyQuery,destinationUrl,buildPaletteItems,activeGroup,NAV_GROUPS,PALETTE_CHAINS,searchResultItems,tokenMix,VERIFIED_ASSETS} from '../src/terminal-command';
 import type {ExplorerRow} from '../src/chain-explorer';
 
 const ADDRESS='0x'+'ab'.repeat(20),HASH='0x'+'cd'.repeat(32);
@@ -117,4 +117,12 @@ test('every Terminal view maps to exactly one navigation group',()=>{
 test('palette chains list Arc first and each has an explorer base',()=>{
  expect(PALETTE_CHAINS.map(c=>c.id)).toEqual(['5042','8453','42161','1']);
  for(const c of PALETTE_CHAINS)expect(c.explorer.startsWith('https://')).toBe(true);
+});
+
+test('tokenMix counts fungible transfers by symbol, skips NFTs, and breaks ties alphabetically',()=>{
+ const item=(symbol:string,nftId:string|null=null,icon?:string)=>({symbol,nftId,data:icon?{token:{icon_url:icon}}:{}});
+ const mix=tokenMix([item('USDC',null,'https://x/usdc.svg'),item('EURC'),item('USDC'),item('',null),item('NFT','7'),item('AUSD')]);
+ expect(mix).toEqual([{symbol:'USDC',count:2,icon:'https://x/usdc.svg'},{symbol:'?',count:1,icon:undefined},{symbol:'AUSD',count:1,icon:undefined},{symbol:'EURC',count:1,icon:undefined}]);
+ expect(tokenMix(Array.from({length:9},(_,i)=>item(`T${i}`))).length).toBe(5);
+ expect(tokenMix([])).toEqual([]);
 });

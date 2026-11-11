@@ -178,3 +178,14 @@ export function buildPaletteItems({input,chain,searchRows,recents}:{input:string
  if(kind.type==='block')return [{id:`block:${kind.value}`,group:'actions',label:'Blok #{0}',labelArgs:[kind.value],action:{type:'navigate',to:destinationUrl(chain,'block',kind.value)}}];
  return [...pageItems(kind.value),...searchResultItems(chain,searchRows)];
 }
+
+/** Which tokens dominate a set of loaded transfers. NFTs are excluded; this describes the loaded page only, not network volume. */
+export function tokenMix(items:readonly {symbol:string;nftId:string|null;data:Record<string,unknown>}[],limit=5):{symbol:string;count:number;icon:unknown}[]{
+ const map=new Map<string,{symbol:string;count:number;icon:unknown}>();
+ for(const item of items){
+  if(item.nftId!==null)continue;
+  const symbol=item.symbol||'?',token=item.data.token,entry=map.get(symbol)||{symbol,count:0,icon:token&&typeof token==='object'?(token as {icon_url?:unknown}).icon_url:undefined};
+  entry.count++;map.set(symbol,entry);
+ }
+ return [...map.values()].sort((a,b)=>b.count-a.count||a.symbol.localeCompare(b.symbol)).slice(0,limit);
+}

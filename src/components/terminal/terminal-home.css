@@ -1,0 +1,73 @@
+/* Terminal home layout. Colours come from the existing Terminal tokens, so the black/white themes are unchanged. */
+.th-home{padding:20px 30px 40px;max-width:1700px;margin:0 auto}
+.th-strip{display:flex;align-items:stretch;justify-content:space-between;gap:12px;border:1px solid var(--at-border);border-radius:14px;background:var(--at-surface);overflow:hidden}
+.th-strip dl{display:flex;flex:1;min-width:0;margin:0;overflow-x:auto;scrollbar-width:none}
+.th-strip dl::-webkit-scrollbar{display:none}
+.th-strip dl>div{flex:1 0 auto;min-width:112px;padding:11px 16px;border-right:1px solid var(--at-border)}
+.th-strip dt{color:var(--at-secondary);font:500 10px 'JetBrains Mono',monospace;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap}
+.th-strip dd{margin:4px 0 0;color:var(--at-ink);font:600 15px 'JetBrains Mono',monospace;white-space:nowrap}
+.th-strip-state{display:flex;align-items:center;gap:8px;padding:0 14px;flex:0 0 auto}
+.th-strip-state button{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--at-border);border-radius:8px;background:none;color:var(--at-secondary);cursor:pointer}
+.th-strip-state button:hover{color:var(--at-ink);border-color:var(--at-accent)}
+.th-home .at-feed-error{margin-top:10px}
+
+.th-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(300px,2fr);gap:16px;margin-top:16px;align-items:start}
+.th-main{min-width:0}
+.th-tabs{display:flex;gap:4px;padding:0 0 12px;overflow-x:auto;scrollbar-width:none}
+.th-tabs::-webkit-scrollbar{display:none}
+.th-tabs button{flex:0 0 auto;padding:8px 15px;border:1px solid transparent;border-radius:999px;background:none;color:var(--at-secondary);font:500 13px 'DM Sans',sans-serif;cursor:pointer;transition:color .15s,background .15s,border-color .15s}
+.th-tabs button:hover{color:var(--at-ink)}
+.th-tabs button[aria-selected=true]{color:var(--at-ink);background:var(--at-subtle);border-color:var(--at-border)}
+.th-tabs button:focus-visible{outline:2px solid var(--at-accent);outline-offset:2px}
+.th-main [role=tabpanel][hidden]{display:none}
+.th-main .at-transfers-section{margin:0}
+.th-main .at-feed-scroll{max-height:640px}
+.th-live .at-live-list{max-height:640px}
+
+.th-rail{display:grid;gap:12px;min-width:0}
+.th-card{position:relative;overflow:hidden;padding:14px 16px;border:1px solid var(--at-border);border-radius:14px;background:var(--at-surface);color:var(--at-ink)}
+.th-card::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--at-accent) 13%,transparent),transparent 62%);transition:opacity .2s}
+.th-card:hover::before{opacity:1}
+.th-card>*{position:relative}
+.th-card-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}
+.th-card-head span{color:var(--at-secondary);font:500 10px 'JetBrains Mono',monospace;letter-spacing:.3px;text-transform:uppercase}
+.th-card-head b{color:var(--at-secondary);font:500 11px 'JetBrains Mono',monospace}
+.th-card.at-live-chart{padding:14px 16px}
+.th-note,.th-empty{margin:10px 0 0;color:var(--at-secondary);font-size:11px;line-height:1.5}
+.th-empty{margin:4px 0}
+
+.th-bars{display:flex;align-items:flex-end;gap:3px;height:64px}
+.th-bars span{flex:1;min-width:2px;border-radius:2px 2px 0 0;background:var(--at-accent);opacity:.85;transition:opacity .15s}
+.th-bars span:hover{opacity:1}
+
+.th-mix,.th-addresses,.th-rows{list-style:none;margin:0;padding:0}
+.th-mix li{display:grid;grid-template-columns:16px minmax(46px,auto) minmax(0,1fr) auto;align-items:center;gap:8px;padding:5px 0;font:12px 'JetBrains Mono',monospace}
+.th-mix i{display:block;height:6px;border-radius:3px;background:var(--at-subtle);overflow:hidden}
+.th-mix u{display:block;height:100%;border-radius:3px;background:var(--at-accent);text-decoration:none}
+.th-mix b{font-weight:600;color:var(--at-ink)}
+.th-addresses li{display:grid;grid-template-columns:minmax(0,1fr) 64px auto;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--at-border)}
+.th-addresses li:first-child{border-top:0}
+.th-addresses a{display:flex;align-items:center;gap:9px;min-width:0;color:var(--at-ink);text-decoration:none}
+.th-addresses a>span{display:flex;flex-direction:column;min-width:0}
+.th-addresses a b{font:600 12px 'DM Sans',sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.th-addresses a small{color:var(--at-secondary);font:10px 'JetBrains Mono',monospace}
+.th-addresses a:hover b{color:var(--at-accent)}
+.th-split{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--at-subtle)}
+.th-split i{background:#5aa9ff}.th-split u{background:#b08cff;text-decoration:none}
+.th-addresses strong{font:600 13px 'JetBrains Mono',monospace;min-width:24px;text-align:right}
+
+.th-contracts{display:grid;gap:12px}
+.th-rows li a{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:9px 14px;border-top:1px solid var(--at-border);color:var(--at-ink);text-decoration:none}
+.th-rows li:first-child a{border-top:0}
+.th-rows li a:hover{background:var(--at-subtle)}
+.th-rows li a>span{display:flex;flex-direction:column;min-width:0}
+.th-rows li b{font:600 12px 'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.th-rows li small{color:var(--at-secondary);font:10px 'JetBrains Mono',monospace}
+.th-rows li em{font:normal 11px 'JetBrains Mono',monospace;color:var(--at-secondary)}
+.th-rows li time{font:10px 'JetBrains Mono',monospace;color:var(--at-secondary);white-space:nowrap}
+.th-all{margin-left:auto;color:var(--at-accent);font:500 11px 'DM Sans',sans-serif;text-transform:none}
+
+@media(max-width:1180px){.th-grid{grid-template-columns:minmax(0,1fr)}.th-rail{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}}
+@media(max-width:1350px){.th-home{padding-inline:22px}}
+@media(max-width:700px){.th-home{padding:14px 16px 32px}.th-strip{flex-direction:column}.th-strip dl>div{min-width:104px;padding:10px 14px}.th-strip-state{padding:8px 14px;border-top:1px solid var(--at-border);justify-content:space-between}.th-rows li a{grid-template-columns:auto minmax(0,1fr) auto}.th-rows li em{display:none}}
+@media(prefers-reduced-motion:reduce){.th-card::before,.th-bars span,.th-tabs button{transition:none}}

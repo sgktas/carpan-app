@@ -11,7 +11,8 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { ArcTerminalHeader } from '../components/ArcTerminalHeader';
-import { ArcDiscovery, ArcTokenModule } from '../components/ArcDiscovery';
+import { ArcTokenModule } from '../components/ArcDiscovery';
+import {TerminalHome} from '../components/terminal/TerminalHome';
 import {ArcAlerts} from '../components/ArcAlerts';
 import {ArcFlowMap} from '../components/ArcFlowMap';
 import {ChainResearch} from '../components/ChainResearch';
@@ -207,7 +208,7 @@ export function ArcRadarPage() {
   return <div className="arc-radar aw-terminal aw-terminal-v3 at-home carpan-data-workspace">
     <ArcTerminalHeader active={view}/>
     <main className={view==='overview'?'at-root-main':'at-root-main at-module-main'}>
-      {view==='overview'?<ArcDiscovery deployments={deployments} verified={verified} deploymentLoading={loading} deploymentError={error} verifiedLoading={verifiedLoading} verifiedError={verifiedError} lagBlocks={status?.lagBlocks||0}/>:
+      {view==='overview'?<TerminalHome deployments={deployments} verified={verified} deploymentLoading={loading} deploymentError={error} verifiedLoading={verifiedLoading} verifiedError={verifiedError} lagBlocks={status?.lagBlocks||0}/>:
         view==='explorer'?<ChainResearch/>:
         view==='flow'?<ArcFlowMap/>:
         view==='bridge'?<Suspense fallback={<CarpanPageLoading/>}><ArcBridge/></Suspense>:

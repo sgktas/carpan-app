@@ -1,7 +1,7 @@
 import {t,getLocale} from '../i18n/index';
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {Link} from 'react-router-dom';
-import {ArrowLeftRight,Boxes,ExternalLink,Fuel,Gauge,Hash,LoaderCircle,Pause,Play,Radio,Timer,TrendingDown,TrendingUp,Wallet} from 'lucide-react';
+import {Boxes,ExternalLink,LoaderCircle,Pause,Play,TrendingDown,TrendingUp,ArrowLeftRight} from 'lucide-react';
 import {api} from '../api';
 import {displayRaw} from '../arc-wallet';
 import {researchUrl,type ExplorerRow,type LiveSnapshot} from '../chain-explorer';
@@ -19,15 +19,15 @@ function native(raw:unknown,decimals:number){
  const value=BigInt(raw),keep=Math.min(6,decimals),truncated=value/10n**BigInt(decimals-keep);
  return {exact:displayRaw(raw,decimals),text:value>0n&&truncated===0n?`<${displayRaw('1',keep)}`:displayRaw(truncated.toString(),keep)};
 }
-type ChartPoint={date:string;value:number};
+export type ChartPoint={date:string;value:number};
+export type ArcLive={chain:string;data:LiveSnapshot|null;error:string;loading:boolean;paused:boolean;setPaused:(next:boolean|((previous:boolean)=>boolean))=>void;now:number;fresh:Set<string>;chart:ChartPoint[]};
 
-/** Shared live snapshot of the newest blocks and validated transactions. Rows are provider evidence;
- * nothing here is aggregated into balances or business records. */
-export function ArcLiveFeed({chain='5042'}:{chain?:string}){
+/** One shared live snapshot of the newest blocks, validated transactions and chain stats for a network.
+ * Every consumer on the page reads this single source, so the page makes one provider read per refresh.
+ * Rows are provider evidence; nothing here is aggregated into balances or business records. */
+export function useArcLive(chain='5042'):ArcLive{
  const [data,setData]=useState<LiveSnapshot|null>(null),[error,setError]=useState(''),[loading,setLoading]=useState(true),[paused,setPaused]=useState(false),[now,setNow]=useState(()=>Date.now());
  const seen=useRef<Set<string>>(new Set()),[fresh,setFresh]=useState<Set<string>>(new Set()),busy=useRef(false);
- // While the pointer rests on the transaction list, rows stay still and new arrivals are counted instead.
- const [frozen,setFrozen]=useState<LiveSnapshot|null>(null);
  const [chart,setChart]=useState<ChartPoint[]>([]);
  const load=useCallback(async()=>{
   if(busy.current)return;busy.current=true;
@@ -45,58 +45,97 @@ export function ArcLiveFeed({chain='5042'}:{chain?:string}){
  const loadChart=useCallback(()=>{api.explorerData(chain,{kind:'txChart'}).then(result=>{
   setChart(result.items.flatMap(row=>{const d=record(row.data),value=count(d.transactions_count??d.transaction_count??d.value);return typeof d.date==='string'&&value!==null?[{date:d.date,value}]:[];}).sort((a,b)=>a.date.localeCompare(b.date)));
  }).catch(()=>{/* The chart is optional context; the live lists remain usable. */});},[chain]);
- useEffect(()=>{seen.current=new Set();setData(null);setFrozen(null);setLoading(true);void load();loadChart();},[load,loadChart]);
+ useEffect(()=>{seen.current=new Set();setData(null);setLoading(true);void load();loadChart();},[load,loadChart]);
  useVisiblePolling(()=>void load(),data?.liveMs||5000,!paused);
  useVisiblePolling(()=>setNow(Date.now()),1000,!paused);
  useVisiblePolling(loadChart,600000);
- const shown=frozen||data;
- const waiting=useMemo(()=>{if(!frozen||!data)return 0;const old=new Set(frozen.transactions.map(r=>r.id));return data.transactions.filter(r=>!old.has(r.id)).length;},[frozen,data]);
- const stats=record(data?.stats),gas=record(stats.gas_prices),decimals=data?.network.nativeDecimals??18,symbol=data?.network.nativeSymbol||'';
+ return {chain,data,error,loading,paused,setPaused,now,fresh,chart};
+}
+
+/** One-row statistics strip: the numbers a terminal keeps in sight, without a card per number. */
+export function LiveStatsStrip({live}:{live:ArcLive}){
+ const {data,paused,setPaused}=live;
+ const stats=record(data?.stats),gas=record(stats.gas_prices);
  const blockTime=count(stats.average_block_time),utilization=count(stats.network_utilization_percentage);
- const facts:{icon:typeof Boxes;label:string;value:string}[]=[
-  {icon:Boxes,label:t('Son blok'),value:data?.blocks[0]?.block?.toLocaleString(getLocale())||(count(stats.total_blocks)?.toLocaleString(getLocale())??'—')},
-  {icon:Timer,label:t('Ort. blok süresi'),value:blockTime===null?'—':t('{0} sn',[(blockTime/1000).toLocaleString(getLocale(),{maximumFractionDigits:2})])},
-  {icon:ArrowLeftRight,label:t('Bugünkü işlem'),value:count(stats.transactions_today)?.toLocaleString(getLocale())??'—'},
-  {icon:Hash,label:t('Toplam işlem'),value:count(stats.total_transactions)?.toLocaleString(getLocale())??'—'},
-  {icon:Wallet,label:t('Toplam adres'),value:count(stats.total_addresses)?.toLocaleString(getLocale())??'—'},
-  {icon:Gauge,label:t('Ağ kullanımı'),value:utilization===null?'—':`%${utilization.toLocaleString(getLocale(),{maximumFractionDigits:1})}`},
-  {icon:Fuel,label:t('Ort. gas'),value:count(gas.average)===null?'—':`${count(gas.average)!.toLocaleString(getLocale(),{maximumFractionDigits:2})} Gwei`},
+ const facts:[string,string][]=[
+  [t('Son blok'),data?.blocks[0]?.block?.toLocaleString(getLocale())||(count(stats.total_blocks)?.toLocaleString(getLocale())??'—')],
+  [t('Ort. blok süresi'),blockTime===null?'—':t('{0} sn',[(blockTime/1000).toLocaleString(getLocale(),{maximumFractionDigits:2})])],
+  [t('Bugünkü işlem'),count(stats.transactions_today)?.toLocaleString(getLocale())??'—'],
+  [t('Toplam işlem'),count(stats.total_transactions)?.toLocaleString(getLocale())??'—'],
+  [t('Toplam adres'),count(stats.total_addresses)?.toLocaleString(getLocale())??'—'],
+  [t('Ağ kullanımı'),utilization===null?'—':`%${utilization.toLocaleString(getLocale(),{maximumFractionDigits:1})}`],
+  [t('Ort. gas'),count(gas.average)===null?'—':`${count(gas.average)!.toLocaleString(getLocale(),{maximumFractionDigits:2})} Gwei`],
  ];
  const state=paused?t('Duraklatıldı'):data?.mode==='cached'?t('Kayıtlı veri'):data?.mode==='saving'?t('Tasarruf modu'):t('Canlı');
- return <section className="at-live" aria-label={t('Canlı Arc ağı')}>
-  <div className="at-section-title"><h2><Radio size={16} className={paused?'':'at-live-pulse'}/> {t('Canlı Arc ağı')}</h2>
-   <div className="at-feed-pagination"><span className={`at-live-state${paused?' is-paused':''}`}><i/>{state}{data&&!paused?` · ${Math.round(data.liveMs/1000)} sn`:''}</span>
-    <button aria-label={paused?t('Canlı akışı sürdür'):t('Canlı akışı duraklat')} aria-pressed={paused} onClick={()=>setPaused(p=>!p)}>{paused?<Play size={16}/>:<Pause size={16}/>}</button></div></div>
-  <div className="at-live-top">
-   <div className="at-live-stats">{facts.map(({icon:Icon,label,value})=><div key={label}><span className="at-live-stat-icon" aria-hidden="true"><Icon size={15}/></span><div><span>{label}</span><strong title={value}>{value}</strong></div></div>)}</div>
-   <TransactionChart points={chart}/>
+ return <div className="th-strip" role="group" aria-label={t('Canlı Arc ağı')}>
+  <dl>{facts.map(([label,value])=><div key={label}><dt>{label}</dt><dd title={value}>{value}</dd></div>)}</dl>
+  <div className="th-strip-state">
+   <span className={`at-live-state${paused?' is-paused':''}`}><i/>{state}{data&&!paused?` · ${Math.round(data.liveMs/1000)} sn`:''}</span>
+   <button type="button" aria-label={paused?t('Canlı akışı sürdür'):t('Canlı akışı duraklat')} aria-pressed={paused} onClick={()=>setPaused(p=>!p)}>{paused?<Play size={15}/>:<Pause size={15}/>}</button>
   </div>
-  {error&&<div className="at-feed-error" role="alert">{error}{data?t(' Son başarılı görüntü korunuyor.'):''}</div>}
-  {data?.failed.length?<div className="at-feed-error" role="status">{data.failed.map(f=>`${f.section}: ${f.error}`).join(' · ')}</div>:null}
-  <div className="at-live-grid">
-   <div className="at-feed-panel at-live-panel" aria-busy={loading}><div className="at-live-heading"><Boxes size={14}/>{t('Son bloklar')}</div>
-    <ul className="at-live-list">{shown?.blocks.map(row=><BlockRow key={row.id} row={row} chain={chain} now={now} fresh={!frozen&&fresh.has(row.id)}/>)}</ul>
-    {!data&&loading&&<div className="at-feed-empty"><LoaderCircle size={18} className="at-spinning"/> {t('Bloklar yükleniyor…')}</div>}</div>
-   <div className="at-feed-panel at-live-panel" aria-busy={loading} onMouseEnter={()=>setFrozen(data)} onMouseLeave={()=>setFrozen(null)}>
-    <div className="at-live-heading"><ArrowLeftRight size={14}/>{t('Son işlemler')}{frozen&&<span className="at-live-hold">{t('Liste sabit')}</span>}</div>
-    {waiting>0&&<button className="at-live-more" onClick={()=>setFrozen(data)}>{t('{0} yeni işlem geldi · göster',[data&&waiting>=data.transactions.length?`${waiting}+`:waiting])}</button>}
-    <ul className="at-live-list">{shown?.transactions.map(row=><TransactionRow key={row.id} row={row} chain={chain} now={now} fresh={!frozen&&fresh.has(row.id)} decimals={decimals} symbol={symbol} explorer={shown.network.explorer}/>)}</ul>
-    {!data&&loading&&<div className="at-feed-empty"><LoaderCircle size={18} className="at-spinning"/> {t('İşlemler yükleniyor…')}</div>}</div>
+ </div>;
+}
+
+export function LiveErrors({live}:{live:ArcLive}){
+ return <>
+  {live.error&&<div className="at-feed-error" role="alert">{live.error}{live.data?t(' Son başarılı görüntü korunuyor.'):''}</div>}
+  {live.data?.failed.length?<div className="at-feed-error" role="status">{live.data.failed.map(f=>`${f.section}: ${f.error}`).join(' · ')}</div>:null}
+ </>;
+}
+
+/** While the pointer rests on the list, rows stay still and new arrivals are counted instead. */
+export function LiveTransactionsList({live}:{live:ArcLive}){
+ const {data,loading,now,fresh,chain}=live;
+ const [frozen,setFrozen]=useState<LiveSnapshot|null>(null);
+ const shown=frozen||data;
+ const waiting=useMemo(()=>{if(!frozen||!data)return 0;const old=new Set(frozen.transactions.map(r=>r.id));return data.transactions.filter(r=>!old.has(r.id)).length;},[frozen,data]);
+ const decimals=data?.network.nativeDecimals??18,symbol=data?.network.nativeSymbol||'';
+ return <section className="at-live th-live" aria-label={t('Son işlemler')}>
+  <div className="at-feed-panel at-live-panel" aria-busy={loading} onMouseEnter={()=>setFrozen(data)} onMouseLeave={()=>setFrozen(null)}>
+   <div className="at-live-heading"><ArrowLeftRight size={14}/>{t('Son işlemler')}{frozen&&<span className="at-live-hold">{t('Liste sabit')}</span>}</div>
+   {waiting>0&&<button className="at-live-more" onClick={()=>setFrozen(data)}>{t('{0} yeni işlem geldi · göster',[data&&waiting>=data.transactions.length?`${waiting}+`:waiting])}</button>}
+   <ul className="at-live-list at-live-txs">{shown?.transactions.map(row=><TransactionRow key={row.id} row={row} chain={chain} now={now} fresh={!frozen&&fresh.has(row.id)} decimals={decimals} symbol={symbol} explorer={shown.network.explorer}/>)}</ul>
+   {!data&&loading&&<div className="at-feed-empty"><LoaderCircle size={18} className="at-spinning"/> {t('İşlemler yükleniyor…')}</div>}
   </div>
-  <div className="at-feed-footer"><span>{data?.source||t('Blockscout bağlantısı')}</span><span>{data?t('Veri zamanı {0}',[new Date(data.fetchedAt).toLocaleTimeString(getLocale())]):t('Bağlanıyor')}</span></div>
   <p className="at-section-note">{t('Ağdaki en yeni bloklar ve doğrulanmış işlemler. Tüm izleyiciler aynı sunucu görüntüsünü paylaşır; sayfa gizliyken akış durur. İşlem değeri bakiye veya iş kaydı değildir.')}</p>
  </section>;
 }
 
+export function LiveBlocksList({live}:{live:ArcLive}){
+ const {data,loading,now,fresh,chain}=live;
+ return <section className="at-live th-live" aria-label={t('Son bloklar')}>
+  <div className="at-feed-panel at-live-panel" aria-busy={loading}>
+   <div className="at-live-heading"><Boxes size={14}/>{t('Son bloklar')}</div>
+   <ul className="at-live-list at-live-blocks">{data?.blocks.map(row=><BlockRow key={row.id} row={row} chain={chain} now={now} fresh={fresh.has(row.id)}/>)}</ul>
+   {!data&&loading&&<div className="at-feed-empty"><LoaderCircle size={18} className="at-spinning"/> {t('Bloklar yükleniyor…')}</div>}
+  </div>
+ </section>;
+}
+
+/** Transactions per block for the newest blocks: a live series straight from the provider's block rows. */
+export function BlockActivityCard({live}:{live:ArcLive}){
+ const blocks=[...(live.data?.blocks||[])].reverse();
+ const counts=blocks.map(row=>count(record(row.data).transactions_count??record(row.data).transaction_count)??0);
+ if(counts.length<2)return <div className="th-card"><div className="th-card-head"><span>{t('Blok başına işlem')}</span></div><div className="at-feed-empty"><LoaderCircle size={16} className="at-spinning"/></div></div>;
+ const max=Math.max(1,...counts),average=counts.reduce((a,b)=>a+b,0)/counts.length;
+ return <div className="th-card">
+  <div className="th-card-head"><span>{t('Blok başına işlem · son {0} blok',[counts.length])}</span><b>{t('ort. {0}',[average.toLocaleString(getLocale(),{maximumFractionDigits:1})])}</b></div>
+  <div className="th-bars" role="img" aria-label={t('Son {0} bloktaki işlem sayısı',[counts.length])}>
+   {counts.map((value,i)=><span key={blocks[i].id} title={`#${blocks[i].block?.toLocaleString(getLocale())??''} · ${t('{0} işlem',[value.toLocaleString(getLocale())])}`} style={{height:`${Math.max(4,value/max*100)}%`}}/>)}
+  </div>
+  <div className="at-live-chart-range"><span>#{blocks[0].block?.toLocaleString(getLocale())}</span><span>#{blocks[blocks.length-1].block?.toLocaleString(getLocale())}</span></div>
+ </div>;
+}
+
 /** Daily transaction counts from the provider's own chart endpoint; no interpolation or projection. */
-function TransactionChart({points}:{points:ChartPoint[]}){
+export function DailyTransactionsCard({points}:{points:ChartPoint[]}){
  const last=points.at(-1),previous=points.at(-2);
- if(points.length<2||!last)return <div className="at-live-chart is-empty"><span>{t('Günlük işlemler')}</span><strong>—</strong></div>;
+ if(points.length<2||!last)return <div className="th-card at-live-chart is-empty"><span>{t('Günlük işlemler')}</span><strong>—</strong></div>;
  const max=Math.max(...points.map(p=>p.value)),min=Math.min(...points.map(p=>p.value)),span=Math.max(1,max-min);
  const line=points.map((p,i)=>`${(i/(points.length-1)*100).toFixed(2)},${(36-(p.value-min)/span*32).toFixed(2)}`).join(' ');
  const change=previous&&previous.value>0?(last.value-previous.value)/previous.value*100:null,Trend=change!==null&&change<0?TrendingDown:TrendingUp;
  const day=(value:string)=>new Date(`${value}T00:00:00Z`).toLocaleDateString(getLocale(),{day:'numeric',month:'short',timeZone:'UTC'});
- return <div className="at-live-chart">
+ return <div className="th-card at-live-chart">
   <div className="at-live-chart-head"><span>{t('Günlük işlemler · {0} gün',[points.length])}</span>{change!==null&&<b className={change<0?'is-down':'is-up'}><Trend size={12}/>{`${change>0?'+':''}${change.toLocaleString(getLocale(),{maximumFractionDigits:1})}%`}</b>}</div>
   <strong>{last.value.toLocaleString(getLocale())}</strong>
   <svg viewBox="0 0 100 40" preserveAspectRatio="none" role="img" aria-label={t('{0} – {1} günlük işlem sayısı',[day(points[0].date),day(last.date)])}>
