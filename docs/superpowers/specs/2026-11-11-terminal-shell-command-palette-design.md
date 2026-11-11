@@ -34,7 +34,7 @@ Referans mimari: Bloomberg'in komut çubuğu, Arkham'ın arama ve adres kimliği
 
 ## Kapsam dışı (bu sürümde yok)
 
-Sorgu/komut dili; ağlar arası otomatik "şurada bulundu" önerisi; Cüzdanım; yeni adres/işlem sayfası; kayıtlı görünümler; sunucuda yeni uç nokta; arama için hız sınırı (ayrı iş olarak not edilir).
+Sorgu/komut dili; özel etiketleri adla arama (liste servisi gerekir); ağlar arası otomatik "şurada bulundu" önerisi; Cüzdanım; yeni adres/işlem sayfası; kayıtlı görünümler; sunucuda yeni uç nokta; arama için hız sınırı (ayrı iş olarak not edilir).
 
 ## Tasarım
 
@@ -60,7 +60,7 @@ Aktif başlık, sayfanın `active`/`view` değerinden tek bir eşleme tablosuyla
 
 1. **Eylemler** (yazılana göre): adres için *Aç*, *İzle*, *Alarm kur*, *Kopyala*, *Explorer'da aç*. *İzle* mevcut `api.saveNetworkWatch` servisini kullanır; giriş gerekiyorsa `/?login=1&next=…` ile yönlendirir. *Alarm kur* `/arc?view=alerts&address=<adres>` adresini açar (mevcut ön doldurma).
 2. **Git:** Canlı, Gezgin, Token, Kontratlar, Doğrulananlar, Akış haritası, Takip listem, Alarmlar, Etiketler.
-3. **Sonuçlar:** metin için mevcut `GET /onchain/networks/:chain/data?kind=search&q=` (300 ms bekleme, en az 2 karakter, yeni karakterde eski yanıt yok sayılır). Hesaba özel etiketler de buraya girer.
+3. **Sonuçlar:** metin için mevcut `GET /onchain/networks/:chain/data?kind=search&q=` (300 ms bekleme, en az 2 karakter, yeni karakterde eski yanıt yok sayılır). Özel etiketler: giriş yapmış kullanıcı bir adres yazdığında, o adres için kaydedilmiş özel etiket (varsa) mevcut `GET /arc/wallets/:address/label` ile okunur ve adres satırında gösterilir; giriş yoksa sessizce atlanır. **Etiket adıyla arama ilk sürümde yok**, çünkü hesabın tüm etiketlerini listeleyen bir servis bugün mevcut değil (yalnızca adres başına okuma/yazma var).
 4. **Son aramalar** (kutu boşken): en fazla 8, yalnızca bu cihazda (`localStorage`), sadece sorgu ve tür saklanır.
 
 **Taklit ve güvenlik kuralları** (gerçek veriyle doğrulandı: `usdc` araması gerçek USDC'nin yanında aynı sembollü taklit token'lar ve alakasız bir ENS sonucu döndürüyor):
