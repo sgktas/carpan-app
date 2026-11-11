@@ -1,5 +1,7 @@
 /* Terminal home layout. Colours come from the existing Terminal tokens, so the black/white themes are unchanged. */
-.th-home{padding:20px 30px 40px;max-width:1700px;margin:0 auto}
+/* A terminal uses the screen: lift the page's 1480px column cap for this view only. */
+html .carpan-data-workspace .at-root-main:has(>.th-home){max-width:none;padding-inline:0}
+.th-home{padding:20px 30px 40px;max-width:2000px;margin:0 auto}
 .th-strip{display:flex;align-items:stretch;justify-content:space-between;gap:12px;border:1px solid var(--at-border);border-radius:14px;background:var(--at-surface);overflow:hidden}
 .th-strip dl{display:flex;flex:1;min-width:0;margin:0;overflow-x:auto;scrollbar-width:none}
 .th-strip dl::-webkit-scrollbar{display:none}
