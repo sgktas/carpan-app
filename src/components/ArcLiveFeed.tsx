@@ -112,37 +112,73 @@ export function LiveBlocksList({live}:{live:ArcLive}){
  </section>;
 }
 
-/** Transactions per block for the newest blocks: a live series straight from the provider's block rows. */
+/** Pointer and keyboard position over a plot, as an index into n points. */
+function usePlotIndex(n:number){
+ const [index,setIndex]=useState<number|null>(null);
+ const onPointerMove=(event:React.PointerEvent<HTMLElement>)=>{const box=event.currentTarget.getBoundingClientRect();if(box.width>0&&n>0)setIndex(Math.min(n-1,Math.max(0,Math.round((event.clientX-box.left)/box.width*(n-1)))));};
+ const onKeyDown=(event:React.KeyboardEvent)=>{
+  if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();setIndex(i=>Math.min(n-1,Math.max(0,(i??n-1)+(event.key==='ArrowRight'?1:-1))));}
+  else if(event.key==='Escape')setIndex(null);
+ };
+ return {index,bind:{tabIndex:0,onPointerMove,onPointerLeave:()=>setIndex(null),onBlur:()=>setIndex(null),onKeyDown}};
+}
+
+/** Transactions per block for the newest blocks: a live series straight from the provider's block rows. Hover for the block's details. */
 export function BlockActivityCard({live}:{live:ArcLive}){
- const blocks=[...(live.data?.blocks||[])].reverse();
+ const blocks=useMemo(()=>[...(live.data?.blocks||[])].reverse(),[live.data]);
  const counts=blocks.map(row=>count(record(row.data).transactions_count??record(row.data).transaction_count)??0);
+ const {index,bind}=usePlotIndex(counts.length);
  if(counts.length<2)return <div className="th-card"><div className="th-card-head"><span>{t('Blok başına işlem')}</span></div><div className="at-feed-empty"><LoaderCircle size={16} className="at-spinning"/></div></div>;
  const max=Math.max(1,...counts),average=counts.reduce((a,b)=>a+b,0)/counts.length;
+ const hovered=index===null?null:blocks[index],data=hovered?record(hovered.data):null;
+ const used=data?count(data.gas_used_percentage):null,validator=data&&typeof record(data.miner).hash==='string'?String(record(data.miner).hash):null;
  return <div className="th-card">
   <div className="th-card-head"><span>{t('Blok başına işlem · son {0} blok',[counts.length])}</span><b>{t('ort. {0}',[average.toLocaleString(getLocale(),{maximumFractionDigits:1})])}</b></div>
-  <div className="th-bars" role="img" aria-label={t('Son {0} bloktaki işlem sayısı',[counts.length])}>
-   {counts.map((value,i)=><span key={blocks[i].id} title={`#${blocks[i].block?.toLocaleString(getLocale())??''} · ${t('{0} işlem',[value.toLocaleString(getLocale())])}`} style={{height:`${Math.max(4,value/max*100)}%`}}/>)}
+  <div className="th-plot th-bars-plot" {...bind} role="img" aria-label={t('Son {0} bloktaki işlem sayısı',[counts.length])}>
+   <div className="th-bars">{counts.map((value,i)=><span key={blocks[i].id} className={i===index?'is-hover':undefined} style={{height:`${Math.max(4,value/max*100)}%`}}/>)}</div>
+   {hovered&&index!==null&&<div className={`th-tip ${index>counts.length/2?'is-left':'is-right'}`} role="status">
+    <b>#{hovered.block?.toLocaleString(getLocale())??'—'}</b>
+    <span>{t('{0} işlem',[counts[index].toLocaleString(getLocale())])}{used!==null&&<> · {t('Doluluk %{0}',[used.toLocaleString(getLocale(),{maximumFractionDigits:1})])}</>}</span>
+    <span className="th-tip-dim">{validator&&<><AddressAvatar address={validator} size={11}/> {short(validator)} · </>}{ago(hovered.timestamp,live.now)}</span>
+   </div>}
   </div>
   <div className="at-live-chart-range"><span>#{blocks[0].block?.toLocaleString(getLocale())}</span><span>#{blocks[blocks.length-1].block?.toLocaleString(getLocale())}</span></div>
  </div>;
 }
 
-/** Daily transaction counts from the provider's own chart endpoint; no interpolation or projection. */
+/** Daily transaction counts from the provider's own chart endpoint; no interpolation or projection. Hover for the day's value. */
 export function DailyTransactionsCard({points}:{points:ChartPoint[]}){
+ const {index,bind}=usePlotIndex(points.length);
  const last=points.at(-1),previous=points.at(-2);
  if(points.length<2||!last)return <div className="th-card at-live-chart is-empty"><span>{t('Günlük işlemler')}</span><strong>—</strong></div>;
  const max=Math.max(...points.map(p=>p.value)),min=Math.min(...points.map(p=>p.value)),span=Math.max(1,max-min);
- const line=points.map((p,i)=>`${(i/(points.length-1)*100).toFixed(2)},${(36-(p.value-min)/span*32).toFixed(2)}`).join(' ');
+ const y=(value:number)=>36-(value-min)/span*32;
+ const line=points.map((p,i)=>`${(i/(points.length-1)*100).toFixed(2)},${y(p.value).toFixed(2)}`).join(' ');
  const change=previous&&previous.value>0?(last.value-previous.value)/previous.value*100:null,Trend=change!==null&&change<0?TrendingDown:TrendingUp;
  const day=(value:string)=>new Date(`${value}T00:00:00Z`).toLocaleDateString(getLocale(),{day:'numeric',month:'short',timeZone:'UTC'});
+ const longDay=(value:string)=>new Date(`${value}T00:00:00Z`).toLocaleDateString(getLocale(),{weekday:'short',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+ const point=index===null?null:points[index],before=index!==null&&index>0?points[index-1]:null;
+ const delta=point&&before&&before.value>0?(point.value-before.value)/before.value*100:null;
+ const x=index===null?0:index/(points.length-1)*100;
  return <div className="th-card at-live-chart">
   <div className="at-live-chart-head"><span>{t('Günlük işlemler · {0} gün',[points.length])}</span>{change!==null&&<b className={change<0?'is-down':'is-up'}><Trend size={12}/>{`${change>0?'+':''}${change.toLocaleString(getLocale(),{maximumFractionDigits:1})}%`}</b>}</div>
   <strong>{last.value.toLocaleString(getLocale())}</strong>
-  <svg viewBox="0 0 100 40" preserveAspectRatio="none" role="img" aria-label={t('{0} – {1} günlük işlem sayısı',[day(points[0].date),day(last.date)])}>
-   <defs><linearGradient id="at-live-chart-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="currentColor" stopOpacity=".28"/><stop offset="1" stopColor="currentColor" stopOpacity="0"/></linearGradient></defs>
-   <polygon points={`0,40 ${line} 100,40`} fill="url(#at-live-chart-fill)"/>
-   <polyline points={line} fill="none" stroke="currentColor" strokeWidth="1.4" vectorEffect="non-scaling-stroke" strokeLinejoin="round"/>
-  </svg>
+  <div className="th-plot" {...bind} role="img" aria-label={t('{0} – {1} günlük işlem sayısı',[day(points[0].date),day(last.date)])}>
+   <svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="at-live-chart-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="currentColor" stopOpacity=".28"/><stop offset="1" stopColor="currentColor" stopOpacity="0"/></linearGradient></defs>
+    <polygon points={`0,40 ${line} 100,40`} fill="url(#at-live-chart-fill)"/>
+    <polyline points={line} fill="none" stroke="currentColor" strokeWidth="1.4" vectorEffect="non-scaling-stroke" strokeLinejoin="round"/>
+   </svg>
+   {point&&<>
+    <i className="th-cross" style={{left:`${x}%`}}/>
+    <i className="th-dot" style={{left:`${x}%`,top:`${y(point.value)/40*100}%`}}/>
+    <div className={`th-tip ${x>50?'is-left':'is-right'}`} role="status">
+     <b>{longDay(point.date)}</b>
+     <span>{t('{0} işlem',[point.value.toLocaleString(getLocale())])}</span>
+     {delta!==null&&<span className={delta<0?'th-tip-down':'th-tip-up'}>{`${delta>0?'+':''}${delta.toLocaleString(getLocale(),{maximumFractionDigits:1})}% ${t('önceki güne göre')}`}</span>}
+    </div>
+   </>}
+  </div>
   <div className="at-live-chart-range"><span>{day(points[0].date)}</span><span>{day(last.date)}</span></div>
  </div>;
 }

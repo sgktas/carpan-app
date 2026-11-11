@@ -14,7 +14,6 @@
 .at-live-chart-head b{display:inline-flex;align-items:center;gap:3px;font:600 10px 'JetBrains Mono',monospace}
 .at-live-chart-head b.is-up{color:#48c9a0}.at-live-chart-head b.is-down{color:#ef7d7d}
 .at-live-chart strong{margin-top:4px;color:var(--at-ink);font:700 22px 'JetBrains Mono',monospace;letter-spacing:-.5px}
-.at-live-chart>svg{flex:1 1 auto;width:100%;height:auto;min-height:58px;max-height:96px;margin-top:6px;overflow:visible}
 .at-live-chart-range{display:flex;justify-content:space-between;color:var(--at-secondary);font:10px 'JetBrains Mono',monospace}
 
 /* Lists */
@@ -59,7 +58,6 @@
 .at-live-time a{color:inherit;display:inline-flex}
 
 /* Sized by the panel's own column, not the window. */
-@container at-live (max-width:820px){.at-live-chart>svg{height:72px;min-height:0}}
 @container at-live (max-width:980px){.at-live-grid{grid-template-columns:1fr}.at-live-panel{min-height:0}.at-live-list{max-height:340px}}
 @container at-live (max-width:440px){.at-live-txs .at-live-meta{display:none}.at-live-txs li{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"main time" "route route"}.at-live-method{display:none}}
 @media(prefers-reduced-motion:reduce){.at-live-pulse,.at-live-list li.is-new{animation:none}}

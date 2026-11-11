@@ -67,5 +67,8 @@
   "Kaynakta doğrulanmış kod kaydı bulunamadı.": "No verified code found at the source.",
   "Şimdi": "Now",
   "{0} dk": "{0} min",
-  "{0} sa": "{0} h"
+  "{0} sa": "{0} h",
+  "önceki güne göre": "vs. previous day",
+  "{0} transfer · %{1}": "{0} transfers · {1}%",
+  "Doluluk %{0}": "Gas used {0}%"
 }

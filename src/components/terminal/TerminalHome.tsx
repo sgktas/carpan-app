@@ -70,7 +70,7 @@ function TokenMixCard({transfers}:{transfers:DiscoveryTransfer[]}){
  const max=Math.max(1,...rows.map(r=>r.count));
  return <div className="th-card">
   <div className="th-card-head"><span>{t('Token dağılımı')}</span><b>{t('{0} transfer',[transfers.length.toLocaleString(getLocale())])}</b></div>
-  {rows.length?<ul className="th-mix">{rows.map(r=><li key={r.symbol}><TokenMark symbol={r.symbol} icon={r.icon} size={16}/><span>{r.symbol}</span><i><u style={{width:`${r.count/max*100}%`}}/></i><b>{r.count}</b></li>)}</ul>:<p className="th-empty">{t('Yüklenen transferler burada özetlenir.')}</p>}
+  {rows.length?<ul className="th-mix">{rows.map(r=><li key={r.symbol} title={t('{0} transfer · %{1}',[r.count,Math.round(r.count/Math.max(1,transfers.filter(x=>x.nftId===null).length)*100)])}><TokenMark symbol={r.symbol} icon={r.icon} size={16}/><span>{r.symbol}</span><i><u style={{width:`${r.count/max*100}%`}}/></i><b>{r.count}</b></li>)}</ul>:<p className="th-empty">{t('Yüklenen transferler burada özetlenir.')}</p>}
   <p className="th-note">{t('Tabloda yüklü sayfanın özeti; ağın toplam hacmi değildir.')}</p>
  </div>;
 }
